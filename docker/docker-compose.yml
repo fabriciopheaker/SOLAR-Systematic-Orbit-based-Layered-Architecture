@@ -1,0 +1,49 @@
+services:
+  solar:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+
+    container_name: solar
+
+    working_dir: /solar
+
+    volumes:
+      - ..:/solar
+
+    stdin_open: true
+    tty: true
+
+    environment:
+      APP_ENV: DEV
+
+    ports:
+      - "5000:5000"
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    command: python server.py
+
+  postgres:
+    image: postgres:16-alpine
+
+    container_name: solar-postgres
+
+    environment:
+      POSTGRES_DB: sirius
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

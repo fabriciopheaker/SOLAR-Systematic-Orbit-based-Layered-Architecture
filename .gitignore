@@ -1,0 +1,78 @@
+# Python
+
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Cache files
+*.egg-info/
+*.egg
+*.pyo
+*.pyd
+*.whl
+.Python
+
+# Test coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+
+# Logs and debug output
+*.log
+*.out
+*.err
+
+# Other
+.mypy_cache/
+.pytest_cache/
+ipynb_checkpoints/
+.dmypy.json
+.pyre/
+
+# Node.js
+
+# Dependency directories
+node_modules/
+bower_components/
+.test
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build files
+dist/
+build/
+.tmp/
+.out/
+
+# Package files
+*.tgz
+*.lock
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Misc
+.DS_Store
+Thumbs.db
+
+# IDE/Editor-specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+.github/
