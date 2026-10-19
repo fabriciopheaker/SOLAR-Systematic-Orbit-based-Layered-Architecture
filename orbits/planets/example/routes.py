@@ -1,28 +1,11 @@
-"""
-Rotas do Planet example.
-
-A rota declara duas coisas, no MESMO lugar: para onde a requisição vai
-(URL → Controller → método HTTP) e quem pode entrar (`sanitizer=` e
-`validator=`). Quem lê este arquivo não precisa procurar a proteção em
-outro lugar.
-
-O `SolarBlueprint` é o que permite declarar os guardas aqui: o
-`add_url_rule` do Flask não conhece esses dois keywords.
-"""
 
 from flask import Blueprint
 
 from nucleus.middleware.solar_blueprint import SolarBlueprint
+from orbits.planets.example.atmosphere.sanitizers.create_user_sanitizer import CreateUserSanitizer
+from orbits.planets.example.atmosphere.validators.create_user_validator import CreateUserValidator
+from orbits.planets.example.controllers.create_user_controller import CreateUserController
 
-from orbits.planets.example.atmosphere.sanitizers.create_user_sanitizer import (  # noqa: E501
-    CreateUserSanitizer,
-)
-from orbits.planets.example.atmosphere.validators.create_user_validator import (  # noqa: E501
-    CreateUserValidator,
-)
-from orbits.planets.example.controllers.create_user_controller import (  # noqa: E501
-    CreateUserController,
-)
 
 
 def routes() -> Blueprint:

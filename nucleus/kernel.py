@@ -29,7 +29,6 @@ from nucleus.middleware.security_policy import SecurityPolicy
 from nucleus.security.identity import Identity
 from nucleus.storage.drivers.local_storage_driver import LocalStorageDriver
 from nucleus.storage.storage import Storage
-from orbits.routes import routes as orbit_routes
 
 
 # Raiz do projeto: nucleus/kernel.py → nucleus/ → a raiz da SOLAR.
@@ -106,6 +105,12 @@ class Kernel:
         self.config = None
         self.identity = None
 
+        # A camada de persistência de Orbits, composta DEPOIS de o
+        # banco estar montado. Quem a consome recebe a instância
+        # pronta; ninguém abaixo do Kernel instancia `Persistence`
+        # nem conhece `Database`.
+        self.persistence = None
+
         # Mecanismos que ficam à disposição de quem está dentro de
         # uma rota, sem que a rota precise recriá-los.
         self.security = None
@@ -161,6 +166,18 @@ class Kernel:
         # tabela nem de sincronização — e quem quiser desligar a
         # montagem desliga no `Database` (`SYNC_ON_START`).
         Database.init(DriverSQLAlchemy(self.config))
+
+        # PERSISTÊNCIA — a camada DAO de Orbits, composta AQUI
+        #
+        # O import é feito DEPOIS de `Database.init()` de propósito:
+        # os módulos de Persistence importam o Model no topo, e
+        # `class Users(Database.orm)` exige a ORM já publicada pelo
+        # driver. Adiar no ponto de composição deixa explícita a
+        # ordem de inicialização, em vez de escondê-la num import
+        # local dentro das camadas de baixo.
+        from orbits.database.persistence.persistence import Persistence
+
+        self.persistence = Persistence(Database)
 
 
         # ARMAZENAMENTO DE ARQUIVOS
@@ -256,6 +273,12 @@ class Kernel:
         #
         # O Kernel não conhece Planet nenhum: ele registra o que o
         # ponto central montou. Planet novo não muda este arquivo.
+        #
+        # O import vem DEPOIS de `Database.init()` pelo mesmo motivo
+        # da Persistence: a cadeia Controller → UseCase → Repository →
+        # Persistence → Model também depende da ORM publicada.
+        from orbits.routes import routes as orbit_routes
+
         app.register_blueprint(orbit_routes())
 
         # MECANISMOS — deixados à mão de quem está dentro de uma
@@ -281,6 +304,11 @@ class Kernel:
         """
         Encerra o que segura recurso.
         """
+
+        # A Persistence não segura recurso próprio: ela usa a sessão
+        # da fachada. Descartá-la aqui evita que uma montagem nova
+        # herde a instância da montagem anterior.
+        self.persistence = None
 
         # As fachadas de arquivo e evento não seguram conexão; o
         # banco segura, e é ele que precisa ser fechado.

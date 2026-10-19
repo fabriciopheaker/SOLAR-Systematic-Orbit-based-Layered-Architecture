@@ -13,20 +13,16 @@ from orbits.database.persistence.users.user_persistency import (
 
 class Persistence:
     """
-    Responsável pelas operações de persistência da aplicação.
+    Porta de entrada da camada de persistência.
 
-    A Persistence atua como intermediária entre os Repositories
-    dos Planets e a infraestrutura de banco disponibilizada
-    pelo Nucleus.Database.
+    Esta classe NÃO implementa operações de acesso a dados. Ela
+    apenas entrega a Persistence de cada Model; quem conhece as
+    operações é a implementação do Model (`UserPersistency`), e o
+    Repository recebe exatamente a que precisa.
 
-    Repositories não devem acessar diretamente:
-        - Database;
-        - DatabaseDriver;
-        - ORM;
-        - SQLAlchemy;
-        - detalhes de conexão.
-
-    Essas responsabilidades pertencem às camadas inferiores.
+    A fachada é composta pelo Kernel depois de `Database.init()`.
+    Repositories e UseCases não a constroem e não conhecem
+    `Database`, driver, ORM, SQLAlchemy nem detalhes de conexão.
     """
 
     def __init__(self, database):
@@ -34,13 +30,10 @@ class Persistence:
         Inicializa a Persistence com a infraestrutura
         de banco disponibilizada pelo Nucleus.
         """
-        # Recebida do Kernel, não criada aqui: quem monta decide de
-        # qual banco se trata, e a Persistence decide como usá-lo.
-        self.database = database
 
-        # Cada conjunto de dados tem a sua persistência. Esta camada
-        # entrega a PORTA e não conhece as operações de cada uma —
-        # quem conhece é quem chama.
+        # Cada conjunto de dados tem a sua persistência, e cada uma
+        # recebe a fachada do banco. Esta classe não guarda o banco
+        # para si: não há operação de dados aqui.
         self._users = UserPersistency(database)
 
     def users(self) -> UserPersistency:
