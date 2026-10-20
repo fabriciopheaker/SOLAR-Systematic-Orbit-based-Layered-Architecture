@@ -19,7 +19,7 @@ env/
 .Python
 
 # Test coverage
-htmlcov/
+.coverage
 .tox/
 .nox/
 coverage.xml

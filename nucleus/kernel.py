@@ -1,13 +1,13 @@
 """
-  Montagem da aplicação.
+    Montagem da aplicação.
 
-      Kernel().mount()
+        Kernel().mount()
 
-  Este módulo monta tudo o que a aplicação precisa para atender uma
-  requisição: ambiente, identidade, banco, arquivos, eventos,
-  middlewares, rotas e tratamento de erro.
+    Este módulo monta tudo o que a aplicação precisa para atender uma
+    requisição: ambiente, identidade, banco, arquivos, eventos,
+    middlewares, rotas e tratamento de erro.
 
-  O Kernel MONTA; quem SOBE é o Server (`server.py`).
+    O Kernel MONTA; quem SOBE é o Server (`server.py`).
 """
 
 from pathlib import Path
@@ -47,24 +47,24 @@ DEFAULT_STORAGE_ROOT = PROJECT_ROOT / "storage"
 
 class Kernel:
     """
-      Monta a aplicação inteira: configuração, mecanismos, rotas e
-      observação.
+        Monta a aplicação inteira: configuração, mecanismos, rotas e
+        observação.
 
-      A ordem da montagem é a ordem das dependências:
+        A ordem da montagem é a ordem das dependências:
 
-          Environment   de onde vêm os valores
-          Identity      quem a aplicação é (SECRET_KEY, SOLAR_ID)
-          Drivers       a tecnologia (banco, arquivos, eventos)
-          Middleware    as proteções de entrada e de saída
-          Rotas         o ponto central orbits/routes.py, que agrega
-                        as dos Planets
+            Environment   de onde vêm os valores
+            Identity      quem a aplicação é (SECRET_KEY, SOLAR_ID)
+            Drivers       a tecnologia (banco, arquivos, eventos)
+            Middleware    as proteções de entrada e de saída
+            Rotas         o ponto central orbits/routes.py, que agrega
+                            as dos Planets
 
-      `mount()` devolve a aplicação pronta. Subir o servidor NÃO é
-      papel do Kernel: quem sobe é o Server, que recebe a aplicação.
+        `mount()` devolve a aplicação pronta. Subir o servidor NÃO é
+        papel do Kernel: quem sobe é o Server, que recebe a aplicação.
 
-      O Kernel também NÃO conhece o Observatório — conhece o gancho
-      `observe()`. A direção da dependência é Observatory → Nucleus,
-      então quem liga os dois é o ponto de montagem, fora dos dois.
+        O Kernel também NÃO conhece o Observatório — conhece o gancho
+        `observe()`. A direção da dependência é Observatory → Nucleus,
+        então quem liga os dois é o ponto de montagem, fora dos dois.
     """
 
     def __init__(
@@ -104,12 +104,6 @@ class Kernel:
         # exista UM lugar que diga o que a montagem produz.
         self.config = None
         self.identity = None
-
-        # A camada de persistência de Orbits, composta DEPOIS de o
-        # banco estar montado. Quem a consome recebe a instância
-        # pronta; ninguém abaixo do Kernel instancia `Persistence`
-        # nem conhece `Database`.
-        self.persistence = None
 
         # Mecanismos que ficam à disposição de quem está dentro de
         # uma rota, sem que a rota precise recriá-los.
@@ -167,18 +161,18 @@ class Kernel:
         # montagem desliga no `Database` (`SYNC_ON_START`).
         Database.init(DriverSQLAlchemy(self.config))
 
-        # PERSISTÊNCIA — a camada DAO de Orbits, composta AQUI
+        # PERSISTÊNCIA — instâncias do Planet, DEPOIS do banco
         #
-        # O import é feito DEPOIS de `Database.init()` de propósito:
-        # os módulos de Persistence importam o Model no topo, e
-        # `class Users(Database.orm)` exige a ORM já publicada pelo
-        # driver. Adiar no ponto de composição deixa explícita a
-        # ordem de inicialização, em vez de escondê-la num import
-        # local dentro das camadas de baixo.
-        from orbits.database.persistence.persistence import Persistence
-
-        self.persistence = Persistence(Database)
-
+        # O Kernel inicializa a fachada `Database` e é quem a encerra
+        # no shutdown. As instâncias prontas moram nos próprios
+        # módulos do Planet (Persistence → Repository → UseCase),
+        # importadas junto com as rotas logo abaixo. Esse import só
+        # pode acontecer DEPOIS de `Database.init()`, porque os
+        # módulos de Persistence importam o Model no topo
+        # (`class Users(...)` exige a ORM publicada).
+        #
+        # Não existe registry genérico de persistências: cada Planet
+        # conhece apenas a Persistence do Model de que precisa.
 
         # ARMAZENAMENTO DE ARQUIVOS
         #
@@ -305,11 +299,8 @@ class Kernel:
         Encerra o que segura recurso.
         """
 
-        # A Persistence não segura recurso próprio: ela usa a sessão
-        # da fachada. Descartá-la aqui evita que uma montagem nova
-        # herde a instância da montagem anterior.
-        self.persistence = None
-
         # As fachadas de arquivo e evento não seguram conexão; o
-        # banco segura, e é ele que precisa ser fechado.
+        # banco segura, e é ele que precisa ser fechado. As
+        # Persistences dos Planets guardam só a fachada `Database`,
+        # nunca a sessão, então não há estado obsoleto a descartar.
         Database.close()

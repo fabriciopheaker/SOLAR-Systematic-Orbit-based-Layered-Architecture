@@ -109,3 +109,17 @@ def test_scanner_ignores_pycache(tmp_path):
     planet = PlanetScanner(tmp_path).scan()[0]
 
     assert "__pycache__" not in planet.directories
+
+
+# __pycache__ DIRETAMENTE sob "planets" nao e um Planet
+#
+# O bug aparecia no Docker: `orbits/planets/__pycache__` tem
+# `planets` como pai e era descrito como um Planet sem estrutura.
+def test_scanner_does_not_treat_pycache_as_a_planet(tmp_path):
+
+    _build(tmp_path, "orbits/planets/__pycache__")
+    _build(tmp_path, "orbits/planets/user", files=["routes.py"])
+
+    planets = PlanetScanner(tmp_path).scan()
+
+    assert [planet.name for planet in planets] == ["user"]

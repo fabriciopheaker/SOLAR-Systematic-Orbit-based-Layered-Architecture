@@ -140,22 +140,37 @@ def _module_level_imports(path: Path) -> list[str]:
 # Composição
 # ---------------------------------------------------------------------
 
-# o Kernel monta a Persistence depois do banco, e a deixa à disposição
-def test_kernel_composes_the_persistence_layer(tmp_path):
+# cada camada exporta a instância pronta que a camada seguinte usa:
+# Persistence → Repository → UseCase
+def test_planet_modules_export_the_wired_instances(tmp_path):
 
     kernel = _kernel(tmp_path)
 
     try:
-        from orbits.database.persistence.persistence import Persistence
         from orbits.database.persistence.users.user_persistency import (
             UserPersistency,
+            user_persistency,
+        )
+        from orbits.planets.example.repository.example_repository import (
+            ExampleRepository,
+            example_repository,
+        )
+        from orbits.planets.example.usecases.create_user_usecase import (
+            CreateUserUseCase,
+            create_user_use_case,
         )
 
-        assert isinstance(kernel.persistence, Persistence)
-        assert isinstance(
-            kernel.persistence.users(),
-            UserPersistency
-        )
+        assert isinstance(user_persistency, UserPersistency)
+
+        # A Persistence guarda a FACHADA, não uma sessão: o recurso de
+        # banco continua sendo resolvido a cada operação.
+        assert user_persistency.database is Database
+
+        assert isinstance(example_repository, ExampleRepository)
+        assert example_repository.users is user_persistency
+
+        assert isinstance(create_user_use_case, CreateUserUseCase)
+        assert create_user_use_case.repository is example_repository
 
         # Quem está dentro de uma rota recebe a instância já montada.
         assert kernel.app.extensions["solar"] is kernel
@@ -164,39 +179,35 @@ def test_kernel_composes_the_persistence_layer(tmp_path):
         kernel.shutdown()
 
 
-# o UseCase recebe a Persistence; ele não conhece Database nem driver
-def test_use_case_receives_the_composed_persistence(tmp_path):
+# o UseCase depende do Repository, e não de Persistence/Database
+# (ele nem importa a camada de dados)
+def test_use_case_depends_on_the_repository_not_on_persistence():
 
-    kernel = _kernel(tmp_path)
+    imports = _all_imports(USE_CASE_FILE)
 
-    try:
-        from orbits.planets.example.repository.example_repository import (
-            ExampleRepository,
-        )
-        from orbits.planets.example.usecases.create_user_usecase import (
-            create_user_use_case,
-        )
+    for module in imports:
 
-        use_case = create_user_use_case(kernel.persistence)
+        assert not module.startswith(
+            "orbits.database.persistence"
+        ), f"UseCase não pode importar '{module}'."
 
-        assert isinstance(use_case.repository, ExampleRepository)
+        assert not module.startswith(
+            "nucleus.database"
+        ), f"UseCase não pode importar '{module}'."
 
-        # O Repository usa a Persistence DO MODEL — não a fachada
-        # do banco nem uma persistência central.
-        assert use_case.repository.users is kernel.persistence.users()
+    source = USE_CASE_FILE.read_text(encoding="utf-8")
 
-    finally:
-        kernel.shutdown()
+    assert "CreateUserUseCase(self.repository)" not in source
+    assert "ExampleRepository(" not in source
 
 
-# encerrar a montagem descarta a Persistence junto com o banco
-def test_shutdown_discards_the_persistence(tmp_path):
+# encerrar a montagem fecha o banco
+# (a Persistence dos Planets não guarda sessão para descartar)
+def test_shutdown_closes_the_database(tmp_path):
 
     kernel = _kernel(tmp_path)
 
     kernel.shutdown()
-
-    assert kernel.persistence is None
 
     with pytest.raises(DatabaseException) as caught:
         Database.driver()
@@ -208,38 +219,40 @@ def test_shutdown_discards_the_persistence(tmp_path):
 # Persistence — DAO
 # ---------------------------------------------------------------------
 
-# a Persistence do Model devolve DADOS, nunca o objeto da ORM
-def test_user_persistency_returns_plain_data(tmp_path):
+# a Persistence do Model devolve o CONTRATO de saída, nunca o objeto
+# da ORM
+# (a entidade de domínio tem nomes diferentes das colunas do Model)
+def test_user_persistency_returns_the_output_contract(tmp_path):
 
     kernel = _kernel(tmp_path)
 
     try:
+        from orbits.database.persistence.users.output.create_user_output import (  # noqa: E501
+            CreateUserOutput,
+        )
         from orbits.database.persistence.users.user_persistency import (
             UserPersistency,
         )
 
         persistence = UserPersistency(Database)
 
-        saved = persistence.create(
-            name="Ana",
+        entity = SimpleNamespace(
+            nome="Ana",
             email="ana@exemplo.com",
-            password_hash="hash",
+            senha_hash="hash",
         )
 
-        assert set(saved) == {
-            "id",
-            "nome",
-            "email",
-            "created_at",
-        }
+        saved = persistence.create(entity)
 
-        assert saved["id"] > 0
-        assert saved["nome"] == "Ana"
-        assert saved["email"] == "ana@exemplo.com"
-        assert isinstance(saved["created_at"], datetime)
+        assert isinstance(saved, CreateUserOutput)
+        assert saved.id > 0
+        assert saved.nome == "Ana"
+        assert saved.email == "ana@exemplo.com"
+        assert isinstance(saved.created_at, datetime)
 
-        # Um dicionário não expõe os nomes das colunas do Model.
+        # O contrato público não expõe os nomes das colunas do Model.
         assert not hasattr(saved, "id_user")
+        assert not hasattr(saved, "name_user")
 
         assert persistence.email_exists("ana@exemplo.com") is True
         assert persistence.email_exists("outra@exemplo.com") is False
@@ -248,21 +261,66 @@ def test_user_persistency_returns_plain_data(tmp_path):
         kernel.shutdown()
 
 
-# a fachada Persistence só entrega a Persistence do Model; ela NÃO
-# implementa as operações de acesso a dados
-def test_persistence_facade_does_not_implement_dao_operations(tmp_path):
+# falha no commit não deixa a sessão pendente: a Persistence faz rollback
+def test_user_persistency_rolls_back_when_the_commit_fails(tmp_path):
 
     kernel = _kernel(tmp_path)
 
     try:
-        from orbits.database.persistence.persistence import Persistence
+        from orbits.database.persistence.users.user_persistency import (
+            UserPersistency,
+        )
 
-        for operation in ("create", "email_exists", "delete", "find"):
+        class FakeSession:
 
-            assert not hasattr(Persistence, operation)
+            def __init__(self):
+                self.rolled_back = False
+
+            def add(self, user):
+                return None
+
+            def commit(self):
+                raise RuntimeError("falha simulada no commit")
+
+            def rollback(self):
+                self.rolled_back = True
+
+        class FakeDatabase:
+
+            session_instance = FakeSession()
+
+            @classmethod
+            def session(cls):
+                return cls.session_instance
+
+        persistence = UserPersistency(FakeDatabase)
+
+        entity = SimpleNamespace(
+            nome="Ana",
+            email="ana@exemplo.com",
+            senha_hash="hash",
+        )
+
+        with pytest.raises(RuntimeError):
+
+            persistence.create(entity)
+
+        assert FakeDatabase.session_instance.rolled_back is True
 
     finally:
         kernel.shutdown()
+
+# não existe registry genérico de persistências: cada Repository recebe
+# a Persistence específica do Model que usa
+def test_there_is_no_generic_persistence_registry():
+
+    assert not (
+        PROJECT_ROOT
+        / "orbits"
+        / "database"
+        / "persistence"
+        / "persistence.py"
+    ).exists()
 
 
 # O DAO importa o Model de forma EXPLÍCITA, no topo — sem import
@@ -299,10 +357,15 @@ def test_the_dao_uses_the_database_session():
 # Repository
 # ---------------------------------------------------------------------
 
-# o Repository conversa com a Persistence do Model e devolve dados
+# o Repository conversa com a Persistence do Model e devolve o
+# contrato dela SEM refazer a conversão
 def test_repository_uses_only_the_model_persistence():
 
     calls: list[tuple] = []
+
+    from orbits.database.persistence.users.output.create_user_output import (  # noqa: E501
+        CreateUserOutput,
+    )
 
     class FakeUserPersistence:
 
@@ -310,15 +373,19 @@ def test_repository_uses_only_the_model_persistence():
             calls.append(("email_exists", email))
             return True
 
-        def create(self, *, name, email, password_hash):
-            calls.append(("create", name, email, password_hash))
+        def create(self, entity):
+            calls.append(
+                ("create", entity.nome, entity.email, entity.senha_hash)
+            )
 
-            return {
-                "id": 7,
-                "nome": name,
-                "email": email,
-                "created_at": datetime.now(),
-            }
+            output = CreateUserOutput(
+                id=7,
+                nome=entity.nome,
+                email=entity.email,
+                created_at=datetime.now(),
+            )
+
+            return output
 
     from orbits.planets.example.repository.example_repository import (
         ExampleRepository,
@@ -336,10 +403,11 @@ def test_repository_uses_only_the_model_persistence():
 
     saved = repository.create(entity)
 
-    assert saved["id"] == 7
-    assert saved["nome"] == "Ana"
-    assert saved["email"] == "ana@exemplo.com"
-    assert isinstance(saved["created_at"], datetime)
+    assert isinstance(saved, CreateUserOutput)
+    assert saved.id == 7
+    assert saved.nome == "Ana"
+    assert saved.email == "ana@exemplo.com"
+    assert isinstance(saved.created_at, datetime)
 
     assert calls == [
         ("email_exists", "ana@exemplo.com"),
@@ -373,6 +441,7 @@ def test_use_case_does_not_compose_the_database():
     source = USE_CASE_FILE.read_text(encoding="utf-8")
 
     assert "Persistence(Database)" not in source
+    assert "UserPersistency" not in source
 
 
 # ---------------------------------------------------------------------

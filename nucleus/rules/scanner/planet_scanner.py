@@ -7,7 +7,10 @@
 from pathlib import Path
 
 from nucleus.rules.scanner.planet_structure import PlanetStructure
-from nucleus.rules.scanner.source_files import is_inside_excluded
+from nucleus.rules.scanner.source_files import (
+    is_inside_excluded,
+    resolve_exclusions,
+)
 
 
 class PlanetScanner:
@@ -71,6 +74,13 @@ class PlanetScanner:
             # Teste e diretório técnico não descrevem a arquitetura:
             # um Planet de fixture não é um Planet.
             if is_inside_excluded(path, self.root):
+                continue
+
+            # `is_inside_excluded` olha só os diretórios ACIMA do
+            # caminho. O PRÓPRIO candidato precisa ser checado aqui —
+            # sem isso, `orbits/planets/__pycache__` seria lido como
+            # um Planet.
+            if path.name in resolve_exclusions():
                 continue
 
             # O critério de "é um Planet": estar DIRETAMENTE abaixo de
