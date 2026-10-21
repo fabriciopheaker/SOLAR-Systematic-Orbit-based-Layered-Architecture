@@ -17,6 +17,14 @@ services:
     environment:
       APP_ENV: DEV
 
+      # Dentro do container, `localhost` NÃO serve: o encaminhamento de
+      # porta do Docker entrega a requisição no IP da rede do container,
+      # e quem escuta só em 127.0.0.1 nunca é alcançado. A variável do
+      # ambiente tem precedência sobre o `nucleus/.env` (o `load_dotenv`
+      # não sobrescreve o que já existe), então o `.env` continua sendo
+      # o padrão para quem roda fora do Docker.
+      DEV_HOST: 0.0.0.0
+
     ports:
       - "5000:5000"
 

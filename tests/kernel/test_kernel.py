@@ -113,6 +113,7 @@ def test_health_route_answers(kernel):
     assert response.status_code == 200
     assert response.get_json() == {
         "status": "ok",
+        "message": "bem-vindo",
         "application": "",
     }
 
