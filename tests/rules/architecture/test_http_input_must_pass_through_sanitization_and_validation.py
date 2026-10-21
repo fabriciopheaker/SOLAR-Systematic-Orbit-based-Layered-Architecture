@@ -62,7 +62,7 @@ def _planet(tmp_path, route: str):
     Escreve um Planet com a rota dada.
 
     O arquivo mora em `planets/<p>/routes.py`: é o lugar onde a rota
-    mora (SOLAR-ARCH-018), e é de lá que o scanner lê os guardas.
+    mora (SOLAR-ROF-004), e é de lá que o scanner lê os guardas.
     """
 
     planet = tmp_path / "planets" / "documents"

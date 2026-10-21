@@ -76,7 +76,7 @@ def _scan(tmp_path, content: str) -> list[HttpInput]:
     Varre um Planet com a rota dada.
 
     O arquivo mora em `planets/<p>/routes.py`: e o lugar onde a rota
-    mora (SOLAR-ARCH-018).
+    mora (SOLAR-ROF-004).
     """
 
     planet = tmp_path / "planets" / "documents"

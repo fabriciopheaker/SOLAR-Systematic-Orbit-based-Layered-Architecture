@@ -24,7 +24,7 @@ class Validator(ABC):
     primeiro é o que permite os dois passos viverem separados.
 
     Toda entrada HTTP que transporta dados externos deve passar
-    por um Validator (SOLAR-ARCH-013).
+    por um Validator (SOLAR-ROF-001).
 
     O Validator é específico ao TIPO DE CONTEÚDO recebido:
 

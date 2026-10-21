@@ -49,7 +49,7 @@ class ErrorRecord:
     exception_type: str = ""
     # `detail` guarda o traceback COMPLETO, e aqui ele é
     # bem-vindo: este banco é do Observatório, não é a resposta da
-    # API. É a contrapartida da SOLAR-ARCH-028 — o detalhe interno
+    # API. É a contrapartida da SOLAR-SEG-008 — o detalhe interno
     # vai para o log, nunca para o cliente.
     detail: str = ""
     method: str = ""

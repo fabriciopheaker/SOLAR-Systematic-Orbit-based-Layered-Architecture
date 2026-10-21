@@ -1,10 +1,10 @@
-# SOLAR-ARCH-028 — erro não vaza o interior da aplicação.
+# SOLAR-SEG-008 — erro não vaza o interior da aplicação.
 #
 # A contrapartida é o Observatório: o detalhe PRECISA ser registrado,
 # só que no log. Por isso a regra olha o DESTINO do detalhe, e não a
 # presença dele — ver o docstring da classe.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import SECURITY, Rule, rule_code
 from nucleus.rules.scanner.error_exposure import ErrorExposure
 
 
@@ -12,7 +12,7 @@ class ErrorsMustNotLeakInternals(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-028
+    SOLAR-SEG-008
 
     Erros NÃO podem vazar informações internas.
 
@@ -67,7 +67,7 @@ class ErrorsMustNotLeakInternals(Rule):
     EXPOSED_DESTINATION = "response"
 
     def code(self) -> str:
-        return "SOLAR-ARCH-028"
+        return rule_code(SECURITY, 8)
 
     def description(self) -> str:
         return "Erros não podem vazar informações internas."

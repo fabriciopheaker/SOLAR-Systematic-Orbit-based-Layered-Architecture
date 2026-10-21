@@ -1,18 +1,18 @@
-# SOLAR-ARCH-012 — comunicação externa mora nos Satellites.
+# SOLAR-RED-012 — comunicação externa mora nos Satellites.
 #
 # O Satellite é a FRONTEIRA: é o único que conhece `requests`,
 # `httpx` e cia. Assim, trocar de biblioteca ou de provedor é mexer em
 # um lugar só, e o Planet continua sem saber que existe rede.
 from nucleus.rules.scanner.dependency import Dependency
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import DEPENDENCY, Rule, rule_code
 
 
 class ExternalCommunicationBelongsToSatellites(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-012
+    SOLAR-RED-012
 
     Satellites são a fronteira de comunicação externa
     e intermódulo.
@@ -58,7 +58,7 @@ class ExternalCommunicationBelongsToSatellites(Rule):
     )
 
     def code(self) -> str:
-        return "SOLAR-ARCH-012"
+        return rule_code(DEPENDENCY, 12)
 
     def description(self) -> str:
         return (

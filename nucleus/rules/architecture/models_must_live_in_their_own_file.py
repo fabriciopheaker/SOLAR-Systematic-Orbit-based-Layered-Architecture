@@ -1,10 +1,10 @@
-# SOLAR-ARCH-032 — um Model por arquivo.
+# SOLAR-ROF-007 — um Model por arquivo.
 #
-# Usa a MESMA convenção de reconhecimento das SOLAR-ARCH-005 e 006
+# Usa a MESMA convenção de reconhecimento das SOLAR-RED-005 e SOLAR-RED-006
 # (lugar OU nome), para não existirem duas definições de "o que é um
 # Model" no projeto.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import STRUCTURE, Rule, rule_code
 from nucleus.rules.scanner.module_classes import (
     DeclaredClass,
     ModuleClasses,
@@ -15,7 +15,7 @@ class ModelsMustLiveInTheirOwnFile(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-032
+    SOLAR-ROF-007
 
     Cada Model deve ficar no seu PRÓPRIO arquivo.
 
@@ -48,7 +48,7 @@ class ModelsMustLiveInTheirOwnFile(Rule):
                 ...
 
     O que conta como Model usa a MESMA convenção das regras
-    SOLAR-ARCH-005 e SOLAR-ARCH-006 — o LUGAR ou o NOME:
+    SOLAR-RED-005 e SOLAR-RED-006 — o LUGAR ou o NOME:
 
         segmento  o módulo tem o segmento "models"
                   (orbits.database.models.*) — a camada de Models,
@@ -67,14 +67,14 @@ class ModelsMustLiveInTheirOwnFile(Rule):
     """
 
     # Segmento que identifica a coleção de Models no caminho do
-    # módulo (mesma constante da SOLAR-ARCH-005/006).
+    # módulo (mesma constante da SOLAR-RED-005/SOLAR-RED-006).
     MODELS_SEGMENT = "models"
 
     # Sufixo do nome do MÓDULO (snake_case), como nas regras
-    # 005/006: `user_model`.
+    # SOLAR-RED-005/SOLAR-RED-006: `user_model`.
     MODEL_MODULE_SUFFIX = "_model"
 
-    # Sufixo do NOME da classe. As regras 005/006 usam `_model`
+    # Sufixo do NOME da classe. As regras SOLAR-RED-005/SOLAR-RED-006 usam `_model`
     # porque olham o nome do MÓDULO (snake_case); aqui o alvo
     # também é a CLASSE, que pela convenção do projeto é
     # PascalCase.
@@ -84,7 +84,7 @@ class ModelsMustLiveInTheirOwnFile(Rule):
     MAX_MODELS_PER_FILE = 1
 
     def code(self) -> str:
-        return "SOLAR-ARCH-032"
+        return rule_code(STRUCTURE, 7)
 
     def description(self) -> str:
         return "Cada Model deve ficar no seu próprio arquivo."
@@ -124,8 +124,8 @@ class ModelsMustLiveInTheirOwnFile(Rule):
         """
         Reconhece o Model pelo LUGAR ou pelo NOME.
 
-        São três critérios, os MESMOS das regras SOLAR-ARCH-005 e
-        SOLAR-ARCH-006, mais o nome da CLASSE:
+        São três critérios, os MESMOS das regras SOLAR-RED-005 e
+        SOLAR-RED-006, mais o nome da CLASSE:
 
             segmento  "models" no caminho do módulo — a camada de
                       Models (tudo ali é Model);

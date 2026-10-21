@@ -1,6 +1,6 @@
-# SOLAR-ARCH-009 — o Planet não conhece o Driver.
+# SOLAR-RED-009 — o Planet não conhece o Driver.
 #
-# Par da SOLAR-ARCH-008, olhando o outro lado: a 008 trata dos Orbits
+# Par da SOLAR-RED-008, olhando o outro lado: a SOLAR-RED-008 trata dos Orbits
 # em geral; esta trata especificamente dos Planets, que é onde o
 # negócio mora.
 #
@@ -8,14 +8,14 @@
 # Nucleus.Database -> Driver.
 from nucleus.rules.scanner.dependency import Dependency
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import DEPENDENCY, Rule, rule_code
 
 
 class PlanetCannotDependOnDriver(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-009
+    SOLAR-RED-009
 
     O Driver não deve ser conhecido pelos módulos de
     negócio (Planets).
@@ -50,7 +50,7 @@ class PlanetCannotDependOnDriver(Rule):
     DRIVER_PACKAGE = "nucleus.database.drivers"
 
     def code(self) -> str:
-        return "SOLAR-ARCH-009"
+        return rule_code(DEPENDENCY, 9)
 
     def description(self) -> str:
         return (

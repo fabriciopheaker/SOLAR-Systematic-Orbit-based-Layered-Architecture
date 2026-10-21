@@ -269,7 +269,7 @@ def test_verification_does_not_record_when_clean(tmp_path, capsys):
 # com violacao, mostra o relatorio E registra
 #
 # a violacao e a mais simples de provocar: um segredo hardcoded
-# (SOLAR-ARCH-020), que nao depende de estrutura de diretorio
+# (SOLAR-SEG-001), que nao depende de estrutura de diretorio
 # nenhuma
 def test_verification_records_when_there_is_a_violation(tmp_path, capsys):
 
@@ -288,7 +288,7 @@ def test_verification_records_when_there_is_a_violation(tmp_path, capsys):
     output = capsys.readouterr().out
 
     assert "arquitetura: violation" in output
-    assert "SOLAR-ARCH-020" in output
+    assert "SOLAR-SEG-001" in output
     assert "auditoria:" in output
 
     records = _records(tmp_path)

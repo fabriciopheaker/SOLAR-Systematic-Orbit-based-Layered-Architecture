@@ -1,25 +1,25 @@
-# SOLAR-ARCH-002 — Repository não fala com o banco direto.
+# SOLAR-RED-002 — Repository não fala com o banco direto.
 #
 # O caminho é Repository -> Persistence -> Database. Quando o
 # Repository importa a fachada, ele pula a camada de persistência e
 # passa a decidir sozinho como o dado é lido e gravado.
 from nucleus.rules.scanner.dependency import Dependency
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import DEPENDENCY, Rule, rule_code
 
 
 class RepositoryCannotDependOnDatabase(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-002
+    SOLAR-RED-002
 
     Um Repository não pode possuir uma dependência
     direta de Database.
     """
 
     def code(self) -> str:
-        return "SOLAR-ARCH-002"
+        return rule_code(DEPENDENCY, 2)
 
     def description(self) -> str:
         return (

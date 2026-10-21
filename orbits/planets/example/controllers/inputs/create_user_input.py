@@ -13,7 +13,7 @@ class CreateUserInput:
     """
     O contrato de ENTRADA da responsabilidade.
 
-    Os campos são lidos UM A UM (SOLAR-ARCH-029): o corpo inteiro nunca
+    Os campos são lidos UM A UM (SOLAR-SEG-009): o corpo inteiro nunca
     vira contrato, para que um campo novo na requisição não passe a
     valer sem ninguém decidir.
     """

@@ -5,7 +5,7 @@
 # `jose`, passou a FAZER segurança em vez de delegar — e é isso que
 # este scanner descreve.
 #
-# Quais módulos são proibidos é política da SOLAR-ARCH-022. Aqui só
+# Quais módulos são proibidos é política da SOLAR-SEG-003. Aqui só
 # se lista o que foi importado.
 import ast
 from pathlib import Path
@@ -41,7 +41,7 @@ class ControllerSecurityScanner:
         from jose import jwt  → "jose"
 
     O scanner NÃO decide se um módulo é proibido: isso é
-    responsabilidade da Rule SOLAR-ARCH-022.
+    responsabilidade da Rule SOLAR-SEG-003.
 
     O código NÃO é executado: a análise é feita sobre a AST.
     """

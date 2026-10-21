@@ -185,8 +185,8 @@ def project_checks() -> tuple[Check, ...]:
 
     Fora daqui, de propósito:
 
-        SOLAR-ARCH-004   absorvida pela SOLAR-ARCH-001;
-        SOLAR-ARCH-015   o contexto é o contrato nomeado do UseCase,
+        SOLAR-RED-004   absorvida pela SOLAR-RED-001;
+        SOLAR-ROF-003   o contexto é o contrato nomeado do UseCase,
                          e ainda não há scanner para ele.
     """
 

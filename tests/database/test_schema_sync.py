@@ -64,7 +64,7 @@ def _tables():
 
     Usa o modulo sqlalchemy publicado pela FACHADA (`Database.model`),
     e nao um import direto: e por ali que o projeto alcanca a ORM
-    (SOLAR-ARCH-010).
+    (SOLAR-RED-010).
     """
 
     return Database.model.inspect(_engine()).get_table_names()

@@ -16,7 +16,7 @@ class RequestPipeline:
 
     A Atmosphere injeta o Sanitizer e o Validator apropriados ao
     tipo de conteúdo em cada HttpInput (injeção de dependência).
-    O pipeline apenas aplica a regra SOLAR-ARCH-013 e executa as
+    O pipeline apenas aplica a regra SOLAR-ROF-001 e executa as
     etapas na ordem correta:
 
         HTTP Input → Validator → Sanitizer → Planet
@@ -48,7 +48,7 @@ class RequestPipeline:
         Processa o payload de uma entrada HTTP.
 
         Quando a entrada transporta dados externos:
-            1. Aplica a regra SOLAR-ARCH-013;
+            1. Aplica a regra SOLAR-ROF-001;
             2. Valida o payload (os campos esperados existem?);
             3. Sanitiza o payload já validado;
             4. Retorna o payload sanitizado.
@@ -61,7 +61,7 @@ class RequestPipeline:
         if not http_input.transports_data():
             return payload
 
-        # Garante o contrato da SOLAR-ARCH-013.
+        # Garante o contrato da SOLAR-ROF-001.
         self._engine.validate(http_input)
 
         # Os dois resolvidos antes de usar, e resolvidos com `isinstance`

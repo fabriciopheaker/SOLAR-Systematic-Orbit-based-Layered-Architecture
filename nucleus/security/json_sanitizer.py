@@ -1,6 +1,6 @@
 # Sanitizador de corpo JSON.
 #
-# É a guarda de ENTRADA (SOLAR-ARCH-013) que LIMPA: o
+# É a guarda de ENTRADA (SOLAR-ROF-001) que LIMPA: o
 # `JsonValidator` confere o que existe, este normaliza o que
 # chegou. A ordem é essa — conferir antes de limpar — e a razão
 # está no contrato `Sanitizer`.

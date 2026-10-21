@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-015: a fronteira de uma responsabilidade.
+# Contexto da SOLAR-ROF-003: a fronteira de uma responsabilidade.
 #
 # "Contrato" aqui é o que a responsabilidade RECEBE e DEVOLVE — não
 # assinatura eletrônica. Mesmo nome, assunto diferente, e o
@@ -29,14 +29,14 @@ class ResponsibilityContract:
 
     Os tipos devem ser contratos NOMEADOS (Input, Output, Entity,
     Resource). Estruturas anônimas (dict, list, tuple, set) como
-    contrato violam a SOLAR-ARCH-015.
+    contrato violam a SOLAR-ROF-003.
 
     Importante: descreve apenas a FRONTEIRA da responsabilidade.
     Coleções anônimas usadas no processamento interno (iteração,
     agregação, transformação) não fazem parte do contrato e não
     violam a regra.
 
-    A validação é responsabilidade da Rule SOLAR-ARCH-015.
+    A validação é responsabilidade da Rule SOLAR-ROF-003.
     """
 
     owner: str

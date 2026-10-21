@@ -35,7 +35,7 @@ class UnsafeSqlScanner:
         cursor.execute(sql, {"id": user_id})
 
     O scanner NÃO decide se há violação: isso é responsabilidade
-    da Rule SOLAR-ARCH-024.
+    da Rule SOLAR-SEG-011.
 
     O código NÃO é executado: a análise é feita sobre a AST.
     """

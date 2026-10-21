@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-025: primitivos de arquivo usados por um
+# Contexto da SOLAR-SEG-005: primitivos de arquivo usados por um
 # Controller.
 #
 # Um Controller não manipula arquivo — ele entrega o arquivo à

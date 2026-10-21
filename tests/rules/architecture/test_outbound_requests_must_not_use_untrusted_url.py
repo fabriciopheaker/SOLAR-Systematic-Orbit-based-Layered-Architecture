@@ -93,7 +93,7 @@ def test_message_lists_the_untrusted_names():
 
     message = str(error.value)
 
-    assert "SOLAR-ARCH-030" in message
+    assert "SOLAR-SEG-010" in message
     assert "'host'" in message
     assert "'BASE_URL'" not in message
     assert "UrlGuard" in message

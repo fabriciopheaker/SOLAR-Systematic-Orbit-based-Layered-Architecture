@@ -47,7 +47,7 @@ class MassAssignmentScanner:
     preenchidos por um dicionário arbitrário.
 
     O scanner DESCREVE (o que veio, para onde vai e de que forma);
-    quem decide a política é a Rule SOLAR-ARCH-029.
+    quem decide a política é a Rule SOLAR-SEG-009.
 
     O código NÃO é executado: a análise é feita sobre a AST.
     """
@@ -367,7 +367,7 @@ class MassAssignmentScanner:
         """
 
         # Dict literal → marcador `"{}"`. É o SINAL de "os campos estão
-        # declarados aqui dentro", e é o que a SOLAR-ARCH-029 procura
+        # declarados aqui dentro", e é o que a SOLAR-SEG-009 procura
         # para liberar.
         if isinstance(node, ast.Dict):
             return "{}"

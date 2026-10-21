@@ -2,7 +2,7 @@
 #
 # É a exceção que o contrato `Validator` promete lançar. O
 # ErrorHandler a converte em resposta 400 com o código do problema —
-# e o detalhe do que faltou NUNCA vai para o cliente (SOLAR-ARCH-028).
+# e o detalhe do que faltou NUNCA vai para o cliente (SOLAR-SEG-008).
 from .solar_exception import SolarException
 
 

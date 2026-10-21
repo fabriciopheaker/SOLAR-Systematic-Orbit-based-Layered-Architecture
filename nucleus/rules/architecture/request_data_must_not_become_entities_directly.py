@@ -1,11 +1,11 @@
-# SOLAR-ARCH-029 — mass assignment.
+# SOLAR-SEG-009 — mass assignment.
 #
 # O que a regra persegue é o CLIENTE escolhendo quais campos do modelo
 # são escritos (`is_admin`, `owner_id`). Por isso o critério é "os
 # campos estão declarados?", e não "veio da requisição?" — ver
 # `_is_explicit`.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import SECURITY, Rule, rule_code
 from nucleus.rules.scanner.entity_binding import EntityBinding
 
 
@@ -13,7 +13,7 @@ class RequestDataMustNotBecomeEntitiesDirectly(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-029
+    SOLAR-SEG-009
 
     Dados arbitrários da requisição NÃO podem ser transformados
     diretamente em Entity/Model (mass assignment).
@@ -54,7 +54,7 @@ class RequestDataMustNotBecomeEntitiesDirectly(Rule):
             "owner_id": request.json["owner_id"],
         })
 
-    A regra conversa com a SOLAR-ARCH-015 na fronteira: o `Input` é
+    A regra conversa com a SOLAR-ROF-003 na fronteira: o `Input` é
     o contrato que DECLARA os campos aceitos. Um dicionário
     literal também é aceito, porque nele os campos estão à vista.
 
@@ -94,7 +94,7 @@ class RequestDataMustNotBecomeEntitiesDirectly(Rule):
     LOOP_KIND = "setattr"
 
     def code(self) -> str:
-        return "SOLAR-ARCH-029"
+        return rule_code(SECURITY, 9)
 
     def description(self) -> str:
         return (
@@ -143,7 +143,7 @@ class RequestDataMustNotBecomeEntitiesDirectly(Rule):
             return True
 
         # Contrato nomeado de entrada (`DocumentInput`): o Input é quem
-        # declara os campos aceitos — é a solução que a SOLAR-ARCH-015
+        # declara os campos aceitos — é a solução que a SOLAR-ROF-003
         # também empurra.
         return any(
             segment.endswith(self.EXPLICIT_SUFFIXES)

@@ -14,7 +14,7 @@ class UserResource(Resource):
     Representação do usuário criado, na resposta.
 
     O hash da senha não aparece, e não é por esquecimento: o Resource
-    é quem decide o que sai, e credencial não sai (SOLAR-ARCH-021).
+    é quem decide o que sai, e credencial não sai (SOLAR-SEG-002).
     Um campo a mais aqui vira contrato público no dia seguinte.
     """
 

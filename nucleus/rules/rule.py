@@ -15,6 +15,42 @@
 from abc import ABC, abstractmethod
 
 
+# Convenção de identificação das regras.
+#
+# O código tem o formato `SOLAR-<CATEGORIA>-<NÚMERO>`:
+#
+#   RED  Restrições de Dependência — limites de dependência e
+#        relacionamento entre os componentes da arquitetura;
+#   ROF  Restrições de Organização Estrutural e Fluxo HTTP — a
+#        organização dos componentes, a estrutura dos módulos e o
+#        fluxo das requisições e respostas HTTP;
+#   SEG  Segurança e Tratamento de Dados — segurança da aplicação
+#        e proteção/tratamento dos dados.
+#
+# O NÚMERO é SEQUENCIAL DENTRO DA CATEGORIA: cada prefixo
+# reinicia em SOLAR-RED-001. O par categoria + número identifica a regra.
+DEPENDENCY = "RED"
+STRUCTURE = "ROF"
+SECURITY = "SEG"
+
+# Prefixo do produto, comum a todos os códigos.
+CODE_PREFIX = "SOLAR"
+
+
+def rule_code(category: str, number: int) -> str:
+    """
+    Monta o código de uma regra a partir da categoria e do número.
+
+    Exemplos:
+
+        rule_code(DEPENDENCY, 1)  → "SOLAR-RED-001"
+        rule_code(STRUCTURE, 4)   → "SOLAR-ROF-004"
+        rule_code(SECURITY, 8)    → "SOLAR-SEG-008"
+    """
+
+    return f"{CODE_PREFIX}-{category}-{number:03d}"
+
+
 class Rule(ABC):
 
     @property

@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-021: os campos que um Resource expõe.
+# Contexto da SOLAR-SEG-002: os campos que um Resource expõe.
 #
 # `frozen` porque é o retrato do que o scanner leu — a regra compara,
 # não altera.
@@ -25,7 +25,7 @@ class ResourceExposure:
         fields   = {"id", "password"}
 
     O scanner NÃO decide se há violação: isso é responsabilidade
-    da Rule SOLAR-ARCH-021.
+    da Rule SOLAR-SEG-002.
 
     resource:
         Nome da classe Resource.

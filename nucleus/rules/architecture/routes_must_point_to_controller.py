@@ -1,10 +1,10 @@
-# SOLAR-ARCH-017 — a rota tem que desembocar em um Controller.
+# SOLAR-ROF-005 — a rota tem que desembocar em um Controller.
 #
-# É o par da SOLAR-ARCH-016: a 016 cuida de COMO a rota é declarada;
-# esta cuida de PARA QUEM ela aponta. Juntas, garantem que o fluxo
+# É o par da SOLAR-ROF-004: ela cuida de COMO e ONDE a rota é
+# declarada; esta cuida de PARA QUEM ela aponta. Juntas, garantem que o fluxo
 # Orbit -> Planet Routes -> Controller exista de verdade.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import STRUCTURE, Rule, rule_code
 from nucleus.rules.scanner.route_declaration import RouteDeclaration
 
 
@@ -12,7 +12,7 @@ class RoutesMustPointToController(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-017
+    SOLAR-ROF-005
 
     Toda rota deve apontar para um Controller.
 
@@ -41,18 +41,18 @@ class RoutesMustPointToController(Rule):
 
     ESCOPO: esta regra avalia apenas rotas registradas
     explicitamente (REGISTRATION). Rotas declaradas por decorator
-    são tratadas pela SOLAR-ARCH-016.
+    são tratadas pela SOLAR-ROF-004.
     """
 
     # Sufixo que identifica um Controller da SOLAR.
     #
-    # Mesma convenção da SOLAR-ARCH-022: o reconhecimento é pelo
+    # Mesma convenção da SOLAR-SEG-003: o reconhecimento é pelo
     # NOME. É o que o scanner consegue ver sem executar o código —
     # descobrir a classe de verdade exigiria importar a aplicação.
     CONTROLLER_SUFFIX = "Controller"
 
     def code(self) -> str:
-        return "SOLAR-ARCH-017"
+        return rule_code(STRUCTURE, 5)
 
     def description(self) -> str:
         return "Toda rota deve apontar para um Controller."
@@ -60,7 +60,7 @@ class RoutesMustPointToController(Rule):
     def validate(self, declaration: RouteDeclaration) -> None:
 
         # Só o estilo REGISTRATION: a rota por decorator nem chega a
-        # ser avaliada aqui — ela já é violação da SOLAR-ARCH-016, e
+        # ser avaliada aqui — ela já é violação da SOLAR-ROF-004, e
         # apontar o mesmo trecho duas vezes só faria ruído.
         if declaration.style != RouteDeclaration.REGISTRATION:
             return

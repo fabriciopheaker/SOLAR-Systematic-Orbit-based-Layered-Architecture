@@ -32,7 +32,7 @@ class RoutingConvention:
 
     # Dois vocabulários porque há DUAS formas de declarar rota: o
     # decorator (`@bp.route`) e o registro por chamada
-    # (`bp.add_url_rule`). A SOLAR-ARCH-019 aceita qualquer uma
+    # (`bp.add_url_rule`). A SOLAR-ROF-006 aceita qualquer uma
     # delas.
     route_decorators: frozenset[str]
     route_registrations: frozenset[str]

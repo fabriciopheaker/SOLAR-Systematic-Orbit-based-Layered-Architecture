@@ -1,17 +1,17 @@
-# SOLAR-ARCH-026 — a DISPERSÃO das verificações de autenticação.
+# SOLAR-SEG-006 — a DISPERSÃO das verificações de autenticação.
 #
-# Complementa a SOLAR-ARCH-022, e a diferença entre as duas é o alvo:
+# Complementa a SOLAR-SEG-003, e a diferença entre as duas é o alvo:
 #
-#     022   a IMPLEMENTAÇÃO (o Controller importar `jwt`, `hashlib`,
+#     SOLAR-SEG-003   a IMPLEMENTAÇÃO (o Controller importar `jwt`, `hashlib`,
 #           `jose`, ...);
-#     026   a DISPERSÃO (o Controller conferir `current_user`,
+#     SOLAR-SEG-006   a DISPERSÃO (o Controller conferir `current_user`,
 #           chamar `abort(401)`, decidir permissão).
 #
-# Dá para passar na 022 e falhar na 026: um Controller que não
+# Dá para passar na SOLAR-SEG-003 e falhar na SOLAR-SEG-006: um Controller que não
 # implementa nada de criptografia, mas decide quem entra em cada
 # método, delegou a criptografia e ficou com a autorização.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import SECURITY, Rule, rule_code
 from nucleus.rules.scanner.controller_auth_checks import (
     ControllerAuthChecks
 )
@@ -21,7 +21,7 @@ class AuthenticationMustNotBeScatteredInControllers(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-026
+    SOLAR-SEG-006
 
     A autenticação NÃO deve ficar espalhada pelos Controllers.
 
@@ -56,14 +56,14 @@ class AuthenticationMustNotBeScatteredInControllers(Rule):
     O Controller apenas PARTICIPA do fluxo: recebe o pedido já
     autenticado e delega ao UseCase.
 
-    Complementa a SOLAR-ARCH-022 (que barra a IMPLEMENTAÇÃO de
+    Complementa a SOLAR-SEG-003 (que barra a IMPLEMENTAÇÃO de
     autenticação): aqui o alvo é a DISPERSÃO das verificações.
 
     O contexto desta regra é um ControllerAuthChecks.
     """
 
     def code(self) -> str:
-        return "SOLAR-ARCH-026"
+        return rule_code(SECURITY, 6)
 
     def description(self) -> str:
         return (

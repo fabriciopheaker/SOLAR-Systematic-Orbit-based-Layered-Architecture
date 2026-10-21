@@ -1,18 +1,18 @@
-# SOLAR-ARCH-008 — Orbits fala com a fachada, não com o Driver.
+# SOLAR-RED-008 — Orbits fala com a fachada, não com o Driver.
 #
 # A fachada `nucleus.database.database` é o único ponto por onde a
 # infraestrutura de persistência pode ser alcançada de fora do
 # Nucleus. É ela que permite trocar o driver sem tocar nos Orbits.
 from nucleus.rules.scanner.dependency import Dependency
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import DEPENDENCY, Rule, rule_code
 
 
 class OrbitsMustUseDatabaseFacade(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-008
+    SOLAR-RED-008
 
     O Database do Nucleus é a fachada da infraestrutura
     de persistência.
@@ -58,7 +58,7 @@ class OrbitsMustUseDatabaseFacade(Rule):
     DRIVER_PACKAGE = "nucleus.database.drivers"
 
     def code(self) -> str:
-        return "SOLAR-ARCH-008"
+        return rule_code(DEPENDENCY, 8)
 
     def description(self) -> str:
         return (

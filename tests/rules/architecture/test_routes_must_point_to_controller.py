@@ -133,7 +133,7 @@ def test_route_without_target_is_rejected():
         )
 
 
-# ESCOPO: rotas por decorator sao responsabilidade da SOLAR-ARCH-016
+# ESCOPO: rotas por decorator sao responsabilidade da SOLAR-ROF-004
 def test_decorator_declarations_are_out_of_scope():
 
     declaration = RouteDeclaration(

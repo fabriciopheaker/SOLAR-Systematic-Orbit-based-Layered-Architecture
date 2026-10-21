@@ -17,8 +17,8 @@ class HealthController:
     """
     Verifica se a aplicação está de pé.
 
-    A rota aponta para `HealthController.status` (SOLAR-ARCH-017) e o
-    retorno passa por um Resource (SOLAR-ARCH-014).
+    A rota aponta para `HealthController.status` (SOLAR-ROF-005) e o
+    retorno passa por um Resource (SOLAR-ROF-002).
 
     GET não transporta dados, então não há Atmosphere nesta rota: não
     há corpo para validar nem para limpar.

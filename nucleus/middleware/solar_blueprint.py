@@ -73,7 +73,7 @@ class SolarBlueprint(Blueprint):
 
         # Só entra no mapa a rota que DECLAROU guarda. Rota sem
         # keyword nenhum não vira par de `None` no mapa: ausência de
-        # guarda é ausência — e é a SOLAR-ARCH-013 que decide se
+        # guarda é ausência — e é a SOLAR-ROF-001 que decide se
         # aquela entrada precisava de uma.
         if sanitizer is not None or validator is not None:
 

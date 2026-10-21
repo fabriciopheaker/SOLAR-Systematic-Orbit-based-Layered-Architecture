@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-023: a DESCRIÇÃO de um literal que casa
+# Contexto da SOLAR-SEG-004: a DESCRIÇÃO de um literal que casa
 # com um padrão de segredo.
 #
 # Sem o valor: guardar o texto encontrado faria do relatório — e do
@@ -23,7 +23,7 @@ class SecretOccurrence:
 
     Os três campos abaixo são FATOS sobre o local encontrado — o
     scanner os descreve, mas NÃO decide se há violação. Quem
-    decide a política é a Rule SOLAR-ARCH-023:
+    decide a política é a Rule SOLAR-SEG-004:
 
     documentation:
         o literal é um bloco de documentação (docstring ou texto

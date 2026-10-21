@@ -25,7 +25,7 @@ class OutboundRequestScanner:
         requests.get(environment.get("API_URL"))        ✅
 
     O scanner NÃO tenta decidir isso: ele descreve QUAIS
-    identificadores compõem a URL, e a Rule SOLAR-ARCH-030 aplica
+    identificadores compõem a URL, e a Rule SOLAR-SEG-010 aplica
     a política.
 
     Além da URL, o scanner reconhece o cliente HTTP

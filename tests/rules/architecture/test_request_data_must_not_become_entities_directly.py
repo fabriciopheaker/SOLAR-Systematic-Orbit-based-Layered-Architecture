@@ -132,7 +132,7 @@ def test_message_explains_the_fix():
 
     message = str(error.value)
 
-    assert "SOLAR-ARCH-029" in message
+    assert "SOLAR-SEG-009" in message
     assert "request.json" in message
     assert "DocumentEntity" in message
     assert "document_controller.py:18" in message

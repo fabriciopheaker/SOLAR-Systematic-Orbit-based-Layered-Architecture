@@ -1,7 +1,7 @@
-# Contexto das regras de roteamento (SOLAR-ARCH-016, 017 e 018).
+# Contexto das regras de roteamento (SOLAR-ROF-004 e SOLAR-ROF-005).
 #
 # É uma DESCRIÇÃO da declaração: onde está, como foi feita e para quem
-# aponta. Nenhuma das três regras olha o mesmo pedaço, mas as três leem
+# aponta. Nenhuma das regras olha o mesmo pedaço, mas as duas leem
 # esta mesma estrutura — ver o docstring da classe.
 from dataclasses import dataclass
 
@@ -42,7 +42,8 @@ class RouteDeclaration:
     line: int
 
     # `style` recebe uma das duas constantes logo abaixo, e é por ele
-    # que as regras 016/017 se decidem — cada uma cuida de um estilo.
+    # que a SOLAR-ROF-004 se decide; o alvo é o que a SOLAR-ROF-005
+    # avalia.
     style: str
 
     # O nome do que foi usado (`route`, `get`, `add_url_rule`): é ele
@@ -50,13 +51,13 @@ class RouteDeclaration:
     mechanism: str
 
     # Padrão `None` porque lambda e expressão inline não têm alvo — e
-    # é justamente esse caso que a SOLAR-ARCH-017 acusa.
+    # é justamente esse caso que a SOLAR-ROF-005 acusa.
     target: str | None = None
 
     # Rota declarada por decorator do framework — PROIBIDA pela
-    # SOLAR-ARCH-016.
+    # SOLAR-ROF-004.
     DECORATOR = "decorator"
 
     # Rota registrada explicitamente — o único estilo aceito pela
-    # SOLAR-ARCH-016, e o único que a SOLAR-ARCH-017 avalia.
+    # SOLAR-ROF-004, e o único que a SOLAR-ROF-005 avalia.
     REGISTRATION = "registration"

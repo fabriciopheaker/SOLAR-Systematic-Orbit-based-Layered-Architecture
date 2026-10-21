@@ -207,4 +207,4 @@ def test_the_same_content_outside_tests_is_flagged(tmp_path):
     report = ProjectValidator(tmp_path).validate()
 
     assert report.is_clean() is False
-    assert "SOLAR-ARCH-020" in report.by_rule()
+    assert "SOLAR-SEG-001" in report.by_rule()

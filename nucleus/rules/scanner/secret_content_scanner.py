@@ -6,7 +6,7 @@
 # resposta vem dos padrões de `secret_patterns`.
 #
 # Este scanner produz `SecretOccurrence` — descrição, não
-# julgamento. A política é da SOLAR-ARCH-023.
+# julgamento. A política é da SOLAR-SEG-004.
 import ast
 from collections.abc import Iterable
 from pathlib import Path
@@ -38,11 +38,11 @@ class SecretContentScanner:
 
         CHAVE = os.environ["AWS_ACCESS_KEY_ID"]
 
-    Complementa a SOLAR-ARCH-020 (que casa pelo NOME).
+    Complementa a SOLAR-SEG-001 (que casa pelo NOME).
 
     Um casamento de padrão NÃO é automaticamente uma violação. O
     scanner apenas DESCREVE o que achou, marcando os casos que
-    exigem contexto — a política fica na Rule SOLAR-ARCH-023:
+    exigem contexto — a política fica na Rule SOLAR-SEG-004:
 
         documentation   o literal é docstring/texto solto,
                         não um valor usado pelo programa;

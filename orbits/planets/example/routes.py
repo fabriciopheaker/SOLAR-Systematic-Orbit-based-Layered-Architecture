@@ -27,11 +27,11 @@ def routes() -> Blueprint:
     # CRIAÇÃO DE USUÁRIO
     #
     # `add_url_rule` e não decorator: a declaração explícita é o que a
-    # SOLAR-ARCH-016 exige. O alvo é um Controller (SOLAR-ARCH-017).
+    # SOLAR-ROF-004 exige. O alvo é um Controller (SOLAR-ROF-005).
     #
     # Os guardas vêm declarados AQUI: quando o Controller for chamado,
     # o corpo já passou pelo Sanitizer e pelo Validator
-    # (SOLAR-ARCH-013).
+    # (SOLAR-ROF-001).
     #
     # Os três primeiros argumentos são coisas DIFERENTES:
     #

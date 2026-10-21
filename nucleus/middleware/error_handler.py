@@ -1,6 +1,6 @@
 # Resposta de erro segura + gancho para observadores.
 #
-# É a peça que fecha a SOLAR-ARCH-028 pelo lado da aplicação: o detalhe
+# É a peça que fecha a SOLAR-SEG-008 pelo lado da aplicação: o detalhe
 # interno vai para o log (via `detail`) e o cliente recebe código,
 # mensagem genérica e referência.
 #
@@ -17,7 +17,7 @@ class ErrorHandler:
     Monta a resposta de erro SEGURA e separa o que NÃO pode sair
     da aplicação.
 
-    O problema que isto resolve (SOLAR-ARCH-028): a resposta para
+    O problema que isto resolve (SOLAR-SEG-008): a resposta para
     quem chamou precisa dizer O QUE deu errado, não COMO a
     aplicação é feita por dentro.
 

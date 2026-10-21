@@ -104,7 +104,7 @@ class PlanetScanner:
         files: set[str] = set()
         directories: set[str] = set()
 
-        # Só a RAIZ do Planet (`iterdir`, e não `walk`): a regra 019
+        # Só a RAIZ do Planet (`iterdir`, e não `walk`): a regra SOLAR-ROF-006
         # exige peças no primeiro nível, e descer descreveria outra
         # coisa.
         for entry in path.iterdir():

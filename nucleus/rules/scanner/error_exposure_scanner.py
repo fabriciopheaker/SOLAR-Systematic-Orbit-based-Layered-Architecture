@@ -1,4 +1,4 @@
-# Scanner de VAZAMENTO de detalhe interno em erro (SOLAR-ARCH-028).
+# Scanner de VAZAMENTO de detalhe interno em erro (SOLAR-SEG-008).
 #
 # Três decisões estruturam o arquivo, e cada uma está explicada no lugar
 # onde acontece:
@@ -50,7 +50,7 @@ class ErrorExposureScanner:
     O scanner DESCREVE o DESTINO do detalhe — `response` quando
     demonstravelmente sai do handler, `log` quando vai para o log,
     `local` quando não se pode provar que sai. Quem decide a
-    política é a Rule SOLAR-ARCH-028.
+    política é a Rule SOLAR-SEG-008.
 
     O código NÃO é executado: a análise é feita sobre a AST.
     """
@@ -362,7 +362,7 @@ class ErrorExposureScanner:
             last = self._name(ancestor.func).split(".")[-1]
 
             # Chamada de log vence: o detalhe está no servidor, que é o
-            # destino CORRETO e o que a SOLAR-ARCH-028 recomenda.
+            # destino CORRETO e o que a SOLAR-SEG-008 recomenda.
             if last in self.LOGGING_METHODS:
                 return self.LOG
 

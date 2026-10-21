@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-032: as classes declaradas em um arquivo.
+# Contexto da SOLAR-ROF-007: as classes declaradas em um arquivo.
 #
 # Dois níveis porque a regra precisa dos dois: `ModuleClasses` diz
 # QUANTAS classes o arquivo tem, e `DeclaredClass` diz QUAL e onde —
@@ -44,7 +44,7 @@ class ModuleClasses:
     O scanner DESCREVE o que cada arquivo declara — inclusive os
     arquivos com uma única classe, e inclusive classes que não são
     Model. Quem decide quantas classes um Model pode ter por
-    arquivo é a Rule SOLAR-ARCH-032.
+    arquivo é a Rule SOLAR-ROF-007.
     """
 
     module: str

@@ -84,7 +84,7 @@ class Broadcast:
 
         # Qualquer outra vira BroadcastException com código próprio,
         # e a original vai junto em `from error`: o rastro continua
-        # no log, sem vazar na mensagem (SOLAR-ARCH-028).
+        # no log, sem vazar na mensagem (SOLAR-SEG-008).
         except Exception as error:
             raise BroadcastException(
                 "Falha ao publicar evento.",

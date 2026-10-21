@@ -1,18 +1,18 @@
-# SOLAR-ARCH-006 — Model chega ao ORM PELA fachada.
+# SOLAR-RED-006 — Model chega ao ORM PELA fachada.
 #
-# Par da SOLAR-ARCH-005: a 005 proíbe o Model importar Persistence;
+# Par da SOLAR-RED-005: a SOLAR-RED-005 proíbe o Model importar Persistence;
 # esta proíbe importar ORM e Driver — os dois caminhos pelos quais o
 # Model "aprende" a tecnologia por conta própria.
 from nucleus.rules.scanner.dependency import Dependency
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import DEPENDENCY, Rule, rule_code
 
 
 class ModelsMustAccessOrmThroughDatabase(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-006
+    SOLAR-RED-006
 
     Models acessam a infraestrutura ORM através do Database.
 
@@ -70,7 +70,7 @@ class ModelsMustAccessOrmThroughDatabase(Rule):
     ORM_PACKAGE = "sqlalchemy"
 
     def code(self) -> str:
-        return "SOLAR-ARCH-006"
+        return rule_code(DEPENDENCY, 6)
 
     def description(self) -> str:
         return (
@@ -100,7 +100,7 @@ class ModelsMustAccessOrmThroughDatabase(Rule):
 
         parts = module.split(".")
 
-        # Dois critérios, iguais aos da SOLAR-ARCH-005: o LUGAR
+        # Dois critérios, iguais aos da SOLAR-RED-005: o LUGAR
         # (segmento `models`) ou o NOME (`model` / `*_model`).
         if self.MODELS_SEGMENT in parts:
             return True

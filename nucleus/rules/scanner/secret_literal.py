@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-020: a DESCRIÇÃO de um literal atribuído
+# Contexto da SOLAR-SEG-001: a DESCRIÇÃO de um literal atribuído
 # a um nome sensível.
 #
 # `frozen` porque é fato consumado — o scanner achou, a regra lê.
@@ -19,7 +19,7 @@ class SecretLiteral:
 
     O scanner produz apenas nomes que casam com o vocabulário de
     segredos e apenas valores LITERAIS não vazios. A decisão de
-    violação é da Rule SOLAR-ARCH-020.
+    violação é da Rule SOLAR-SEG-001.
 
     name:
         Nome do alvo (variável, constante ou keyword argument).
@@ -42,7 +42,7 @@ class SecretLiteral:
         com o prefixo `SOLAR_DEFAULT`). Não é segredo.
 
     O scanner apenas DESCREVE o que achou; quem decide ignorar é
-    a Rule SOLAR-ARCH-020.
+    a Rule SOLAR-SEG-001.
     """
 
     name: str

@@ -6,7 +6,7 @@
 # sair.
 #
 # Descrição, não julgamento: quais campos não podem sair é política
-# da SOLAR-ARCH-021.
+# da SOLAR-SEG-002.
 import ast
 from pathlib import Path
 
@@ -34,7 +34,7 @@ class ResourceExposureScanner:
             }
 
     O scanner NÃO decide se há violação: isso é responsabilidade
-    da Rule SOLAR-ARCH-021.
+    da Rule SOLAR-SEG-002.
 
     O código NÃO é executado: a análise é feita sobre a AST.
     """

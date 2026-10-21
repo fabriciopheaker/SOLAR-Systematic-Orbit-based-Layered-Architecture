@@ -1,4 +1,4 @@
-# SOLAR-ARCH-015 — contrato é OBJETO, não `dict` solto.
+# SOLAR-ROF-003 — contrato é OBJETO, não `dict` solto.
 #
 # Regra de FRONTEIRA: olha só o que o `ResponsibilityContract` declara
 # (entrada/saída), nunca o corpo do método. Coleção anônima no meio do
@@ -6,7 +6,7 @@
 import re
 
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import STRUCTURE, Rule, rule_code
 from nucleus.contracts.responsibility_contract import ResponsibilityContract
 
 
@@ -14,7 +14,7 @@ class ControllerAndUseCaseMustUseNamedContracts(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-015
+    SOLAR-ROF-003
 
     Controllers e UseCases não podem utilizar estruturas de dados
     anônimas como CONTRATOS de entrada ou de saída.
@@ -105,7 +105,7 @@ class ControllerAndUseCaseMustUseNamedContracts(Rule):
     NAME_PATTERN = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
 
     def code(self) -> str:
-        return "SOLAR-ARCH-015"
+        return rule_code(STRUCTURE, 3)
 
     def description(self) -> str:
         return (

@@ -1,5 +1,5 @@
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import SECURITY, Rule, rule_code
 from nucleus.rules.scanner.resource_exposure import ResourceExposure
 from nucleus.rules.scanner.secret_names import is_secret_name
 
@@ -8,7 +8,7 @@ class ResourcesMustNotExposeSecrets(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-021
+    SOLAR-SEG-002
 
     Segredos NÃO podem ser retornados por Resources.
 
@@ -43,18 +43,18 @@ class ResourcesMustNotExposeSecrets(Rule):
                 }
 
     O contexto desta regra é um ResourceExposure — diferente do
-    contexto das regras de Dependency (SOLAR-ARCH-001 a 012).
+    contexto das regras de Dependency (SOLAR-RED-001 a SOLAR-RED-012).
     """
 
     def code(self) -> str:
-        return "SOLAR-ARCH-021"
+        return rule_code(SECURITY, 2)
 
     def description(self) -> str:
         return "Segredos não podem ser retornados por Resources."
 
     def validate(self, exposure: ResourceExposure) -> None:
 
-        # Reusa o vocabulário de `secret_names` da SOLAR-ARCH-020: se
+        # Reusa o vocabulário de `secret_names` da SOLAR-SEG-001: se
         # um nome não é sensível na ENTRADA, também não é na saída.
         # Uma lista separada aqui criaria duas verdades para a mesma
         # pergunta. `sorted` só para a mensagem ficar estável.

@@ -2,7 +2,7 @@
 Rotas do Planet auth.
 
 Este é o módulo de rotas do Planet — o lugar onde as rotas dele
-moram (SOLAR-ARCH-018).
+moram (SOLAR-ROF-004).
 """
 
 from nucleus.middleware.solar_blueprint import SolarBlueprint

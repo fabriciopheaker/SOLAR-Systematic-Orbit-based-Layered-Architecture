@@ -1,18 +1,18 @@
-# SOLAR-ARCH-007 — Persistence mora em `orbits.database.persistence`.
+# SOLAR-RED-007 — Persistence mora em `orbits.database.persistence`.
 #
 # A regra olha os DOIS lados da aresta: um módulo de persistência
 # pode aparecer como quem importa ou como importado. Em
 # `from planets.user.persistence import X`, a violação está no ALVO.
 from nucleus.rules.scanner.dependency import Dependency
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import DEPENDENCY, Rule, rule_code
 
 
 class PersistenceBelongsToOrbitsDatabase(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-007
+    SOLAR-RED-007
 
     Persistence pertence à camada de Database de Orbits.
 
@@ -56,7 +56,7 @@ class PersistenceBelongsToOrbitsDatabase(Rule):
     CANONICAL_PACKAGE = "orbits.database.persistence"
 
     def code(self) -> str:
-        return "SOLAR-ARCH-007"
+        return rule_code(DEPENDENCY, 7)
 
     def description(self) -> str:
         return (

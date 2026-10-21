@@ -1,7 +1,7 @@
 """
 O que o scanner de retorno de Controller descreve.
 
-O que se prova aqui e o FATO que a SOLAR-ARCH-014 le: o retorno passa
+O que se prova aqui e o FATO que a SOLAR-ROF-002 le: o retorno passa
 por uma chamada ao Resource?
 """
 
@@ -128,7 +128,7 @@ def test_class_without_the_suffix_is_not_a_controller(tmp_path):
 #
 # Foi exatamente este o falso positivo que o scanner produziu na
 # primeira versao: a regra `RoutesMustPointToController` terminava em
-# "Controller" e foi acusada pela SOLAR-ARCH-014.
+# "Controller" e foi acusada pela SOLAR-ROF-002.
 def test_class_outside_a_controller_module_is_not_a_controller(tmp_path):
 
     path = tmp_path / "routes_must_point_to_controller.py"

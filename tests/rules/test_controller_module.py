@@ -1,7 +1,7 @@
 """
 Onde mora o módulo de um Controller.
 
-Este critério e COMPARTILHADO pelas regras 014, 022, 025 e 026: as
+Este critério e COMPARTILHADO pelas regras SOLAR-ROF-002, SOLAR-SEG-003, SOLAR-SEG-005 e SOLAR-SEG-006: as
 quatro precisam concordar sobre o que e um Controller, senao uma peca
 seria Controller para uma regra e nao para outra.
 
@@ -16,7 +16,7 @@ from nucleus.rules.scanner.controller_module import is_controller_module
 
 
 # arquivo dentro de `planets/<planeta>/controllers/` e um modulo de
-# Controller — a estrutura da SOLAR-ARCH-019
+# Controller — a estrutura da SOLAR-ROF-006
 def test_file_inside_controllers_is_a_controller_module():
 
     file = Path("orbits/planets/user/controllers/user_controller.py")

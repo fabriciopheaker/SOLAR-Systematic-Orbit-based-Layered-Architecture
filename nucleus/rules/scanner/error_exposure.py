@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-028: o uso de um detalhe interno de erro.
+# Contexto da SOLAR-SEG-008: o uso de um detalhe interno de erro.
 #
 # O scanner descreve DUAS coisas independentes — o QUE apareceu
 # (`detail`) e para ONDE foi (`destination`) — porque é a combinação
@@ -38,7 +38,7 @@ class ErrorExposure:
                          também não é uma garantia.
 
     O scanner DESCREVE; quem decide a política é a Rule
-    SOLAR-ARCH-028.
+    SOLAR-SEG-008.
     """
 
     handler: str

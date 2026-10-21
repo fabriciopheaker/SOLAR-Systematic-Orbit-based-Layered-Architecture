@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-013: a entrada HTTP de uma rota.
+# Contexto da SOLAR-ROF-001: a entrada HTTP de uma rota.
 #
 # É o contrato que o scanner ESTÁTICO produz e que o RequestPipeline
 # CONSOME em tempo de execução — por isso os campos aceitam tanto a
@@ -44,10 +44,10 @@ class HttpInput:
         O scanner estático informa explicitamente True para rotas
         cujo MÉTODO aceita corpo (POST/PUT/PATCH), mesmo sem
         content_type declarado — assim um dev não escapa da
-        SOLAR-ARCH-013 omitindo o tipo de conteúdo.
+        SOLAR-ROF-001 omitindo o tipo de conteúdo.
 
     Esta abstração representa ENTRADA HTTP, e não "POST": o que a
-    torna relevante para a SOLAR-ARCH-013 é o fato de TRANSPORTAR
+    torna relevante para a SOLAR-ROF-001 é o fato de TRANSPORTAR
     DADOS EXTERNOS, e não o verbo utilizado.
     """
 

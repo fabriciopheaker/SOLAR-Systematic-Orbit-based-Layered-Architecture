@@ -1,10 +1,10 @@
 # Contexto do scanner de arquitetura: uma ARESTA do grafo de
 # dependências (`source` importa `target`).
 #
-# É a estrutura mais reaproveitada do projeto — onze regras da
-# SOLAR-ARCH leem esta mesma aresta, e cada uma olha uma direção
-# proibida diferente. Por isso o contexto é a aresta crua, sem
-# nenhum julgamento embutido.
+# É a estrutura mais reaproveitada do projeto — onze regras de
+# dependência (SOLAR-RED) leem esta mesma aresta, e cada uma olha
+# uma direção proibida diferente. Por isso o contexto é a aresta
+# crua, sem nenhum julgamento embutido.
 from dataclasses import dataclass
 
 

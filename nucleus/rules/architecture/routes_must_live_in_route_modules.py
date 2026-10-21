@@ -1,13 +1,13 @@
-# SOLAR-ARCH-018 — a rota mora em um `routes.py`.
+# SOLAR-ROF-004 — a rota mora em um `routes.py`.
 #
-# Terceira regra de roteamento, e a mais simples: não olha conteúdo nem
-# alvo, só o CAMINHO do arquivo. Fecha a dupla anterior — a 016 diz que
-# não pode ser decorator, a 017 diz que tem que apontar para
-# Controller, e a 018 diz ONDE o arquivo tem que estar.
+# A ROF-004 tem DUAS verificações: o estilo da declaração (sem
+# decorator) e o MÓDULO onde a rota mora. Esta classe cuida da
+# segunda; a primeira é a RoutesMustBeDeclaredExplicitly.
+# A ROF-005 diz para quem a rota aponta.
 from pathlib import PurePosixPath
 
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import STRUCTURE, Rule, rule_code
 from nucleus.rules.scanner.route_declaration import RouteDeclaration
 
 
@@ -15,7 +15,7 @@ class RoutesMustLiveInRouteModules(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-018
+    SOLAR-ROF-004
 
     Toda rota HTTP deve ser declarada em um MÓDULO DE ROTAS próprio.
 
@@ -45,8 +45,8 @@ class RoutesMustLiveInRouteModules(Rule):
 
     A regra complementa:
 
-        SOLAR-ARCH-016 → não declarar por decorator;
-        SOLAR-ARCH-017 → apontar para Controller.
+        SOLAR-ROF-004 → declarar sem decorator E em módulo de rotas;
+        SOLAR-ROF-005 → apontar para Controller.
 
     O nome do arquivo de rotas é uma CONVENÇÃO DA SOLAR
     (ROUTE_MODULE_FILENAME), não um detalhe de framework.
@@ -63,7 +63,7 @@ class RoutesMustLiveInRouteModules(Rule):
     ORBITS_PACKAGE = "orbits"
 
     def code(self) -> str:
-        return "SOLAR-ARCH-018"
+        return rule_code(STRUCTURE, 4)
 
     def description(self) -> str:
         return (
@@ -75,7 +75,7 @@ class RoutesMustLiveInRouteModules(Rule):
 
         # Pergunta única: o ARQUIVO onde a rota foi declarada é um
         # módulo de rotas? O estilo da declaração não importa aqui —
-        # isso é assunto da SOLAR-ARCH-016.
+        # isso é assunto da outra verificação da SOLAR-ROF-004.
         if self._is_route_module(declaration.file):
             return
 

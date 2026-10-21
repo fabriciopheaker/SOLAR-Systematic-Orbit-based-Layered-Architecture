@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-022: os módulos que um Controller conhece.
+# Contexto da SOLAR-SEG-003: os módulos que um Controller conhece.
 #
 # O scanner lista TODOS os imports do arquivo, sem opinião. Quem
 # decide quais são proibidos é a regra: a lista de proibidos é
@@ -19,7 +19,7 @@ class ControllerSecurityUsage:
         imports    = {"jwt", "hashlib", "os"}
 
     O scanner lista TODOS os módulos importados no arquivo; é a
-    Rule SOLAR-ARCH-022 que decide quais são proibidos.
+    Rule SOLAR-SEG-003 que decide quais são proibidos.
 
     controller:
         Nome da classe Controller.

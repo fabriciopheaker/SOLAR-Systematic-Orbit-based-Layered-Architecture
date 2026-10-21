@@ -26,7 +26,7 @@ class Violation:
     Uma violação arquitetural encontrada.
 
     rule:
-        Código da regra (ex.: "SOLAR-ARCH-019").
+        Código da regra (ex.: "SOLAR-ROF-006").
 
     description:
         Descrição da regra, para agrupar o relatório.

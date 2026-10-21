@@ -1,5 +1,5 @@
 """
-A SOLAR-ARCH-014 sobre o RETORNO de um Controller.
+A SOLAR-ROF-002 sobre o RETORNO de um Controller.
 
 A regra e de ANALISE ESTATICA: quem le o `return` e o
 `ControllerReturnScanner`.

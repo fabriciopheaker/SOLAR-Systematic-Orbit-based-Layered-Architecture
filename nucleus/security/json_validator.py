@@ -1,6 +1,6 @@
 # Validador de corpo JSON.
 #
-# É a guarda de ENTRADA (SOLAR-ARCH-013) e o PRIMEIRO passo do
+# É a guarda de ENTRADA (SOLAR-ROF-001) e o PRIMEIRO passo do
 # pipeline: confere que os campos obrigatórios CHEGARAM. O
 # sanitizador roda depois, sobre dado que se sabe completo — não há
 # o que limpar no campo que não veio.
@@ -82,7 +82,7 @@ class JsonValidator(Validator):
         #
         # O que sai para o cliente NÃO é esta mensagem: o
         # ErrorHandler responde com mensagem genérica e guarda o
-        # detalhe no log (SOLAR-ARCH-028).
+        # detalhe no log (SOLAR-SEG-008).
         raise ValidationException(
             self._message(notification),
             code=self.MISSING_FIELDS

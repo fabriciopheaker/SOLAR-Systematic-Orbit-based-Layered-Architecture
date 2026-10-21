@@ -1,6 +1,6 @@
 # Guarda de URL: barra destino não confiável ANTES da chamada externa.
 #
-# É o instrumento que a SOLAR-ARCH-030 aponta quando a URL precisa mesmo
+# É o instrumento que a SOLAR-SEG-010 aponta quando a URL precisa mesmo
 # variar em tempo de execução — a regra proíbe montar URL com dado de
 # entrada, e este é o caminho permitido para o caso legítimo.
 #
@@ -16,7 +16,7 @@ from nucleus.exceptions.security_exception import SecurityException
 class UrlGuard:
     """
     Valida uma URL ANTES de a aplicação buscar um serviço externo
-    (SOLAR-ARCH-030).
+    (SOLAR-SEG-010).
 
     É o instrumento para os casos que precisam variar em tempo de
     execução — em vez de a URL ir crua para o cliente HTTP:
@@ -58,7 +58,7 @@ class UrlGuard:
     PRIVATE_ADDRESS = "PRIVATE_ADDRESS"
 
     # Código de erro, não credencial — o marcador diz isso à
-    # SOLAR-ARCH-020, que acusaria o nome pelo vocabulário.
+    # SOLAR-SEG-001, que acusaria o nome pelo vocabulário.
     # solar:allow-secret (código de erro, não credencial)
     URL_CREDENTIALS = "URL_CREDENTIALS"
 

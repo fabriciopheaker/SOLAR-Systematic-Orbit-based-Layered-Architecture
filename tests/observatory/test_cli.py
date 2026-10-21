@@ -99,7 +99,7 @@ def test_check_is_correct_on_a_conforming_project(tmp_path, capsys):
     assert "resultado: correct" in capsys.readouterr().out
 
 
-# a SOLAR-ARCH-019 acusa o Planet sem a estrutura padrão
+# a SOLAR-ROF-006 acusa o Planet sem a estrutura padrão
 def test_check_is_violation_on_a_broken_project(tmp_path, capsys):
 
     _planet(tmp_path, "user", complete=False)
@@ -109,7 +109,7 @@ def test_check_is_violation_on_a_broken_project(tmp_path, capsys):
     output = capsys.readouterr().out
 
     assert "resultado: violation" in output
-    assert "SOLAR-ARCH-019" in output
+    assert "SOLAR-ROF-006" in output
     assert "PlanetStructure" in output
 
 
@@ -184,7 +184,7 @@ def test_check_writes_the_audit_file(tmp_path):
 
     assert len(records) == 1
     assert records[0].name.endswith("-violation.md")
-    assert "SOLAR-ARCH-019" in records[0].read_text(encoding="utf-8")
+    assert "SOLAR-ROF-006" in records[0].read_text(encoding="utf-8")
 
 
 def test_check_writes_a_correct_record_too(tmp_path):

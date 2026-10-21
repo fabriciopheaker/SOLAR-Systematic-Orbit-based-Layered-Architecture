@@ -2,7 +2,7 @@
 #
 # Coleta o que aparece no corpo da classe: chamada nativa (`open`,
 # `copy`), módulo (`shutil`, `tempfile`) e nome solto. É a matéria-prima
-# da SOLAR-ARCH-025.
+# da SOLAR-SEG-005.
 import ast
 from pathlib import Path
 
@@ -31,7 +31,7 @@ class UploadHandlingScanner:
         mimetypes.guess_type(nome)           → "mimetypes"
 
     O scanner NÃO decide se há violação: isso é responsabilidade
-    da Rule SOLAR-ARCH-025.
+    da Rule SOLAR-SEG-005.
 
     O código NÃO é executado: a análise é feita sobre a AST.
     """

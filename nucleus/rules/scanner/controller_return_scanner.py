@@ -1,7 +1,7 @@
 # Scanner do RETORNO dos métodos de Controller.
 #
 # Responde "o que cada Controller devolve?" — o fato que a
-# SOLAR-ARCH-014 lê. A análise é feita sobre a AST: o código NÃO é
+# SOLAR-ROF-002 lê. A análise é feita sobre a AST: o código NÃO é
 # executado.
 #
 # O critério de "isto é um Controller" é o LUGAR da peça (um módulo
@@ -27,7 +27,7 @@ class ControllerReturnScanner:
         "O que cada Controller devolve?"
 
     O scanner NÃO decide se o retorno é válido: isso é
-    responsabilidade da Rule SOLAR-ARCH-014.
+    responsabilidade da Rule SOLAR-ROF-002.
 
     Exemplo:
 
@@ -51,7 +51,7 @@ class ControllerReturnScanner:
     CONTROLLER_SUFFIX = "Controller"
 
     # Os métodos que MONTAM a representação da resposta. São as
-    # chamadas que a SOLAR-ARCH-014 procura no retorno: `to_object`
+    # chamadas que a SOLAR-ROF-002 procura no retorno: `to_object`
     # para um item, `collection` para uma lista.
     RESOURCE_METHODS = ("to_object", "collection")
 

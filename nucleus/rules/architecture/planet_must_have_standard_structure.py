@@ -1,4 +1,4 @@
-# SOLAR-ARCH-019 — a FORMA do Planet.
+# SOLAR-ROF-006 — a FORMA do Planet.
 #
 # É a regra mais estrutural do catálogo: não olha conteúdo nem
 # dependência, só se as peças existem e se cada uma é arquivo ou
@@ -6,9 +6,9 @@
 # Planet for reconhecível à primeira vista.
 #
 # O `routes.py` já é fiscalizado quanto à LOCALIZAÇÃO pela
-# SOLAR-ARCH-018; aqui ele é exigido como peça do Planet.
+# SOLAR-ROF-004; aqui ele é exigido como peça do Planet.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import STRUCTURE, Rule, rule_code
 from nucleus.rules.scanner.planet_structure import PlanetStructure
 
 
@@ -16,7 +16,7 @@ class PlanetMustHaveStandardStructure(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-019
+    SOLAR-ROF-006
 
     TODO Planet deve possuir a estrutura padrão:
 
@@ -68,7 +68,7 @@ class PlanetMustHaveStandardStructure(Rule):
             └── create_user.py
 
     O `routes.py` já é fiscalizado quanto à LOCALIZAÇÃO pela
-    SOLAR-ARCH-018; aqui ele é exigido como peça do Planet.
+    SOLAR-ROF-004; aqui ele é exigido como peça do Planet.
 
     ESCOPO — o que esta regra NÃO cobre:
 
@@ -102,7 +102,7 @@ class PlanetMustHaveStandardStructure(Rule):
     )
 
     def code(self) -> str:
-        return "SOLAR-ARCH-019"
+        return rule_code(STRUCTURE, 6)
 
     def description(self) -> str:
         return (

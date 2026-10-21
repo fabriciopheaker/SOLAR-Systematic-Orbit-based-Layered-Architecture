@@ -2,7 +2,7 @@
 #
 # É o único scanner que pode não devolver nada para um arquivo: arquivo
 # sem classe não gera contexto (ver `_scan_file`). Isso mantém o
-# contexto alinhado com a pergunta da SOLAR-ARCH-032 — "este arquivo
+# contexto alinhado com a pergunta da SOLAR-ROF-007 — "este arquivo
 # declara mais de um Model?" — que não faz sentido para arquivo sem
 # classe.
 import ast
@@ -28,7 +28,7 @@ class ModuleClassesScanner:
         "Quais classes este arquivo declara, e em que linha?"
 
     O scanner NÃO decide quantas são demais: isso é
-    responsabilidade da Rule SOLAR-ARCH-032.
+    responsabilidade da Rule SOLAR-ROF-007.
 
     Ele descreve TODO arquivo que declara ao menos uma classe —
     inclusive os que têm uma só, e inclusive classes que não são

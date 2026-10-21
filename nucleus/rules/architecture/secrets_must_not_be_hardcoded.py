@@ -1,12 +1,12 @@
-# SOLAR-ARCH-020 — segredo reconhecido pelo NOME.
+# SOLAR-SEG-001 — segredo reconhecido pelo NOME.
 #
-# Par da SOLAR-ARCH-023, que reconhece pelo CONTEÚDO. Aqui o gatilho é o
+# Par da SOLAR-SEG-004, que reconhece pelo CONTEÚDO. Aqui o gatilho é o
 # nome do alvo (`SECRET_KEY`, `password`, ...) mais o valor ser um
 # literal não vazio.
 #
 # ⚠️ O valor do segredo NÃO aparece na mensagem — ver `_build_message`.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import SECURITY, Rule, rule_code
 from nucleus.rules.scanner.secret_literal import SecretLiteral
 from nucleus.rules.scanner.secret_names import is_secret_name
 
@@ -15,7 +15,7 @@ class SecretsMustNotBeHardcoded(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-020
+    SOLAR-SEG-001
 
     Credenciais e segredos NÃO podem estar hardcoded no código.
 
@@ -39,11 +39,11 @@ class SecretsMustNotBeHardcoded(Rule):
     nunca do código-fonte.
 
     O contexto desta regra é um SecretLiteral — diferente do
-    contexto das regras de Dependency (SOLAR-ARCH-001 a 012).
+    contexto das regras de Dependency (SOLAR-RED-001 a SOLAR-RED-012).
     """
 
     def code(self) -> str:
-        return "SOLAR-ARCH-020"
+        return rule_code(SECURITY, 1)
 
     def description(self) -> str:
         return (

@@ -1,7 +1,7 @@
 # Contrato de UseCase: a responsabilidade de aplicação de um Planet.
 #
 # O par de contratos (entrada e saída nomeadas) é o que a
-# SOLAR-ARCH-015 defende: sem ele, o formato da resposta vira detalhe
+# SOLAR-ROF-003 defende: sem ele, o formato da resposta vira detalhe
 # interno e qualquer mudança interna quebra o cliente.
 from abc import ABC, abstractmethod
 
@@ -15,7 +15,7 @@ class UseCase(ABC):
 
     A entrada e a saída (CONTRATO) devem ser estruturas NOMEADAS
     (Input, Output, Entity). Estruturas anônimas (dict, list, tuple,
-    set) como contrato violam a SOLAR-ARCH-015.
+    set) como contrato violam a SOLAR-ROF-003.
 
     Coleções anônimas são permitidas no processamento INTERNO:
     iteração, agregação, transformação, filtros e acumuladores

@@ -67,7 +67,7 @@ def test_message_points_to_the_location():
 
     message = str(error.value)
 
-    assert "SOLAR-ARCH-028" in message
+    assert "SOLAR-SEG-008" in message
     assert "args" in message
     assert "document_controller.py:42" in message
     assert "log" in message

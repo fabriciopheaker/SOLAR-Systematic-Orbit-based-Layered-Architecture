@@ -1,4 +1,4 @@
-# SOLAR-ARCH-027 — as três exigências do token.
+# SOLAR-SEG-007 — as três exigências do token.
 #
 # Os problemas são independentes e a regra acumula todos, em vez de
 # parar no primeiro: corrigir `algorithm` e só então descobrir que
@@ -8,7 +8,7 @@
 # `_problems`, que só acusa `False` explícito (o contexto guarda
 # `None` para "não foi possível ver").
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import SECURITY, Rule, rule_code
 from nucleus.rules.scanner.token_usage import TokenUsage
 
 
@@ -16,7 +16,7 @@ class TokensMustBeSecure(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-027
+    SOLAR-SEG-007
 
     JWT/Token seguro: todo token deve ser
 
@@ -43,7 +43,7 @@ class TokensMustBeSecure(Rule):
         jwt.decode(token, key, algorithms=["HS256"])            ✅
 
     A chave de assinatura deve vir do Environment — a
-    SOLAR-ARCH-020/023 cuidam disso.
+    SOLAR-SEG-001/SOLAR-SEG-004 cuidam disso.
 
     O contexto desta regra é um TokenUsage.
     """
@@ -60,7 +60,7 @@ class TokensMustBeSecure(Rule):
     })
 
     def code(self) -> str:
-        return "SOLAR-ARCH-027"
+        return rule_code(SECURITY, 7)
 
     def description(self) -> str:
         return (

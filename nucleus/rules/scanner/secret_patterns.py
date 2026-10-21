@@ -2,7 +2,7 @@ import re
 
 # Padrões de segredos CONHECIDOS.
 #
-# Diferente da SOLAR-ARCH-020 (que casa pelo NOME — SECRET_KEY,
+# Diferente da SOLAR-SEG-001 (que casa pelo NOME — SECRET_KEY,
 # password, ...), aqui o segredo é reconhecido pelo PRÓPRIO
 # CONTEÚDO, independentemente do nome que recebeu:
 #

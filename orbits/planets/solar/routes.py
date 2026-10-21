@@ -40,10 +40,10 @@ def routes() -> Blueprint:
     # VERIFICAÇÃO DE SAÚDE
     #
     # GET não transporta dados, então a rota NÃO declara guarda: não
-    # há corpo para limpar nem campo para exigir (SOLAR-ARCH-013).
+    # há corpo para limpar nem campo para exigir (SOLAR-ROF-001).
     #
     # `add_url_rule` e não decorator: a declaração explícita é o que
-    # a SOLAR-ARCH-016 exige. O alvo é um Controller (SOLAR-ARCH-017).
+    # a SOLAR-ROF-004 exige. O alvo é um Controller (SOLAR-ROF-005).
     blueprint.add_url_rule(
         "/health",
         "health",

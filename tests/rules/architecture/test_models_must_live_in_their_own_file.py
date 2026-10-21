@@ -76,7 +76,7 @@ def test_model_suffix_outside_the_models_layer_is_rejected():
         )
 
 
-# o nome do MODULO tambem identifica o Model, como nas regras 005/006
+# o nome do MODULO tambem identifica o Model, como nas regras SOLAR-RED-005/SOLAR-RED-006
 # (mesmo com classes que nao terminam em "Model")
 def test_model_module_name_identifies_the_layer():
 
@@ -186,7 +186,7 @@ def test_message_points_to_the_file_and_the_models():
 
     message = str(error.value)
 
-    assert "SOLAR-ARCH-032" in message
+    assert "SOLAR-ROF-007" in message
     assert "orbits/database/models/entities.py" in message
     assert "UserModel (linha 1)" in message
     assert "DocumentModel (linha 10)" in message

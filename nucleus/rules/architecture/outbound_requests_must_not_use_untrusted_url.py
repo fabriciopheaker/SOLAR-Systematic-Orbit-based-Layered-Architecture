@@ -1,11 +1,11 @@
-# SOLAR-ARCH-030 — SSRF: quem chama não escolhe o destino.
+# SOLAR-SEG-010 — SSRF: quem chama não escolhe o destino.
 #
 # A regra decide por NOME (`request.names`), e não por fluxo de dados:
 # sem análise de taint, uma URL "lavada" por várias funções não é
 # rastreável. Por isso o limite fica documentado no docstring da
 # classe, e o instrumento para os casos legítimos é o `UrlGuard`.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import SECURITY, Rule, rule_code
 from nucleus.rules.scanner.outbound_request import OutboundRequest
 
 
@@ -13,7 +13,7 @@ class OutboundRequestsMustNotUseUntrustedUrl(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-030
+    SOLAR-SEG-010
 
     Chamadas a serviços externos NÃO podem usar URL não confiável
     (SSRF — Server-Side Request Forgery).
@@ -76,7 +76,7 @@ class OutboundRequestsMustNotUseUntrustedUrl(Rule):
     })
 
     def code(self) -> str:
-        return "SOLAR-ARCH-030"
+        return rule_code(SECURITY, 10)
 
     def description(self) -> str:
         return (

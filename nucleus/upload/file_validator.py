@@ -18,7 +18,7 @@ class FileValidator(Validator):
         - extensão permitida;
         - MIME type permitido.
 
-    Implementa o contrato Validator da SOLAR-ARCH-013, aplicando
+    Implementa o contrato Validator da SOLAR-ROF-001, aplicando
     uma UploadPolicy.
 
     ESCOPO: regras de NEGÓCIO sobre o documento ("precisa ser um

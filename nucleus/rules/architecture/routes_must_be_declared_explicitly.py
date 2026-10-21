@@ -1,13 +1,13 @@
-# SOLAR-ARCH-016 — rota por DECORATOR é proibida.
+# SOLAR-ROF-004 — rota por DECORATOR é proibida.
 #
 # Esta regra não conhece Flask: ela pergunta o ESTILO da declaração
 # (`RouteDeclaration`), e quem sabe o que é um decorator de rota é a
 # `RoutingConvention` injetada no scanner. Trocar de framework não
 # muda uma linha aqui.
 #
-# O ALVO da rota (tem que ser um Controller) é a SOLAR-ARCH-017.
+# O ALVO da rota (tem que ser um Controller) é a SOLAR-ROF-005.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import STRUCTURE, Rule, rule_code
 from nucleus.rules.scanner.route_declaration import RouteDeclaration
 
 
@@ -15,7 +15,7 @@ class RoutesMustBeDeclaredExplicitly(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-016
+    SOLAR-ROF-004
 
     Toda rota HTTP deve ser declarada de forma EXPLÍCITA, em um
     módulo próprio de rotas.
@@ -44,7 +44,7 @@ class RoutesMustBeDeclaredExplicitly(Rule):
     ela decide com base na convenção utilizada pelo scanner.
 
     O ALVO da rota (deve ser um Controller) é responsabilidade
-    da SOLAR-ARCH-017.
+    da SOLAR-ROF-005.
 
     ESCOPO — o que esta regra NÃO cobre:
 
@@ -54,7 +54,7 @@ class RoutesMustBeDeclaredExplicitly(Rule):
     """
 
     def code(self) -> str:
-        return "SOLAR-ARCH-016"
+        return rule_code(STRUCTURE, 4)
 
     def description(self) -> str:
         return (

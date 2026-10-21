@@ -183,7 +183,7 @@ class RouteScanner:
             # problema é a do `@app.route`, não a do `def`.
             #
             # `target=node.name`: o alvo de um decorator é a própria
-            # função decorada, e o nome dela é o que a SOLAR-ARCH-017
+            # função decorada, e o nome dela é o que a SOLAR-ROF-005
             # vai julgar.
             declarations.append(
                 RouteDeclaration(
@@ -278,7 +278,7 @@ class RouteScanner:
         """
 
         # Lambda ganha um marcador legível: `ast.unparse` de uma lambda
-        # devolveria o código dela inteiro, e o que a SOLAR-ARCH-017
+        # devolveria o código dela inteiro, e o que a SOLAR-ROF-005
         # precisa saber é que ali NÃO há um Controller.
         if isinstance(node, ast.Lambda):
             return "<lambda>"
@@ -336,5 +336,5 @@ class RouteScanner:
 
         # `as_posix()` para o caminho sair com barras normais mesmo
         # lido no Windows: o relatório precisa ser igual nos dois
-        # ambientes, e a SOLAR-ARCH-018 compara partes do caminho.
+        # ambientes, e a SOLAR-ROF-004 compara partes do caminho.
         return file.relative_to(self.root).as_posix()

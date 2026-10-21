@@ -3,7 +3,7 @@ Contrato do driver de persistência.
 
 A fachada `Database` fala com qualquer driver que implemente
 isto. É o que permite trocar SQLAlchemy por outra tecnologia sem
-tocar na aplicação (SOLAR-ARCH-010).
+tocar na aplicação (SOLAR-RED-010).
 """
 
 from abc import ABC, abstractmethod
@@ -14,7 +14,7 @@ class DatabaseDriver(ABC):
     Contrato de acesso ao banco da SOLAR.
 
     É o que permite trocar a tecnologia de persistência sem tocar na
-    aplicação (SOLAR-ARCH-010): a fachada `Database` fala só com
+    aplicação (SOLAR-RED-010): a fachada `Database` fala só com
     este contrato, e o driver concreto é escolhido na montagem.
     """
 
@@ -48,7 +48,7 @@ class DatabaseDriver(ABC):
     # Os dois acessos abaixo não são uso: são o vocabulário que o
     # driver ENTREGA para os models (colunas, tipos, sessão). Sem
     # eles, um Model teria que importar sqlalchemy direto — que é
-    # exatamente o que a SOLAR-ARCH-011 proíbe.
+    # exatamente o que a SOLAR-RED-011 proíbe.
     @abstractmethod
     def orm(self):
       """

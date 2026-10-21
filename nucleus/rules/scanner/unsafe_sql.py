@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-024: construção de SQL por interpolação.
+# Contexto da SOLAR-SEG-011: construção de SQL por interpolação.
 #
 # O achado é sempre uma INTERPOLAÇÃO — o valor dinâmico entra na
 # string. SQL montado só com pedaços literais não é perigoso e não

@@ -1,18 +1,18 @@
-# SOLAR-ARCH-005 — Model não conhece Persistence.
+# SOLAR-RED-005 — Model não conhece Persistence.
 #
 # O Model é MAPEAMENTO; a Persistence é ACESSO A DADO. Juntar os dois
-# é o começo do Model que sabe consultar — e a SOLAR-ARCH-006
+# é o começo do Model que sabe consultar — e a SOLAR-RED-006
 # (Model -> Database -> ORM) fixa por onde o ORM chega.
 from nucleus.rules.scanner.dependency import Dependency
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import DEPENDENCY, Rule, rule_code
 
 
 class ModelsCannotDependOnPersistence(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-005
+    SOLAR-RED-005
 
     Models não devem conhecer Persistence.
 
@@ -32,7 +32,7 @@ class ModelsCannotDependOnPersistence(Rule):
         source = "orbits.database.models.user_model"
         target = "orbits.database.persistence.persistence"
 
-    Direção permitida (SOLAR-ARCH-006):
+    Direção permitida (SOLAR-RED-006):
 
         Model → Database → ORM
 
@@ -58,7 +58,7 @@ class ModelsCannotDependOnPersistence(Rule):
     PERSISTENCE_PACKAGE = "orbits.database.persistence"
 
     def code(self) -> str:
-        return "SOLAR-ARCH-005"
+        return rule_code(DEPENDENCY, 5)
 
     def description(self) -> str:
         return (
@@ -87,7 +87,7 @@ class ModelsCannotDependOnPersistence(Rule):
 
         # Critério 1: o módulo está dentro de um pacote `models` — e aí
         # TODA classe de lá conta, o que é coerente com a
-        # SOLAR-ARCH-032 (uma classe por arquivo em `models/`).
+        # SOLAR-ROF-007 (uma classe por arquivo em `models/`).
         if self.MODELS_SEGMENT in parts:
             return True
 

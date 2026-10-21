@@ -2,7 +2,7 @@
 #
 # É a fronteira entre o Planet e o banco. Recebe a Persistence do
 # Model de usuário por injeção e nunca conhece driver nem ORM — é o
-# que a SOLAR-ARCH-002 e a SOLAR-ARCH-003 verificam.
+# que a SOLAR-RED-002 e a SOLAR-RED-003 verificam.
 from orbits.database.persistence.users.user_persistency import (
     UserPersistency,
 )

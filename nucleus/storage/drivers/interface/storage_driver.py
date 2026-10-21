@@ -28,7 +28,7 @@ class StorageDriver(ABC):
 
     O driver NÃO interpreta o conteúdo do arquivo: sanitização e
     validação da ENTRADA pertencem ao pipeline da
-    SOLAR-ARCH-013 (Sanitizer/Validator).
+    SOLAR-ROF-001 (Sanitizer/Validator).
     """
 
     # `name` é o nome LÓGICO (o que a aplicação escolheu) — o

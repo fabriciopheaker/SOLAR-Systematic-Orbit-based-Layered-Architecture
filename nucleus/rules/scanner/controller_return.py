@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-014: o RETORNO de um método de Controller.
+# Contexto da SOLAR-ROF-002: o RETORNO de um método de Controller.
 #
 # O contexto vem do `ControllerReturnScanner`, que lê o `return` dos
 # métodos públicos de cada Controller. O scanner descreve o FATO; a
@@ -28,7 +28,7 @@ class ControllerReturn:
         concreta de "a resposta passou por um Resource".
 
         Conjunto VAZIO significa que o retorno não passou por
-        Resource nenhum. É isso que a SOLAR-ARCH-014 acusa.
+        Resource nenhum. É isso que a SOLAR-ROF-002 acusa.
 
     file / line:
         Onde o método foi declarado.

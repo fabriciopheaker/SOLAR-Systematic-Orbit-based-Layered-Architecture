@@ -1,4 +1,4 @@
-# SOLAR-ARCH-024 — SQL montado por interpolação.
+# SOLAR-SEG-011 — SQL montado por interpolação.
 #
 # O `unsafe_sql_scanner` só produz `UnsafeSql` quando há VALOR
 # DINÂMICO entrando na string; concatenar pedaços literais não é
@@ -7,7 +7,7 @@
 # ⚠️ LIMITE CONHECIDO: o filtro é pelo segmento `persistence` do
 # módulo. SQL inseguro em qualquer outra camada NÃO é flagrado.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import SECURITY, Rule, rule_code
 from nucleus.rules.scanner.unsafe_sql import UnsafeSql
 
 
@@ -15,7 +15,7 @@ class PersistenceMustNotBuildUnsafeSql(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-024
+    SOLAR-SEG-011
 
     Persistência NÃO pode construir SQL inseguro.
 
@@ -41,7 +41,7 @@ class PersistenceMustNotBuildUnsafeSql(Rule):
     PERSISTENCE_SEGMENT = "persistence"
 
     def code(self) -> str:
-        return "SOLAR-ARCH-024"
+        return rule_code(SECURITY, 11)
 
     def description(self) -> str:
         return "Persistência não pode construir SQL inseguro."

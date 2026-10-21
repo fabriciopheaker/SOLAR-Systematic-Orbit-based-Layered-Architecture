@@ -1,5 +1,5 @@
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import SECURITY, Rule, rule_code
 from nucleus.rules.scanner.controller_security_usage import (
     ControllerSecurityUsage
 )
@@ -9,7 +9,7 @@ class ControllerMustNotImplementAuthentication(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-022
+    SOLAR-SEG-003
 
     Controllers NÃO devem implementar autenticação diretamente.
 
@@ -58,7 +58,7 @@ class ControllerMustNotImplementAuthentication(Rule):
     })
 
     def code(self) -> str:
-        return "SOLAR-ARCH-022"
+        return rule_code(SECURITY, 3)
 
     def description(self) -> str:
         return (

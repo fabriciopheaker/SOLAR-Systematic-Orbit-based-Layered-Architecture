@@ -4,7 +4,7 @@ Emissão e verificação de token JWT.
 O token substitui a sessão guardada no servidor: ele carrega a
 identidade (`sub`) e a validade (`exp`), assinado com a SECRET_KEY
 da aplicação. Se alguém alterar o conteúdo, a assinatura deixa de
-bater e a verificação recusa (SOLAR-ARCH-027).
+bater e a verificação recusa (SOLAR-SEG-007).
 """
 
 import jwt
@@ -36,7 +36,7 @@ class Token:
             "exp": datetime.now(timezone.utc) + expire_time
         }
 
-        # Algoritmo EXPLÍCITO (SOLAR-ARCH-027). Um `encode` sem
+        # Algoritmo EXPLÍCITO (SOLAR-SEG-007). Um `encode` sem
         # algoritmo declarado pode cair em token sem assinatura
         # nenhuma.
         return jwt.encode(
@@ -65,7 +65,7 @@ class Token:
             # Sem a lista, a biblioteca aceitaria o algoritmo
             # declarado NO PRÓPRIO token — e bastaria dizer
             # `alg: none` para entrar sem assinatura
-            # (SOLAR-ARCH-027).
+            # (SOLAR-SEG-007).
             return jwt.decode(
                 token,
                 self.secret_key,

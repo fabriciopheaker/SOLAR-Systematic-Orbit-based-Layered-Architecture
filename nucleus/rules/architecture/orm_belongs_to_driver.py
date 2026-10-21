@@ -1,18 +1,18 @@
-# SOLAR-ARCH-010 — só o Driver conhece a tecnologia de ORM.
+# SOLAR-RED-010 — só o Driver conhece a tecnologia de ORM.
 #
 # É a regra que sustenta a troca de tecnologia — e é por causa dela
 # que `DatabaseDriver` expõe `orm()`/`model()`: se SQLAlchemy aparece
 # só em `nucleus/database/drivers/`, trocar de ORM é trocar o driver.
 from nucleus.rules.scanner.dependency import Dependency
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import DEPENDENCY, Rule, rule_code
 
 
 class OrmBelongsToDriver(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-010
+    SOLAR-RED-010
 
     O Driver é responsável pela implementação tecnológica
     da persistência.
@@ -51,7 +51,7 @@ class OrmBelongsToDriver(Rule):
     ORM_PACKAGE = "sqlalchemy"
 
     def code(self) -> str:
-        return "SOLAR-ARCH-010"
+        return rule_code(DEPENDENCY, 10)
 
     def description(self) -> str:
         return (

@@ -1,4 +1,4 @@
-# SOLAR-ARCH-013 — toda entrada que transporta dados externos passa
+# SOLAR-ROF-001 — toda entrada que transporta dados externos passa
 # por Validator e Sanitizer.
 #
 # A regra lê o `HttpInput` que o `http_input_scanner` produziu a partir
@@ -6,7 +6,7 @@
 # não o verbo HTTP: é isso que faz uma rota nova (verbo novo, tipo de
 # conteúdo novo) já nascer coberta, sem alterar a regra.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import STRUCTURE, Rule, rule_code
 from nucleus.contracts.http_input import HttpInput
 
 
@@ -14,7 +14,7 @@ class HttpInputMustPassThroughSanitizationAndValidation(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-013
+    SOLAR-ROF-001
 
     Toda entrada HTTP que TRANSPORTA DADOS EXTERNOS deve passar
     pelo pipeline de Sanitization e Validation apropriado ao tipo
@@ -64,11 +64,11 @@ class HttpInputMustPassThroughSanitizationAndValidation(Rule):
         )
 
     O contexto desta regra é um HttpInput — diferente do contexto
-    das regras de Dependency (SOLAR-ARCH-001 a 012).
+    das regras de Dependency (SOLAR-RED-001 a SOLAR-RED-012).
     """
 
     def code(self) -> str:
-        return "SOLAR-ARCH-013"
+        return rule_code(STRUCTURE, 1)
 
     def description(self) -> str:
         return (

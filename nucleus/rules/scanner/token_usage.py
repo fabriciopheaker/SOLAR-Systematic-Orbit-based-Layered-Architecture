@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-027: um uso de JWT/Token no código.
+# Contexto da SOLAR-SEG-007: um uso de JWT/Token no código.
 #
 # Os campos anuláveis são o ponto: `None` significa "o scanner não
 # conseguiu ver", e não "está errado" nem "está certo". A regra

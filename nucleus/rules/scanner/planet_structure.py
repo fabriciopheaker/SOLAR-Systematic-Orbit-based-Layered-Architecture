@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-019: a estrutura de um Planet.
+# Contexto da SOLAR-ROF-006: a estrutura de um Planet.
 #
 # O scanner só LISTA o que existe na raiz do Planet (`files` e
 # `directories`); a regra é que sabe qual é o conjunto exigido. Por

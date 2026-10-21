@@ -41,7 +41,7 @@ class HttpInputScanner:
         "Cada entrada que transporta dados tem guarda declarado?"
 
     O scanner NÃO decide se a entrada é válida: isso é
-    responsabilidade da Rule SOLAR-ARCH-013.
+    responsabilidade da Rule SOLAR-ROF-001.
 
     VALIDAÇÃO ESTÁTICA: como o scanner encontra apenas os NOMES
     das implementações (ex.: "CreateUserSanitizer"), o HttpInput
@@ -55,7 +55,7 @@ class HttpInputScanner:
     # Métodos HTTP que aceitam CORPO. Uma rota com um destes
     # métodos é tratada como entrada que TRANSPORTA DADOS, mesmo
     # sem content_type declarado — fechando a brecha de omitir o
-    # tipo de conteúdo para escapar da SOLAR-ARCH-013.
+    # tipo de conteúdo para escapar da SOLAR-ROF-001.
     #
     # `GET` e `DELETE` ficam de fora: por convenção não levam corpo, e
     # tratá-los como entrada de dados acusaria toda rota de leitura.
@@ -71,7 +71,7 @@ class HttpInputScanner:
     METHODS_KEYWORD = "methods"
 
     # Os keywords que DECLARAM a proteção da entrada. São eles que a
-    # SOLAR-ARCH-013 cobra: a rota diz quem limpa e quem exige.
+    # SOLAR-ROF-001 cobra: a rota diz quem limpa e quem exige.
     SANITIZER_KEYWORD = "sanitizer"
     VALIDATOR_KEYWORD = "validator"
 
@@ -125,7 +125,7 @@ class HttpInputScanner:
         inputs: list[HttpInput] = []
 
         # Só CHAMADA, e só a de REGISTRO de rota. Rota por decorator
-        # não é lida aqui — ela já é violação da SOLAR-ARCH-016.
+        # não é lida aqui — ela já é violação da SOLAR-ROF-004.
         for node in ast.walk(tree):
 
             if not isinstance(node, ast.Call):

@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-029: dados de entrada indo direto para um
+# Contexto da SOLAR-SEG-009: dados de entrada indo direto para um
 # contrato nomeado.
 #
 # O que a regra persegue é a ATRIBUIÇÃO EM MASSA: o campo que o
@@ -35,7 +35,7 @@ class EntityBinding:
                              setattr(entity, k, v)
 
     O scanner DESCREVE; quem decide a política é a Rule
-    SOLAR-ARCH-029.
+    SOLAR-SEG-009.
     """
 
     target: str

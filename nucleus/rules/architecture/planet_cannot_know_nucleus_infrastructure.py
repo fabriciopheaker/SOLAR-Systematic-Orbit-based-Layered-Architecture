@@ -1,18 +1,18 @@
-# SOLAR-ARCH-011 — o Planet conhece a FACHADA, não o miolo.
+# SOLAR-RED-011 — o Planet conhece a FACHADA, não o miolo.
 #
-# É a versão estreita para Planets do que a SOLAR-ARCH-008 faz para os
+# É a versão estreita para Planets do que a SOLAR-RED-008 faz para os
 # Orbits: aqui a lista de fachadas permitidas é EXPLÍCITA, porque é o
 # Planet que não pode depender de `nucleus.*` interno.
 from nucleus.rules.scanner.dependency import Dependency
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import DEPENDENCY, Rule, rule_code
 
 
 class PlanetCannotKnowNucleusInfrastructure(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-011
+    SOLAR-RED-011
 
     Planets não devem conhecer detalhes da infraestrutura
     do Nucleus.
@@ -65,7 +65,7 @@ class PlanetCannotKnowNucleusInfrastructure(Rule):
     )
 
     def code(self) -> str:
-        return "SOLAR-ARCH-011"
+        return rule_code(DEPENDENCY, 11)
 
     def description(self) -> str:
         return (

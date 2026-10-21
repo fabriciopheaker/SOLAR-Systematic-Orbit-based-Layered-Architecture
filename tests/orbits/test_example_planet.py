@@ -95,7 +95,7 @@ def test_creating_a_user_answers_201_with_the_resource(tmp_path):
 
 
 # o Resource decide o que sai da aplicacao, e credencial NAO sai
-# (SOLAR-ARCH-021)
+# (SOLAR-SEG-002)
 def test_the_resource_does_not_expose_the_password(tmp_path):
 
     kernel, app = _app(tmp_path)
@@ -157,7 +157,7 @@ def test_the_password_is_stored_hashed(tmp_path):
 # ---------------------------------------------------------------------
 
 # campo obrigatorio ausente: 400, com codigo estavel e SEM detalhe
-# interno na resposta (SOLAR-ARCH-028)
+# interno na resposta (SOLAR-SEG-008)
 def test_a_missing_field_answers_400(tmp_path):
 
     kernel, app = _app(tmp_path)
@@ -245,7 +245,7 @@ def test_a_repeated_email_answers_400(tmp_path):
 # ---------------------------------------------------------------------
 
 # a ROTA do Planet declara quem protege cada entrada: o corpo chega
-# ao UseCase tratado pelo guarda DO PLANET (SOLAR-ARCH-013)
+# ao UseCase tratado pelo guarda DO PLANET (SOLAR-ROF-001)
 def test_the_planet_declares_its_frontier(tmp_path):
 
     kernel, app = _app(tmp_path)
@@ -265,7 +265,7 @@ def test_the_planet_declares_its_frontier(tmp_path):
 
 
 # a rota declara o ESSENCIAL — URL, Controller e metodo — e aponta
-# para o Controller (SOLAR-ARCH-017), mesmo com o adaptador no meio
+# para o Controller (SOLAR-ROF-005), mesmo com o adaptador no meio
 #
 def test_the_route_declares_only_the_essentials(tmp_path):
 

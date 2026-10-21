@@ -1,11 +1,11 @@
-# SOLAR-ARCH-025 — o Controller não grava arquivo.
+# SOLAR-SEG-005 — o Controller não grava arquivo.
 #
 # Quem grava é a fachada `Storage`, que já bloqueia nome que escapa
 # da raiz e concentra a política de armazenamento. Um Controller que
 # chama `open` ou `shutil.copy` passou a ter as duas
 # responsabilidades — gravar e orquestrar.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import SECURITY, Rule, rule_code
 from nucleus.rules.scanner.upload_handling import UploadHandling
 
 
@@ -13,7 +13,7 @@ class UploadsMustUseStorage(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-025
+    SOLAR-SEG-005
 
     Upload seguro: o arquivo recebido NÃO pode ser manipulado
     diretamente pelo Controller. Ele deve ser entregue à abstração
@@ -48,7 +48,7 @@ class UploadsMustUseStorage(Rule):
 
     A validação estrutural da entrada (arquivo enviado, tamanho,
     extensão, MIME type) é responsabilidade do Validator da
-    SOLAR-ARCH-013 — não desta regra.
+    SOLAR-ROF-001 — não desta regra.
 
     O contexto desta regra é um UploadHandling.
     """
@@ -76,7 +76,7 @@ class UploadsMustUseStorage(Rule):
     })
 
     def code(self) -> str:
-        return "SOLAR-ARCH-025"
+        return rule_code(SECURITY, 5)
 
     def description(self) -> str:
         return (

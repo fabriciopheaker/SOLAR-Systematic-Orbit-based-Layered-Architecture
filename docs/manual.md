@@ -122,7 +122,7 @@ NUCLEUS ──X──► PLANET
 
 O Nucleus define as regras e **não sabe quem as usa**. O Observatory verifica e **não é
 conhecido pelo Nucleus**. Essa direção única é o que permite trocar a observação sem tocar na
-governança — e é ela que sustenta as regras de dependência (SOLAR-ARCH-008 a 012).
+governança — e é ela que sustenta as regras de dependência (SOLAR-RED-008 a SOLAR-RED-012).
 
 ---
 
@@ -388,7 +388,7 @@ except Exception as error:
 ```
 
 O `from error` **preserva a causa**: o log mostra a cadeia completa, o cliente vê só o código.
-Essa é a SOLAR-ARCH-028 em uma linha.
+Essa é a SOLAR-SEG-008 em uma linha.
 
 ---
 
@@ -491,7 +491,7 @@ return DocumentResource.to_object(output), 201
 mesma ideia repetida em todo Controller, e a repetição é onde um item acaba escapando sem
 passar pelo Resource.
 
-**É aqui que a SOLAR-ARCH-021 age**: se o dicionário expuser `password`, `password_hash`,
+**É aqui que a SOLAR-SEG-002 age**: se o dicionário expuser `password`, `password_hash`,
 `secret_key` ou um token, a regra reprova.
 
 ## 4.4 `Controller`
@@ -510,7 +510,7 @@ class CreateUserController:
 
 `@staticmethod` porque a rota é registrada como `CreateUserController.create`: o Flask chama
 a função direto, sem instância no meio. Quem exige que o retorno passe por um Resource é a
-SOLAR-ARCH-014, na análise estática (§14.6) — e não um contrato de classe.
+SOLAR-ROF-002, na análise estática (§14.6) — e não um contrato de classe.
 
 ## 4.5 `UseCase`
 
@@ -532,7 +532,7 @@ class ResponsibilityContract:
     output_type: object
 ```
 
-Declara **o que entra e o que sai** de um UseCase. É o contexto da SOLAR-ARCH-015.
+Declara **o que entra e o que sai** de um UseCase. É o contexto da SOLAR-ROF-003.
 
 ```python
 ResponsibilityContract(
@@ -568,7 +568,7 @@ class HttpInput:
     def transports_data(self) -> bool
 ```
 
-Descreve **uma entrada HTTP**. É o contexto da SOLAR-ARCH-013 (sanitização e validação).
+Descreve **uma entrada HTTP**. É o contexto da SOLAR-ROF-001 (sanitização e validação).
 
 | Campo                     | Papel                                                          |
 | ------------------------- | -------------------------------------------------------------- |
@@ -622,7 +622,7 @@ class RequestPipeline:
     def _validator(self, http_input: HttpInput) -> Validator
 ```
 
-Garante, em **tempo de execução**, o que a SOLAR-ARCH-013 exige estaticamente.
+Garante, em **tempo de execução**, o que a SOLAR-ROF-001 exige estaticamente.
 
 ```python
 payload = RequestPipeline().handle(http_input, request.json)
@@ -634,7 +634,7 @@ A ordem é sempre a mesma, e não é negociável:
    payload cru
         │
         ▼
-   1) valida a regra 013   (a entrada declara sanitizer e validator?)
+   1) valida a regra SOLAR-ROF-001   (a entrada declara sanitizer e validator?)
         │
         ▼
    2) valida               (os campos esperados existem?)
@@ -666,7 +666,7 @@ de uma chamada a `to_object`:
 return UserResource.to_object(output), 201
 ```
 
-Quem garante isso não é um mecanismo em tempo de execução: é a **SOLAR-ARCH-014**, verificada
+Quem garante isso não é um mecanismo em tempo de execução: é a **SOLAR-ROF-002**, verificada
 na análise estática (§14.6). A regra lê o `return` de cada método público de Controller e exige
 que ele chame o Resource (`to_object` ou `collection`).
 
@@ -862,7 +862,7 @@ código, e o time acha o detalhe no servidor — sem que ele tenha saído de lá
 na própria exceção, então `handle()` e `detail()` devolvem sempre a mesma.
 
 `expose_details=True` existe para desenvolvimento. Em produção é exatamente o vazamento que a
-SOLAR-ARCH-028 proíbe.
+SOLAR-SEG-008 proíbe.
 
 ## 5.9 A fronteira do Planet (`atmosphere`)
 
@@ -965,7 +965,7 @@ aprendida antes de qualquer linha útil.
 
 **O que chega vazio.** `g.solar_data` é sempre um dicionário: rota sem guarda declarado recebe
 `{}`, e não um `AttributeError` que apareceria longe da causa. O sintoma é a AUSÊNCIA do dado, e
-não um dado cru — dado cru pareceria funcionar. Quem acusa é a SOLAR-ARCH-013, na análise
+não um dado cru — dado cru pareceria funcionar. Quem acusa é a SOLAR-ROF-001, na análise
 estática (§14.2).
 
 **Uma instância por mecanismo.** O pipeline é criado uma vez, na importação: ele não guarda
@@ -995,7 +995,7 @@ Usa **bcrypt**, com salt gerado por senha. O salt é o que impede que duas senha
 produzam o mesmo hash — sem ele, uma tabela pré-calculada quebra o banco inteiro.
 
 É este componente que o Controller **deve** usar em vez de `hashlib`/`bcrypt` direto
-(SOLAR-ARCH-022): a decisão de como guardar senha é da arquitetura, não de cada Controller.
+(SOLAR-SEG-003): a decisão de como guardar senha é da arquitetura, não de cada Controller.
 
 ## 6.2 `Token`
 
@@ -1023,7 +1023,7 @@ O que já está certo aqui, e por quê:
 | `Bearer ` removido                | aceita o cabeçalho `Authorization` direto    |
 
 Verificar um JWT sem declarar o algoritmo aceito é a falha clássica: o token diz qual é o
-algoritmo, e um token malicioso pode dizer "nenhum". É isso que a SOLAR-ARCH-027 barra.
+algoritmo, e um token malicioso pode dizer "nenhum". É isso que a SOLAR-SEG-007 barra.
 
 > `verify` levanta `ValueError`, não `SolarException`. Quem trata deve converter:
 > `raise SecurityException("Sessão expirada.", code="EXPIRED_SESSION") from error`.
@@ -1055,7 +1055,7 @@ identity.init()
 ```
 
 > Repare: `SECRET_KEY = "SECRET_KEY"` é o **nome** da variável de ambiente, não um segredo.
-> A SOLAR-ARCH-020 acusa essa linha porque o nome casa o vocabulário de segredo — é um falso
+> A SOLAR-SEG-001 acusa essa linha porque o nome casa o vocabulário de segredo — é um falso
 > positivo conhecido, ainda em aberto.
 
 ## 6.4 `AttemptTracker`
@@ -1104,7 +1104,7 @@ class UrlGuard:
     def validate(self, url) -> None
 ```
 
-Valida uma URL **antes** de a aplicação buscar um serviço externo (SOLAR-ARCH-030).
+Valida uma URL **antes** de a aplicação buscar um serviço externo (SOLAR-SEG-010).
 
 ```python
 guard = UrlGuard(allowed_hosts=["api.exemplo.com"])
@@ -1202,7 +1202,7 @@ Corpo que não é objeto — lista, texto solto, número — não passa por nenh
 ```
 
 A mensagem que sai é a genérica do `ErrorHandler` (§5.8); **qual** campo faltou fica no log.
-É a SOLAR-ARCH-028 aplicada à entrada.
+É a SOLAR-SEG-008 aplicada à entrada.
 
 ---
 
@@ -1223,12 +1223,17 @@ class Rule(ABC):
 
 |               |                                                                  |
 | ------------- | ---------------------------------------------------------------- |
-| `code`        | `"SOLAR-ARCH-019"` — o identificador                             |
+| `code`        | `"SOLAR-ROF-006"` — o identificador                              |
 | `description` | uma frase, para o relatório                                      |
 | `validate`    | olha o contexto; **levanta `SolarException`** se houver violação |
 
 Ausência de exceção significa que está tudo certo. É o contrato inteiro: uma regra que
 "devolve False" obriga todo chamador a decidir o que fazer com isso; uma que levanta já diz.
+
+O código segue a convenção **`SOLAR-<CATEGORIA>-<NÚMERO>`**, montada por
+`rule_code(categoria, número)`: o prefixo diz a que categoria a regra pertence, e o número é
+o identificador estável da regra. As categorias são `RED` (dependência), `ROF` (organização
+estrutural e fluxo HTTP) e `SEG` (segurança e tratamento de dados).
 
 ## 7.2 `RuleEngine`
 
@@ -1278,17 +1283,17 @@ target = "orbits.database.persistence.persistence"
 ```
 
 Quem proíbe é a regra. Essa separação tem uma consequência prática: a mesma varredura alimenta
-**onze** regras (SOLAR-ARCH-001 a 012) sem custo extra.
+**onze** regras (SOLAR-RED-001 a SOLAR-RED-012) sem custo extra.
 
 ### O scanner lê, a regra julga
 
 Vários contextos carregam **fatos ambíguos**, e a regra decide:
 
-| Contexto           | Fato                                                | Decisão da regra                            |
-| ------------------ | --------------------------------------------------- | ------------------------------------------- |
-| `SecretOccurrence` | casou um padrão, está em docstring, tem marcador... | 023 ignora documentação, exemplo e marcador |
-| `ErrorExposure`    | o detalhe sai, vai para o log, ou não se sabe       | 028 acusa só o que **sai**                  |
-| `OutboundRequest`  | quais identificadores compõem a URL                 | 030 decide quais são confiáveis             |
+| Contexto           | Fato                                                | Decisão da regra                                      |
+| ------------------ | --------------------------------------------------- | ----------------------------------------------------- |
+| `SecretOccurrence` | casou um padrão, está em docstring, tem marcador... | SOLAR-SEG-004 ignora documentação, exemplo e marcador |
+| `ErrorExposure`    | o detalhe sai, vai para o log, ou não se sabe       | SOLAR-SEG-008 acusa só o que **sai**                  |
+| `OutboundRequest`  | quais identificadores compõem a URL                 | SOLAR-SEG-010 decide quais são confiáveis             |
 
 O motivo é sempre o mesmo: o scanner não tem como saber o contexto de negócio — e não deve
 saber. Ele descreve; a política é uma decisão que pertence à regra.
@@ -1322,34 +1327,34 @@ Um `Check` amarra **um scanner às regras do seu contexto** — o agrupamento n�
 é o que evita misturar contextos no mesmo engine.
 
 `project_checks()` devolve as **17** verificações registradas, cobrindo **29 das 30**
-regras (a **015** tem classe, mas ainda não tem scanner — §17.6):
+regras (a **SOLAR-ROF-003** tem classe, mas ainda não tem scanner — §17.6):
 
-| Check                     | Regras                                                |
-| ------------------------- | ----------------------------------------------------- |
-| `Dependency`              | 001, 002, 003, 005, 006, 007, 008, 009, 010, 011, 012 |
-| `HttpInput`               | 013                                                   |
-| `RouteDeclaration`        | 016, 017, 018                                         |
-| `PlanetStructure`         | 019                                                   |
-| `SecretLiteral`           | 020                                                   |
-| `ResourceExposure`        | 021                                                   |
-| `ControllerSecurityUsage` | 022                                                   |
-| `ControllerReturn`        | 014                                                   |
-| `SecretOccurrence`        | 023                                                   |
-| `UnsafeSql`               | 024                                                   |
-| `UploadHandling`          | 025                                                   |
-| `ControllerAuthChecks`    | 026                                                   |
-| `TokenUsage`              | 027                                                   |
-| `ErrorExposure`           | 028                                                   |
-| `EntityBinding`           | 029                                                   |
-| `OutboundRequest`         | 030                                                   |
-| `ModuleClasses`           | 032                                                   |
+| Check                     | Regras                                             |
+| ------------------------- | -------------------------------------------------- |
+| `Dependency`              | SOLAR-RED-001, 002, 003, 005–012                   |
+| `HttpInput`               | SOLAR-ROF-001                                      |
+| `RouteDeclaration`        | SOLAR-ROF-004 (declaração e módulo), SOLAR-ROF-005 |
+| `PlanetStructure`         | SOLAR-ROF-006                                      |
+| `SecretLiteral`           | SOLAR-SEG-001                                      |
+| `ResourceExposure`        | SOLAR-SEG-002                                      |
+| `ControllerSecurityUsage` | SOLAR-SEG-003                                      |
+| `ControllerReturn`        | SOLAR-ROF-002                                      |
+| `SecretOccurrence`        | SOLAR-SEG-004                                      |
+| `UnsafeSql`               | SOLAR-SEG-011                                      |
+| `UploadHandling`          | SOLAR-SEG-005                                      |
+| `ControllerAuthChecks`    | SOLAR-SEG-006                                      |
+| `TokenUsage`              | SOLAR-SEG-007                                      |
+| `ErrorExposure`           | SOLAR-SEG-008                                      |
+| `EntityBinding`           | SOLAR-SEG-009                                      |
+| `OutboundRequest`         | SOLAR-SEG-010                                      |
+| `ModuleClasses`           | SOLAR-ROF-007                                      |
 
 Fora daqui, de propósito:
 
-- **004** — absorvida pela 001, não tem classe própria;
-- **015** — tem classe (`ControllerAndUseCaseMustUseNamedContracts`), mas o contexto é o
+- **SOLAR-RED-004** — absorvida pela SOLAR-RED-001, não tem classe própria;
+- **SOLAR-ROF-003** — tem classe (`ControllerAndUseCaseMustUseNamedContracts`), mas o contexto é o
   contrato nomeado do UseCase e **não há scanner** para ele;
-- **031** — regra **removida**: o CSRF passou a ser do pipeline (`SecurityPolicy`), e não
+- **regra de CSRF por rota** — **removida**: o CSRF passou a ser do pipeline (`SecurityPolicy`), e não
   uma exigência declarada rota a rota.
 
 **A diferença em relação ao `RuleEngine`.** O engine para na primeira violação; o validador
@@ -1511,17 +1516,17 @@ RouteScanner(root, convention=fastapi_routing_convention())
 | `ModuleClassesScanner`       | `ModuleClasses`           | quais classes cada arquivo declara            |
 
 Dois são compartilhados por mais de uma regra: `HttpInputScanner` é reusado pelo
-`RequestPipeline` em tempo de execução (mesmo contexto da 013) e `ArchitectureScanner`
+`RequestPipeline` em tempo de execução (mesmo contexto da SOLAR-ROF-001) e `ArchitectureScanner`
 carrega onze regras. O custo de varrer é pago uma vez.
 
 ### O que é um Controller
 
-Quatro scanners falam de Controller — `ControllerReturnScanner` (014),
-`ControllerSecurityScanner` (022), `UploadHandlingScanner` (025) e
-`ControllerAuthCheckScanner` (026). Os quatro compartilham UM critério do que é
+Quatro scanners falam de Controller — `ControllerReturnScanner` (SOLAR-ROF-002),
+`ControllerSecurityScanner` (SOLAR-SEG-003), `UploadHandlingScanner` (SOLAR-SEG-005) e
+`ControllerAuthCheckScanner` (SOLAR-SEG-006). Os quatro compartilham UM critério do que é
 um Controller (`nucleus/rules/scanner/controller_module.py`):
 
-1. o LUGAR do arquivo — a estrutura que a **019 já exige de todo Planet**:
+1. o LUGAR do arquivo — a estrutura que a **SOLAR-ROF-006 já exige de todo Planet**:
    `planets/<planeta>/controllers/<arquivo>.py`;
 2. e, DENTRO dele, o sufixo `Controller` no nome da classe.
 
@@ -1533,7 +1538,7 @@ como qualquer outro Controller.
 O sufixo do nome sozinho não serve. A própria regra
 `RoutesMustPointToController` termina em "Controller" e era auditada como
 Controller pelas três regras que olhavam só o nome — nada nela é um Controller.
-Ela passava por sorte: não importa nada da lista proibida da 022, não verifica
+Ela passava por sorte: não importa nada da lista proibida da SOLAR-SEG-003, não verifica
 autenticação e não manipula arquivo. Um `import hashlib` a teria transformado em
 violação de uma regra que não tem relação com ela.
 
@@ -1568,7 +1573,7 @@ class Database:
 
 `session()` e `sync()` são **repasses**: a fachada não sabe o que é uma sessão nem o que é um
 schema — ela pergunta ao driver (§8.2). O Planet pede a sessão ao `Database` e nunca importa
-`sqlalchemy` para obtê-la (SOLAR-ARCH-010).
+`sqlalchemy` para obtê-la (SOLAR-RED-010).
 
 **Mas `init` não é repasse.** Ele é o ponto onde o banco se monta:
 
@@ -1701,7 +1706,7 @@ Models: não existe _schema diff_ nele. Quem sabe é o Alembic — o mesmo motor
 pasta de migrations: quem aplica o resultado é este driver.
 
 É a segunda dependência de banco do driver, e mora aqui pelo mesmo motivo que a primeira: o
-Nucleus é dono da tecnologia, e o driver é o único lugar que a conhece (SOLAR-ARCH-010).
+Nucleus é dono da tecnologia, e o driver é o único lugar que a conhece (SOLAR-RED-010).
 
 ```python
 REMOVAL_OPERATIONS = (
@@ -1736,7 +1741,7 @@ A sessão fica no atributo privado `_session`, porque `session` é o **nome do m
 contrato** — dois donos para o mesmo nome dariam um `AttributeError` silencioso no dia em que
 alguém chamasse o método.
 
-O **único** lugar do projeto que pode importar `sqlalchemy` (SOLAR-ARCH-010).
+O **único** lugar do projeto que pode importar `sqlalchemy` (SOLAR-RED-010).
 
 `_build_connection_url` monta a URL a partir da configuração do ambiente. Essa é a razão de o
 `Environment` devolver os valores **crus**: quem sabe montar a URL é o driver, não o
@@ -1747,7 +1752,7 @@ Environment.
 A aplicação usa **ORM**: quem escreve consulta escreve objeto, e a ORM parametriza. O Nucleus
 não tem classe de execução de SQL — quem executa é o driver, a partir da ORM.
 
-O que a arquitetura entrega é a barreira **estática**: a SOLAR-ARCH-024.
+O que a arquitetura entrega é a barreira **estática**: a SOLAR-SEG-011.
 
 ```python
 # [X] concatenação — o valor entra no texto do SQL
@@ -1767,7 +1772,7 @@ A diferença não é estética: no primeiro caso o valor é **interpretado como 
 | ------------------- | --------------------------------------- |
 | consulta pela ORM   | a própria ORM, por construção           |
 | SQL cru (caso raro) | parâmetro ligado (`:nome`), nunca texto |
-| o que escapar disso | a regra SOLAR-ARCH-024 reprova          |
+| o que escapar disso | a regra SOLAR-SEG-011 reprova           |
 
 > A regra **detecta** o que já está escrito errado. É ela — e não uma classe de conveniência —
 > que sustenta a defesa contra SQL injection na SOLAR.
@@ -2159,76 +2164,77 @@ Postgres por outro banco sem tocar no carregamento de configuração.
 
 O catálogo completo. Cada linha diz **o que a regra barra** e **o que ela libera**.
 
-> A numeração vai de **001 a 032**, e nem todo número é uma regra viva — ver §14.0.
+> Cada categoria tem a sua própria numeração: **SOLAR-RED-001 a SOLAR-RED-012**,
+> **SOLAR-ROF-001 a SOLAR-ROF-007** e **SOLAR-SEG-001 a SOLAR-SEG-011**. Nem todo
+> número é uma regra viva — ver §14.0.
 
 ## 14.0 Como ler a numeração
 
 Nem todo código é uma regra viva, e as quatro contagens são diferentes de propósito:
 
-| O que é                     | Códigos                | Quantidade |
-| --------------------------- | ---------------------- | ---------- |
-| Códigos na numeração        | `001`–`030` e `032`    | **31**     |
-| Classes de regra (arquivos) | todas menos a `004`    | **30**     |
-| Aplicadas pelo `check`      | todas menos a `015`    | **29**     |
-| Verificações (scanners)     | —                      | **17**     |
-| Absorvida pela 001          | `004`                  | —          |
-| Removida                    | `031` (virou pipeline) | —          |
-| Sem scanner                 | `015`                  | —          |
+| O que é                      | Códigos                                                             | Quantidade |
+| ---------------------------- | ------------------------------------------------------------------- | ---------- |
+| Códigos na numeração         | `SOLAR-RED-001`–`012`, `SOLAR-ROF-001`–`007`, `SOLAR-SEG-001`–`011` | **30**     |
+| Classes de regra (arquivos)  | todas menos a `SOLAR-RED-004`                                       | **30**     |
+| Aplicadas pelo `check`       | todas menos a `SOLAR-ROF-003`                                       | **29**     |
+| Verificações (scanners)      | —                                                                   | **17**     |
+| Absorvida pela SOLAR-RED-001 | `SOLAR-RED-004`                                                     | —          |
+| Removida                     | regra de CSRF por rota (virou pipeline)                             | —          |
+| Sem scanner                  | `SOLAR-ROF-003`                                                     | —          |
 
-| Código  | Regra                                          | Barra                                                                                                      | Libera                                                                       |
-| ------- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| **001** | Planet não depende de Planet                   | `Planet → Planet`                                                                                          | mesmo Planet, e via `satellites.*`                                           |
-| **002** | Repository não depende de Database             | `Repository → Database`                                                                                    | via Persistence                                                              |
-| **003** | Repository usa Persistence                     | acesso a dados fora da Persistence                                                                         | `Repository → Persistence → Database`                                        |
-| **004** | Planets não se comunicam                       | _(absorvida pela 001)_                                                                                     | —                                                                            |
-| **005** | Model não conhece Persistence                  | `Model → Persistence`                                                                                      | `Model → Database`                                                           |
-| **006** | Model acessa ORM pelo Database                 | `Model → sqlalchemy` / drivers                                                                             | `Model → Database → ORM`                                                     |
-| **007** | Persistence mora em Orbits                     | `persistence` fora de `orbits.database.persistence`                                                        | o caminho canônico                                                           |
-| **008** | Database é a fachada                           | `Orbits → Nucleus.Database.drivers`                                                                        | `Orbits → Nucleus.Database`                                                  |
-| **009** | Planet não conhece Driver                      | `Planet → drivers`                                                                                         | `Planet → Database`                                                          |
-| **010** | Driver é dono da tecnologia ORM                | `sqlalchemy` fora de `nucleus.database.drivers`                                                            | dentro do driver                                                             |
-| **011** | Planet não conhece infra do Nucleus            | `Planet → nucleus.database.*` (exceto fachada)                                                             | fachadas arquiteturais                                                       |
-| **012** | Satellites são a fronteira externa             | `requests`/`httpx`/`aiohttp` fora de `satellites`                                                          | dentro de um Satellite                                                       |
-| **013** | Entrada HTTP passa por Sanitização e Validação | entrada que transporta dados sem sanitizer/validator                                                       | entrada sem dados                                                            |
-| **014** | Controller retorna Resource                    | Controller sem Resource                                                                                    | `Controller → Resource → Response`                                           |
-| **015** | Contratos nomeados                             | `dict` / `list` literal na fronteira                                                                       | `DocumentInput`, mesmo herdando de `dict`                                    |
-| **016** | Rotas declaradas explicitamente                | `@app.route` / `@router.get`                                                                               | `Blueprint` + `add_url_rule`                                                 |
-| **017** | Rota aponta para Controller                    | rota para UseCase, Repository, lambda                                                                      | `Route → Controller`                                                         |
-| **018** | Rota mora em módulo de rotas                   | rota em `service.py`, `controller.py`                                                                      | `orbits/routes.py`, `planets/<p>/routes.py`                                  |
-| **019** | Planet tem estrutura padrão                    | Planet sem `__init__.py`, `routes.py`, `controllers/`, `entity/`, `repository/`, `resources/`, `usecases/` | arquivos extras                                                              |
-| **020** | Sem credencial hardcoded                       | `SECRET_KEY = "abc"`                                                                                       | `os.environ[...]`, valor com prefixo `SOLAR_DEFAULT`, `# solar:allow-secret` |
-| **021** | Resource não expõe segredo                     | `password`, `password_hash`, `secret_key`, tokens                                                          | campos públicos                                                              |
-| **022** | Controller não implementa auth                 | `hashlib`, `bcrypt`, `jwt`, `hmac` no Controller                                                           | `nucleus.security`                                                           |
-| **023** | Sem segredo no código-fonte                    | chave AWS, chave privada, JWT, `ghp_…`                                                                     | `os.environ`, exemplo, marcador                                              |
-| **024** | Persistência sem SQL inseguro                  | concatenação, f-string, `%`, `.format()`                                                                   | SQL parametrizado                                                            |
-| **025** | Upload passa pelo Storage                      | `open`, `shutil`, `mimetypes` no Controller                                                                | `Storage.save(...)`                                                          |
-| **026** | Autenticação não se espalha                    | `current_user`, `abort(401)`, `has_permission` no Controller                                               | middleware + `nucleus.security`                                              |
-| **027** | Token seguro                                   | `algorithm="none"`, algoritmo implícito, sem `exp`, `verify_signature: False`                              | algoritmo explícito + `exp`                                                  |
-| **028** | Erro não vaza interno                          | `str(e)`, `f"{e}"`, `traceback.format_exc()` na resposta                                                   | detalhe no log                                                               |
-| **029** | Sem mass assignment                            | `Entity(**request.json)`, `from_dict(request.json)`                                                        | campos explícitos, `**DocumentInput(...)`                                    |
-| **030** | Sem SSRF                                       | URL de `request.args`, `f"http://{host}/…"`                                                                | constante, configuração, `UrlGuard`                                          |
-| **032** | Um Model por arquivo                           | arquivo com dois Models                                                                                    | um Model por arquivo                                                         |
+| Código            | Regra                                               | Barra                                                                                                      | Libera                                                                       |
+| ----------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| **SOLAR-RED-001** | Planet não depende de Planet                        | `Planet → Planet`                                                                                          | mesmo Planet, e via `satellites.*`                                           |
+| **SOLAR-RED-002** | Repository não depende de Database                  | `Repository → Database`                                                                                    | via Persistence                                                              |
+| **SOLAR-RED-003** | Repository usa Persistence                          | acesso a dados fora da Persistence                                                                         | `Repository → Persistence → Database`                                        |
+| **SOLAR-RED-004** | Planets não se comunicam                            | _(absorvida pela SOLAR-RED-001)_                                                                           | —                                                                            |
+| **SOLAR-RED-005** | Model não conhece Persistence                       | `Model → Persistence`                                                                                      | `Model → Database`                                                           |
+| **SOLAR-RED-006** | Model acessa ORM pelo Database                      | `Model → sqlalchemy` / drivers                                                                             | `Model → Database → ORM`                                                     |
+| **SOLAR-RED-007** | Persistence mora em Orbits                          | `persistence` fora de `orbits.database.persistence`                                                        | o caminho canônico                                                           |
+| **SOLAR-RED-008** | Database é a fachada                                | `Orbits → Nucleus.Database.drivers`                                                                        | `Orbits → Nucleus.Database`                                                  |
+| **SOLAR-RED-009** | Planet não conhece Driver                           | `Planet → drivers`                                                                                         | `Planet → Database`                                                          |
+| **SOLAR-RED-010** | Driver é dono da tecnologia ORM                     | `sqlalchemy` fora de `nucleus.database.drivers`                                                            | dentro do driver                                                             |
+| **SOLAR-RED-011** | Planet não conhece infra do Nucleus                 | `Planet → nucleus.database.*` (exceto fachada)                                                             | fachadas arquiteturais                                                       |
+| **SOLAR-RED-012** | Satellites são a fronteira externa                  | `requests`/`httpx`/`aiohttp` fora de `satellites`                                                          | dentro de um Satellite                                                       |
+| **SOLAR-ROF-001** | Entrada HTTP passa por Sanitização e Validação      | entrada que transporta dados sem sanitizer/validator                                                       | entrada sem dados                                                            |
+| **SOLAR-ROF-002** | Controller retorna Resource                         | Controller sem Resource                                                                                    | `Controller → Resource → Response`                                           |
+| **SOLAR-ROF-003** | Contratos nomeados                                  | `dict` / `list` literal na fronteira                                                                       | `DocumentInput`, mesmo herdando de `dict`                                    |
+| **SOLAR-ROF-004** | Rotas declaradas explicitamente em módulos de rotas | `@app.route` / `@router.get`; rota em `service.py`, `controller.py`                                        | `Blueprint` + `add_url_rule`; `orbits/routes.py`, `planets/<p>/routes.py`    |
+| **SOLAR-ROF-005** | Rota aponta para Controller                         | rota para UseCase, Repository, lambda                                                                      | `Route → Controller`                                                         |
+| **SOLAR-ROF-006** | Planet tem estrutura padrão                         | Planet sem `__init__.py`, `routes.py`, `controllers/`, `entity/`, `repository/`, `resources/`, `usecases/` | arquivos extras                                                              |
+| **SOLAR-SEG-001** | Sem credencial hardcoded                            | `SECRET_KEY = "abc"`                                                                                       | `os.environ[...]`, valor com prefixo `SOLAR_DEFAULT`, `# solar:allow-secret` |
+| **SOLAR-SEG-002** | Resource não expõe segredo                          | `password`, `password_hash`, `secret_key`, tokens                                                          | campos públicos                                                              |
+| **SOLAR-SEG-003** | Controller não implementa auth                      | `hashlib`, `bcrypt`, `jwt`, `hmac` no Controller                                                           | `nucleus.security`                                                           |
+| **SOLAR-SEG-004** | Sem segredo no código-fonte                         | chave AWS, chave privada, JWT, `ghp_…`                                                                     | `os.environ`, exemplo, marcador                                              |
+| **SOLAR-SEG-005** | Upload passa pelo Storage                           | `open`, `shutil`, `mimetypes` no Controller                                                                | `Storage.save(...)`                                                          |
+| **SOLAR-SEG-006** | Autenticação não se espalha                         | `current_user`, `abort(401)`, `has_permission` no Controller                                               | middleware + `nucleus.security`                                              |
+| **SOLAR-SEG-007** | Token seguro                                        | `algorithm="none"`, algoritmo implícito, sem `exp`, `verify_signature: False`                              | algoritmo explícito + `exp`                                                  |
+| **SOLAR-SEG-008** | Erro não vaza interno                               | `str(e)`, `f"{e}"`, `traceback.format_exc()` na resposta                                                   | detalhe no log                                                               |
+| **SOLAR-SEG-009** | Sem mass assignment                                 | `Entity(**request.json)`, `from_dict(request.json)`                                                        | campos explícitos, `**DocumentInput(...)`                                    |
+| **SOLAR-SEG-010** | Sem SSRF                                            | URL de `request.args`, `f"http://{host}/…"`                                                                | constante, configuração, `UrlGuard`                                          |
+| **SOLAR-SEG-011** | Persistência sem SQL inseguro _(extensão)_          | concatenação, f-string, `%`, `.format()`                                                                   | SQL parametrizado                                                            |
+| **SOLAR-ROF-007** | Um Model por arquivo                                | arquivo com dois Models                                                                                    | um Model por arquivo                                                         |
 
-## 14.1 Dependências (001 a 012)
+## 14.1 Dependências — SOLAR-RED (001 a 012)
 
 O bloco que sustenta a direção das camadas. Tudo o que ele olha vem de **uma** varredura: os
 `import` do projeto.
 
 ```python
-# [X] SOLAR-ARCH-001
+# [X] SOLAR-RED-001
 # orbits/planets/documents/repository.py
 from orbits.planets.users.entity import User                 # Planet → Planet
 
-# [X] SOLAR-ARCH-002
+# [X] SOLAR-RED-002
 # orbits/planets/documents/repository/user_repository.py
 from nucleus.database.database import Database               # Repository → Database
 
-# [X] SOLAR-ARCH-005
+# [X] SOLAR-RED-005
 # orbits/database/models/user_model.py
 from orbits.database.persistence.persistence import Persistence   # Model → Persistence
 ```
 
-A regra **007** tem uma sutileza que vale conhecer: ela olha **segmentos** do caminho, não
+A regra **SOLAR-RED-007** tem uma sutileza que vale conhecer: ela olha **segmentos** do caminho, não
 prefixos de texto.
 
 ```python
@@ -2239,12 +2245,12 @@ prefixos de texto.
 
 Detalhe de string que muda o resultado — porque `persistency` é outra palavra.
 
-## 14.2 Entrada HTTP (013, 029)
+## 14.2 Entrada HTTP — SOLAR-ROF/SOLAR-SEG (SOLAR-ROF-001, SOLAR-SEG-009)
 
 A rota declara **para onde** a requisição vai **e quem protege a entrada**:
 
 ```python
-# [X] SOLAR-ARCH-013 — transporta dados e NÃO declara guarda nenhum
+# [X] SOLAR-ROF-001 — transporta dados e NÃO declara guarda nenhum
 # planets/documents/routes.py
 documents_routes.add_url_rule(
     "/documents",
@@ -2270,7 +2276,7 @@ regra acusa. Não há mapa em outro arquivo para consultar — o que protege a e
 ela foi declarada.
 
 ```python
-# [X] SOLAR-ARCH-029 — mass assignment
+# [X] SOLAR-SEG-009 — mass assignment
 document = DocumentEntity(**request.json)
 
 # [OK] — os campos estão declarados
@@ -2291,10 +2297,10 @@ POST /documents
 {"title": "ok", "owner_id": 99, "is_admin": true}
 ```
 
-## 14.3 Rotas (016, 017, 018)
+## 14.3 Rotas — SOLAR-ROF (SOLAR-ROF-004, SOLAR-ROF-005)
 
 ```python
-# [X] SOLAR-ARCH-016 — decorator
+# [X] SOLAR-ROF-004 — decorator
 @app.route("/documents", methods=["POST"])
 def create_document(): ...
 
@@ -2304,10 +2310,10 @@ documents_routes.add_url_rule(
     methods=["POST"],
 )
 
-# [X] SOLAR-ARCH-017 — a rota aponta para o UseCase
+# [X] SOLAR-ROF-005 — a rota aponta para o UseCase
 documents_routes.add_url_rule("/documents", "create", CreateDocumentUseCase.execute)
 
-# [X] SOLAR-ARCH-018 — a rota mora no service
+# [X] SOLAR-ROF-004 — a rota mora no service
 # orbits/planets/documents/service.py
 documents_routes.add_url_rule(...)
 ```
@@ -2315,13 +2321,13 @@ documents_routes.add_url_rule(...)
 **Por que `add_url_rule` e não o decorator.** O decorator esconde a rota: quem lê o Controller
 não sabe que ele é uma rota, e quem lê a rota não sabe o que ela declara. O registro explícito
 mantém rota e Controller **no mesmo lugar** — e é legível por um scanner, que é o que permite a
-013 e a 018 existirem. O que PROTEGE a entrada não fica aqui: fica na Atmosphere do Planet
+SOLAR-ROF-001 e a SOLAR-ROF-004 existirem. O que PROTEGE a entrada não fica aqui: fica na Atmosphere do Planet
 (§14.2).
 
-## 14.4 Estrutura (019, 032)
+## 14.4 Estrutura — SOLAR-ROF (SOLAR-ROF-006, SOLAR-ROF-007)
 
 ```text
-# [X] SOLAR-ARCH-019 — repository.py solto, sem routes.py
+# [X] SOLAR-ROF-006 — repository.py solto, sem routes.py
 orbits/planets/user/
 ├── __init__.py
 └── repository.py
@@ -2345,11 +2351,11 @@ não enxerga — ele recebe a requisição já tratada.
 Os contratos do fluxo moram **dentro** dessas peças, e não em pasta própria. O de ENTRADA
 (`controllers/inputs/`) fica junto do Controller, que é quem o monta; o de SAÍDA
 (`usecases/outputs/`) fica junto do UseCase, que é quem o produz. Quem lê o Controller vê, no
-mesmo lugar, o que ele recebe; quem lê o UseCase vê o que ele devolve. A 019 exige os **oito
+mesmo lugar, o que ele recebe; quem lê o UseCase vê o que ele devolve. A SOLAR-ROF-006 exige os **oito
 itens** (2 arquivos + 6 diretórios) e não proíbe subpasta dentro deles.
 
 ```python
-# [X] SOLAR-ARCH-032 — dois Models no mesmo arquivo
+# [X] SOLAR-ROF-007 — dois Models no mesmo arquivo
 # orbits/database/models/entities.py
 class UserModel: ...
 class DocumentModel: ...
@@ -2359,7 +2365,7 @@ class DocumentModel: ...
 class UserModel: ...
 ```
 
-O que conta como Model usa a mesma convenção das regras 005/006: **lugar ou nome**.
+O que conta como Model usa a mesma convenção das regras SOLAR-RED-005/SOLAR-RED-006: **lugar ou nome**.
 
 | Critério                              | Exemplo                                                |
 | ------------------------------------- | ------------------------------------------------------ |
@@ -2367,16 +2373,16 @@ O que conta como Model usa a mesma convenção das regras 005/006: **lugar ou no
 | módulo terminando em `model`/`_model` | `planets.documents.document_model`                     |
 | classe terminando em `Model`          | `UserModel`                                            |
 
-## 14.5 Segredos (020, 021, 023)
+## 14.5 Segredos — SOLAR-SEG (SOLAR-SEG-001, SOLAR-SEG-002, SOLAR-SEG-004)
 
 Duas regras olham segredo por ângulos diferentes:
 
-|             | 020                  | 023                              |
+|             | SOLAR-SEG-001        | SOLAR-SEG-004                    |
 | ----------- | -------------------- | -------------------------------- |
 | detecta por | **nome**             | **conteúdo**                     |
 | exemplo     | `SECRET_KEY = "abc"` | `CHAVE = "AKIAIOSFODNN7EXAMPLE"` |
 
-A 023 é a que pega o caso difícil — o segredo com nome inofensivo. E é a que mais precisa de
+A SOLAR-SEG-004 é a que pega o caso difícil — o segredo com nome inofensivo. E é a que mais precisa de
 cuidado contra falso positivo, porque um padrão que casa pode casar em documentação, em
 exemplo e em teste. Ela tem quatro saídas:
 
@@ -2407,10 +2413,10 @@ OUTRA = 1  # solar:allow-secret
 CHAVE = "AKIA2B3C4D5E6F7G8H9J"     # ainda é violação
 ```
 
-## 14.6 SQL e arquivos (024, 025)
+## 14.6 SQL e arquivos — SOLAR-SEG (SOLAR-SEG-005, SOLAR-SEG-011)
 
 ```python
-# [X] SOLAR-ARCH-024
+# [X] SOLAR-SEG-011
 query = "SELECT * FROM documents WHERE owner_id = " + str(owner_id)
 query = f"SELECT * FROM documents WHERE owner_id = {owner_id}"
 query = "SELECT * FROM documents WHERE owner_id = %s" % owner_id
@@ -2427,10 +2433,10 @@ Database.session().execute(
 ```
 
 A classe `Query`, que existia aqui antes, **não existe mais**: a aplicação usa a ORM, e a
-barreira contra SQL inseguro é a própria SOLAR-ARCH-024.
+barreira contra SQL inseguro é a própria SOLAR-SEG-011.
 
 ```python
-# [X] SOLAR-ARCH-025 — o Controller manipulando arquivo
+# [X] SOLAR-SEG-005 — o Controller manipulando arquivo
 class DocumentController:
 
     def upload(self, file):
@@ -2449,10 +2455,10 @@ class UploadDocumentUseCase:
         return Storage.save(file.filename, file.content)
 ```
 
-## 14.7 Autenticação e token (022, 026, 027)
+## 14.7 Autenticação e token — SOLAR-SEG (SOLAR-SEG-003, SOLAR-SEG-006, SOLAR-SEG-007)
 
 ```python
-# [X] SOLAR-ARCH-022 — o Controller implementando autenticação
+# [X] SOLAR-SEG-003 — o Controller implementando autenticação
 class UserController:
 
     def login(self, senha):
@@ -2466,7 +2472,7 @@ class UserController:
 ```
 
 ```python
-# [X] SOLAR-ARCH-026 — autenticação espalhada pelo Controller
+# [X] SOLAR-SEG-006 — autenticação espalhada pelo Controller
 class DocumentController:
 
     def list(self):
@@ -2490,7 +2496,7 @@ class DocumentController:
 ```
 
 ```python
-# [X] SOLAR-ARCH-027
+# [X] SOLAR-SEG-007
 jwt.encode(payload, key, algorithm="none")          # sem assinatura
 jwt.encode(payload, key)                            # ou sem algoritmo explícito
 jwt.encode({"sub": "1"}, key, algorithm="HS256")    # sem "exp"
@@ -2502,10 +2508,10 @@ jwt.encode({"sub": "1", "exp": expires_at}, key, algorithm="HS256")
 jwt.decode(token, key, algorithms=["HS256"])
 ```
 
-## 14.8 Erro e saída (028)
+## 14.8 Erro e saída — SOLAR-SEG (SOLAR-SEG-008)
 
 ```python
-# [X] SOLAR-ARCH-028 — o detalhe interno sai na resposta
+# [X] SOLAR-SEG-008 — o detalhe interno sai na resposta
 except Exception as error:
     return {"error": str(error)}
     return jsonify({"erro": f"{error}"})
@@ -2530,10 +2536,10 @@ A distinção existe porque passar **perto** de um `return` não basta: o detalh
 **no valor retornado**. Sem esse cuidado, guardar a mensagem em um registro de relatório seria
 acusado — e a regra reprovaria o próprio código que a executa.
 
-## 14.9 Chamada externa (030)
+## 14.9 Chamada externa — SOLAR-SEG (SOLAR-SEG-010)
 
 ```python
-# [X] SOLAR-ARCH-030
+# [X] SOLAR-SEG-010
 requests.get(request.args["url"])
 httpx.get(f"http://{host}/internal")
 requests.get(url)
@@ -2579,7 +2585,7 @@ orbits/planets/documents/
         └── document_output.py
 ```
 
-### Os contratos nomeados (regra 015)
+### Os contratos nomeados (regra SOLAR-ROF-003)
 
 Cada contrato mora ao lado de quem o usa: o de **entrada** junto do Controller, que é
 quem o monta; o de **saída** junto do UseCase, que é quem o produz.
@@ -2607,7 +2613,7 @@ class DocumentOutput:
     owner_id: int
 ```
 
-### O Resource (regras 014 e 021)
+### O Resource (regras SOLAR-ROF-002 e SOLAR-SEG-002)
 
 ```python
 # orbits/planets/documents/resources/document_resource.py
@@ -2673,7 +2679,7 @@ class CreateDocumentUseCase(UseCase):
         )
 ```
 
-### O Repository (regras 002 e 003)
+### O Repository (regras SOLAR-RED-002 e SOLAR-RED-003)
 
 ```python
 # orbits/planets/documents/repository/document_repository.py
@@ -2687,9 +2693,9 @@ class DocumentRepository:
 ```
 
 Dois detalhes: o Repository fala com a **Persistence** (não com o `Database`), e os campos são
-**explícitos** — nunca o dicionário da requisição inteiro (regra 029).
+**explícitos** — nunca o dicionário da requisição inteiro (regra SOLAR-SEG-009).
 
-### O Controller (regras 014, 022, 025, 026, 028)
+### O Controller (regras SOLAR-ROF-002, SOLAR-SEG-003, SOLAR-SEG-005, SOLAR-SEG-006, SOLAR-SEG-008)
 
 ```python
 # orbits/planets/documents/controllers/document_controller.py
@@ -2714,7 +2720,7 @@ class DocumentController:
         # O corpo JÁ TRATADO pela Atmosphere.
         data = g.solar_data
 
-        # O corpo vira CONTRATO nomeado (029).
+        # O corpo vira CONTRATO nomeado (SOLAR-SEG-009).
         document_input = create_document_input(data)
 
         output = create_document_use_case().execute(document_input)
@@ -2722,11 +2728,11 @@ class DocumentController:
         return DocumentResource.to_object(output), 201
 ```
 
-O Controller: **não** verifica autenticação na mão (026), **não** implementa hash (022), **não**
-toca em arquivo (025), **não** monta erro com detalhe (028) e **não** traduz a saída — quem
-traduz é o Resource (014).
+O Controller: **não** verifica autenticação na mão (SOLAR-SEG-006), **não** implementa hash (SOLAR-SEG-003), **não**
+toca em arquivo (SOLAR-SEG-005), **não** monta erro com detalhe (SOLAR-SEG-008) e **não** traduz a saída — quem
+traduz é o Resource (SOLAR-ROF-002).
 
-### O Validator e o Sanitizer (regra 013)
+### O Validator e o Sanitizer (regra SOLAR-ROF-001)
 
 ```python
 from nucleus.contracts.sanitizer import Sanitizer
@@ -2789,7 +2795,7 @@ document_routes.add_url_rule(
 ```
 
 A rota declara **URL → Controller → método** E **quem protege a entrada** — as duas coisas no
-mesmo lugar, e é isso que a SOLAR-ARCH-013 lê. O `SolarBlueprint` é o que permite declará-las
+mesmo lugar, e é isso que a SOLAR-ROF-001 lê. O `SolarBlueprint` é o que permite declará-las
 juntas: o `add_url_rule` do Flask não conhece `sanitizer=` nem `validator=` (§5.9).
 
 #### A rota, argumento por argumento
@@ -2835,7 +2841,7 @@ Ele é explícito porque três coisas dependem dele:
 1. **`url_for`** — monta a URL sem escrevê-la à mão em lugar nenhum;
 2. **a chave dos guardas** — o `SolarBlueprint` guarda o par (Sanitizer, Validator) por
    endpoint, e o mecanismo da fronteira faz a MESMA chave na hora da requisição (§5.9);
-3. **as mensagens das regras** — quando a 017 ou a 018 reprovam uma rota, é este nome que
+3. **as mensagens das regras** — quando a SOLAR-ROF-005 ou a SOLAR-ROF-004 reprovam uma rota, é este nome que
    identifica qual.
 
 Um nome legível diz o que a rota FAZ quando aparece num log:
@@ -2938,10 +2944,10 @@ O que a arquitetura barra aqui, e por quê:
 
 | Tentação                                   | O que acontece                                    | Regra                        |
 | ------------------------------------------ | ------------------------------------------------- | ---------------------------- |
-| `open(f"uploads/{file.filename}", "wb")`   | path traversal no nome do arquivo                 | 025                          |
+| `open(f"uploads/{file.filename}", "wb")`   | path traversal no nome do arquivo                 | SOLAR-SEG-005                |
 | confiar só na extensão                     | script renomeado para `.pdf` passa                | 13 (verificação de conteúdo) |
 | validar e parar no primeiro erro           | quem enviou 3 arquivos errados corrige um por vez | 13 (acumula)                 |
-| devolver `str(error)` se a gravação falhar | caminho interno do servidor na resposta           | 028                          |
+| devolver `str(error)` se a gravação falhar | caminho interno do servidor na resposta           | SOLAR-SEG-008                |
 
 ## 15.3 Login com token e proteção contra brute force
 
@@ -2978,14 +2984,14 @@ E o token, pelo componente da arquitetura:
 
 ```python
 token = Token(secret_key=identity.secret_key, expires_hours=8)
-jwt_string = token.create(id_user=42)      # HS256 + exp — passa na regra 027
+jwt_string = token.create(id_user=42)      # HS256 + exp — passa na regra SOLAR-SEG-007
 ```
 
 Três decisões que a arquitetura força:
 
-- a senha é conferida com **`Password.verify`**, nunca com `hashlib` no Controller (022);
-- a verificação de sessão **não** fica espalhada no Controller (026);
-- o erro de credencial é **genérico** — não diz se o e-mail existe (028 por consequência).
+- a senha é conferida com **`Password.verify`**, nunca com `hashlib` no Controller (SOLAR-SEG-003);
+- a verificação de sessão **não** fica espalhada no Controller (SOLAR-SEG-006);
+- o erro de credencial é **genérico** — não diz se o e-mail existe (SOLAR-SEG-008 por consequência).
 
 ## 15.4 Respondendo erro sem vazar
 
@@ -3062,7 +3068,7 @@ session.execute(
 session.execute(f"SELECT * FROM documents WHERE owner_id = {owner_id}")
 ```
 
-A última forma é exatamente o que a SOLAR-ARCH-024 reprova.
+A última forma é exatamente o que a SOLAR-SEG-011 reprova.
 
 ## 15.6 O fluxo completo, ponta a ponta — o Planet `example`
 
@@ -3113,17 +3119,17 @@ blueprint.add_url_rule(
 
 O caminho de uma requisição, na ordem em que acontece:
 
-| Etapa                  | Quem                        | O que decide                                       |
-| ---------------------- | --------------------------- | -------------------------------------------------- |
-| 1. rota                | `routes.py`                 | qual Controller, e quais guardas a entrada declara |
-| 2. entrada             | `RequestPipeline`           | o corpo tem os campos? o texto vem limpo?          |
-| 3. contrato            | `CreateUserController`      | corpo HTTP → `CreateUserInput` (029)               |
-| 4. negócio             | `CreateUserUseCase`         | o e-mail tem forma de e-mail? já existe?           |
-| 5. fronteira do Planet | `ExampleRepository`         | traduz "usuário" para a Persistence                |
-| 6. persistência        | `UserPersistency` + `Users` | o INSERT, pela ORM                                 |
-| 7. fachada             | `Database` → driver         | a única porta para o banco                         |
-| 8. contrato de saída   | `CreateUserOutput`          | o que o UseCase devolve, já nomeado (015)          |
-| 9. resposta HTTP       | `UserResource.to_object`    | o que sai — e o que **não** sai (014, 021)         |
+| Etapa                  | Quem                        | O que decide                                                   |
+| ---------------------- | --------------------------- | -------------------------------------------------------------- |
+| 1. rota                | `routes.py`                 | qual Controller, e quais guardas a entrada declara             |
+| 2. entrada             | `RequestPipeline`           | o corpo tem os campos? o texto vem limpo?                      |
+| 3. contrato            | `CreateUserController`      | corpo HTTP → `CreateUserInput` (SOLAR-SEG-009)                 |
+| 4. negócio             | `CreateUserUseCase`         | o e-mail tem forma de e-mail? já existe?                       |
+| 5. fronteira do Planet | `ExampleRepository`         | traduz "usuário" para a Persistence                            |
+| 6. persistência        | `UserPersistency` + `Users` | o INSERT, pela ORM                                             |
+| 7. fachada             | `Database` → driver         | a única porta para o banco                                     |
+| 8. contrato de saída   | `CreateUserOutput`          | o que o UseCase devolve, já nomeado (SOLAR-ROF-003)            |
+| 9. resposta HTTP       | `UserResource.to_object`    | o que sai — e o que **não** sai (SOLAR-ROF-002, SOLAR-SEG-002) |
 
 ### A requisição
 
@@ -3143,7 +3149,7 @@ curl -X POST http://localhost:5000/examples/users \
 ```
 
 Repare no que **não** está no corpo: `senha`, `senha_hash`, o Model inteiro. O Resource
-é a fronteira (§15.1, SOLAR-ARCH-021), e a senha foi para o banco como hash do bcrypt — nunca
+é a fronteira (§15.1, SOLAR-SEG-002), e a senha foi para o banco como hash do bcrypt — nunca
 como texto.
 
 ### Quando a entrada não serve
@@ -3277,15 +3283,14 @@ class UseCaseContractScanner:
 ```python
 # nucleus/rules/architecture/use_cases_must_declare_named_contracts.py
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import STRUCTURE, Rule, rule_code
 from nucleus.rules.scanner.use_case_contract import UseCaseContract
 
 
 class UseCasesMustDeclareNamedContracts(Rule):
 
     def code(self) -> str:
-        return "SOLAR-ARCH-033"
-
+        return rule_code(STRUCTURE, 8)
     def description(self) -> str:
         return "Todo UseCase deve declarar os seus contratos de entrada e saída."
 
@@ -3352,9 +3357,9 @@ arquivo próprio e as duas o importam. Não duplique o `if`:
 ```text
 nucleus/rules/scanner/
 ├── controller_module.py            o critério COMPARTILHADO
-├── controller_return.py            o contexto da 014
-├── controller_return_scanner.py    o scanner da 014
-└── controller_security_scanner.py  o scanner da 022 (importa o critério)
+├── controller_return.py            o contexto da SOLAR-ROF-002
+├── controller_return_scanner.py    o scanner da SOLAR-ROF-002
+└── controller_security_scanner.py  o scanner da SOLAR-SEG-003 (importa o critério)
 ```
 
 A razão é a de sempre: duas cópias divergem. Antes desse arquivo existir, três
@@ -3437,7 +3442,7 @@ Três níveis, e cada um responde a uma pergunta diferente:
 
 O terceiro é o que costuma faltar, e é o mais valioso. `Database.init(DriverSQLAlchemy(config))`
 diz o que faz; o comentário explica que a aplicação fala com a **fachada** e nunca com o driver
-(SOLAR-ARCH-008), e que interpretar a configuração crua é decisão do driver.
+(SOLAR-RED-008), e que interpretar a configuração crua é decisão do driver.
 
 O que **não** fazer:
 
@@ -3446,7 +3451,7 @@ O que **não** fazer:
 - deixar comentário desatualizado — comentário errado é pior que comentário nenhum.
 
 Quando a decisão vem de uma regra da arquitetura, **cite o código dela** no comentário:
-`SOLAR-ARCH-014`. É o que liga a linha ao motivo, e o motivo ao teste que o verifica.
+`SOLAR-ROF-002`. É o que liga a linha ao motivo, e o motivo ao teste que o verifica.
 
 ---
 
@@ -3585,12 +3590,12 @@ estranha derrubaria a varredura inteira.
 
 ## 17.6 Cobertura
 
-| Situação                 | Regras                                                  |
-| ------------------------ | ------------------------------------------------------- |
-| Verificadas pelo comando | as **29** com scanner estático (30 classes menos a 015) |
-| Sem verificação          | **015** — o contrato nomeado do UseCase não tem scanner |
-| Absorvida                | **004** — virou a 001                                   |
-| Removida                 | **031** — o CSRF passou para o pipeline                 |
+| Situação                 | Regras                                                            |
+| ------------------------ | ----------------------------------------------------------------- |
+| Verificadas pelo comando | as **29** com scanner estático (30 classes menos a SOLAR-ROF-003) |
+| Sem verificação          | **SOLAR-ROF-003** — o contrato nomeado do UseCase não tem scanner |
+| Absorvida                | **SOLAR-RED-004** — virou a SOLAR-RED-001                         |
+| Removida                 | a regra de CSRF por rota — passou para o pipeline                 |
 
 ## 17.7 O registro de erros
 
@@ -3638,7 +3643,7 @@ Cada linha da tabela `error_log` guarda:
 | `method` / `route` / `status` | o contexto da requisição                        |
 | `solar_id` / `environment`    | qual aplicação, e em que ambiente               |
 
-O detalhe interno fica **aqui**, não na resposta: é a separação que a SOLAR-ARCH-028 exige.
+O detalhe interno fica **aqui**, não na resposta: é a separação que a SOLAR-SEG-008 exige.
 
 ```python
 log.find("d3adbeef")   # o registro daquela referência
@@ -3703,8 +3708,8 @@ HttpInput                 correct
 SecretLiteral             violation
 ...
 
-SOLAR-ARCH-020 · Credenciais e segredos não podem estar hardcoded no código. (1)
-  config/settings.py:12  SOLAR-ARCH-020: o valor de 'SECRET_KEY' está hardcoded em
+SOLAR-SEG-001 · Credenciais e segredos não podem estar hardcoded no código. (1)
+  config/settings.py:12  SOLAR-SEG-001: o valor de 'SECRET_KEY' está hardcoded em
   config/settings.py:12. Credenciais e segredos devem vir do Environment, nunca do
   código-fonte.
 
@@ -3843,14 +3848,14 @@ Referência rápida: onde cada classe vive e para que serve.
 
 Documentar o que não está resolvido faz parte de documentar:
 
-| Pendência                     | Detalhe                                                                                                                                                     |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **024 só olha a Persistence** | SQL inseguro fora de um módulo com segmento `persistence` não é flagrado                                                                                    |
-| **030 decide por nome**       | sem análise de fluxo, uma URL "lavada" por várias funções não é rastreável                                                                                  |
-| **015 sem scanner**           | o contexto é o contrato nomeado do UseCase, sem verificação estática                                                                                        |
-| **Fronteira só tem guardas**  | a rota declara Sanitizer e Validator; autenticação, autorização e rate-limit por Planet ainda não têm mecanismo — o lugar existe, a peça não                |
-| **Rota fora da fronteira**    | o Controller não recebe dado nenhum, e o único aviso é a SOLAR-ARCH-013 na análise estática: em execução, a ausência do dado pode passar por campo opcional |
-| **A verificação custa ~25s**  | são 17 varreduras independentes da mesma árvore; um cache de AST compartilhado derrubaria isso para ordem de 1s                                             |
+| Pendência                               | Detalhe                                                                                                                                                    |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SOLAR-SEG-011 só olha a Persistence** | SQL inseguro fora de um módulo com segmento `persistence` não é flagrado                                                                                   |
+| **SOLAR-SEG-010 decide por nome**       | sem análise de fluxo, uma URL "lavada" por várias funções não é rastreável                                                                                 |
+| **SOLAR-ROF-003 sem scanner**           | o contexto é o contrato nomeado do UseCase, sem verificação estática                                                                                       |
+| **Fronteira só tem guardas**            | a rota declara Sanitizer e Validator; autenticação, autorização e rate-limit por Planet ainda não têm mecanismo — o lugar existe, a peça não               |
+| **Rota fora da fronteira**              | o Controller não recebe dado nenhum, e o único aviso é a SOLAR-ROF-001 na análise estática: em execução, a ausência do dado pode passar por campo opcional |
+| **A verificação custa ~25s**            | são 17 varreduras independentes da mesma árvore; um cache de AST compartilhado derrubaria isso para ordem de 1s                                            |
 
 O `python observatory/solar check` sai **`correct`** no projeto: as 17 verificações passam.
 
@@ -3862,11 +3867,11 @@ aprova o caso, é uma regra que não olha para ele.
 
 ## Histórico de conformidade
 
-| Regra   | Situação                                                                                                                                                      |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **019** | os Planets `auth` e `user` foram reestruturados para a estrutura padrão — conformes                                                                           |
-| **031** | deixou de existir como regra: o CSRF é do pipeline, não de cada rota                                                                                          |
-| **020** | os 3 falsos positivos foram resolvidos pela convenção: valor de default leva o prefixo `SOLAR_DEFAULT`, e valor que não é segredo leva `# solar:allow-secret` |
-| **010** | deixou de acusar teste quando o escopo excluiu `tests/`                                                                                                       |
-| **028** | o próprio `ProjectValidator` acusado pela regra; a regra foi refinada (destino `local`), não o código                                                         |
-| **024** | a classe `Query` saiu: a aplicação usa ORM, e a barreira é a própria regra                                                                                    |
+| Regra             | Situação                                                                                                                                                      |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SOLAR-ROF-006** | os Planets `auth` e `user` foram reestruturados para a estrutura padrão — conformes                                                                           |
+| regra de CSRF     | deixou de existir como regra: o CSRF é do pipeline, não de cada rota                                                                                          |
+| **SOLAR-SEG-001** | os 3 falsos positivos foram resolvidos pela convenção: valor de default leva o prefixo `SOLAR_DEFAULT`, e valor que não é segredo leva `# solar:allow-secret` |
+| **SOLAR-RED-010** | deixou de acusar teste quando o escopo excluiu `tests/`                                                                                                       |
+| **SOLAR-SEG-008** | o próprio `ProjectValidator` acusado pela regra; a regra foi refinada (destino `local`), não o código                                                         |
+| **SOLAR-SEG-011** | a classe `Query` saiu: a aplicação usa ORM, e a barreira é a própria regra                                                                                    |

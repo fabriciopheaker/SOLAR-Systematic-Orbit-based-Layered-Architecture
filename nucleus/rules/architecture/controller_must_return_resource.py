@@ -1,4 +1,4 @@
-# SOLAR-ARCH-014 — Controller que devolve uma resposta sem passar por
+# SOLAR-ROF-002 — Controller que devolve uma resposta sem passar por
 # Resource.
 #
 # Regra de ANÁLISE ESTÁTICA: o contexto vem do
@@ -7,7 +7,7 @@
 #
 # Fluxo exigido: Controller -> Resource -> Response.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import STRUCTURE, Rule, rule_code
 from nucleus.rules.scanner.controller_return import ControllerReturn
 
 
@@ -15,7 +15,7 @@ class ControllerMustReturnResource(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-014
+    SOLAR-ROF-002
 
     Todo Controller deve retornar uma resposta que tenha passado por
     um Resource.
@@ -48,15 +48,15 @@ class ControllerMustReturnResource(Rule):
     O motivo é o de sempre: sem o Resource, um campo interno
     (`password`, `secret_key`, um token) nasce exposto por descuido, e
     o cliente passa a depender dele. Quem decide o que é público é o
-    Resource — e é a SOLAR-ARCH-021 que julga o que ele expõe.
+    Resource — e é a SOLAR-SEG-002 que julga o que ele expõe.
 
-    Diferente das regras de dependência (SOLAR-ARCH-001 a 012), esta
+    Diferente das regras de dependência (SOLAR-RED-001 a SOLAR-RED-012), esta
     NÃO valida o grafo de imports. O contexto dela é o RETORNO de um
     método de Controller.
     """
 
     def code(self) -> str:
-        return "SOLAR-ARCH-014"
+        return rule_code(STRUCTURE, 2)
 
     def description(self) -> str:
         return (

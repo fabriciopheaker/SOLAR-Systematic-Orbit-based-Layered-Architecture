@@ -26,7 +26,7 @@ class Sanitizer(ABC):
     ter podido dizer que ele faltou.
 
     Toda entrada HTTP que transporta dados externos deve passar
-    por um Sanitizer (SOLAR-ARCH-013).
+    por um Sanitizer (SOLAR-ROF-001).
 
     O Sanitizer é específico ao TIPO DE CONTEÚDO recebido:
 

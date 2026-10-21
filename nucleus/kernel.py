@@ -151,7 +151,7 @@ class Kernel:
         # BANCO DE DADOS
         #
         # A aplicação fala com a fachada `Database` e NUNCA com o
-        # driver (SOLAR-ARCH-008). O que o driver monta — dialect,
+        # driver (SOLAR-RED-008). O que o driver monta — dialect,
         # URL de conexão, engine — é decisão dele, a partir do
         # config cru que veio do ambiente.
         #
@@ -248,7 +248,7 @@ class Kernel:
 
             # O payload que sai NÃO leva o detalhe interno: leva
             # código estável, mensagem genérica e a referência que
-            # liga esta resposta ao registro (SOLAR-ARCH-028).
+            # liga esta resposta ao registro (SOLAR-SEG-008).
             #
             # O contexto vai junto para o registro: método, rota e
             # status são o que permite investigar depois.

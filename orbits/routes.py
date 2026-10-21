@@ -1,7 +1,7 @@
 """
 O ponto central das rotas da aplicação.
 
-A SOLAR-ARCH-018 diz onde rota pode morar: em
+A SOLAR-ROF-004 diz onde rota pode morar: em
 `planets/<planeta>/routes.py` ou aqui. Não existe um terceiro
 lugar — é o que impede rota declarada no meio de um service, de um
 repository ou de um controller.
@@ -37,7 +37,7 @@ def routes() -> Blueprint:
     #
     # Deixou de morar aqui: ela pertence ao Planet `solar`, que é o
     # Planet da própria plataforma. Aqui não sobra nenhuma rota
-    # avulsa — e é isso que faz a SOLAR-ARCH-018 valer sem exceção.
+    # avulsa — e é isso que faz a SOLAR-ROF-004 valer sem exceção.
 
     # PLANETS
     #

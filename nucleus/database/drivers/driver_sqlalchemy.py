@@ -2,7 +2,7 @@
 Driver de persistência da SOLAR, sobre SQLAlchemy.
 
 Este é o ÚNICO lugar do projeto que pode importar `sqlalchemy`
-(SOLAR-ARCH-010). Model, Persistence e Planet chegam à ORM pela
+(SOLAR-RED-010). Model, Persistence e Planet chegam à ORM pela
 fachada `Database`.
 """
 
@@ -16,7 +16,7 @@ import sqlalchemy
 # com os Models: o SQLAlchemy sozinho cria o que falta, mas nao
 # enxerga o que MUDOU. E biblioteca de banco, e por isso mora no
 # driver — o unico lugar do projeto que conhece a tecnologia
-# (SOLAR-ARCH-010).
+# (SOLAR-RED-010).
 #
 # `produce_migrations` e o mesmo motor do `alembic revision
 # --autogenerate`, usado aqui sem arquivo de configuracao e sem

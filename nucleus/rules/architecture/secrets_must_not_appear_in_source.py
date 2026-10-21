@@ -1,16 +1,16 @@
-# SOLAR-ARCH-023 — segredo reconhecido pelo CONTEÚDO.
+# SOLAR-SEG-004 — segredo reconhecido pelo CONTEÚDO.
 #
-# Irmã da SOLAR-ARCH-020, e a diferença é o que cada uma olha:
+# Irmã da SOLAR-SEG-001, e a diferença é o que cada uma olha:
 #
-#     020   o NOME da variável (SECRET_KEY, password, ...)
-#     023   o VALOR — pega o segredo mesmo com nome inofensivo
+#     SOLAR-SEG-001   o NOME da variável (SECRET_KEY, password, ...)
+#     SOLAR-SEG-004   o VALOR — pega o segredo mesmo com nome inofensivo
 #           (CHAVE = "AKIA...")
 #
 # As duas podem apontar para o mesmo trecho. São regras separadas
-# porque a 020 não enxerga segredo de nome neutro, e a 023 não
+# porque a SOLAR-SEG-001 não enxerga segredo de nome neutro, e a SOLAR-SEG-004 não
 # enxerga segredo que não case com nenhum padrão conhecido.
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import SECURITY, Rule, rule_code
 from nucleus.rules.scanner.secret_occurrence import SecretOccurrence
 
 
@@ -18,11 +18,11 @@ class SecretsMustNotAppearInSource(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-023
+    SOLAR-SEG-004
 
     Secrets NÃO podem estar no código-fonte.
 
-    Diferente da SOLAR-ARCH-020 — que detecta pelo NOME da
+    Diferente da SOLAR-SEG-001 — que detecta pelo NOME da
     variável (SECRET_KEY, password, ...) — esta regra detecta pelo
     CONTEÚDO: o segredo é reconhecido mesmo que o nome seja
     inofensivo.
@@ -74,7 +74,7 @@ class SecretsMustNotAppearInSource(Rule):
         self.ignore_suppressed = ignore_suppressed
 
     def code(self) -> str:
-        return "SOLAR-ARCH-023"
+        return rule_code(SECURITY, 4)
 
     def description(self) -> str:
         return "Secrets não podem estar no código-fonte."

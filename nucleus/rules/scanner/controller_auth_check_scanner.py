@@ -3,7 +3,7 @@
 # Dois vocabulários, porque são duas formas de verificar: o NOME
 # (`current_user`, `has_permission`) e o CÓDIGO HTTP (`abort(401)`,
 # `abort(403)`). Um Controller pode fazer só uma delas — as duas são
-# descritas para a SOLAR-ARCH-026 julgar.
+# descritas para a SOLAR-SEG-006 julgar.
 import ast
 from pathlib import Path
 
@@ -34,7 +34,7 @@ class ControllerAuthCheckScanner:
         abort(403)                → "abort(403)"
 
     O scanner NÃO decide se há violação: isso é responsabilidade
-    da Rule SOLAR-ARCH-026.
+    da Rule SOLAR-SEG-006.
 
     O código NÃO é executado: a análise é feita sobre a AST.
     """
@@ -105,7 +105,7 @@ class ControllerAuthCheckScanner:
         findings: list[ControllerAuthChecks] = []
 
         # Um Controller por classe, pelo sufixo do nome, DENTRO de um
-        # módulo de Controller — mesma convenção da SOLAR-ARCH-022.
+        # módulo de Controller — mesma convenção da SOLAR-SEG-003.
         for node in ast.walk(tree):
 
             if not isinstance(node, ast.ClassDef):

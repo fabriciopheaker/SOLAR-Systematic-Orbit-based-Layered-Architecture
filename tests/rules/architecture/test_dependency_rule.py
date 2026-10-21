@@ -220,7 +220,7 @@ def test_planet_can_communicate_with_another_planet_through_satellite():
 
 
 # model nao pode depender de persistence
-# pode depender de database (SOLAR-ARCH-006)
+# pode depender de database (SOLAR-RED-006)
 def test_model_cannot_depend_on_persistence():
 
     dependency = Dependency(
@@ -268,7 +268,7 @@ def test_model_can_depend_on_database():
 
 
 # model nao pode acessar a tecnologia de ORM diretamente
-# deve usar a fachada nucleus.database.database (SOLAR-ARCH-006)
+# deve usar a fachada nucleus.database.database (SOLAR-RED-006)
 def test_model_cannot_access_orm_directly():
 
     dependency = Dependency(
@@ -365,7 +365,7 @@ def test_persistence_in_orbits_database_is_valid():
 
 
 # orbits nao pode acessar o driver diretamente
-# deve usar a fachada nucleus.database.database (SOLAR-ARCH-008)
+# deve usar a fachada nucleus.database.database (SOLAR-RED-008)
 def test_orbits_cannot_access_driver_directly():
 
     dependency = Dependency(
@@ -554,7 +554,7 @@ def test_planet_can_access_allowed_nucleus_facade():
 
 
 # planet nao pode acessar servico externo diretamente
-# a comunicacao deve passar por um Satellite (SOLAR-ARCH-012)
+# a comunicacao deve passar por um Satellite (SOLAR-RED-012)
 def test_planet_cannot_access_external_service_directly():
 
     dependency = Dependency(

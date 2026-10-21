@@ -1,18 +1,18 @@
-# SOLAR-ARCH-003 — Repository fala com Persistence.
+# SOLAR-RED-003 — Repository fala com Persistence.
 #
-# Fecha o caminho Repository -> Persistence -> Database. As regras 002,
-# 005 e 009 cuidam de cada atalho proibido; esta cuida do atalho mais
+# Fecha o caminho Repository -> Persistence -> Database. As regras SOLAR-RED-002,
+# SOLAR-RED-005 e SOLAR-RED-009 cuidam de cada atalho proibido; esta cuida do atalho mais
 # tentador de todos: ir direto no Model, que já está ali importável.
 from nucleus.rules.scanner.dependency import Dependency
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import DEPENDENCY, Rule, rule_code
 
 
 class RepositoryMustUsePersistence(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-003
+    SOLAR-RED-003
 
     Um Repository deve acessar dados através de Persistence.
 
@@ -55,7 +55,7 @@ class RepositoryMustUsePersistence(Rule):
     )
 
     def code(self) -> str:
-        return "SOLAR-ARCH-003"
+        return rule_code(DEPENDENCY, 3)
 
     def description(self) -> str:
         return (

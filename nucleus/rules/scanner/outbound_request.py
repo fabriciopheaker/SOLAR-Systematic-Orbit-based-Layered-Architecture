@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-030: uma chamada para serviço externo.
+# Contexto da SOLAR-SEG-010: uma chamada para serviço externo.
 #
 # O scanner descreve quem COMPÕE a URL (`names`), e a regra decide se
 # esses nomes são confiáveis. A decisão fica na regra porque
@@ -28,7 +28,7 @@ class OutboundRequest:
             request.args["next"]              → ("request", "args")
 
     O scanner DESCREVE (quais identificadores compõem a URL);
-    quem decide a política é a Rule SOLAR-ARCH-030.
+    quem decide a política é a Rule SOLAR-SEG-010.
     """
 
     package: str

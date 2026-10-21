@@ -1,5 +1,6 @@
 import importlib
 import pkgutil
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -67,12 +68,12 @@ class NeverFails(AlwaysFails):
         return
 
 
-def _module_rules() -> dict[str, Rule]:
+def _module_rule_instances() -> list[Rule]:
     """
     Descobre TODAS as regras escritas em architecture/.
     """
 
-    found: dict[str, Rule] = {}
+    found: list[Rule] = []
 
     for module_info in pkgutil.iter_modules(architecture.__path__):
 
@@ -88,11 +89,20 @@ def _module_rules() -> dict[str, Rule]:
             if not issubclass(value, Rule) or value is Rule:
                 continue
 
-            rule = value()
-
-            found[rule.code()] = rule
+            found.append(value())
 
     return found
+
+
+def _module_rules() -> dict[str, Rule]:
+    """
+    Descobre TODAS as regras escritas em architecture/, por código.
+    """
+
+    return {
+        rule.code(): rule
+        for rule in _module_rule_instances()
+    }
 
 
 # ---------------------------------------------------------------------
@@ -278,9 +288,19 @@ def test_empty_report_does_not_explode():
 
 # regras sem scanner estatico: o contexto delas e montado em outro
 # lugar que nao a varredura do codigo
+#
+# A RED-004 nao aparece aqui porque nao tem classe propria: ela foi
+# absorvida pela RED-001 e existe apenas no catalogo.
 RULES_WITHOUT_SCANNER = frozenset({
-    "SOLAR-ARCH-004",
-    "SOLAR-ARCH-015",
+    "SOLAR-ROF-003",
+})
+
+
+# A ROF-004 é uma regra COMPOSTA no catálogo: uma única regra,
+# verificada por duas classes (o estilo da declaração e o módulo
+# onde a rota mora). As duas emitem o mesmo código de propósito.
+SHARED_RULE_CODES = frozenset({
+    "SOLAR-ROF-004",
 })
 
 
@@ -307,7 +327,62 @@ def test_no_rule_is_registered_twice():
         for rule in check.rules
     ]
 
-    assert len(codes) == len(set(codes))
+    shared = {
+        code
+        for code in set(codes)
+        if codes.count(code) > 1
+    }
+
+    assert shared <= SHARED_RULE_CODES
+
+
+# o codigo carrega a CATEGORIA da regra: RED (dependencia), ROF
+# (organizacao estrutural e fluxo HTTP) ou SEG (seguranca e
+# tratamento de dados)
+def test_every_rule_code_follows_the_convention():
+
+    for code in _module_rules():
+
+        assert re.fullmatch(r"SOLAR-(RED|ROF|SEG)-\d{3}", code), code
+
+
+# dois arquivos não podem declarar o mesmo código POR ENGANO: o
+# código só ajuda se identificar uma regra. A exceção é a ROF-004,
+# que é uma regra composta (ver SHARED_RULE_CODES).
+#
+# A verificação é feita sobre as instâncias, e não sobre o dicionário
+# de `_module_rules()`: o dicionário colapsaria a duplicata em
+# silêncio.
+def test_no_unexpected_code_is_shared():
+
+    codes = [
+        rule.code()
+        for rule in _module_rule_instances()
+    ]
+
+    shared = {
+        code
+        for code in set(codes)
+        if codes.count(code) > 1
+    }
+
+    assert shared <= SHARED_RULE_CODES
+
+
+# A numeração reinicia em SOLAR-RED-001 em CADA categoria. A RED-004 existe no
+# catálogo (absorvida pela RED-001), mas não tem classe própria; a
+# SEG-011 é a extensão deste repositório para a regra de SQL inseguro.
+def test_each_category_is_numbered_from_one():
+
+    numbers: dict[str, set[int]] = {}
+
+    for code in _module_rules():
+        prefix, number = code.rsplit("-", 1)
+        numbers.setdefault(prefix, set()).add(int(number))
+
+    assert numbers["SOLAR-RED"] == set(range(1, 13)) - {4}
+    assert numbers["SOLAR-ROF"] == set(range(1, 8))
+    assert numbers["SOLAR-SEG"] == set(range(1, 12))
 
 
 def test_each_check_group_is_not_empty():

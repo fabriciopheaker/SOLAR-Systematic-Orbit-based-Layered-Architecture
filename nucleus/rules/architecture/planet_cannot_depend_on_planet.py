@@ -1,18 +1,18 @@
-# SOLAR-ARCH-001 — Planet não importa Planet.
+# SOLAR-RED-001 — Planet não importa Planet.
 #
-# Absorveu a SOLAR-ARCH-004 (que tratava do mesmo assunto por outro
+# Absorveu a SOLAR-RED-004 (que tratava do mesmo assunto por outro
 # caminho). A comunicação entre Planets passa por Satellite — é o que
 # mantém cada Planet substituível sem arrastar os vizinhos.
 from nucleus.rules.scanner.dependency import Dependency
 from nucleus.exceptions.solar_exception import SolarException
-from nucleus.rules.rule import Rule
+from nucleus.rules.rule import DEPENDENCY, Rule, rule_code
 
 
 class PlanetCannotDependOnPlanet(Rule):
     """
     Regra arquitetural:
 
-    SOLAR-ARCH-001
+    SOLAR-RED-001
 
     Um Planet não pode possuir uma dependência direta
     de outro Planet.
@@ -58,7 +58,7 @@ class PlanetCannotDependOnPlanet(Rule):
     SATELLITE_PACKAGE = "satellites"
 
     def code(self) -> str:
-        return "SOLAR-ARCH-001"
+        return rule_code(DEPENDENCY, 1)
 
     def description(self) -> str:
         return (

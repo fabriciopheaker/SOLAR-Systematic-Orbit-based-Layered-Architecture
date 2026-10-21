@@ -2,7 +2,7 @@
 #
 # DESCREVE as características de segurança de cada chamada — algoritmo
 # declarado, verificação de assinatura, expiração. Não há julgamento
-# aqui: a política é da SOLAR-ARCH-027.
+# aqui: a política é da SOLAR-SEG-007.
 #
 # `None` é resposta legítima em três momentos (o contexto guarda esse
 # tri-estado): quando a informação não foi declarada, ou quando o
@@ -32,7 +32,7 @@ class TokenSecurityScanner:
         - se o payload emitido declara expiração ("exp").
 
     O scanner NÃO decide se há violação: isso é responsabilidade
-    da Rule SOLAR-ARCH-027.
+    da Rule SOLAR-SEG-007.
 
     O código NÃO é executado: a análise é feita sobre a AST.
     """

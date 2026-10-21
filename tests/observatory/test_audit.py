@@ -15,13 +15,13 @@ MOMENT = datetime(2026, 10, 5, 14, 30, 0, tzinfo=audit.TIME_ZONE)
 def _violation() -> Violation:
 
     return Violation(
-        rule="SOLAR-ARCH-019",
+        rule="SOLAR-ROF-006",
         description=(
             "Todo Planet deve possuir a estrutura padrão: "
             "routes.py, controllers/, repository/ e usecases/."
         ),
         message=(
-            "SOLAR-ARCH-019: o Planet 'user' não possui routes.py, "
+            "SOLAR-ROF-006: o Planet 'user' não possui routes.py, "
             "controllers/, repository/, usecases/."
         ),
         location="orbits/planets/user"
@@ -280,7 +280,7 @@ def test_content_has_the_violation_details(tmp_path):
 
     content = path.read_text(encoding="utf-8")
 
-    assert "### SOLAR-ARCH-019" in content
+    assert "### SOLAR-ROF-006" in content
     assert "estrutura padrão" in content
     assert "orbits/planets/user" in content
     assert "não possui routes.py" in content

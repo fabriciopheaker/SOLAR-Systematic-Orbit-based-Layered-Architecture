@@ -22,7 +22,7 @@ class FileSanitizer(Sanitizer):
     Storage já proteja a raiz, o nome saneado é o que circula na
     aplicação.
 
-    Implementa o contrato Sanitizer da SOLAR-ARCH-013.
+    Implementa o contrato Sanitizer da SOLAR-ROF-001.
     """
 
     # Nome usado quando nada sobra do original.

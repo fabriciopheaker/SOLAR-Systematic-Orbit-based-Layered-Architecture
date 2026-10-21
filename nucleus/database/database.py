@@ -2,7 +2,7 @@
 Fachada de persistência da aplicação.
 
 A aplicação — Orbits, Planets — fala SEMPRE com `Database` e
-NUNCA com o driver (SOLAR-ARCH-008). Trocar SQLAlchemy por outra
+NUNCA com o driver (SOLAR-RED-008). Trocar SQLAlchemy por outra
 tecnologia é trocar o driver injetado em `init()`, sem tocar em
 quem consulta.
 """
@@ -23,7 +23,7 @@ class Database:
 
   # Publicados a partir do driver logo depois da conexão. É por
   # eles que um Model usa a ORM SEM importar sqlalchemy — o que
-  # mantém a SOLAR-ARCH-010 de pé: só o driver conhece a
+  # mantém a SOLAR-RED-010 de pé: só o driver conhece a
   # tecnologia.
   orm = None
   model = None

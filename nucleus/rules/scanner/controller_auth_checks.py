@@ -1,4 +1,4 @@
-# Contexto da SOLAR-ARCH-026: verificação de autenticação feita
+# Contexto da SOLAR-SEG-006: verificação de autenticação feita
 # DENTRO do Controller.
 #
 # Autenticação pertence ao `nucleus.security` e ao middleware. Um
