@@ -1,0 +1,48 @@
+{
+  "metodologia": {
+    "nos": "módulos internos de produção (tests/ excluídos)",
+    "arestas": "import AST + imports dinâmicos verificáveis (importlib.import_module)",
+    "algoritmo": "Tarjan iterativo (componentes fortemente conexos)",
+    "auto_imports": "incluídos em self_loops"
+  },
+  "estatisticas": {
+    "modulos": 208,
+    "arestas_estaticas": 304,
+    "arestas_dinamicas": 2,
+    "arestas_totais": 306,
+    "ciclos_estaticos": 0,
+    "ciclos_totais": 1
+  },
+  "ciclos_estaticos": [],
+  "imports_dinamicos": [
+    {
+      "source": "nucleus.database.database",
+      "target": "orbits.database.models",
+      "lineno": 167,
+      "constant": "MODELS_PACKAGE",
+      "kind": "package_scan"
+    },
+    {
+      "source": "nucleus.database.database",
+      "target": "orbits.database.models.user_model",
+      "lineno": 167,
+      "constant": "MODELS_PACKAGE",
+      "kind": "package_scan"
+    }
+  ],
+  "ciclos": [
+    {
+      "size": 2,
+      "modules": [
+        "nucleus.database.database",
+        "orbits.database.models.user_model"
+      ],
+      "edges": 2,
+      "edges_list": [
+        "nucleus.database.database -> orbits.database.models.user_model",
+        "orbits.database.models.user_model -> nucleus.database.database"
+      ]
+    }
+  ],
+  "auto_imports": []
+}

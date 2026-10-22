@@ -1,0 +1,7 @@
+﻿layer,modules,internal_edges_out,Ce_sum,Ca_sum,instability_sum_based,cross_layer_out_edges,cross_layer_in_edges,classes
+Bootstrap,1,5,5,0,1.0,5,0,1
+Nucleus,138,258,258,273,0.4859,3,18,118
+Observatory,9,9,9,9,0.5,2,2,2
+Orbits,3,4,4,1,0.8,4,1,0
+Orbits/Database,8,4,4,7,0.3636,2,5,3
+Orbits/Planets,49,26,26,16,0.619,14,4,12

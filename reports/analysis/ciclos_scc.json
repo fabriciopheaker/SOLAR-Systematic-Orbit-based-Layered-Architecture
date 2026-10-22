@@ -1,0 +1,40 @@
+{
+  "nodes": 208,
+  "edges": 306,
+  "scc_count": 207,
+  "static": {
+    "edges": 304,
+    "cycles": []
+  },
+  "dynamic_edges": [
+    {
+      "source": "nucleus.database.database",
+      "target": "orbits.database.models",
+      "lineno": 167,
+      "constant": "MODELS_PACKAGE",
+      "kind": "package_scan"
+    },
+    {
+      "source": "nucleus.database.database",
+      "target": "orbits.database.models.user_model",
+      "lineno": 167,
+      "constant": "MODELS_PACKAGE",
+      "kind": "package_scan"
+    }
+  ],
+  "cycles": [
+    {
+      "size": 2,
+      "modules": [
+        "nucleus.database.database",
+        "orbits.database.models.user_model"
+      ],
+      "edges": 2,
+      "edges_list": [
+        "nucleus.database.database -> orbits.database.models.user_model",
+        "orbits.database.models.user_model -> nucleus.database.database"
+      ]
+    }
+  ],
+  "self_loops": []
+}

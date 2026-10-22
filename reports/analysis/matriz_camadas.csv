@@ -1,0 +1,14 @@
+﻿from_layer,to_layer,edges
+Bootstrap,Nucleus,3
+Bootstrap,Observatory,2
+Nucleus,Nucleus,255
+Nucleus,Orbits,1
+Nucleus,Orbits/Database,2
+Observatory,Nucleus,2
+Observatory,Observatory,7
+Orbits,Orbits/Planets,4
+Orbits/Database,Nucleus,2
+Orbits/Database,Orbits/Database,2
+Orbits/Planets,Nucleus,11
+Orbits/Planets,Orbits/Database,3
+Orbits/Planets,Orbits/Planets,12

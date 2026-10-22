@@ -1,0 +1,2423 @@
+{
+  "server.py": {
+    "loc": 218,
+    "lloc": 52,
+    "sloc": 73,
+    "comments": 62,
+    "multi": 41,
+    "blank": 53,
+    "single_comments": 51
+  },
+  "nucleus/environment.py": {
+    "loc": 122,
+    "lloc": 23,
+    "sloc": 53,
+    "comments": 26,
+    "multi": 16,
+    "blank": 29,
+    "single_comments": 24
+  },
+  "nucleus/kernel.py": {
+    "loc": 306,
+    "lloc": 75,
+    "sloc": 84,
+    "comments": 112,
+    "multi": 51,
+    "blank": 59,
+    "single_comments": 112
+  },
+  "nucleus/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/broadcast/broadcast.py": {
+    "loc": 195,
+    "lloc": 63,
+    "sloc": 103,
+    "comments": 30,
+    "multi": 29,
+    "blank": 33,
+    "single_comments": 30
+  },
+  "nucleus/broadcast/event.py": {
+    "loc": 29,
+    "lloc": 6,
+    "sloc": 9,
+    "comments": 4,
+    "multi": 9,
+    "blank": 7,
+    "single_comments": 4
+  },
+  "nucleus/broadcast/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/broadcast/drivers/in_memory_broadcast.py": {
+    "loc": 62,
+    "lloc": 24,
+    "sloc": 32,
+    "comments": 7,
+    "multi": 6,
+    "blank": 17,
+    "single_comments": 7
+  },
+  "nucleus/broadcast/drivers/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/broadcast/drivers/interface/broadcast_driver.py": {
+    "loc": 51,
+    "lloc": 16,
+    "sloc": 20,
+    "comments": 6,
+    "multi": 18,
+    "blank": 7,
+    "single_comments": 6
+  },
+  "nucleus/broadcast/drivers/interface/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/contracts/http_input.py": {
+    "loc": 95,
+    "lloc": 23,
+    "sloc": 15,
+    "comments": 17,
+    "multi": 42,
+    "blank": 21,
+    "single_comments": 17
+  },
+  "nucleus/contracts/resource.py": {
+    "loc": 49,
+    "lloc": 12,
+    "sloc": 9,
+    "comments": 5,
+    "multi": 25,
+    "blank": 10,
+    "single_comments": 5
+  },
+  "nucleus/contracts/responsibility_contract.py": {
+    "loc": 49,
+    "lloc": 10,
+    "sloc": 6,
+    "comments": 9,
+    "multi": 23,
+    "blank": 11,
+    "single_comments": 9
+  },
+  "nucleus/contracts/sanitizer.py": {
+    "loc": 57,
+    "lloc": 7,
+    "sloc": 5,
+    "comments": 14,
+    "multi": 27,
+    "blank": 11,
+    "single_comments": 14
+  },
+  "nucleus/contracts/use_case.py": {
+    "loc": 39,
+    "lloc": 7,
+    "sloc": 5,
+    "comments": 8,
+    "multi": 18,
+    "blank": 8,
+    "single_comments": 8
+  },
+  "nucleus/contracts/validator.py": {
+    "loc": 59,
+    "lloc": 7,
+    "sloc": 5,
+    "comments": 13,
+    "multi": 29,
+    "blank": 12,
+    "single_comments": 13
+  },
+  "nucleus/contracts/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/database/database.py": {
+    "loc": 189,
+    "lloc": 59,
+    "sloc": 58,
+    "comments": 44,
+    "multi": 41,
+    "blank": 46,
+    "single_comments": 44
+  },
+  "nucleus/database/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/database/drivers/driver_sqlalchemy.py": {
+    "loc": 307,
+    "lloc": 89,
+    "sloc": 130,
+    "comments": 53,
+    "multi": 63,
+    "blank": 61,
+    "single_comments": 53
+  },
+  "nucleus/database/drivers/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/database/drivers/interface/database_driver.py": {
+    "loc": 106,
+    "lloc": 32,
+    "sloc": 23,
+    "comments": 14,
+    "multi": 50,
+    "blank": 19,
+    "single_comments": 14
+  },
+  "nucleus/database/drivers/interface/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/exceptions/broadcast_exception.py": {
+    "loc": 19,
+    "lloc": 4,
+    "sloc": 3,
+    "comments": 7,
+    "multi": 5,
+    "blank": 4,
+    "single_comments": 7
+  },
+  "nucleus/exceptions/contract_exception.py": {
+    "loc": 17,
+    "lloc": 4,
+    "sloc": 3,
+    "comments": 7,
+    "multi": 4,
+    "blank": 3,
+    "single_comments": 7
+  },
+  "nucleus/exceptions/database_exception.py": {
+    "loc": 17,
+    "lloc": 4,
+    "sloc": 3,
+    "comments": 7,
+    "multi": 4,
+    "blank": 3,
+    "single_comments": 7
+  },
+  "nucleus/exceptions/security_exception.py": {
+    "loc": 16,
+    "lloc": 4,
+    "sloc": 3,
+    "comments": 7,
+    "multi": 3,
+    "blank": 3,
+    "single_comments": 7
+  },
+  "nucleus/exceptions/solar_exception.py": {
+    "loc": 33,
+    "lloc": 10,
+    "sloc": 9,
+    "comments": 12,
+    "multi": 6,
+    "blank": 6,
+    "single_comments": 12
+  },
+  "nucleus/exceptions/storage_exception.py": {
+    "loc": 16,
+    "lloc": 4,
+    "sloc": 3,
+    "comments": 7,
+    "multi": 3,
+    "blank": 3,
+    "single_comments": 7
+  },
+  "nucleus/exceptions/validation_exception.py": {
+    "loc": 16,
+    "lloc": 4,
+    "sloc": 3,
+    "comments": 7,
+    "multi": 3,
+    "blank": 3,
+    "single_comments": 7
+  },
+  "nucleus/exceptions/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/middleware/atmosphere.py": {
+    "loc": 127,
+    "lloc": 22,
+    "sloc": 30,
+    "comments": 39,
+    "multi": 30,
+    "blank": 28,
+    "single_comments": 39
+  },
+  "nucleus/middleware/brute_force_guard.py": {
+    "loc": 103,
+    "lloc": 35,
+    "sloc": 36,
+    "comments": 11,
+    "multi": 29,
+    "blank": 27,
+    "single_comments": 11
+  },
+  "nucleus/middleware/csrf_protection.py": {
+    "loc": 134,
+    "lloc": 50,
+    "sloc": 54,
+    "comments": 14,
+    "multi": 31,
+    "blank": 35,
+    "single_comments": 14
+  },
+  "nucleus/middleware/error_handler.py": {
+    "loc": 221,
+    "lloc": 52,
+    "sloc": 67,
+    "comments": 49,
+    "multi": 60,
+    "blank": 45,
+    "single_comments": 49
+  },
+  "nucleus/middleware/rate_limiter.py": {
+    "loc": 81,
+    "lloc": 28,
+    "sloc": 28,
+    "comments": 10,
+    "multi": 21,
+    "blank": 22,
+    "single_comments": 10
+  },
+  "nucleus/middleware/request_pipeline.py": {
+    "loc": 117,
+    "lloc": 29,
+    "sloc": 41,
+    "comments": 18,
+    "multi": 36,
+    "blank": 22,
+    "single_comments": 18
+  },
+  "nucleus/middleware/security_headers.py": {
+    "loc": 82,
+    "lloc": 22,
+    "sloc": 29,
+    "comments": 13,
+    "multi": 21,
+    "blank": 19,
+    "single_comments": 13
+  },
+  "nucleus/middleware/security_policy.py": {
+    "loc": 57,
+    "lloc": 27,
+    "sloc": 15,
+    "comments": 17,
+    "multi": 14,
+    "blank": 11,
+    "single_comments": 17
+  },
+  "nucleus/middleware/solar_blueprint.py": {
+    "loc": 127,
+    "lloc": 25,
+    "sloc": 41,
+    "comments": 22,
+    "multi": 39,
+    "blank": 25,
+    "single_comments": 22
+  },
+  "nucleus/middleware/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/notication/notification.py": {
+    "loc": 35,
+    "lloc": 12,
+    "sloc": 15,
+    "comments": 15,
+    "multi": 0,
+    "blank": 5,
+    "single_comments": 15
+  },
+  "nucleus/notication/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/rules/project_validator.py": {
+    "loc": 423,
+    "lloc": 107,
+    "sloc": 269,
+    "comments": 59,
+    "multi": 52,
+    "blank": 53,
+    "single_comments": 49
+  },
+  "nucleus/rules/report.py": {
+    "loc": 229,
+    "lloc": 76,
+    "sloc": 90,
+    "comments": 37,
+    "multi": 48,
+    "blank": 54,
+    "single_comments": 37
+  },
+  "nucleus/rules/rule.py": {
+    "loc": 80,
+    "lloc": 24,
+    "sloc": 19,
+    "comments": 32,
+    "multi": 16,
+    "blank": 13,
+    "single_comments": 32
+  },
+  "nucleus/rules/rule_engine.py": {
+    "loc": 31,
+    "lloc": 9,
+    "sloc": 7,
+    "comments": 12,
+    "multi": 7,
+    "blank": 5,
+    "single_comments": 12
+  },
+  "nucleus/rules/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/rules/architecture/authentication_must_not_be_scattered_in_controllers.py": {
+    "loc": 102,
+    "lloc": 15,
+    "sloc": 32,
+    "comments": 18,
+    "multi": 29,
+    "blank": 23,
+    "single_comments": 18
+  },
+  "nucleus/rules/architecture/controller_and_usecase_must_use_named_contracts.py": {
+    "loc": 211,
+    "lloc": 37,
+    "sloc": 75,
+    "comments": 33,
+    "multi": 59,
+    "blank": 44,
+    "single_comments": 33
+  },
+  "nucleus/rules/architecture/controller_must_not_implement_authentication.py": {
+    "loc": 103,
+    "lloc": 17,
+    "sloc": 46,
+    "comments": 9,
+    "multi": 25,
+    "blank": 23,
+    "single_comments": 9
+  },
+  "nucleus/rules/architecture/controller_must_return_resource.py": {
+    "loc": 90,
+    "lloc": 15,
+    "sloc": 29,
+    "comments": 10,
+    "multi": 29,
+    "blank": 22,
+    "single_comments": 10
+  },
+  "nucleus/rules/architecture/errors_must_not_leak_internals.py": {
+    "loc": 98,
+    "lloc": 16,
+    "sloc": 23,
+    "comments": 15,
+    "multi": 37,
+    "blank": 23,
+    "single_comments": 15
+  },
+  "nucleus/rules/architecture/external_communication_belongs_to_satellites.py": {
+    "loc": 124,
+    "lloc": 28,
+    "sloc": 53,
+    "comments": 18,
+    "multi": 21,
+    "blank": 32,
+    "single_comments": 18
+  },
+  "nucleus/rules/architecture/http_input_must_pass_through_sanitization_and_validation.py": {
+    "loc": 131,
+    "lloc": 26,
+    "sloc": 45,
+    "comments": 15,
+    "multi": 41,
+    "blank": 30,
+    "single_comments": 15
+  },
+  "nucleus/rules/architecture/models_cannot_depend_on_persistence.py": {
+    "loc": 126,
+    "lloc": 27,
+    "sloc": 48,
+    "comments": 19,
+    "multi": 25,
+    "blank": 34,
+    "single_comments": 19
+  },
+  "nucleus/rules/architecture/models_must_access_orm_through_database.py": {
+    "loc": 145,
+    "lloc": 31,
+    "sloc": 54,
+    "comments": 22,
+    "multi": 28,
+    "blank": 41,
+    "single_comments": 22
+  },
+  "nucleus/rules/architecture/models_must_live_in_their_own_file.py": {
+    "loc": 182,
+    "lloc": 33,
+    "sloc": 57,
+    "comments": 29,
+    "multi": 53,
+    "blank": 43,
+    "single_comments": 29
+  },
+  "nucleus/rules/architecture/orbits_must_use_database_facade.py": {
+    "loc": 115,
+    "lloc": 24,
+    "sloc": 45,
+    "comments": 19,
+    "multi": 21,
+    "blank": 30,
+    "single_comments": 19
+  },
+  "nucleus/rules/architecture/orm_belongs_to_driver.py": {
+    "loc": 113,
+    "lloc": 23,
+    "sloc": 45,
+    "comments": 18,
+    "multi": 21,
+    "blank": 29,
+    "single_comments": 18
+  },
+  "nucleus/rules/architecture/outbound_requests_must_not_use_untrusted_url.py": {
+    "loc": 141,
+    "lloc": 25,
+    "sloc": 50,
+    "comments": 18,
+    "multi": 41,
+    "blank": 32,
+    "single_comments": 18
+  },
+  "nucleus/rules/architecture/persistence_belongs_to_orbits_database.py": {
+    "loc": 120,
+    "lloc": 24,
+    "sloc": 49,
+    "comments": 15,
+    "multi": 22,
+    "blank": 34,
+    "single_comments": 15
+  },
+  "nucleus/rules/architecture/persistence_must_not_build_unsafe_sql.py": {
+    "loc": 82,
+    "lloc": 18,
+    "sloc": 29,
+    "comments": 17,
+    "multi": 16,
+    "blank": 20,
+    "single_comments": 17
+  },
+  "nucleus/rules/architecture/planet_cannot_depend_on_driver.py": {
+    "loc": 107,
+    "lloc": 23,
+    "sloc": 44,
+    "comments": 22,
+    "multi": 16,
+    "blank": 25,
+    "single_comments": 22
+  },
+  "nucleus/rules/architecture/planet_cannot_depend_on_planet.py": {
+    "loc": 145,
+    "lloc": 30,
+    "sloc": 50,
+    "comments": 20,
+    "multi": 36,
+    "blank": 39,
+    "single_comments": 20
+  },
+  "nucleus/rules/architecture/planet_cannot_know_nucleus_infrastructure.py": {
+    "loc": 142,
+    "lloc": 33,
+    "sloc": 58,
+    "comments": 22,
+    "multi": 24,
+    "blank": 38,
+    "single_comments": 22
+  },
+  "nucleus/rules/architecture/planet_must_have_standard_structure.py": {
+    "loc": 166,
+    "lloc": 29,
+    "sloc": 55,
+    "comments": 30,
+    "multi": 50,
+    "blank": 31,
+    "single_comments": 30
+  },
+  "nucleus/rules/architecture/repository_cannot_depend_on_database.py": {
+    "loc": 75,
+    "lloc": 19,
+    "sloc": 39,
+    "comments": 15,
+    "multi": 6,
+    "blank": 15,
+    "single_comments": 15
+  },
+  "nucleus/rules/architecture/repository_must_use_persistence.py": {
+    "loc": 138,
+    "lloc": 28,
+    "sloc": 60,
+    "comments": 25,
+    "multi": 20,
+    "blank": 33,
+    "single_comments": 25
+  },
+  "nucleus/rules/architecture/request_data_must_not_become_entities_directly.py": {
+    "loc": 173,
+    "lloc": 30,
+    "sloc": 62,
+    "comments": 25,
+    "multi": 49,
+    "blank": 37,
+    "single_comments": 25
+  },
+  "nucleus/rules/architecture/resources_must_not_expose_secrets.py": {
+    "loc": 90,
+    "lloc": 17,
+    "sloc": 33,
+    "comments": 7,
+    "multi": 31,
+    "blank": 19,
+    "single_comments": 7
+  },
+  "nucleus/rules/architecture/routes_must_be_declared_explicitly.py": {
+    "loc": 90,
+    "lloc": 15,
+    "sloc": 29,
+    "comments": 12,
+    "multi": 29,
+    "blank": 20,
+    "single_comments": 12
+  },
+  "nucleus/rules/architecture/routes_must_live_in_route_modules.py": {
+    "loc": 127,
+    "lloc": 29,
+    "sloc": 43,
+    "comments": 26,
+    "multi": 27,
+    "blank": 31,
+    "single_comments": 26
+  },
+  "nucleus/rules/architecture/routes_must_point_to_controller.py": {
+    "loc": 131,
+    "lloc": 32,
+    "sloc": 46,
+    "comments": 21,
+    "multi": 30,
+    "blank": 34,
+    "single_comments": 21
+  },
+  "nucleus/rules/architecture/secrets_must_not_appear_in_source.py": {
+    "loc": 126,
+    "lloc": 22,
+    "sloc": 42,
+    "comments": 25,
+    "multi": 35,
+    "blank": 24,
+    "single_comments": 25
+  },
+  "nucleus/rules/architecture/secrets_must_not_be_hardcoded.py": {
+    "loc": 87,
+    "lloc": 20,
+    "sloc": 30,
+    "comments": 17,
+    "multi": 21,
+    "blank": 19,
+    "single_comments": 17
+  },
+  "nucleus/rules/architecture/tokens_must_be_secure.py": {
+    "loc": 131,
+    "lloc": 29,
+    "sloc": 52,
+    "comments": 27,
+    "multi": 24,
+    "blank": 28,
+    "single_comments": 27
+  },
+  "nucleus/rules/architecture/uploads_must_use_storage.py": {
+    "loc": 118,
+    "lloc": 17,
+    "sloc": 49,
+    "comments": 16,
+    "multi": 29,
+    "blank": 24,
+    "single_comments": 16
+  },
+  "nucleus/rules/architecture/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/rules/scanner/architecture_scanner.py": {
+    "loc": 324,
+    "lloc": 54,
+    "sloc": 77,
+    "comments": 66,
+    "multi": 100,
+    "blank": 81,
+    "single_comments": 66
+  },
+  "nucleus/rules/scanner/controller_auth_checks.py": {
+    "loc": 42,
+    "lloc": 12,
+    "sloc": 7,
+    "comments": 8,
+    "multi": 17,
+    "blank": 10,
+    "single_comments": 8
+  },
+  "nucleus/rules/scanner/controller_auth_check_scanner.py": {
+    "loc": 203,
+    "lloc": 64,
+    "sloc": 90,
+    "comments": 40,
+    "multi": 30,
+    "blank": 46,
+    "single_comments": 37
+  },
+  "nucleus/rules/scanner/controller_module.py": {
+    "loc": 62,
+    "lloc": 10,
+    "sloc": 12,
+    "comments": 27,
+    "multi": 10,
+    "blank": 13,
+    "single_comments": 27
+  },
+  "nucleus/rules/scanner/controller_return.py": {
+    "loc": 52,
+    "lloc": 17,
+    "sloc": 10,
+    "comments": 5,
+    "multi": 25,
+    "blank": 12,
+    "single_comments": 5
+  },
+  "nucleus/rules/scanner/controller_return_scanner.py": {
+    "loc": 196,
+    "lloc": 61,
+    "sloc": 79,
+    "comments": 25,
+    "multi": 40,
+    "blank": 52,
+    "single_comments": 25
+  },
+  "nucleus/rules/scanner/controller_security_scanner.py": {
+    "loc": 149,
+    "lloc": 45,
+    "sloc": 59,
+    "comments": 27,
+    "multi": 27,
+    "blank": 36,
+    "single_comments": 27
+  },
+  "nucleus/rules/scanner/controller_security_usage.py": {
+    "loc": 41,
+    "lloc": 12,
+    "sloc": 7,
+    "comments": 7,
+    "multi": 16,
+    "blank": 11,
+    "single_comments": 7
+  },
+  "nucleus/rules/scanner/dependency.py": {
+    "loc": 36,
+    "lloc": 12,
+    "sloc": 7,
+    "comments": 10,
+    "multi": 11,
+    "blank": 8,
+    "single_comments": 10
+  },
+  "nucleus/rules/scanner/entity_binding.py": {
+    "loc": 50,
+    "lloc": 14,
+    "sloc": 8,
+    "comments": 9,
+    "multi": 22,
+    "blank": 11,
+    "single_comments": 9
+  },
+  "nucleus/rules/scanner/error_exposure.py": {
+    "loc": 55,
+    "lloc": 14,
+    "sloc": 8,
+    "comments": 11,
+    "multi": 25,
+    "blank": 11,
+    "single_comments": 11
+  },
+  "nucleus/rules/scanner/error_exposure_scanner.py": {
+    "loc": 632,
+    "lloc": 164,
+    "sloc": 273,
+    "comments": 112,
+    "multi": 113,
+    "blank": 134,
+    "single_comments": 112
+  },
+  "nucleus/rules/scanner/http_input_scanner.py": {
+    "loc": 326,
+    "lloc": 86,
+    "sloc": 128,
+    "comments": 62,
+    "multi": 66,
+    "blank": 72,
+    "single_comments": 60
+  },
+  "nucleus/rules/scanner/mass_assignment_scanner.py": {
+    "loc": 412,
+    "lloc": 109,
+    "sloc": 159,
+    "comments": 87,
+    "multi": 79,
+    "blank": 87,
+    "single_comments": 87
+  },
+  "nucleus/rules/scanner/module_classes.py": {
+    "loc": 63,
+    "lloc": 20,
+    "sloc": 12,
+    "comments": 10,
+    "multi": 25,
+    "blank": 16,
+    "single_comments": 10
+  },
+  "nucleus/rules/scanner/module_classes_scanner.py": {
+    "loc": 148,
+    "lloc": 34,
+    "sloc": 59,
+    "comments": 27,
+    "multi": 30,
+    "blank": 32,
+    "single_comments": 27
+  },
+  "nucleus/rules/scanner/outbound_request.py": {
+    "loc": 43,
+    "lloc": 14,
+    "sloc": 8,
+    "comments": 9,
+    "multi": 16,
+    "blank": 10,
+    "single_comments": 9
+  },
+  "nucleus/rules/scanner/outbound_request_scanner.py": {
+    "loc": 223,
+    "lloc": 75,
+    "sloc": 99,
+    "comments": 12,
+    "multi": 51,
+    "blank": 61,
+    "single_comments": 12
+  },
+  "nucleus/rules/scanner/planet_scanner.py": {
+    "loc": 128,
+    "lloc": 39,
+    "sloc": 44,
+    "comments": 32,
+    "multi": 24,
+    "blank": 28,
+    "single_comments": 32
+  },
+  "nucleus/rules/scanner/planet_structure.py": {
+    "loc": 38,
+    "lloc": 12,
+    "sloc": 7,
+    "comments": 8,
+    "multi": 14,
+    "blank": 9,
+    "single_comments": 8
+  },
+  "nucleus/rules/scanner/resource_exposure.py": {
+    "loc": 49,
+    "lloc": 12,
+    "sloc": 7,
+    "comments": 8,
+    "multi": 22,
+    "blank": 12,
+    "single_comments": 8
+  },
+  "nucleus/rules/scanner/resource_exposure_scanner.py": {
+    "loc": 166,
+    "lloc": 52,
+    "sloc": 66,
+    "comments": 28,
+    "multi": 35,
+    "blank": 40,
+    "single_comments": 25
+  },
+  "nucleus/rules/scanner/route_declaration.py": {
+    "loc": 63,
+    "lloc": 18,
+    "sloc": 11,
+    "comments": 16,
+    "multi": 21,
+    "blank": 15,
+    "single_comments": 16
+  },
+  "nucleus/rules/scanner/route_scanner.py": {
+    "loc": 340,
+    "lloc": 81,
+    "sloc": 128,
+    "comments": 58,
+    "multi": 82,
+    "blank": 72,
+    "single_comments": 58
+  },
+  "nucleus/rules/scanner/routing_convention.py": {
+    "loc": 107,
+    "lloc": 22,
+    "sloc": 36,
+    "comments": 15,
+    "multi": 36,
+    "blank": 22,
+    "single_comments": 13
+  },
+  "nucleus/rules/scanner/secret_content_scanner.py": {
+    "loc": 200,
+    "lloc": 51,
+    "sloc": 80,
+    "comments": 30,
+    "multi": 44,
+    "blank": 46,
+    "single_comments": 30
+  },
+  "nucleus/rules/scanner/secret_guards.py": {
+    "loc": 74,
+    "lloc": 20,
+    "sloc": 25,
+    "comments": 8,
+    "multi": 20,
+    "blank": 21,
+    "single_comments": 8
+  },
+  "nucleus/rules/scanner/secret_literal.py": {
+    "loc": 58,
+    "lloc": 16,
+    "sloc": 9,
+    "comments": 9,
+    "multi": 26,
+    "blank": 14,
+    "single_comments": 9
+  },
+  "nucleus/rules/scanner/secret_names.py": {
+    "loc": 65,
+    "lloc": 11,
+    "sloc": 32,
+    "comments": 14,
+    "multi": 10,
+    "blank": 11,
+    "single_comments": 12
+  },
+  "nucleus/rules/scanner/secret_occurrence.py": {
+    "loc": 52,
+    "lloc": 16,
+    "sloc": 9,
+    "comments": 9,
+    "multi": 23,
+    "blank": 11,
+    "single_comments": 9
+  },
+  "nucleus/rules/scanner/secret_patterns.py": {
+    "loc": 123,
+    "lloc": 16,
+    "sloc": 64,
+    "comments": 31,
+    "multi": 12,
+    "blank": 16,
+    "single_comments": 31
+  },
+  "nucleus/rules/scanner/secret_scanner.py": {
+    "loc": 272,
+    "lloc": 70,
+    "sloc": 144,
+    "comments": 32,
+    "multi": 45,
+    "blank": 51,
+    "single_comments": 32
+  },
+  "nucleus/rules/scanner/source_files.py": {
+    "loc": 172,
+    "lloc": 29,
+    "sloc": 77,
+    "comments": 28,
+    "multi": 37,
+    "blank": 32,
+    "single_comments": 26
+  },
+  "nucleus/rules/scanner/token_security_scanner.py": {
+    "loc": 324,
+    "lloc": 103,
+    "sloc": 129,
+    "comments": 67,
+    "multi": 53,
+    "blank": 75,
+    "single_comments": 67
+  },
+  "nucleus/rules/scanner/token_usage.py": {
+    "loc": 43,
+    "lloc": 16,
+    "sloc": 9,
+    "comments": 8,
+    "multi": 16,
+    "blank": 10,
+    "single_comments": 8
+  },
+  "nucleus/rules/scanner/unsafe_sql.py": {
+    "loc": 48,
+    "lloc": 12,
+    "sloc": 7,
+    "comments": 9,
+    "multi": 20,
+    "blank": 12,
+    "single_comments": 9
+  },
+  "nucleus/rules/scanner/unsafe_sql_scanner.py": {
+    "loc": 266,
+    "lloc": 88,
+    "sloc": 104,
+    "comments": 56,
+    "multi": 46,
+    "blank": 60,
+    "single_comments": 56
+  },
+  "nucleus/rules/scanner/upload_handling.py": {
+    "loc": 40,
+    "lloc": 12,
+    "sloc": 7,
+    "comments": 7,
+    "multi": 16,
+    "blank": 10,
+    "single_comments": 7
+  },
+  "nucleus/rules/scanner/upload_handling_scanner.py": {
+    "loc": 189,
+    "lloc": 60,
+    "sloc": 88,
+    "comments": 31,
+    "multi": 29,
+    "blank": 44,
+    "single_comments": 28
+  },
+  "nucleus/security/attempt_tracker.py": {
+    "loc": 127,
+    "lloc": 49,
+    "sloc": 39,
+    "comments": 18,
+    "multi": 34,
+    "blank": 36,
+    "single_comments": 18
+  },
+  "nucleus/security/identity.py": {
+    "loc": 163,
+    "lloc": 53,
+    "sloc": 53,
+    "comments": 41,
+    "multi": 33,
+    "blank": 36,
+    "single_comments": 41
+  },
+  "nucleus/security/json_sanitizer.py": {
+    "loc": 81,
+    "lloc": 20,
+    "sloc": 20,
+    "comments": 26,
+    "multi": 16,
+    "blank": 19,
+    "single_comments": 26
+  },
+  "nucleus/security/json_validator.py": {
+    "loc": 117,
+    "lloc": 35,
+    "sloc": 43,
+    "comments": 23,
+    "multi": 24,
+    "blank": 27,
+    "single_comments": 23
+  },
+  "nucleus/security/password.py": {
+    "loc": 49,
+    "lloc": 11,
+    "sloc": 11,
+    "comments": 12,
+    "multi": 15,
+    "blank": 11,
+    "single_comments": 12
+  },
+  "nucleus/security/token.py": {
+    "loc": 86,
+    "lloc": 26,
+    "sloc": 41,
+    "comments": 20,
+    "multi": 13,
+    "blank": 17,
+    "single_comments": 15
+  },
+  "nucleus/security/url_guard.py": {
+    "loc": 225,
+    "lloc": 60,
+    "sloc": 92,
+    "comments": 51,
+    "multi": 36,
+    "blank": 46,
+    "single_comments": 51
+  },
+  "nucleus/security/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/storage/storage.py": {
+    "loc": 94,
+    "lloc": 38,
+    "sloc": 37,
+    "comments": 5,
+    "multi": 28,
+    "blank": 24,
+    "single_comments": 5
+  },
+  "nucleus/storage/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/storage/drivers/local_storage_driver.py": {
+    "loc": 108,
+    "lloc": 40,
+    "sloc": 53,
+    "comments": 9,
+    "multi": 18,
+    "blank": 28,
+    "single_comments": 9
+  },
+  "nucleus/storage/drivers/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/storage/drivers/interface/storage_driver.py": {
+    "loc": 75,
+    "lloc": 20,
+    "sloc": 14,
+    "comments": 6,
+    "multi": 38,
+    "blank": 17,
+    "single_comments": 6
+  },
+  "nucleus/storage/drivers/interface/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "nucleus/upload/file_sanitizer.py": {
+    "loc": 105,
+    "lloc": 31,
+    "sloc": 29,
+    "comments": 16,
+    "multi": 31,
+    "blank": 29,
+    "single_comments": 16
+  },
+  "nucleus/upload/file_signatures.py": {
+    "loc": 151,
+    "lloc": 30,
+    "sloc": 74,
+    "comments": 23,
+    "multi": 26,
+    "blank": 28,
+    "single_comments": 23
+  },
+  "nucleus/upload/file_validator.py": {
+    "loc": 142,
+    "lloc": 50,
+    "sloc": 66,
+    "comments": 10,
+    "multi": 33,
+    "blank": 33,
+    "single_comments": 10
+  },
+  "nucleus/upload/uploaded_file.py": {
+    "loc": 52,
+    "lloc": 20,
+    "sloc": 14,
+    "comments": 5,
+    "multi": 20,
+    "blank": 13,
+    "single_comments": 5
+  },
+  "nucleus/upload/upload_policy.py": {
+    "loc": 153,
+    "lloc": 28,
+    "sloc": 65,
+    "comments": 32,
+    "multi": 31,
+    "blank": 25,
+    "single_comments": 32
+  },
+  "nucleus/upload/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "observatory/__init__.py": {
+    "loc": 8,
+    "lloc": 1,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 6,
+    "blank": 2,
+    "single_comments": 0
+  },
+  "observatory/records/error_log.py": {
+    "loc": 300,
+    "lloc": 78,
+    "sloc": 159,
+    "comments": 17,
+    "multi": 61,
+    "blank": 63,
+    "single_comments": 17
+  },
+  "observatory/records/error_record.py": {
+    "loc": 63,
+    "lloc": 28,
+    "sloc": 15,
+    "comments": 10,
+    "multi": 25,
+    "blank": 13,
+    "single_comments": 10
+  },
+  "observatory/records/__init__.py": {
+    "loc": 7,
+    "lloc": 3,
+    "sloc": 6,
+    "comments": 0,
+    "multi": 0,
+    "blank": 1,
+    "single_comments": 0
+  },
+  "observatory/solar/audit.py": {
+    "loc": 325,
+    "lloc": 70,
+    "sloc": 135,
+    "comments": 50,
+    "multi": 72,
+    "blank": 69,
+    "single_comments": 49
+  },
+  "observatory/solar/cli.py": {
+    "loc": 68,
+    "lloc": 24,
+    "sloc": 31,
+    "comments": 11,
+    "multi": 10,
+    "blank": 16,
+    "single_comments": 11
+  },
+  "observatory/solar/__main__.py": {
+    "loc": 53,
+    "lloc": 15,
+    "sloc": 13,
+    "comments": 11,
+    "multi": 14,
+    "blank": 16,
+    "single_comments": 10
+  },
+  "observatory/solar/commands/check.py": {
+    "loc": 90,
+    "lloc": 27,
+    "sloc": 29,
+    "comments": 16,
+    "multi": 20,
+    "blank": 25,
+    "single_comments": 16
+  },
+  "observatory/solar/commands/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/routes.py": {
+    "loc": 61,
+    "lloc": 14,
+    "sloc": 12,
+    "comments": 19,
+    "multi": 17,
+    "blank": 13,
+    "single_comments": 19
+  },
+  "orbits/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/database/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/database/models/user_model.py": {
+    "loc": 72,
+    "lloc": 17,
+    "sloc": 48,
+    "comments": 4,
+    "multi": 5,
+    "blank": 15,
+    "single_comments": 4
+  },
+  "orbits/database/models/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/database/persistence/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/database/persistence/users/user_persistency.py": {
+    "loc": 43,
+    "lloc": 19,
+    "sloc": 29,
+    "comments": 0,
+    "multi": 0,
+    "blank": 14,
+    "single_comments": 0
+  },
+  "orbits/database/persistence/users/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/database/persistence/users/output/create_user_output.py": {
+    "loc": 57,
+    "lloc": 21,
+    "sloc": 19,
+    "comments": 2,
+    "multi": 23,
+    "blank": 13,
+    "single_comments": 2
+  },
+  "orbits/database/persistence/users/output/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/auth/routes.py": {
+    "loc": 25,
+    "lloc": 5,
+    "sloc": 3,
+    "comments": 2,
+    "multi": 13,
+    "blank": 7,
+    "single_comments": 2
+  },
+  "orbits/planets/auth/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/auth/atmosphere/__init__.py": {
+    "loc": 9,
+    "lloc": 1,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 7,
+    "blank": 2,
+    "single_comments": 0
+  },
+  "orbits/planets/auth/controllers/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/auth/entity/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/auth/repository/repository.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/auth/repository/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/auth/resources/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/auth/usecases/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/example/routes.py": {
+    "loc": 57,
+    "lloc": 10,
+    "sloc": 20,
+    "comments": 23,
+    "multi": 5,
+    "blank": 9,
+    "single_comments": 23
+  },
+  "orbits/planets/example/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/example/atmosphere/__init__.py": {
+    "loc": 11,
+    "lloc": 1,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 8,
+    "blank": 3,
+    "single_comments": 0
+  },
+  "orbits/planets/example/atmosphere/sanitizers/create_user_sanitizer.py": {
+    "loc": 16,
+    "lloc": 8,
+    "sloc": 8,
+    "comments": 2,
+    "multi": 0,
+    "blank": 6,
+    "single_comments": 2
+  },
+  "orbits/planets/example/atmosphere/sanitizers/__init__.py": {
+    "loc": 6,
+    "lloc": 1,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 5,
+    "blank": 1,
+    "single_comments": 0
+  },
+  "orbits/planets/example/atmosphere/validators/create_user_validator.py": {
+    "loc": 26,
+    "lloc": 7,
+    "sloc": 5,
+    "comments": 3,
+    "multi": 10,
+    "blank": 8,
+    "single_comments": 3
+  },
+  "orbits/planets/example/atmosphere/validators/__init__.py": {
+    "loc": 6,
+    "lloc": 1,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 5,
+    "blank": 1,
+    "single_comments": 0
+  },
+  "orbits/planets/example/controllers/create_user_controller.py": {
+    "loc": 16,
+    "lloc": 11,
+    "sloc": 11,
+    "comments": 0,
+    "multi": 0,
+    "blank": 5,
+    "single_comments": 0
+  },
+  "orbits/planets/example/controllers/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/example/controllers/inputs/create_user_input.py": {
+    "loc": 24,
+    "lloc": 7,
+    "sloc": 5,
+    "comments": 0,
+    "multi": 13,
+    "blank": 6,
+    "single_comments": 0
+  },
+  "orbits/planets/example/controllers/inputs/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/example/entity/user_entity.py": {
+    "loc": 82,
+    "lloc": 22,
+    "sloc": 24,
+    "comments": 11,
+    "multi": 29,
+    "blank": 18,
+    "single_comments": 11
+  },
+  "orbits/planets/example/entity/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/example/repository/example_repository.py": {
+    "loc": 21,
+    "lloc": 11,
+    "sloc": 11,
+    "comments": 0,
+    "multi": 0,
+    "blank": 10,
+    "single_comments": 0
+  },
+  "orbits/planets/example/repository/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/example/resources/user_resource.py": {
+    "loc": 32,
+    "lloc": 9,
+    "sloc": 10,
+    "comments": 0,
+    "multi": 15,
+    "blank": 7,
+    "single_comments": 0
+  },
+  "orbits/planets/example/resources/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/example/usecases/create_user_usecase.py": {
+    "loc": 26,
+    "lloc": 15,
+    "sloc": 15,
+    "comments": 0,
+    "multi": 0,
+    "blank": 11,
+    "single_comments": 0
+  },
+  "orbits/planets/example/usecases/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/example/usecases/outputs/create_user_output.py": {
+    "loc": 28,
+    "lloc": 8,
+    "sloc": 6,
+    "comments": 0,
+    "multi": 15,
+    "blank": 7,
+    "single_comments": 0
+  },
+  "orbits/planets/example/usecases/outputs/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/solar/routes.py": {
+    "loc": 54,
+    "lloc": 9,
+    "sloc": 18,
+    "comments": 9,
+    "multi": 16,
+    "blank": 11,
+    "single_comments": 9
+  },
+  "orbits/planets/solar/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/solar/atmosphere/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/solar/controllers/health_controller.py": {
+    "loc": 39,
+    "lloc": 8,
+    "sloc": 5,
+    "comments": 2,
+    "multi": 22,
+    "blank": 10,
+    "single_comments": 2
+  },
+  "orbits/planets/solar/controllers/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/solar/entity/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/solar/repository/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/solar/resources/health_resource.py": {
+    "loc": 37,
+    "lloc": 8,
+    "sloc": 9,
+    "comments": 11,
+    "multi": 11,
+    "blank": 6,
+    "single_comments": 11
+  },
+  "orbits/planets/solar/resources/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/solar/usecases/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/user/routes.py": {
+    "loc": 25,
+    "lloc": 5,
+    "sloc": 3,
+    "comments": 2,
+    "multi": 13,
+    "blank": 7,
+    "single_comments": 2
+  },
+  "orbits/planets/user/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/user/atmosphere/__init__.py": {
+    "loc": 9,
+    "lloc": 1,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 7,
+    "blank": 2,
+    "single_comments": 0
+  },
+  "orbits/planets/user/controllers/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/user/entity/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/user/repository/user_repository.py": {
+    "loc": 36,
+    "lloc": 6,
+    "sloc": 6,
+    "comments": 8,
+    "multi": 16,
+    "blank": 6,
+    "single_comments": 8
+  },
+  "orbits/planets/user/repository/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/user/resources/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "orbits/planets/user/usecases/__init__.py": {
+    "loc": 0,
+    "lloc": 0,
+    "sloc": 0,
+    "comments": 0,
+    "multi": 0,
+    "blank": 0,
+    "single_comments": 0
+  },
+  "tests/database/test_database.py": {
+    "loc": 76,
+    "lloc": 31,
+    "sloc": 54,
+    "comments": 0,
+    "multi": 0,
+    "blank": 22,
+    "single_comments": 0
+  },
+  "tests/database/test_persistence_layer.py": {
+    "loc": 464,
+    "lloc": 172,
+    "sloc": 268,
+    "comments": 38,
+    "multi": 20,
+    "blank": 140,
+    "single_comments": 36
+  },
+  "tests/database/test_schema_sync.py": {
+    "loc": 226,
+    "lloc": 89,
+    "sloc": 107,
+    "comments": 19,
+    "multi": 24,
+    "blank": 76,
+    "single_comments": 19
+  },
+  "tests/kernel/test_kernel.py": {
+    "loc": 217,
+    "lloc": 97,
+    "sloc": 123,
+    "comments": 18,
+    "multi": 3,
+    "blank": 73,
+    "single_comments": 18
+  },
+  "tests/middleware/test_csrf_protection.py": {
+    "loc": 172,
+    "lloc": 80,
+    "sloc": 84,
+    "comments": 14,
+    "multi": 3,
+    "blank": 71,
+    "single_comments": 14
+  },
+  "tests/middleware/test_error_handler.py": {
+    "loc": 83,
+    "lloc": 34,
+    "sloc": 43,
+    "comments": 6,
+    "multi": 0,
+    "blank": 34,
+    "single_comments": 6
+  },
+  "tests/middleware/test_request_pipeline.py": {
+    "loc": 218,
+    "lloc": 97,
+    "sloc": 133,
+    "comments": 12,
+    "multi": 0,
+    "blank": 73,
+    "single_comments": 12
+  },
+  "tests/middleware/test_security_middleware.py": {
+    "loc": 242,
+    "lloc": 119,
+    "sloc": 133,
+    "comments": 12,
+    "multi": 3,
+    "blank": 94,
+    "single_comments": 12
+  },
+  "tests/middleware/test_solar_blueprint.py": {
+    "loc": 158,
+    "lloc": 67,
+    "sloc": 86,
+    "comments": 11,
+    "multi": 6,
+    "blank": 55,
+    "single_comments": 11
+  },
+  "tests/observatory/test_audit.py": {
+    "loc": 296,
+    "lloc": 105,
+    "sloc": 139,
+    "comments": 47,
+    "multi": 0,
+    "blank": 110,
+    "single_comments": 47
+  },
+  "tests/observatory/test_cli.py": {
+    "loc": 241,
+    "lloc": 94,
+    "sloc": 129,
+    "comments": 19,
+    "multi": 9,
+    "blank": 84,
+    "single_comments": 19
+  },
+  "tests/observatory/test_error_log.py": {
+    "loc": 139,
+    "lloc": 69,
+    "sloc": 75,
+    "comments": 9,
+    "multi": 0,
+    "blank": 55,
+    "single_comments": 9
+  },
+  "tests/orbits/test_example_planet.py": {
+    "loc": 316,
+    "lloc": 119,
+    "sloc": 161,
+    "comments": 46,
+    "multi": 15,
+    "blank": 96,
+    "single_comments": 44
+  },
+  "tests/rules/test_architecture_scanner.py": {
+    "loc": 18,
+    "lloc": 7,
+    "sloc": 7,
+    "comments": 3,
+    "multi": 0,
+    "blank": 8,
+    "single_comments": 3
+  },
+  "tests/rules/test_controller_auth_check_scanner.py": {
+    "loc": 72,
+    "lloc": 24,
+    "sloc": 45,
+    "comments": 2,
+    "multi": 0,
+    "blank": 25,
+    "single_comments": 2
+  },
+  "tests/rules/test_controller_module.py": {
+    "loc": 62,
+    "lloc": 17,
+    "sloc": 16,
+    "comments": 14,
+    "multi": 9,
+    "blank": 23,
+    "single_comments": 14
+  },
+  "tests/rules/test_controller_return_scanner.py": {
+    "loc": 151,
+    "lloc": 44,
+    "sloc": 74,
+    "comments": 16,
+    "multi": 10,
+    "blank": 51,
+    "single_comments": 16
+  },
+  "tests/rules/test_controller_security_scanner.py": {
+    "loc": 97,
+    "lloc": 28,
+    "sloc": 47,
+    "comments": 8,
+    "multi": 5,
+    "blank": 37,
+    "single_comments": 8
+  },
+  "tests/rules/test_error_exposure_scanner.py": {
+    "loc": 247,
+    "lloc": 67,
+    "sloc": 139,
+    "comments": 25,
+    "multi": 3,
+    "blank": 80,
+    "single_comments": 25
+  },
+  "tests/rules/test_http_input_scanner.py": {
+    "loc": 165,
+    "lloc": 46,
+    "sloc": 94,
+    "comments": 14,
+    "multi": 10,
+    "blank": 47,
+    "single_comments": 14
+  },
+  "tests/rules/test_mass_assignment_scanner.py": {
+    "loc": 146,
+    "lloc": 53,
+    "sloc": 72,
+    "comments": 17,
+    "multi": 0,
+    "blank": 57,
+    "single_comments": 17
+  },
+  "tests/rules/test_module_classes_scanner.py": {
+    "loc": 123,
+    "lloc": 41,
+    "sloc": 69,
+    "comments": 10,
+    "multi": 0,
+    "blank": 44,
+    "single_comments": 10
+  },
+  "tests/rules/test_outbound_request_scanner.py": {
+    "loc": 122,
+    "lloc": 40,
+    "sloc": 61,
+    "comments": 12,
+    "multi": 0,
+    "blank": 49,
+    "single_comments": 12
+  },
+  "tests/rules/test_planet_scanner.py": {
+    "loc": 125,
+    "lloc": 43,
+    "sloc": 76,
+    "comments": 9,
+    "multi": 0,
+    "blank": 40,
+    "single_comments": 9
+  },
+  "tests/rules/test_project_validator.py": {
+    "loc": 393,
+    "lloc": 140,
+    "sloc": 221,
+    "comments": 41,
+    "multi": 12,
+    "blank": 119,
+    "single_comments": 41
+  },
+  "tests/rules/test_resource_exposure_scanner.py": {
+    "loc": 95,
+    "lloc": 24,
+    "sloc": 57,
+    "comments": 2,
+    "multi": 0,
+    "blank": 36,
+    "single_comments": 2
+  },
+  "tests/rules/test_route_scanner.py": {
+    "loc": 201,
+    "lloc": 53,
+    "sloc": 128,
+    "comments": 10,
+    "multi": 0,
+    "blank": 63,
+    "single_comments": 10
+  },
+  "tests/rules/test_secret_content_scanner.py": {
+    "loc": 269,
+    "lloc": 88,
+    "sloc": 127,
+    "comments": 31,
+    "multi": 3,
+    "blank": 108,
+    "single_comments": 31
+  },
+  "tests/rules/test_secret_scanner.py": {
+    "loc": 130,
+    "lloc": 44,
+    "sloc": 76,
+    "comments": 5,
+    "multi": 0,
+    "blank": 49,
+    "single_comments": 5
+  },
+  "tests/rules/test_source_files.py": {
+    "loc": 210,
+    "lloc": 82,
+    "sloc": 108,
+    "comments": 27,
+    "multi": 0,
+    "blank": 75,
+    "single_comments": 27
+  },
+  "tests/rules/test_token_security_scanner.py": {
+    "loc": 101,
+    "lloc": 40,
+    "sloc": 60,
+    "comments": 1,
+    "multi": 0,
+    "blank": 40,
+    "single_comments": 1
+  },
+  "tests/rules/test_unsafe_sql_scanner.py": {
+    "loc": 68,
+    "lloc": 17,
+    "sloc": 42,
+    "comments": 2,
+    "multi": 0,
+    "blank": 24,
+    "single_comments": 2
+  },
+  "tests/rules/test_upload_handling_scanner.py": {
+    "loc": 78,
+    "lloc": 24,
+    "sloc": 45,
+    "comments": 2,
+    "multi": 0,
+    "blank": 31,
+    "single_comments": 2
+  },
+  "tests/rules/architecture/test_authentication_must_not_be_scattered_in_controllers.py": {
+    "loc": 54,
+    "lloc": 21,
+    "sloc": 30,
+    "comments": 4,
+    "multi": 0,
+    "blank": 20,
+    "single_comments": 4
+  },
+  "tests/rules/architecture/test_controller_and_usecase_must_use_named_contracts.py": {
+    "loc": 193,
+    "lloc": 67,
+    "sloc": 109,
+    "comments": 16,
+    "multi": 0,
+    "blank": 68,
+    "single_comments": 16
+  },
+  "tests/rules/architecture/test_controller_must_not_implement_authentication.py": {
+    "loc": 59,
+    "lloc": 17,
+    "sloc": 40,
+    "comments": 3,
+    "multi": 0,
+    "blank": 16,
+    "single_comments": 3
+  },
+  "tests/rules/architecture/test_controller_must_return_resource.py": {
+    "loc": 59,
+    "lloc": 22,
+    "sloc": 28,
+    "comments": 3,
+    "multi": 8,
+    "blank": 20,
+    "single_comments": 3
+  },
+  "tests/rules/architecture/test_dependency_rule.py": {
+    "loc": 601,
+    "lloc": 180,
+    "sloc": 366,
+    "comments": 45,
+    "multi": 0,
+    "blank": 190,
+    "single_comments": 45
+  },
+  "tests/rules/architecture/test_errors_must_not_leak_internals.py": {
+    "loc": 73,
+    "lloc": 29,
+    "sloc": 40,
+    "comments": 7,
+    "multi": 0,
+    "blank": 26,
+    "single_comments": 7
+  },
+  "tests/rules/architecture/test_http_input_must_pass_through_sanitization_and_validation.py": {
+    "loc": 364,
+    "lloc": 107,
+    "sloc": 224,
+    "comments": 28,
+    "multi": 10,
+    "blank": 102,
+    "single_comments": 28
+  },
+  "tests/rules/architecture/test_models_must_live_in_their_own_file.py": {
+    "loc": 193,
+    "lloc": 51,
+    "sloc": 125,
+    "comments": 17,
+    "multi": 0,
+    "blank": 51,
+    "single_comments": 17
+  },
+  "tests/rules/architecture/test_outbound_requests_must_not_use_untrusted_url.py": {
+    "loc": 100,
+    "lloc": 39,
+    "sloc": 50,
+    "comments": 13,
+    "multi": 0,
+    "blank": 37,
+    "single_comments": 13
+  },
+  "tests/rules/architecture/test_persistence_must_not_build_unsafe_sql.py": {
+    "loc": 57,
+    "lloc": 18,
+    "sloc": 38,
+    "comments": 3,
+    "multi": 0,
+    "blank": 16,
+    "single_comments": 3
+  },
+  "tests/rules/architecture/test_planet_must_have_standard_structure.py": {
+    "loc": 234,
+    "lloc": 73,
+    "sloc": 150,
+    "comments": 14,
+    "multi": 0,
+    "blank": 70,
+    "single_comments": 14
+  },
+  "tests/rules/architecture/test_request_data_must_not_become_entities_directly.py": {
+    "loc": 139,
+    "lloc": 45,
+    "sloc": 75,
+    "comments": 18,
+    "multi": 0,
+    "blank": 46,
+    "single_comments": 18
+  },
+  "tests/rules/architecture/test_resources_must_not_expose_secrets.py": {
+    "loc": 78,
+    "lloc": 32,
+    "sloc": 39,
+    "comments": 7,
+    "multi": 0,
+    "blank": 32,
+    "single_comments": 7
+  },
+  "tests/rules/architecture/test_routes_must_be_declared_explicitly.py": {
+    "loc": 114,
+    "lloc": 32,
+    "sloc": 73,
+    "comments": 4,
+    "multi": 0,
+    "blank": 37,
+    "single_comments": 4
+  },
+  "tests/rules/architecture/test_routes_must_live_in_route_modules.py": {
+    "loc": 157,
+    "lloc": 51,
+    "sloc": 90,
+    "comments": 15,
+    "multi": 0,
+    "blank": 52,
+    "single_comments": 15
+  },
+  "tests/rules/architecture/test_routes_must_point_to_controller.py": {
+    "loc": 150,
+    "lloc": 49,
+    "sloc": 89,
+    "comments": 9,
+    "multi": 0,
+    "blank": 52,
+    "single_comments": 9
+  },
+  "tests/rules/architecture/test_rule_engine.py": {
+    "loc": 65,
+    "lloc": 20,
+    "sloc": 59,
+    "comments": 0,
+    "multi": 0,
+    "blank": 6,
+    "single_comments": 0
+  },
+  "tests/rules/architecture/test_secrets_must_not_appear_in_source.py": {
+    "loc": 147,
+    "lloc": 58,
+    "sloc": 66,
+    "comments": 21,
+    "multi": 3,
+    "blank": 57,
+    "single_comments": 21
+  },
+  "tests/rules/architecture/test_secrets_must_not_be_hardcoded.py": {
+    "loc": 88,
+    "lloc": 29,
+    "sloc": 52,
+    "comments": 6,
+    "multi": 0,
+    "blank": 30,
+    "single_comments": 6
+  },
+  "tests/rules/architecture/test_security_rules_accept_the_solar_source.py": {
+    "loc": 83,
+    "lloc": 30,
+    "sloc": 50,
+    "comments": 9,
+    "multi": 3,
+    "blank": 23,
+    "single_comments": 7
+  },
+  "tests/rules/architecture/test_tokens_must_be_secure.py": {
+    "loc": 87,
+    "lloc": 29,
+    "sloc": 52,
+    "comments": 6,
+    "multi": 0,
+    "blank": 29,
+    "single_comments": 6
+  },
+  "tests/rules/architecture/test_uploads_must_use_storage.py": {
+    "loc": 61,
+    "lloc": 25,
+    "sloc": 32,
+    "comments": 5,
+    "multi": 0,
+    "blank": 24,
+    "single_comments": 5
+  },
+  "tests/security/test_json_guards.py": {
+    "loc": 115,
+    "lloc": 54,
+    "sloc": 49,
+    "comments": 19,
+    "multi": 0,
+    "blank": 47,
+    "single_comments": 19
+  },
+  "tests/security/test_url_guard.py": {
+    "loc": 151,
+    "lloc": 58,
+    "sloc": 76,
+    "comments": 14,
+    "multi": 0,
+    "blank": 61,
+    "single_comments": 14
+  },
+  "tests/server/test_server.py": {
+    "loc": 315,
+    "lloc": 119,
+    "sloc": 163,
+    "comments": 27,
+    "multi": 18,
+    "blank": 107,
+    "single_comments": 27
+  },
+  "tests/storage/test_storage.py": {
+    "loc": 128,
+    "lloc": 57,
+    "sloc": 59,
+    "comments": 14,
+    "multi": 0,
+    "blank": 55,
+    "single_comments": 14
+  },
+  "tests/upload/test_file_signatures.py": {
+    "loc": 113,
+    "lloc": 41,
+    "sloc": 53,
+    "comments": 16,
+    "multi": 0,
+    "blank": 44,
+    "single_comments": 16
+  },
+  "tests/upload/test_upload_validation.py": {
+    "loc": 278,
+    "lloc": 95,
+    "sloc": 148,
+    "comments": 27,
+    "multi": 0,
+    "blank": 103,
+    "single_comments": 27
+  }
+}

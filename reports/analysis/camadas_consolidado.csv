@@ -1,0 +1,7 @@
+﻿layer,modules,classes,sloc,lloc,functions_methods,cc_sum,cc_mean_per_function,cc_max,cognitive_functions_ge1,cognitive_sum,cognitive_max,halstead_volume,mi_mean,mi_min,Ca_sum,Ce_sum,instability_sum_based,cbo_mean,cbo_max,lcom1_applicable,lcom1_mean
+Bootstrap,1,1,73,52,6,11,1.833,3,3,5,2,55.507,67.132,67.13176567760297,0,5,1.0,4.0,4,1,0.0
+Nucleus,138,118,5533,3821,494,1169,2.366,10,278,752,18,5541.472,84.01,32.26059276973441,273,258,0.4859,1.568,15,35,12.029
+Observatory,9,2,388,246,26,63,2.423,9,13,30,8,438.956,86.366,67.71582840775581,9,9,0.5,0.5,1,1,1.0
+Orbits,3,0,12,14,1,1,1.0,1,0,0,0,0,100.0,100.0,1,4,0.8,,0,0,
+Orbits/Database,8,3,96,57,5,7,1.4,2,2,2,1,17.51,93.998,63.09616496515982,7,4,0.3636,1.333,3,1,0.0
+Orbits/Planets,49,12,159,154,21,27,1.286,4,4,5,2,41.296,98.86,71.85007746931849,16,26,0.619,1.333,3,1,0.0

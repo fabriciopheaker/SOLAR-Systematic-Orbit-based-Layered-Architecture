@@ -1,0 +1,897 @@
+{
+  "root": "C:\\Users\\Win\\OneDrive\\Desktop\\html\\SOLAR",
+  "files_parsed": 269,
+  "parse_errors": [],
+  "production_modules": 208,
+  "test_modules": 61,
+  "internal_edges": 306,
+  "external_import_statements": 234,
+  "unresolved_imports": 0,
+  "dynamic_imports": [
+    {
+      "source": "nucleus.database.database",
+      "target": "orbits.database.models",
+      "lineno": 167,
+      "constant": "MODELS_PACKAGE",
+      "kind": "package_scan"
+    },
+    {
+      "source": "nucleus.database.database",
+      "target": "orbits.database.models.user_model",
+      "lineno": 167,
+      "constant": "MODELS_PACKAGE",
+      "kind": "package_scan"
+    }
+  ],
+  "cycles": {
+    "count": 1,
+    "modules_in_cycles": 2,
+    "largest": 2,
+    "static_count": 0,
+    "dynamic_only": 1
+  },
+  "reachability": {
+    "entry_points": [
+      "server",
+      "observatory.solar.__main__"
+    ],
+    "reachable_modules": 134,
+    "unreachable_with_code": 15,
+    "unreachable_sloc": 631,
+    "production_sloc": 6261,
+    "modules": [
+      "nucleus.contracts.responsibility_contract",
+      "nucleus.middleware.brute_force_guard",
+      "nucleus.middleware.csrf_protection",
+      "nucleus.middleware.rate_limiter",
+      "nucleus.rules.architecture.controller_and_usecase_must_use_named_contracts",
+      "nucleus.security.attempt_tracker",
+      "nucleus.security.token",
+      "nucleus.security.url_guard",
+      "nucleus.upload.file_sanitizer",
+      "nucleus.upload.file_signatures",
+      "nucleus.upload.file_validator",
+      "nucleus.upload.upload_policy",
+      "nucleus.upload.uploaded_file",
+      "observatory.records",
+      "orbits.planets.user.repository.user_repository"
+    ]
+  },
+  "self_loops": [],
+  "coupling": {
+    "Ce": {
+      "n": 101,
+      "min": 1,
+      "median": 3,
+      "mean": 3.03,
+      "p90": 4,
+      "max": 49,
+      "sum": 306
+    },
+    "Ca": {
+      "n": 138,
+      "min": 1,
+      "median": 1.0,
+      "mean": 2.217,
+      "p90": 3,
+      "max": 38,
+      "sum": 306
+    },
+    "top_Ce": [
+      {
+        "module": "nucleus.rules.project_validator",
+        "Ce": 49
+      },
+      {
+        "module": "nucleus.kernel",
+        "Ce": 16
+      },
+      {
+        "module": "nucleus.middleware.request_pipeline",
+        "Ce": 6
+      },
+      {
+        "module": "nucleus.database.database",
+        "Ce": 5
+      },
+      {
+        "module": "nucleus.rules.scanner.secret_scanner",
+        "Ce": 5
+      },
+      {
+        "module": "nucleus.upload.file_validator",
+        "Ce": 5
+      },
+      {
+        "module": "server",
+        "Ce": 5
+      },
+      {
+        "module": "nucleus.broadcast.broadcast",
+        "Ce": 4
+      },
+      {
+        "module": "nucleus.rules.architecture.resources_must_not_expose_secrets",
+        "Ce": 4
+      },
+      {
+        "module": "nucleus.rules.architecture.secrets_must_not_be_hardcoded",
+        "Ce": 4
+      }
+    ],
+    "top_Ca": [
+      {
+        "module": "nucleus.exceptions.solar_exception",
+        "Ca": 38
+      },
+      {
+        "module": "nucleus.rules.rule",
+        "Ca": 32
+      },
+      {
+        "module": "nucleus.rules.scanner.source_files",
+        "Ca": 17
+      },
+      {
+        "module": "nucleus.rules.scanner.dependency",
+        "Ca": 12
+      },
+      {
+        "module": "nucleus.exceptions.contract_exception",
+        "Ca": 5
+      },
+      {
+        "module": "nucleus.exceptions.validation_exception",
+        "Ca": 5
+      },
+      {
+        "module": "nucleus.contracts.sanitizer",
+        "Ca": 4
+      },
+      {
+        "module": "nucleus.contracts.validator",
+        "Ca": 4
+      },
+      {
+        "module": "nucleus.middleware.security_policy",
+        "Ca": 4
+      },
+      {
+        "module": "nucleus.contracts.http_input",
+        "Ca": 4
+      }
+    ],
+    "top_instability": [
+      {
+        "module": "nucleus.rules.architecture.controller_and_usecase_must_use_named_contracts",
+        "Ca": 0,
+        "Ce": 3,
+        "I": 1.0
+      },
+      {
+        "module": "server",
+        "Ca": 0,
+        "Ce": 5,
+        "I": 1.0
+      },
+      {
+        "module": "nucleus.upload.file_validator",
+        "Ca": 0,
+        "Ce": 5,
+        "I": 1.0
+      },
+      {
+        "module": "nucleus.rules.project_validator",
+        "Ca": 2,
+        "Ce": 49,
+        "I": 0.961
+      },
+      {
+        "module": "nucleus.kernel",
+        "Ca": 1,
+        "Ce": 16,
+        "I": 0.941
+      },
+      {
+        "module": "nucleus.rules.scanner.secret_scanner",
+        "Ca": 1,
+        "Ce": 5,
+        "I": 0.833
+      },
+      {
+        "module": "nucleus.broadcast.broadcast",
+        "Ca": 1,
+        "Ce": 4,
+        "I": 0.8
+      },
+      {
+        "module": "nucleus.rules.scanner.secret_content_scanner",
+        "Ca": 1,
+        "Ce": 4,
+        "I": 0.8
+      },
+      {
+        "module": "orbits.routes",
+        "Ca": 1,
+        "Ce": 4,
+        "I": 0.8
+      },
+      {
+        "module": "orbits.planets.example.usecases.create_user_usecase",
+        "Ca": 1,
+        "Ce": 4,
+        "I": 0.8
+      }
+    ]
+  },
+  "classes": {
+    "total": 136,
+    "with_instance_state": 49,
+    "without_instance_state": 87,
+    "applicable_lcom": 39,
+    "not_applicable_lcom": 97,
+    "lcom1": {
+      "n": 39,
+      "min": 0,
+      "median": 3,
+      "mean": 10.821,
+      "p90": 30,
+      "max": 89,
+      "sum": 422
+    },
+    "lcom1_na": {
+      "n": 43,
+      "min": 1,
+      "median": 10,
+      "mean": 11.279,
+      "p90": 21,
+      "max": 45,
+      "sum": 485
+    },
+    "lcom4": {
+      "n": 39,
+      "min": 1,
+      "median": 1,
+      "mean": 1.128,
+      "p90": 2,
+      "max": 3,
+      "sum": 44
+    },
+    "tcc": {
+      "n": 39,
+      "min": 0.0,
+      "median": 0.3,
+      "mean": 0.398,
+      "p90": 1.0,
+      "max": 1.0,
+      "sum": 15.533211233211233
+    },
+    "lcom1_worst": [
+      {
+        "class": "nucleus.rules.scanner.error_exposure_scanner.ErrorExposureScanner",
+        "lcom1": 89,
+        "lcom4": 1,
+        "tcc": 0.01098901098901099,
+        "attrs": 1,
+        "methods": 14
+      },
+      {
+        "class": "nucleus.rules.scanner.mass_assignment_scanner.MassAssignmentScanner",
+        "lcom1": 43,
+        "lcom4": 1,
+        "tcc": 0.022222222222222223,
+        "attrs": 1,
+        "methods": 10
+      },
+      {
+        "class": "nucleus.rules.scanner.token_security_scanner.TokenSecurityScanner",
+        "lcom1": 43,
+        "lcom4": 1,
+        "tcc": 0.022222222222222223,
+        "attrs": 1,
+        "methods": 10
+      },
+      {
+        "class": "nucleus.rules.scanner.unsafe_sql_scanner.UnsafeSqlScanner",
+        "lcom1": 30,
+        "lcom4": 1,
+        "tcc": 0.08333333333333333,
+        "attrs": 1,
+        "methods": 9
+      },
+      {
+        "class": "nucleus.rules.scanner.http_input_scanner.HttpInputScanner",
+        "lcom1": 28,
+        "lcom4": 1,
+        "tcc": 0.0,
+        "attrs": 2,
+        "methods": 8
+      },
+      {
+        "class": "nucleus.rules.scanner.route_scanner.RouteScanner",
+        "lcom1": 28,
+        "lcom4": 1,
+        "tcc": 0.1111111111111111,
+        "attrs": 2,
+        "methods": 9
+      },
+      {
+        "class": "nucleus.security.url_guard.UrlGuard",
+        "lcom1": 26,
+        "lcom4": 1,
+        "tcc": 0.03571428571428571,
+        "attrs": 2,
+        "methods": 8
+      },
+      {
+        "class": "nucleus.middleware.error_handler.ErrorHandler",
+        "lcom1": 19,
+        "lcom4": 1,
+        "tcc": 0.047619047619047616,
+        "attrs": 3,
+        "methods": 7
+      },
+      {
+        "class": "nucleus.rules.scanner.outbound_request_scanner.OutboundRequestScanner",
+        "lcom1": 19,
+        "lcom4": 1,
+        "tcc": 0.047619047619047616,
+        "attrs": 1,
+        "methods": 7
+      },
+      {
+        "class": "nucleus.rules.scanner.secret_scanner.SecretScanner",
+        "lcom1": 19,
+        "lcom4": 1,
+        "tcc": 0.047619047619047616,
+        "attrs": 3,
+        "methods": 7
+      }
+    ],
+    "cbo_internal": {
+      "n": 136,
+      "min": 0,
+      "median": 1.0,
+      "mean": 1.544,
+      "p90": 3,
+      "max": 15,
+      "sum": 210
+    },
+    "cbo_worst": [
+      {
+        "class": "nucleus.kernel.Kernel",
+        "cbo_min": 15,
+        "cbo_max": 15
+      },
+      {
+        "class": "nucleus.middleware.request_pipeline.RequestPipeline",
+        "cbo_min": 6,
+        "cbo_max": 6
+      },
+      {
+        "class": "nucleus.rules.project_validator.ProjectValidator",
+        "cbo_min": 5,
+        "cbo_max": 5
+      },
+      {
+        "class": "nucleus.broadcast.broadcast.Broadcast",
+        "cbo_min": 4,
+        "cbo_max": 4
+      },
+      {
+        "class": "nucleus.rules.architecture.models_must_live_in_their_own_file.ModelsMustLiveInTheirOwnFile",
+        "cbo_min": 4,
+        "cbo_max": 4
+      },
+      {
+        "class": "server.Server",
+        "cbo_min": 4,
+        "cbo_max": 4
+      },
+      {
+        "class": "nucleus.database.database.Database",
+        "cbo_min": 3,
+        "cbo_max": 3
+      },
+      {
+        "class": "nucleus.database.drivers.driver_sqlalchemy.DriverSQLAlchemy",
+        "cbo_min": 3,
+        "cbo_max": 3
+      },
+      {
+        "class": "nucleus.rules.architecture.authentication_must_not_be_scattered_in_controllers.AuthenticationMustNotBeScatteredInControllers",
+        "cbo_min": 3,
+        "cbo_max": 3
+      },
+      {
+        "class": "nucleus.rules.architecture.controller_and_usecase_must_use_named_contracts.ControllerAndUseCaseMustUseNamedContracts",
+        "cbo_min": 3,
+        "cbo_max": 3
+      }
+    ]
+  },
+  "complexity": {
+    "blocks_all": 1395,
+    "functions_methods": 1233,
+    "functions_methods_production": 553,
+    "cc_total_production": {
+      "n": 553,
+      "min": 1,
+      "median": 2,
+      "mean": 2.311,
+      "p90": 5,
+      "max": 10,
+      "sum": 1278
+    },
+    "rank_distribution_production": {
+      "A": 523,
+      "B": 30
+    },
+    "worst_functions": [
+      {
+        "module": "nucleus.rules.scanner.error_exposure_scanner",
+        "name": "_destination",
+        "class": "ErrorExposureScanner",
+        "cc": 10,
+        "rank": "B",
+        "length": 85,
+        "lineno": 297
+      },
+      {
+        "module": "observatory.records.error_log",
+        "name": "record",
+        "class": "ErrorLog",
+        "cc": 9,
+        "rank": "B",
+        "length": 28,
+        "lineno": 140
+      },
+      {
+        "module": "nucleus.rules.scanner.controller_return_scanner",
+        "name": "_scan_file",
+        "class": "ControllerReturnScanner",
+        "cc": 8,
+        "rank": "B",
+        "length": 58,
+        "lineno": 81
+      },
+      {
+        "module": "nucleus.rules.scanner.error_exposure_scanner",
+        "name": "_detail",
+        "class": "ErrorExposureScanner",
+        "cc": 8,
+        "rank": "B",
+        "length": 39,
+        "lineno": 257
+      },
+      {
+        "module": "nucleus.rules.scanner.controller_auth_check_scanner",
+        "name": "_checks",
+        "class": "ControllerAuthCheckScanner",
+        "cc": 7,
+        "rank": "B",
+        "length": 35,
+        "lineno": 133
+      },
+      {
+        "module": "nucleus.rules.scanner.controller_auth_check_scanner",
+        "name": "_abort_check",
+        "class": "ControllerAuthCheckScanner",
+        "cc": 7,
+        "rank": "B",
+        "length": 35,
+        "lineno": 169
+      },
+      {
+        "module": "nucleus.rules.scanner.error_exposure_scanner",
+        "name": "_assignments",
+        "class": "ErrorExposureScanner",
+        "cc": 7,
+        "rank": "B",
+        "length": 32,
+        "lineno": 411
+      },
+      {
+        "module": "nucleus.rules.scanner.http_input_scanner",
+        "name": "_methods",
+        "class": "HttpInputScanner",
+        "cc": 7,
+        "rank": "B",
+        "length": 33,
+        "lineno": 223
+      },
+      {
+        "module": "nucleus.rules.scanner.mass_assignment_scanner",
+        "name": "_setattr_binding",
+        "class": "MassAssignmentScanner",
+        "cc": 7,
+        "rank": "B",
+        "length": 36,
+        "lineno": 304
+      },
+      {
+        "module": "nucleus.rules.scanner.outbound_request_scanner",
+        "name": "_names",
+        "class": "OutboundRequestScanner",
+        "cc": 7,
+        "rank": "B",
+        "length": 22,
+        "lineno": 186
+      },
+      {
+        "module": "nucleus.rules.scanner.secret_guards",
+        "name": "is_suppressed",
+        "class": "",
+        "cc": 7,
+        "rank": "B",
+        "length": 36,
+        "lineno": 17
+      },
+      {
+        "module": "nucleus.rules.scanner.token_security_scanner",
+        "name": "_verifies_signature",
+        "class": "TokenSecurityScanner",
+        "cc": 7,
+        "rank": "B",
+        "length": 38,
+        "lineno": 203
+      },
+      {
+        "module": "nucleus.rules.scanner.unsafe_sql_scanner",
+        "name": "_binary",
+        "class": "UnsafeSqlScanner",
+        "cc": 7,
+        "rank": "B",
+        "length": 32,
+        "lineno": 168
+      },
+      {
+        "module": "nucleus.rules.scanner.upload_handling_scanner",
+        "name": "_primitives",
+        "class": "UploadHandlingScanner",
+        "cc": 7,
+        "rank": "B",
+        "length": 28,
+        "lineno": 133
+      },
+      {
+        "module": "nucleus.security.identity",
+        "name": "_persist",
+        "class": "Identity",
+        "cc": 7,
+        "rank": "B",
+        "length": 51,
+        "lineno": 113
+      }
+    ],
+    "length": {
+      "n": 553,
+      "min": 2,
+      "median": 13,
+      "mean": 16.635,
+      "p90": 35,
+      "max": 163,
+      "sum": 9199
+    },
+    "longest": [
+      {
+        "module": "nucleus.kernel",
+        "name": "mount",
+        "cc": 2,
+        "length": 163
+      },
+      {
+        "module": "nucleus.rules.scanner.architecture_scanner",
+        "name": "_scan_file",
+        "cc": 6,
+        "length": 108
+      },
+      {
+        "module": "nucleus.rules.scanner.architecture_scanner",
+        "name": "_resolve_import",
+        "cc": 4,
+        "length": 85
+      },
+      {
+        "module": "nucleus.rules.scanner.error_exposure_scanner",
+        "name": "_destination",
+        "cc": 10,
+        "length": 85
+      },
+      {
+        "module": "nucleus.rules.project_validator",
+        "name": "project_checks",
+        "cc": 1,
+        "length": 81
+      },
+      {
+        "module": "nucleus.middleware.atmosphere",
+        "name": "apply",
+        "cc": 1,
+        "length": 72
+      },
+      {
+        "module": "nucleus.environment",
+        "name": "init",
+        "cc": 2,
+        "length": 64
+      },
+      {
+        "module": "nucleus.rules.scanner.secret_content_scanner",
+        "name": "_scan_file",
+        "cc": 5,
+        "length": 62
+      },
+      {
+        "module": "nucleus.rules.scanner.route_scanner",
+        "name": "_scan_file",
+        "cc": 5,
+        "length": 59
+      },
+      {
+        "module": "nucleus.rules.scanner.controller_return_scanner",
+        "name": "_scan_file",
+        "cc": 8,
+        "length": 58
+      }
+    ]
+  },
+  "halstead": {
+    "modules": 269,
+    "functions_total": 1219,
+    "functions_with_zero_n1_n2": 548,
+    "zero_ratio": 0.4495,
+    "volume_total": 19918.753,
+    "volume_production": 6094.741
+  },
+  "cognitive": {
+    "status": "ok",
+    "tool": "flake8 7.4.1 + flake8-cognitive-complexity 0.1.0 (solar-like)",
+    "files_scanned": 4,
+    "functions_reported": 300,
+    "modules_with_score_gt0": 96,
+    "total_score": 794,
+    "distribution": {
+      "n": 300,
+      "min": 1,
+      "median": 2.0,
+      "mean": 2.647,
+      "p90": 6,
+      "max": 18,
+      "sum": 794
+    },
+    "worst": [
+      {
+        "module": "nucleus.rules.scanner.error_exposure_scanner",
+        "qualname": "ErrorExposureScanner._destination",
+        "cognitive": 18,
+        "lineno": 297
+      },
+      {
+        "module": "nucleus.rules.scanner.controller_return_scanner",
+        "qualname": "ControllerReturnScanner._scan_file",
+        "cognitive": 14,
+        "lineno": 81
+      },
+      {
+        "module": "nucleus.rules.scanner.token_security_scanner",
+        "qualname": "TokenSecurityScanner._verifies_signature",
+        "cognitive": 13,
+        "lineno": 203
+      },
+      {
+        "module": "nucleus.rules.scanner.upload_handling_scanner",
+        "qualname": "UploadHandlingScanner._primitives",
+        "cognitive": 10,
+        "lineno": 133
+      },
+      {
+        "module": "nucleus.security.identity",
+        "qualname": "Identity._persist",
+        "cognitive": 10,
+        "lineno": 113
+      },
+      {
+        "module": "nucleus.rules.scanner.architecture_scanner",
+        "qualname": "ArchitectureScanner._scan_file",
+        "cognitive": 9,
+        "lineno": 89
+      },
+      {
+        "module": "nucleus.rules.scanner.controller_auth_check_scanner",
+        "qualname": "ControllerAuthCheckScanner._checks",
+        "cognitive": 9,
+        "lineno": 133
+      },
+      {
+        "module": "nucleus.rules.scanner.controller_security_scanner",
+        "qualname": "ControllerSecurityScanner._imports",
+        "cognitive": 9,
+        "lineno": 122
+      },
+      {
+        "module": "nucleus.rules.scanner.error_exposure_scanner",
+        "qualname": "ErrorExposureScanner._detail",
+        "cognitive": 9,
+        "lineno": 257
+      },
+      {
+        "module": "nucleus.rules.scanner.planet_scanner",
+        "qualname": "PlanetScanner.scan",
+        "cognitive": 9,
+        "lineno": 59
+      },
+      {
+        "module": "nucleus.rules.scanner.resource_exposure_scanner",
+        "qualname": "ResourceExposureScanner._fields",
+        "cognitive": 9,
+        "lineno": 121
+      },
+      {
+        "module": "nucleus.rules.scanner.secret_guards",
+        "qualname": "is_suppressed",
+        "cognitive": 9,
+        "lineno": 17
+      },
+      {
+        "module": "nucleus.rules.scanner.error_exposure_scanner",
+        "qualname": "ErrorExposureScanner._assignments",
+        "cognitive": 8,
+        "lineno": 411
+      },
+      {
+        "module": "observatory.records.error_log",
+        "qualname": "ErrorLog.record",
+        "cognitive": 8,
+        "lineno": 140
+      },
+      {
+        "module": "nucleus.rules.scanner.controller_return_scanner",
+        "qualname": "ControllerReturnScanner._resource_calls",
+        "cognitive": 7,
+        "lineno": 170
+      }
+    ]
+  },
+  "maintainability": {
+    "reported_modules": 269,
+    "mi": {
+      "n": 269,
+      "min": 32.26059276973441,
+      "median": 87.81857519387702,
+      "mean": 84.534,
+      "p90": 100.0,
+      "max": 100.0,
+      "sum": 22739.739663270233
+    },
+    "rank_distribution": {
+      "A": 269
+    },
+    "rank_distribution_production": {
+      "A": 208
+    },
+    "mi_production": {
+      "n": 208,
+      "min": 32.26059276973441,
+      "median": 100.0,
+      "mean": 88.144,
+      "p90": 100.0,
+      "max": 100.0,
+      "sum": 18333.890032562136
+    },
+    "mi_production_sem_multiline": {
+      "n": 208,
+      "min": 50.35028,
+      "median": 100.0,
+      "mean": 91.013,
+      "p90": 100.0,
+      "max": 100.0,
+      "sum": 18930.73255
+    },
+    "sensibilidade_multiline": {
+      "descricao": "MI recalculado com count_multi=False (docstrings não contam como comentário)",
+      "n": 208,
+      "delta_medio": 2.869,
+      "modulos_com_delta_abs_maior_10": 26
+    },
+    "recomputation": {
+      "status": "ok",
+      "tool": "radon 6.0.1 — radon.metrics.mi_visit(fonte, multi=True)",
+      "modules": 269,
+      "mismatch_count": 0,
+      "max_abs_diff": 0.0,
+      "mismatches": [],
+      "formula": "MI = max(0, min(100, (171 - 5.2*ln(V) - 0.23*CC − 16.2*ln(LLOC) + 50*sin(sqrt(2.46*radians(%comentários)))) * 100/171)); 100 quando V<=0 ou LLOC<=0",
+      "notes": [
+        "V = volume de Halstead total do arquivo (radon h_visit_ast)",
+        "CC = ComplexityVisitor.total_complexity (não é a soma dos blocos do relatório cc)",
+        "LLOC = radon raw.lloc (não SLOC)",
+        "%comentários = (comments + multi) / sloc * 100"
+      ],
+      "mean_abs_diff": 0.0,
+      "full_reproduction": {
+        "status": "ok",
+        "cc_mismatches": 0,
+        "hal_mismatches": 0,
+        "raw_mismatches": 0,
+        "files_checked": 208,
+        "examples": [],
+        "total_mismatches": 0
+      }
+    }
+  },
+  "layers": [
+    {
+      "layer": "Bootstrap",
+      "modules": 1,
+      "internal_edges_out": 5,
+      "Ce_sum": 5,
+      "Ca_sum": 0,
+      "instability_sum_based": 1.0,
+      "cross_layer_out_edges": 5,
+      "cross_layer_in_edges": 0,
+      "classes": 1
+    },
+    {
+      "layer": "Nucleus",
+      "modules": 138,
+      "internal_edges_out": 258,
+      "Ce_sum": 258,
+      "Ca_sum": 273,
+      "instability_sum_based": 0.4859,
+      "cross_layer_out_edges": 3,
+      "cross_layer_in_edges": 18,
+      "classes": 118
+    },
+    {
+      "layer": "Observatory",
+      "modules": 9,
+      "internal_edges_out": 9,
+      "Ce_sum": 9,
+      "Ca_sum": 9,
+      "instability_sum_based": 0.5,
+      "cross_layer_out_edges": 2,
+      "cross_layer_in_edges": 2,
+      "classes": 2
+    },
+    {
+      "layer": "Orbits",
+      "modules": 3,
+      "internal_edges_out": 4,
+      "Ce_sum": 4,
+      "Ca_sum": 1,
+      "instability_sum_based": 0.8,
+      "cross_layer_out_edges": 4,
+      "cross_layer_in_edges": 1,
+      "classes": 0
+    },
+    {
+      "layer": "Orbits/Database",
+      "modules": 8,
+      "internal_edges_out": 4,
+      "Ce_sum": 4,
+      "Ca_sum": 7,
+      "instability_sum_based": 0.3636,
+      "cross_layer_out_edges": 2,
+      "cross_layer_in_edges": 5,
+      "classes": 3
+    },
+    {
+      "layer": "Orbits/Planets",
+      "modules": 49,
+      "internal_edges_out": 26,
+      "Ce_sum": 26,
+      "Ca_sum": 16,
+      "instability_sum_based": 0.619,
+      "cross_layer_out_edges": 14,
+      "cross_layer_in_edges": 4,
+      "classes": 12
+    }
+  ],
+  "radon_reports": {
+    "cc_files": 208,
+    "hal_files": 269,
+    "mi_files": 269,
+    "raw_files": 269
+  }
+}

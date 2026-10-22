@@ -1,0 +1,71 @@
+Type,Name,Description,File,Module/Class,Line Number,Severity
+Structural,High Number of Methods (NOM),Class 'nucleus.rules.scanner.error_exposure_scanner.ErrorExposureScanner' has 14 methods (excluding special methods and properties),./nucleus/rules/scanner/error_exposure_scanner.py,nucleus.rules.scanner.error_exposure_scanner.ErrorExposureScanner,,Medium
+Structural,High Lack of Cohesion of Methods (LCOM),"Class 'nucleus.database.database.Database' has LCOM of 15 (non-cohesive: 15, cohesive: 0)",./nucleus/database/database.py,nucleus.database.database.Database,,Medium
+Structural,High Lack of Cohesion of Methods (LCOM),"Class 'nucleus.database.drivers.driver_sqlalchemy.DriverSQLAlchemy' has LCOM of 12 (non-cohesive: 27, cohesive: 15)",./nucleus/database/drivers/driver_sqlalchemy.py,nucleus.database.drivers.driver_sqlalchemy.DriverSQLAlchemy,,Medium
+Structural,High Lack of Cohesion of Methods (LCOM),"Class 'nucleus.database.drivers.interface.database_driver.DatabaseDriver' has LCOM of 21 (non-cohesive: 21, cohesive: 0)",./nucleus/database/drivers/interface/database_driver.py,nucleus.database.drivers.interface.database_driver.DatabaseDriver,,High
+Structural,High Lack of Cohesion of Methods (LCOM),"Class 'nucleus.middleware.error_handler.ErrorHandler' has LCOM of 11 (non-cohesive: 19, cohesive: 8)",./nucleus/middleware/error_handler.py,nucleus.middleware.error_handler.ErrorHandler,,Medium
+Structural,High Lack of Cohesion of Methods (LCOM),"Class 'nucleus.storage.storage.Storage' has LCOM of 15 (non-cohesive: 15, cohesive: 0)",./nucleus/storage/storage.py,nucleus.storage.storage.Storage,,Medium
+Structural,High Lines of Code (LOC),"Module 'nucleus.rules.project_validator' has 216 effective code lines
+(Total: 423, Code: 216, Doc: 52, Import: 51, Blank: 53)",./nucleus/rules/project_validator.py,nucleus.rules.project_validator,,Medium
+Structural,High Lines of Code (LOC),"Module 'nucleus.rules.scanner.error_exposure_scanner' has 268 effective code lines
+(Total: 632, Code: 268, Doc: 113, Import: 5, Blank: 134)",./nucleus/rules/scanner/error_exposure_scanner.py,nucleus.rules.scanner.error_exposure_scanner,,High
+Structural,High Lines of Code (LOC),"Module 'observatory.records.error_log' has 151 effective code lines
+(Total: 300, Code: 151, Doc: 61, Import: 8, Blank: 63)",./observatory/records/error_log.py,observatory.records.error_log,,Medium
+Structural,High Lines of Code (LOC),"Module 'tests.database.test_persistence_layer' has 252 effective code lines
+(Total: 464, Code: 252, Doc: 20, Import: 16, Blank: 140)",./tests/database/test_persistence_layer.py,tests.database.test_persistence_layer,,Medium
+Structural,High Lines of Code (LOC),"Module 'tests.rules.architecture.test_dependency_rule' has 352 effective code lines
+(Total: 601, Code: 352, Doc: 0, Import: 14, Blank: 190)",./tests/rules/architecture/test_dependency_rule.py,tests.rules.architecture.test_dependency_rule,,High
+Structural,High Number of Classes (NOC),"Project has 127.6 weighted classes:
+- Regular classes: 124
+- Abstract/Interface classes: 0
+- Utility classes: 12
+- Test classes: 29 (not counted in weighted total)
+Adjusted threshold: 10.5",/solar,Project,,High
+Structural,High Fan-out,Module 'nucleus.kernel' has 18 significant outgoing dependencies,./nucleus/kernel.py,nucleus.kernel,,Medium
+Structural,High Fan-out,Module 'nucleus.rules.project_validator' has 51 significant outgoing dependencies,./nucleus/rules/project_validator.py,nucleus.rules.project_validator,,High
+Structural,High Fan-in,Module 'pathlib' has 42 incoming dependencies,Unknown,pathlib,,High
+Structural,High Fan-in,Module 'nucleus.exceptions.solar_exception' has 57 incoming dependencies,./nucleus/exceptions/solar_exception.py,nucleus.exceptions.solar_exception,,High
+Structural,High Fan-in,Module 'dataclasses' has 29 incoming dependencies,Unknown,dataclasses,,High
+Structural,High Fan-in,Module 'nucleus.rules.rule' has 33 incoming dependencies,./nucleus/rules/rule.py,nucleus.rules.rule,,High
+Structural,High Fan-in,Module 'ast' has 20 incoming dependencies,Unknown,ast,,Medium
+Structural,High Fan-in,Module 'nucleus.rules.scanner.source_files' has 18 incoming dependencies,./nucleus/rules/scanner/source_files.py,nucleus.rules.scanner.source_files,,Medium
+Structural,High Fan-in,Module 'pytest' has 32 incoming dependencies,Unknown,pytest,,High
+Structural,Long File,File 'nucleus.rules.project_validator' has 267 meaningful lines of code,./nucleus/rules/project_validator.py,nucleus.rules.project_validator,,Medium
+Structural,Long File,File 'nucleus.rules.scanner.error_exposure_scanner' has 273 meaningful lines of code,./nucleus/rules/scanner/error_exposure_scanner.py,nucleus.rules.scanner.error_exposure_scanner,,Medium
+Structural,Long File,File 'tests.database.test_persistence_layer' has 268 meaningful lines of code,./tests/database/test_persistence_layer.py,tests.database.test_persistence_layer,,Medium
+Structural,Long File,File 'tests.rules.architecture.test_dependency_rule' has 366 meaningful lines of code,./tests/rules/architecture/test_dependency_rule.py,tests.rules.architecture.test_dependency_rule,,Medium
+Structural,Too Many Branches,Method '_missing' has 4 branches with max nesting of 4,./nucleus/rules/architecture/planet_must_have_standard_structure.py,nucleus.rules.architecture.planet_must_have_standard_structure.PlanetMustHaveStandardStructure,128,Medium
+Structural,Too Many Branches,Method '_problems' has 5 branches with max nesting of 4,./nucleus/rules/architecture/tokens_must_be_secure.py,nucleus.rules.architecture.tokens_must_be_secure.TokensMustBeSecure,82,Medium
+Structural,Too Many Branches,Method '_scan_file' has 6 branches with max nesting of 5,./nucleus/rules/scanner/architecture_scanner.py,nucleus.rules.scanner.architecture_scanner.ArchitectureScanner,89,Medium
+Structural,Too Many Branches,Method '_scan_file' has 4 branches with max nesting of 4,./nucleus/rules/scanner/controller_auth_check_scanner.py,nucleus.rules.scanner.controller_auth_check_scanner.ControllerAuthCheckScanner,89,Medium
+Structural,Too Many Branches,Method '_checks' has 8 branches with max nesting of 6,./nucleus/rules/scanner/controller_auth_check_scanner.py,nucleus.rules.scanner.controller_auth_check_scanner.ControllerAuthCheckScanner,133,Medium
+Structural,Too Many Branches,Method '_abort_check' has 6 branches with max nesting of 5,./nucleus/rules/scanner/controller_auth_check_scanner.py,nucleus.rules.scanner.controller_auth_check_scanner.ControllerAuthCheckScanner,169,Medium
+Structural,Too Many Branches,Method '_scan_file' has 7 branches with max nesting of 7,./nucleus/rules/scanner/controller_return_scanner.py,nucleus.rules.scanner.controller_return_scanner.ControllerReturnScanner,81,Medium
+Structural,Too Many Branches,Method '_resource_calls' has 4 branches with max nesting of 4,./nucleus/rules/scanner/controller_return_scanner.py,nucleus.rules.scanner.controller_return_scanner.ControllerReturnScanner,170,Medium
+Structural,Too Many Branches,Method '_scan_file' has 4 branches with max nesting of 4,./nucleus/rules/scanner/controller_security_scanner.py,nucleus.rules.scanner.controller_security_scanner.ControllerSecurityScanner,69,Medium
+Structural,Too Many Branches,Method '_imports' has 6 branches with max nesting of 5,./nucleus/rules/scanner/controller_security_scanner.py,nucleus.rules.scanner.controller_security_scanner.ControllerSecurityScanner,122,Medium
+Structural,Too Many Branches,Method '_detail' has 7 branches with max nesting of 7,./nucleus/rules/scanner/error_exposure_scanner.py,nucleus.rules.scanner.error_exposure_scanner.ErrorExposureScanner,257,Medium
+Structural,Too Many Branches,Method '_destination' has 9 branches with max nesting of 9,./nucleus/rules/scanner/error_exposure_scanner.py,nucleus.rules.scanner.error_exposure_scanner.ErrorExposureScanner,297,Medium
+Structural,Too Many Branches,Method '_assignments' has 5 branches with max nesting of 4,./nucleus/rules/scanner/error_exposure_scanner.py,nucleus.rules.scanner.error_exposure_scanner.ErrorExposureScanner,411,Medium
+Structural,Too Many Branches,Method '_escaped_value' has 4 branches with max nesting of 4,./nucleus/rules/scanner/error_exposure_scanner.py,nucleus.rules.scanner.error_exposure_scanner.ErrorExposureScanner,471,Medium
+Structural,Too Many Branches,Method '_scan_file' has 4 branches with max nesting of 4,./nucleus/rules/scanner/http_input_scanner.py,nucleus.rules.scanner.http_input_scanner.HttpInputScanner,113,Medium
+Structural,Too Many Branches,Method '_methods' has 4 branches with max nesting of 4,./nucleus/rules/scanner/http_input_scanner.py,nucleus.rules.scanner.http_input_scanner.HttpInputScanner,223,Medium
+Structural,Too Many Branches,Method '_scan_file' has 5 branches with max nesting of 4,./nucleus/rules/scanner/mass_assignment_scanner.py,nucleus.rules.scanner.mass_assignment_scanner.MassAssignmentScanner,128,Medium
+Structural,Too Many Branches,Method '_mapping_binding' has 4 branches with max nesting of 4,./nucleus/rules/scanner/mass_assignment_scanner.py,nucleus.rules.scanner.mass_assignment_scanner.MassAssignmentScanner,266,Medium
+Structural,Too Many Branches,Method '_source' has 4 branches with max nesting of 4,./nucleus/rules/scanner/mass_assignment_scanner.py,nucleus.rules.scanner.mass_assignment_scanner.MassAssignmentScanner,358,Medium
+Structural,Too Many Branches,Method '_url_argument' has 4 branches with max nesting of 4,./nucleus/rules/scanner/outbound_request_scanner.py,nucleus.rules.scanner.outbound_request_scanner.OutboundRequestScanner,131,Medium
+Structural,Too Many Branches,Method '_names' has 5 branches with max nesting of 4,./nucleus/rules/scanner/outbound_request_scanner.py,nucleus.rules.scanner.outbound_request_scanner.OutboundRequestScanner,186,Medium
+Structural,Too Many Branches,Method 'scan' has 5 branches with max nesting of 5,./nucleus/rules/scanner/planet_scanner.py,nucleus.rules.scanner.planet_scanner.PlanetScanner,59,Medium
+Structural,Too Many Branches,Method '_fields' has 4 branches with max nesting of 4,./nucleus/rules/scanner/resource_exposure_scanner.py,nucleus.rules.scanner.resource_exposure_scanner.ResourceExposureScanner,121,Medium
+Structural,Too Many Branches,Method '_scan_file' has 5 branches with max nesting of 4,./nucleus/rules/scanner/route_scanner.py,nucleus.rules.scanner.route_scanner.RouteScanner,99,Medium
+Structural,Too Many Branches,Method '_scan_file' has 4 branches with max nesting of 4,./nucleus/rules/scanner/secret_content_scanner.py,nucleus.rules.scanner.secret_content_scanner.SecretContentScanner,99,Medium
+Structural,Too Many Branches,Method '_scan_file' has 6 branches with max nesting of 4,./nucleus/rules/scanner/secret_scanner.py,nucleus.rules.scanner.secret_scanner.SecretScanner,73,Medium
+Structural,Too Many Branches,Method '_verifies_signature' has 6 branches with max nesting of 6,./nucleus/rules/scanner/token_security_scanner.py,nucleus.rules.scanner.token_security_scanner.TokenSecurityScanner,203,Medium
+Structural,Too Many Branches,Method '_binary' has 5 branches with max nesting of 4,./nucleus/rules/scanner/unsafe_sql_scanner.py,nucleus.rules.scanner.unsafe_sql_scanner.UnsafeSqlScanner,168,Medium
+Structural,Too Many Branches,Method '_scan_file' has 4 branches with max nesting of 4,./nucleus/rules/scanner/upload_handling_scanner.py,nucleus.rules.scanner.upload_handling_scanner.UploadHandlingScanner,89,Medium
+Structural,Too Many Branches,Method '_primitives' has 8 branches with max nesting of 6,./nucleus/rules/scanner/upload_handling_scanner.py,nucleus.rules.scanner.upload_handling_scanner.UploadHandlingScanner,133,Medium
+Structural,Too Many Branches,Method '_call_primitives' has 4 branches with max nesting of 4,./nucleus/rules/scanner/upload_handling_scanner.py,nucleus.rules.scanner.upload_handling_scanner.UploadHandlingScanner,162,Medium
+Structural,Too Many Branches,Method '_persist' has 6 branches with max nesting of 6,./nucleus/security/identity.py,nucleus.security.identity.Identity,113,Medium
+Structural,Too Many Branches,Method 'sanitize' has 4 branches with max nesting of 4,./nucleus/security/json_sanitizer.py,nucleus.security.json_sanitizer.JsonSanitizer,43,Medium
+Structural,Too Many Branches,Method 'validate' has 4 branches with max nesting of 4,./nucleus/security/json_validator.py,nucleus.security.json_validator.JsonValidator,51,Medium
+Structural,Too Many Branches,Method '_file_errors' has 4 branches with max nesting of 4,./nucleus/upload/file_validator.py,nucleus.upload.file_validator.FileValidator,83,Medium

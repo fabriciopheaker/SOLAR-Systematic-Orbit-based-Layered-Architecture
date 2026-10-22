@@ -1,0 +1,300 @@
+Code Quality Analysis Report
+============================
+
+Structural Smells:
+-------------------
+- High Number of Methods (NOM): Class 'nucleus.rules.scanner.error_exposure_scanner.ErrorExposureScanner' has 14 methods (excluding special methods and properties)
+  File: ./nucleus/rules/scanner/error_exposure_scanner.py
+  Severity: Medium
+
+- High Lack of Cohesion of Methods (LCOM): Class 'nucleus.database.database.Database' has LCOM of 15 (non-cohesive: 15, cohesive: 0)
+  File: ./nucleus/database/database.py
+  Severity: Medium
+
+- High Lack of Cohesion of Methods (LCOM): Class 'nucleus.database.drivers.driver_sqlalchemy.DriverSQLAlchemy' has LCOM of 12 (non-cohesive: 27, cohesive: 15)
+  File: ./nucleus/database/drivers/driver_sqlalchemy.py
+  Severity: Medium
+
+- High Lack of Cohesion of Methods (LCOM): Class 'nucleus.database.drivers.interface.database_driver.DatabaseDriver' has LCOM of 21 (non-cohesive: 21, cohesive: 0)
+  File: ./nucleus/database/drivers/interface/database_driver.py
+  Severity: High
+
+- High Lack of Cohesion of Methods (LCOM): Class 'nucleus.middleware.error_handler.ErrorHandler' has LCOM of 11 (non-cohesive: 19, cohesive: 8)
+  File: ./nucleus/middleware/error_handler.py
+  Severity: Medium
+
+- High Lack of Cohesion of Methods (LCOM): Class 'nucleus.storage.storage.Storage' has LCOM of 15 (non-cohesive: 15, cohesive: 0)
+  File: ./nucleus/storage/storage.py
+  Severity: Medium
+
+- High Lines of Code (LOC): Module 'nucleus.rules.project_validator' has 216 effective code lines
+(Total: 423, Code: 216, Doc: 52, Import: 51, Blank: 53)
+  File: ./nucleus/rules/project_validator.py
+  Severity: Medium
+
+- High Lines of Code (LOC): Module 'nucleus.rules.scanner.error_exposure_scanner' has 268 effective code lines
+(Total: 632, Code: 268, Doc: 113, Import: 5, Blank: 134)
+  File: ./nucleus/rules/scanner/error_exposure_scanner.py
+  Severity: High
+
+- High Lines of Code (LOC): Module 'observatory.records.error_log' has 151 effective code lines
+(Total: 300, Code: 151, Doc: 61, Import: 8, Blank: 63)
+  File: ./observatory/records/error_log.py
+  Severity: Medium
+
+- High Lines of Code (LOC): Module 'tests.database.test_persistence_layer' has 252 effective code lines
+(Total: 464, Code: 252, Doc: 20, Import: 16, Blank: 140)
+  File: ./tests/database/test_persistence_layer.py
+  Severity: Medium
+
+- High Lines of Code (LOC): Module 'tests.rules.architecture.test_dependency_rule' has 352 effective code lines
+(Total: 601, Code: 352, Doc: 0, Import: 14, Blank: 190)
+  File: ./tests/rules/architecture/test_dependency_rule.py
+  Severity: High
+
+- High Number of Classes (NOC): Project has 127.6 weighted classes:
+- Regular classes: 124
+- Abstract/Interface classes: 0
+- Utility classes: 12
+- Test classes: 29 (not counted in weighted total)
+Adjusted threshold: 10.5
+  File: /solar
+  Severity: High
+
+- High Fan-out: Module 'nucleus.kernel' has 18 significant outgoing dependencies
+  File: ./nucleus/kernel.py
+  Severity: Medium
+
+- High Fan-out: Module 'nucleus.rules.project_validator' has 51 significant outgoing dependencies
+  File: ./nucleus/rules/project_validator.py
+  Severity: High
+
+- High Fan-in: Module 'pathlib' has 42 incoming dependencies
+  File: Unknown
+  Severity: High
+
+- High Fan-in: Module 'nucleus.exceptions.solar_exception' has 57 incoming dependencies
+  File: ./nucleus/exceptions/solar_exception.py
+  Severity: High
+
+- High Fan-in: Module 'dataclasses' has 29 incoming dependencies
+  File: Unknown
+  Severity: High
+
+- High Fan-in: Module 'nucleus.rules.rule' has 33 incoming dependencies
+  File: ./nucleus/rules/rule.py
+  Severity: High
+
+- High Fan-in: Module 'ast' has 20 incoming dependencies
+  File: Unknown
+  Severity: Medium
+
+- High Fan-in: Module 'nucleus.rules.scanner.source_files' has 18 incoming dependencies
+  File: ./nucleus/rules/scanner/source_files.py
+  Severity: Medium
+
+- High Fan-in: Module 'pytest' has 32 incoming dependencies
+  File: Unknown
+  Severity: High
+
+- Long File: File 'nucleus.rules.project_validator' has 267 meaningful lines of code
+  File: ./nucleus/rules/project_validator.py
+  Severity: Medium
+
+- Long File: File 'nucleus.rules.scanner.error_exposure_scanner' has 273 meaningful lines of code
+  File: ./nucleus/rules/scanner/error_exposure_scanner.py
+  Severity: Medium
+
+- Long File: File 'tests.database.test_persistence_layer' has 268 meaningful lines of code
+  File: ./tests/database/test_persistence_layer.py
+  Severity: Medium
+
+- Long File: File 'tests.rules.architecture.test_dependency_rule' has 366 meaningful lines of code
+  File: ./tests/rules/architecture/test_dependency_rule.py
+  Severity: Medium
+
+- Too Many Branches: Method '_missing' has 4 branches with max nesting of 4
+  Line: 128
+  File: ./nucleus/rules/architecture/planet_must_have_standard_structure.py
+  Severity: Medium
+
+- Too Many Branches: Method '_problems' has 5 branches with max nesting of 4
+  Line: 82
+  File: ./nucleus/rules/architecture/tokens_must_be_secure.py
+  Severity: Medium
+
+- Too Many Branches: Method '_scan_file' has 6 branches with max nesting of 5
+  Line: 89
+  File: ./nucleus/rules/scanner/architecture_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_scan_file' has 4 branches with max nesting of 4
+  Line: 89
+  File: ./nucleus/rules/scanner/controller_auth_check_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_checks' has 8 branches with max nesting of 6
+  Line: 133
+  File: ./nucleus/rules/scanner/controller_auth_check_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_abort_check' has 6 branches with max nesting of 5
+  Line: 169
+  File: ./nucleus/rules/scanner/controller_auth_check_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_scan_file' has 7 branches with max nesting of 7
+  Line: 81
+  File: ./nucleus/rules/scanner/controller_return_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_resource_calls' has 4 branches with max nesting of 4
+  Line: 170
+  File: ./nucleus/rules/scanner/controller_return_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_scan_file' has 4 branches with max nesting of 4
+  Line: 69
+  File: ./nucleus/rules/scanner/controller_security_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_imports' has 6 branches with max nesting of 5
+  Line: 122
+  File: ./nucleus/rules/scanner/controller_security_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_detail' has 7 branches with max nesting of 7
+  Line: 257
+  File: ./nucleus/rules/scanner/error_exposure_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_destination' has 9 branches with max nesting of 9
+  Line: 297
+  File: ./nucleus/rules/scanner/error_exposure_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_assignments' has 5 branches with max nesting of 4
+  Line: 411
+  File: ./nucleus/rules/scanner/error_exposure_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_escaped_value' has 4 branches with max nesting of 4
+  Line: 471
+  File: ./nucleus/rules/scanner/error_exposure_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_scan_file' has 4 branches with max nesting of 4
+  Line: 113
+  File: ./nucleus/rules/scanner/http_input_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_methods' has 4 branches with max nesting of 4
+  Line: 223
+  File: ./nucleus/rules/scanner/http_input_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_scan_file' has 5 branches with max nesting of 4
+  Line: 128
+  File: ./nucleus/rules/scanner/mass_assignment_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_mapping_binding' has 4 branches with max nesting of 4
+  Line: 266
+  File: ./nucleus/rules/scanner/mass_assignment_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_source' has 4 branches with max nesting of 4
+  Line: 358
+  File: ./nucleus/rules/scanner/mass_assignment_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_url_argument' has 4 branches with max nesting of 4
+  Line: 131
+  File: ./nucleus/rules/scanner/outbound_request_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_names' has 5 branches with max nesting of 4
+  Line: 186
+  File: ./nucleus/rules/scanner/outbound_request_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method 'scan' has 5 branches with max nesting of 5
+  Line: 59
+  File: ./nucleus/rules/scanner/planet_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_fields' has 4 branches with max nesting of 4
+  Line: 121
+  File: ./nucleus/rules/scanner/resource_exposure_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_scan_file' has 5 branches with max nesting of 4
+  Line: 99
+  File: ./nucleus/rules/scanner/route_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_scan_file' has 4 branches with max nesting of 4
+  Line: 99
+  File: ./nucleus/rules/scanner/secret_content_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_scan_file' has 6 branches with max nesting of 4
+  Line: 73
+  File: ./nucleus/rules/scanner/secret_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_verifies_signature' has 6 branches with max nesting of 6
+  Line: 203
+  File: ./nucleus/rules/scanner/token_security_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_binary' has 5 branches with max nesting of 4
+  Line: 168
+  File: ./nucleus/rules/scanner/unsafe_sql_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_scan_file' has 4 branches with max nesting of 4
+  Line: 89
+  File: ./nucleus/rules/scanner/upload_handling_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_primitives' has 8 branches with max nesting of 6
+  Line: 133
+  File: ./nucleus/rules/scanner/upload_handling_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_call_primitives' has 4 branches with max nesting of 4
+  Line: 162
+  File: ./nucleus/rules/scanner/upload_handling_scanner.py
+  Severity: Medium
+
+- Too Many Branches: Method '_persist' has 6 branches with max nesting of 6
+  Line: 113
+  File: ./nucleus/security/identity.py
+  Severity: Medium
+
+- Too Many Branches: Method 'sanitize' has 4 branches with max nesting of 4
+  Line: 43
+  File: ./nucleus/security/json_sanitizer.py
+  Severity: Medium
+
+- Too Many Branches: Method 'validate' has 4 branches with max nesting of 4
+  Line: 51
+  File: ./nucleus/security/json_validator.py
+  Severity: Medium
+
+- Too Many Branches: Method '_file_errors' has 4 branches with max nesting of 4
+  Line: 83
+  File: ./nucleus/upload/file_validator.py
+  Severity: Medium
+
+No code smells detected.
+
+No architectural smells detected.
+
+
+Summary:
+--------
+Total Structural Smells: 60
+Total Code Smells: 0
+Total Architectural Smells: 0

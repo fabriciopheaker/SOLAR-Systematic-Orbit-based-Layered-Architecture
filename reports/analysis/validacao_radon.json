@@ -1,0 +1,25 @@
+{
+  "status": "ok",
+  "tool": "radon 6.0.1 — radon.metrics.mi_visit(fonte, multi=True)",
+  "modules": 269,
+  "mismatch_count": 0,
+  "max_abs_diff": 0.0,
+  "mismatches": [],
+  "formula": "MI = max(0, min(100, (171 - 5.2*ln(V) - 0.23*CC − 16.2*ln(LLOC) + 50*sin(sqrt(2.46*radians(%comentários)))) * 100/171)); 100 quando V<=0 ou LLOC<=0",
+  "notes": [
+    "V = volume de Halstead total do arquivo (radon h_visit_ast)",
+    "CC = ComplexityVisitor.total_complexity (não é a soma dos blocos do relatório cc)",
+    "LLOC = radon raw.lloc (não SLOC)",
+    "%comentários = (comments + multi) / sloc * 100"
+  ],
+  "mean_abs_diff": 0.0,
+  "full_reproduction": {
+    "status": "ok",
+    "cc_mismatches": 0,
+    "hal_mismatches": 0,
+    "raw_mismatches": 0,
+    "files_checked": 208,
+    "examples": [],
+    "total_mismatches": 0
+  }
+}
