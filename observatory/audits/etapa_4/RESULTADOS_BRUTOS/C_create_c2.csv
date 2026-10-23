@@ -1,0 +1,23 @@
+scenario,kind,concurrency,worker,seq,status,ok,latency_ms,error,body_code,body_preview,bytes
+C_create_c2,create,2,1,1,500,False,385.73369999357965,,isce,"{""code"":""isce"",""message"":""N\u00e3o foi poss\u00edvel processar a solicita\u00e7\u00e3o."",""reference"":""d0bf4429e39a""}
+",117
+C_create_c2,create,2,0,0,500,False,401.9010000047274,,INTERNAL_ERROR,"{""code"":""INTERNAL_ERROR"",""message"":""N\u00e3o foi poss\u00edvel processar a solicita\u00e7\u00e3o."",""reference"":""5c7c38f075dc""}
+",127
+C_create_c2,create,2,0,2,201,True,432.4291999946581,,,,128
+C_create_c2,create,2,1,3,201,True,564.6933999960311,,,,128
+C_create_c2,create,2,0,4,201,True,433.60459999530576,,,,128
+C_create_c2,create,2,1,5,201,True,410.43059999356046,,,,128
+C_create_c2,create,2,0,6,201,True,406.60360000038054,,,,128
+C_create_c2,create,2,1,7,201,True,432.8215999994427,,,,128
+C_create_c2,create,2,0,8,201,True,424.1267000033986,,,,128
+C_create_c2,create,2,1,9,201,True,442.64389999443665,,,,128
+C_create_c2,create,2,0,10,201,True,426.2137000041548,,,,130
+C_create_c2,create,2,1,11,201,True,410.3519999916898,,,,130
+C_create_c2,create,2,0,12,201,True,379.35090000974014,,,,130
+C_create_c2,create,2,1,13,201,True,385.1753000053577,,,,130
+C_create_c2,create,2,0,14,201,True,345.07769999618176,,,,130
+C_create_c2,create,2,1,15,201,True,344.0834999928484,,,,130
+C_create_c2,create,2,0,16,201,True,328.6514000064926,,,,130
+C_create_c2,create,2,1,17,201,True,323.36819999909494,,,,130
+C_create_c2,create,2,0,18,201,True,348.51109998999164,,,,130
+C_create_c2,create,2,1,19,201,True,323.0786000058288,,,,130

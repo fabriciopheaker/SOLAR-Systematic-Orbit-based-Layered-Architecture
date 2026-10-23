@@ -1,0 +1,46 @@
+{
+  "scenario": "A_referencia_health_r1",
+  "kind": "health",
+  "concurrency": 1,
+  "total_requests": 240,
+  "completed": 240,
+  "incomplete": 0,
+  "expected": 240,
+  "unexpected": 0,
+  "transport_errors": 0,
+  "error_rate": 0.0,
+  "status_counts": {
+    "200": 240
+  },
+  "transport_error_types": {},
+  "duration_s": 2.759,
+  "throughput_completed_rps": 86.988,
+  "throughput_expected_rps": 86.988,
+  "latency_expected_ms": {
+    "n": 240,
+    "min": 2.749,
+    "mean": 11.33,
+    "median": 9.239,
+    "p90": 20.584,
+    "p95": 28.126,
+    "p99": 36.875,
+    "max": 46.612
+  },
+  "latency_all_ms": {
+    "n": 240,
+    "min": 2.749,
+    "mean": 11.33,
+    "median": 9.239,
+    "p90": 20.584,
+    "p95": 28.126,
+    "p99": 36.875,
+    "max": 46.612
+  },
+  "cpu_pct_single_core": 67.96,
+  "memory_mb": {
+    "mean": 86.85,
+    "max": 93.41
+  },
+  "started_at": "2026-10-23T14:57:41.373081+00:00",
+  "ended_at": "2026-10-23T14:57:44.135447+00:00"
+}

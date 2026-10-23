@@ -1,0 +1,651 @@
+{
+  "run_id": "20261023T145737Z",
+  "generated_at": "2026-10-23T14:58:09.068329+00:00",
+  "environment": {
+    "run_id": "20261023T145737Z",
+    "started_at": "2026-10-23T14:57:40.018354+00:00",
+    "command": "C:\\Users\\Win\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe observatory/audits/etapa_4/run_benchmark.py",
+    "cwd": "C:\\Users\\Win\\OneDrive\\Desktop\\html\\SOLAR",
+    "versions": {
+      "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "Flask": "3.1.3",
+      "Werkzeug": "3.1.9",
+      "SQLAlchemy": "2.1.1",
+      "alembic": "1.20.0",
+      "bcrypt": "5.0.0",
+      "python-dotenv": "1.2.4",
+      "pytest": "9.1.1",
+      "radon": "6.0.1"
+    },
+    "limits": {
+      "health_concurrency_max": 16,
+      "create_concurrency_max": 8,
+      "health_requests_per_level": 240,
+      "create_requests_per_level": 20,
+      "timeout_s": 10.0
+    },
+    "server": {
+      "pid": 28040,
+      "host": "127.0.0.1",
+      "port": 56717,
+      "sqlite_path": "C:\\Users\\Win\\OneDrive\\Desktop\\html\\SOLAR\\observatory\\audits\\etapa_4\\tmp\\bench.sqlite",
+      "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "import_ms": 2273.536,
+      "mount_ms": 190.346,
+      "bind_ms": 18.843,
+      "ready_ms": 2553.589,
+      "time_to_ready_parent_ms": 2735.622
+    },
+    "time_to_ready_parent_ms": 2735.639
+  },
+  "startup": {
+    "pid": 28040,
+    "host": "127.0.0.1",
+    "port": 56717,
+    "sqlite_path": "C:\\Users\\Win\\OneDrive\\Desktop\\html\\SOLAR\\observatory\\audits\\etapa_4\\tmp\\bench.sqlite",
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "import_ms": 2273.536,
+    "mount_ms": 190.346,
+    "bind_ms": 18.843,
+    "ready_ms": 2553.589,
+    "time_to_ready_parent_ms": 2735.622
+  },
+  "time_to_ready_parent_ms": 2735.639,
+  "scenarios": [
+    {
+      "scenario": "A_referencia_health_r1",
+      "kind": "health",
+      "concurrency": 1,
+      "total_requests": 240,
+      "completed": 240,
+      "incomplete": 0,
+      "expected": 240,
+      "unexpected": 0,
+      "transport_errors": 0,
+      "error_rate": 0.0,
+      "status_counts": {
+        "200": 240
+      },
+      "transport_error_types": {},
+      "duration_s": 2.759,
+      "throughput_completed_rps": 86.988,
+      "throughput_expected_rps": 86.988,
+      "latency_expected_ms": {
+        "n": 240,
+        "min": 2.749,
+        "mean": 11.33,
+        "median": 9.239,
+        "p90": 20.584,
+        "p95": 28.126,
+        "p99": 36.875,
+        "max": 46.612
+      },
+      "latency_all_ms": {
+        "n": 240,
+        "min": 2.749,
+        "mean": 11.33,
+        "median": 9.239,
+        "p90": 20.584,
+        "p95": 28.126,
+        "p99": 36.875,
+        "max": 46.612
+      },
+      "cpu_pct_single_core": 67.96,
+      "memory_mb": {
+        "mean": 86.85,
+        "max": 93.41
+      },
+      "started_at": "2026-10-23T14:57:41.373081+00:00",
+      "ended_at": "2026-10-23T14:57:44.135447+00:00"
+    },
+    {
+      "scenario": "A_referencia_health_r2",
+      "kind": "health",
+      "concurrency": 1,
+      "total_requests": 240,
+      "completed": 240,
+      "incomplete": 0,
+      "expected": 240,
+      "unexpected": 0,
+      "transport_errors": 0,
+      "error_rate": 0.0,
+      "status_counts": {
+        "200": 240
+      },
+      "transport_error_types": {},
+      "duration_s": 1.94,
+      "throughput_completed_rps": 123.729,
+      "throughput_expected_rps": 123.729,
+      "latency_expected_ms": {
+        "n": 240,
+        "min": 2.635,
+        "mean": 8.022,
+        "median": 5.446,
+        "p90": 16.8,
+        "p95": 21.647,
+        "p99": 26.978,
+        "max": 28.156
+      },
+      "latency_all_ms": {
+        "n": 240,
+        "min": 2.635,
+        "mean": 8.022,
+        "median": 5.446,
+        "p90": 16.8,
+        "p95": 21.647,
+        "p99": 26.978,
+        "max": 28.156
+      },
+      "cpu_pct_single_core": 88.61,
+      "memory_mb": {
+        "mean": 86.41,
+        "max": 93.55
+      },
+      "started_at": "2026-10-23T14:57:44.146574+00:00",
+      "ended_at": "2026-10-23T14:57:46.089101+00:00"
+    },
+    {
+      "scenario": "A_referencia_health_r3",
+      "kind": "health",
+      "concurrency": 1,
+      "total_requests": 240,
+      "completed": 240,
+      "incomplete": 0,
+      "expected": 240,
+      "unexpected": 0,
+      "transport_errors": 0,
+      "error_rate": 0.0,
+      "status_counts": {
+        "200": 240
+      },
+      "transport_error_types": {},
+      "duration_s": 1.99,
+      "throughput_completed_rps": 120.622,
+      "throughput_expected_rps": 120.622,
+      "latency_expected_ms": {
+        "n": 240,
+        "min": 2.468,
+        "mean": 8.226,
+        "median": 6.288,
+        "p90": 16.342,
+        "p95": 22.136,
+        "p99": 27.399,
+        "max": 31.622
+      },
+      "latency_all_ms": {
+        "n": 240,
+        "min": 2.468,
+        "mean": 8.226,
+        "median": 6.288,
+        "p90": 16.342,
+        "p95": 22.136,
+        "p99": 27.399,
+        "max": 31.622
+      },
+      "cpu_pct_single_core": 87.95,
+      "memory_mb": {
+        "mean": 87.87,
+        "max": 93.68
+      },
+      "started_at": "2026-10-23T14:57:46.100902+00:00",
+      "ended_at": "2026-10-23T14:57:48.093534+00:00"
+    },
+    {
+      "scenario": "B_baixa_carga_health_c2",
+      "kind": "health",
+      "concurrency": 2,
+      "total_requests": 240,
+      "completed": 240,
+      "incomplete": 0,
+      "expected": 240,
+      "unexpected": 0,
+      "transport_errors": 0,
+      "error_rate": 0.0,
+      "status_counts": {
+        "200": 240
+      },
+      "transport_error_types": {},
+      "duration_s": 1.257,
+      "throughput_completed_rps": 190.933,
+      "throughput_expected_rps": 190.933,
+      "latency_expected_ms": {
+        "n": 240,
+        "min": 2.408,
+        "mean": 10.367,
+        "median": 8.741,
+        "p90": 18.519,
+        "p95": 24.384,
+        "p99": 26.504,
+        "max": 26.874
+      },
+      "latency_all_ms": {
+        "n": 240,
+        "min": 2.408,
+        "mean": 10.367,
+        "median": 8.741,
+        "p90": 18.519,
+        "p95": 24.384,
+        "p99": 26.504,
+        "max": 26.874
+      },
+      "cpu_pct_single_core": 139.22,
+      "memory_mb": {
+        "mean": 90.67,
+        "max": 103.03
+      },
+      "started_at": "2026-10-23T14:57:48.106433+00:00",
+      "ended_at": "2026-10-23T14:57:49.366492+00:00"
+    },
+    {
+      "scenario": "C_health_c4",
+      "kind": "health",
+      "concurrency": 4,
+      "total_requests": 240,
+      "completed": 240,
+      "incomplete": 0,
+      "expected": 240,
+      "unexpected": 0,
+      "transport_errors": 0,
+      "error_rate": 0.0,
+      "status_counts": {
+        "200": 240
+      },
+      "transport_error_types": {},
+      "duration_s": 1.632,
+      "throughput_completed_rps": 147.04,
+      "throughput_expected_rps": 147.04,
+      "latency_expected_ms": {
+        "n": 240,
+        "min": 5.827,
+        "mean": 26.838,
+        "median": 24.66,
+        "p90": 37.693,
+        "p95": 45.225,
+        "p99": 83.262,
+        "max": 95.304
+      },
+      "latency_all_ms": {
+        "n": 240,
+        "min": 5.827,
+        "mean": 26.838,
+        "median": 24.66,
+        "p90": 37.693,
+        "p95": 45.225,
+        "p99": 83.262,
+        "max": 95.304
+      },
+      "cpu_pct_single_core": 130.19,
+      "memory_mb": {
+        "mean": 91.11,
+        "max": 106.82
+      },
+      "started_at": "2026-10-23T14:57:49.375956+00:00",
+      "ended_at": "2026-10-23T14:57:51.014263+00:00"
+    },
+    {
+      "scenario": "C_health_c8",
+      "kind": "health",
+      "concurrency": 8,
+      "total_requests": 240,
+      "completed": 240,
+      "incomplete": 0,
+      "expected": 240,
+      "unexpected": 0,
+      "transport_errors": 0,
+      "error_rate": 0.0,
+      "status_counts": {
+        "200": 240
+      },
+      "transport_error_types": {},
+      "duration_s": 1.174,
+      "throughput_completed_rps": 204.474,
+      "throughput_expected_rps": 204.474,
+      "latency_expected_ms": {
+        "n": 240,
+        "min": 6.822,
+        "mean": 37.904,
+        "median": 37.234,
+        "p90": 46.525,
+        "p95": 48.833,
+        "p99": 58.193,
+        "max": 59.444
+      },
+      "latency_all_ms": {
+        "n": 240,
+        "min": 6.822,
+        "mean": 37.904,
+        "median": 37.234,
+        "p90": 46.525,
+        "p95": 48.833,
+        "p99": 58.193,
+        "max": 59.444
+      },
+      "cpu_pct_single_core": 161.08,
+      "memory_mb": {
+        "mean": 90.32,
+        "max": 107.97
+      },
+      "started_at": "2026-10-23T14:57:51.031347+00:00",
+      "ended_at": "2026-10-23T14:57:52.208480+00:00"
+    },
+    {
+      "scenario": "C_health_c16",
+      "kind": "health",
+      "concurrency": 16,
+      "total_requests": 240,
+      "completed": 240,
+      "incomplete": 0,
+      "expected": 240,
+      "unexpected": 0,
+      "transport_errors": 0,
+      "error_rate": 0.0,
+      "status_counts": {
+        "200": 240
+      },
+      "transport_error_types": {},
+      "duration_s": 1.255,
+      "throughput_completed_rps": 191.298,
+      "throughput_expected_rps": 191.298,
+      "latency_expected_ms": {
+        "n": 240,
+        "min": 7.72,
+        "mean": 80.303,
+        "median": 75.915,
+        "p90": 104.787,
+        "p95": 107.888,
+        "p99": 111.29,
+        "max": 114.135
+      },
+      "latency_all_ms": {
+        "n": 240,
+        "min": 7.72,
+        "mean": 80.303,
+        "median": 75.915,
+        "p90": 104.787,
+        "p95": 107.888,
+        "p99": 111.29,
+        "max": 114.135
+      },
+      "cpu_pct_single_core": 166.89,
+      "memory_mb": {
+        "mean": 92.88,
+        "max": 108.39
+      },
+      "started_at": "2026-10-23T14:57:52.223838+00:00",
+      "ended_at": "2026-10-23T14:57:53.482001+00:00"
+    },
+    {
+      "scenario": "A_referencia_create_c1",
+      "kind": "create",
+      "concurrency": 1,
+      "total_requests": 20,
+      "completed": 20,
+      "incomplete": 0,
+      "expected": 20,
+      "unexpected": 0,
+      "transport_errors": 0,
+      "error_rate": 0.0,
+      "status_counts": {
+        "201": 20
+      },
+      "transport_error_types": {},
+      "duration_s": 7.125,
+      "throughput_completed_rps": 2.807,
+      "throughput_expected_rps": 2.807,
+      "latency_expected_ms": {
+        "n": 20,
+        "min": 310.824,
+        "mean": 356.136,
+        "median": 353.079,
+        "p90": 395.841,
+        "p95": 397.092,
+        "p99": 399.817,
+        "max": 399.817
+      },
+      "latency_all_ms": {
+        "n": 20,
+        "min": 310.824,
+        "mean": 356.136,
+        "median": 353.079,
+        "p90": 395.841,
+        "p95": 397.092,
+        "p99": 399.817,
+        "max": 399.817
+      },
+      "cpu_pct_single_core": 97.37,
+      "memory_mb": {
+        "mean": 84.32,
+        "max": 86.67
+      },
+      "started_at": "2026-10-23T14:57:53.491030+00:00",
+      "ended_at": "2026-10-23T14:58:00.616938+00:00"
+    },
+    {
+      "scenario": "C_create_c2",
+      "kind": "create",
+      "concurrency": 2,
+      "total_requests": 20,
+      "completed": 20,
+      "incomplete": 0,
+      "expected": 18,
+      "unexpected": 2,
+      "transport_errors": 0,
+      "error_rate": 0.1,
+      "status_counts": {
+        "500": 2,
+        "201": 18
+      },
+      "transport_error_types": {},
+      "duration_s": 4.024,
+      "throughput_completed_rps": 4.97,
+      "throughput_expected_rps": 4.473,
+      "latency_expected_ms": {
+        "n": 18,
+        "min": 323.079,
+        "mean": 397.845,
+        "median": 408.478,
+        "p90": 442.644,
+        "p95": 564.693,
+        "p99": 564.693,
+        "max": 564.693
+      },
+      "latency_all_ms": {
+        "n": 20,
+        "min": 323.079,
+        "mean": 397.443,
+        "median": 404.252,
+        "p90": 433.605,
+        "p95": 442.644,
+        "p99": 564.693,
+        "max": 564.693
+      },
+      "cpu_pct_single_core": 183.28,
+      "memory_mb": {
+        "mean": 85.67,
+        "max": 88.95
+      },
+      "started_at": "2026-10-23T14:58:00.623384+00:00",
+      "ended_at": "2026-10-23T14:58:04.647886+00:00"
+    },
+    {
+      "scenario": "C_create_c4",
+      "kind": "create",
+      "concurrency": 4,
+      "total_requests": 20,
+      "completed": 20,
+      "incomplete": 0,
+      "expected": 14,
+      "unexpected": 6,
+      "transport_errors": 0,
+      "error_rate": 0.3,
+      "status_counts": {
+        "500": 6,
+        "201": 14
+      },
+      "transport_error_types": {},
+      "duration_s": 2.009,
+      "throughput_completed_rps": 9.955,
+      "throughput_expected_rps": 6.968,
+      "latency_expected_ms": {
+        "n": 14,
+        "min": 370.651,
+        "mean": 400.735,
+        "median": 404.298,
+        "p90": 417.299,
+        "p95": 418.337,
+        "p99": 418.337,
+        "max": 418.337
+      },
+      "latency_all_ms": {
+        "n": 20,
+        "min": 19.491,
+        "mean": 363.461,
+        "median": 397.06,
+        "p90": 418.337,
+        "p95": 420.032,
+        "p99": 422.308,
+        "max": 422.308
+      },
+      "cpu_pct_single_core": 343.75,
+      "memory_mb": {
+        "mean": 86.21,
+        "max": 89.36
+      },
+      "started_at": "2026-10-23T14:58:04.652299+00:00",
+      "ended_at": "2026-10-23T14:58:06.662229+00:00"
+    },
+    {
+      "scenario": "E_persistencia_duplicate_c1",
+      "kind": "duplicate",
+      "concurrency": 1,
+      "total_requests": 60,
+      "completed": 60,
+      "incomplete": 0,
+      "expected": 60,
+      "unexpected": 0,
+      "transport_errors": 0,
+      "error_rate": 0.0,
+      "status_counts": {
+        "400": 60
+      },
+      "transport_error_types": {},
+      "duration_s": 0.901,
+      "throughput_completed_rps": 66.58,
+      "throughput_expected_rps": 66.58,
+      "latency_expected_ms": {
+        "n": 60,
+        "min": 5.163,
+        "mean": 14.938,
+        "median": 10.362,
+        "p90": 28.74,
+        "p95": 30.67,
+        "p99": 41.557,
+        "max": 41.557
+      },
+      "latency_all_ms": {
+        "n": 60,
+        "min": 5.163,
+        "mean": 14.938,
+        "median": 10.362,
+        "p90": 28.74,
+        "p95": 30.67,
+        "p99": 41.557,
+        "max": 41.557
+      },
+      "cpu_pct_single_core": 57.22,
+      "memory_mb": {
+        "mean": 86.28,
+        "max": 87.54
+      },
+      "started_at": "2026-10-23T14:58:06.668261+00:00",
+      "ended_at": "2026-10-23T14:58:07.571446+00:00"
+    },
+    {
+      "scenario": "E_validacao_invalid_c1",
+      "kind": "invalid",
+      "concurrency": 1,
+      "total_requests": 60,
+      "completed": 60,
+      "incomplete": 0,
+      "expected": 60,
+      "unexpected": 0,
+      "transport_errors": 0,
+      "error_rate": 0.0,
+      "status_counts": {
+        "400": 60
+      },
+      "transport_error_types": {},
+      "duration_s": 0.766,
+      "throughput_completed_rps": 78.357,
+      "throughput_expected_rps": 78.357,
+      "latency_expected_ms": {
+        "n": 60,
+        "min": 4.513,
+        "mean": 12.684,
+        "median": 6.696,
+        "p90": 28.473,
+        "p95": 29.096,
+        "p99": 30.995,
+        "max": 30.995
+      },
+      "latency_all_ms": {
+        "n": 60,
+        "min": 4.513,
+        "mean": 12.684,
+        "median": 6.696,
+        "p90": 28.473,
+        "p95": 29.096,
+        "p99": 30.995,
+        "max": 30.995
+      },
+      "cpu_pct_single_core": 53.05,
+      "memory_mb": {
+        "mean": 86.52,
+        "max": 89.52
+      },
+      "started_at": "2026-10-23T14:58:07.582783+00:00",
+      "ended_at": "2026-10-23T14:58:08.349305+00:00"
+    }
+  ],
+  "safety": {
+    "aborted": true,
+    "reason": "C_create_c4: error_rate=0.3",
+    "limits": {
+      "max_error_rate": 0.2,
+      "max_p95_ms": 5000.0
+    }
+  },
+  "not_executed": [
+    {
+      "scenario": "C_create_c8",
+      "reason": "C_create_c4: error_rate=0.3"
+    }
+  ],
+  "post_load_health": {
+    "status": 200,
+    "body": {
+      "application": "",
+      "message": "bem-vindo",
+      "status": "ok"
+    }
+  },
+  "database": {
+    "path": "C:\\Users\\Win\\OneDrive\\Desktop\\html\\SOLAR\\observatory\\audits\\etapa_4\\tmp\\bench.sqlite",
+    "exists": true,
+    "size_bytes": 24576,
+    "user_count": 54,
+    "tables": [
+      "users"
+    ]
+  },
+  "notes": [
+    "Latência medida no cliente, incluindo loopback e primeira conexão de cada worker.",
+    "Percentis nearest-rank; amostras pequenas tornam P99 instável.",
+    "CPU em equivalente de um núcleo; pode passar de 100% em multithread.",
+    "Aquecimento não entra nas estatísticas.",
+    "Não houve comparação histórica nem segunda arquitetura."
+  ]
+}

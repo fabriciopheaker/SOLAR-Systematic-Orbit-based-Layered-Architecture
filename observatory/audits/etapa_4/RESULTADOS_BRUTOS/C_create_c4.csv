@@ -1,0 +1,27 @@
+scenario,kind,concurrency,worker,seq,status,ok,latency_ms,error,body_code,body_preview,bytes
+C_create_c4,create,4,3,3,500,False,367.1840000024531,,isce,"{""code"":""isce"",""message"":""N\u00e3o foi poss\u00edvel processar a solicita\u00e7\u00e3o."",""reference"":""c545e2b349b5""}
+",117
+C_create_c4,create,4,1,1,500,False,384.50559999910183,,INTERNAL_ERROR,"{""code"":""INTERNAL_ERROR"",""message"":""N\u00e3o foi poss\u00edvel processar a solicita\u00e7\u00e3o."",""reference"":""e22d71ca0cc6""}
+",127
+C_create_c4,create,4,2,2,201,True,391.86240000708494,,,,128
+C_create_c4,create,4,0,0,201,True,414.2573999997694,,,,128
+C_create_c4,create,4,1,5,500,False,45.409800004563294,,INTERNAL_ERROR,"{""code"":""INTERNAL_ERROR"",""message"":""N\u00e3o foi poss\u00edvel processar a solicita\u00e7\u00e3o."",""reference"":""1c80495e8a44""}
+",127
+C_create_c4,create,4,3,7,201,True,418.3372999978019,,,,128
+C_create_c4,create,4,2,6,201,True,412.7593000011984,,,,128
+C_create_c4,create,4,0,4,201,True,411.2435999995796,,,,128
+C_create_c4,create,4,1,9,201,True,417.29930001019966,,,,128
+C_create_c4,create,4,3,11,201,True,392.78210001066327,,,,130
+C_create_c4,create,4,2,10,201,True,407.7279000048293,,,,130
+C_create_c4,create,4,0,8,201,True,393.25019999523647,,,,128
+C_create_c4,create,4,1,13,201,True,391.7866999981925,,,,130
+C_create_c4,create,4,3,15,201,True,400.86900000460446,,,,130
+C_create_c4,create,4,2,14,500,False,420.0317999930121,,isce,"{""code"":""isce"",""message"":""N\u00e3o foi poss\u00edvel processar a solicita\u00e7\u00e3o."",""reference"":""1fa4ecc2f1ca""}
+",117
+C_create_c4,create,4,0,12,500,False,422.3080999945523,,INTERNAL_ERROR,"{""code"":""INTERNAL_ERROR"",""message"":""N\u00e3o foi poss\u00edvel processar a solicita\u00e7\u00e3o."",""reference"":""21e922f9bc23""}
+",127
+C_create_c4,create,4,1,17,201,True,412.8258000127971,,,,130
+C_create_c4,create,4,0,16,500,False,19.490899998345412,,INTERNAL_ERROR,"{""code"":""INTERNAL_ERROR"",""message"":""N\u00e3o foi poss\u00edvel processar a solicita\u00e7\u00e3o."",""reference"":""b80452f0d534""}
+",127
+C_create_c4,create,4,3,19,201,True,370.65070000244305,,,,130
+C_create_c4,create,4,2,18,201,True,374.63629999547265,,,,130

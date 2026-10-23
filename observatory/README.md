@@ -54,6 +54,7 @@ O Nucleus define as regras e não sabe quem as verifica.
 
 ```text
 observatory/
+├── audits/          testes e análises de auditoria (estrutural, Etapa 4, Etapa 5)
 └── solar/           o comando de verificação
     ├── cli.py       despacho de comandos
     ├── audit.py     registro em Markdown

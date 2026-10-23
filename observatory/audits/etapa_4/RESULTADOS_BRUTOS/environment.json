@@ -1,0 +1,39 @@
+{
+  "run_id": "20261023T145737Z",
+  "started_at": "2026-10-23T14:57:40.018354+00:00",
+  "command": "C:\\Users\\Win\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe observatory/audits/etapa_4/run_benchmark.py",
+  "cwd": "C:\\Users\\Win\\OneDrive\\Desktop\\html\\SOLAR",
+  "versions": {
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "Flask": "3.1.3",
+    "Werkzeug": "3.1.9",
+    "SQLAlchemy": "2.1.1",
+    "alembic": "1.20.0",
+    "bcrypt": "5.0.0",
+    "python-dotenv": "1.2.4",
+    "pytest": "9.1.1",
+    "radon": "6.0.1"
+  },
+  "limits": {
+    "health_concurrency_max": 16,
+    "create_concurrency_max": 8,
+    "health_requests_per_level": 240,
+    "create_requests_per_level": 20,
+    "timeout_s": 10.0
+  },
+  "server": {
+    "pid": 28040,
+    "host": "127.0.0.1",
+    "port": 56717,
+    "sqlite_path": "C:\\Users\\Win\\OneDrive\\Desktop\\html\\SOLAR\\observatory\\audits\\etapa_4\\tmp\\bench.sqlite",
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "import_ms": 2273.536,
+    "mount_ms": 190.346,
+    "bind_ms": 18.843,
+    "ready_ms": 2553.589,
+    "time_to_ready_parent_ms": 2735.622
+  },
+  "time_to_ready_parent_ms": 2735.639
+}

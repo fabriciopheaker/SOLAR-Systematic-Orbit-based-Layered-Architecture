@@ -1,0 +1,46 @@
+{
+  "scenario": "E_persistencia_duplicate_c1",
+  "kind": "duplicate",
+  "concurrency": 1,
+  "total_requests": 60,
+  "completed": 60,
+  "incomplete": 0,
+  "expected": 60,
+  "unexpected": 0,
+  "transport_errors": 0,
+  "error_rate": 0.0,
+  "status_counts": {
+    "400": 60
+  },
+  "transport_error_types": {},
+  "duration_s": 0.901,
+  "throughput_completed_rps": 66.58,
+  "throughput_expected_rps": 66.58,
+  "latency_expected_ms": {
+    "n": 60,
+    "min": 5.163,
+    "mean": 14.938,
+    "median": 10.362,
+    "p90": 28.74,
+    "p95": 30.67,
+    "p99": 41.557,
+    "max": 41.557
+  },
+  "latency_all_ms": {
+    "n": 60,
+    "min": 5.163,
+    "mean": 14.938,
+    "median": 10.362,
+    "p90": 28.74,
+    "p95": 30.67,
+    "p99": 41.557,
+    "max": 41.557
+  },
+  "cpu_pct_single_core": 57.22,
+  "memory_mb": {
+    "mean": 86.28,
+    "max": 87.54
+  },
+  "started_at": "2026-10-23T14:58:06.668261+00:00",
+  "ended_at": "2026-10-23T14:58:07.571446+00:00"
+}

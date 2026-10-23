@@ -1,0 +1,47 @@
+{
+  "scenario": "C_create_c4",
+  "kind": "create",
+  "concurrency": 4,
+  "total_requests": 20,
+  "completed": 20,
+  "incomplete": 0,
+  "expected": 14,
+  "unexpected": 6,
+  "transport_errors": 0,
+  "error_rate": 0.3,
+  "status_counts": {
+    "500": 6,
+    "201": 14
+  },
+  "transport_error_types": {},
+  "duration_s": 2.009,
+  "throughput_completed_rps": 9.955,
+  "throughput_expected_rps": 6.968,
+  "latency_expected_ms": {
+    "n": 14,
+    "min": 370.651,
+    "mean": 400.735,
+    "median": 404.298,
+    "p90": 417.299,
+    "p95": 418.337,
+    "p99": 418.337,
+    "max": 418.337
+  },
+  "latency_all_ms": {
+    "n": 20,
+    "min": 19.491,
+    "mean": 363.461,
+    "median": 397.06,
+    "p90": 418.337,
+    "p95": 420.032,
+    "p99": 422.308,
+    "max": 422.308
+  },
+  "cpu_pct_single_core": 343.75,
+  "memory_mb": {
+    "mean": 86.21,
+    "max": 89.36
+  },
+  "started_at": "2026-10-23T14:58:04.652299+00:00",
+  "ended_at": "2026-10-23T14:58:06.662229+00:00"
+}

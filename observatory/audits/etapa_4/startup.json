@@ -1,0 +1,12 @@
+{
+  "pid": 28040,
+  "host": "127.0.0.1",
+  "port": 56717,
+  "sqlite_path": "C:\\Users\\Win\\OneDrive\\Desktop\\html\\SOLAR\\observatory\\audits\\etapa_4\\tmp\\bench.sqlite",
+  "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "import_ms": 2273.536,
+  "mount_ms": 190.346,
+  "bind_ms": 18.843,
+  "ready_ms": 2553.589
+}

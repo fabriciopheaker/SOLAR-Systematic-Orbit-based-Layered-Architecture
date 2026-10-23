@@ -1,0 +1,404 @@
+{
+  "audit": {
+    "stage": "Etapa 5 — segurança e isolamento",
+    "date": "2026-10-23",
+    "environment": "Windows 11, Python 3.14.7, Flask 3.1.3, SQLite temporário, 127.0.0.1",
+    "method": "inspeção estática + 33 testes HTTP dinâmicos com dados sintéticos",
+    "raw_results": "RESULTADOS_TESTES.json",
+    "inventory": "INVENTARIO_CONTROLES.md",
+    "plan": "PLANO_DE_TESTES.md",
+    "severity_scale": "Qualitativa: baixa, média, alta. Critério: impacto potencial + facilidade de exploração + evidência disponível. Não foi aplicada pontuação CVSS formal.",
+    "production_modified": false
+  },
+  "findings": [
+    {
+      "id": "SEC-AUTH-01",
+      "category": "Autenticação",
+      "component": "orbits/planets/example/routes.py; CreateUserController",
+      "description": "O endpoint de criação de usuário é público: não há autenticação, sessão autenticada ou validação de credencial no caminho HTTP.",
+      "evidence": [
+        "C1: POST /examples/users sem credencial → 201",
+        "C2: POST /examples/users com Authorization: Bearer inválido → 201",
+        "C3: não existe rota de leitura/autenticação no Planet auth"
+      ],
+      "procedure": "Enviar criação válida com e sem cabeçalho Authorization; comparar status.",
+      "expected": "Se o endpoint for interno, exigir identidade autenticada e autorização antes de criar usuário.",
+      "observed": "Ambas as requisições criaram usuário (201), sem distinção de identidade.",
+      "impact": "Criação não autorizada de contas e abuso do endpoint, caso ele seja exposto fora do ambiente local.",
+      "likelihood": "Alta se o endpoint estiver exposto; o teste local não mede exposição de rede.",
+      "severity": "média",
+      "severity_criteria": "Escrita pública sem autenticação; impacto potencial em integridade/abuso; exploração trivial se houver exposição.",
+      "limitations": "O Planet example é um fluxo de referência; a ausência de autenticação pode ser decisão de desenho. Não há requisito formal de proteção no repositório.",
+      "recommendation": "Definir explicitamente se a rota é pública. Se não for, aplicar autenticação e autorização no middleware antes do Controller e testar 401/403.",
+      "status": "risco potencial"
+    },
+    {
+      "id": "SEC-AUTHZ-01",
+      "category": "Autorização",
+      "component": "nucleus/middleware; orbits/planets",
+      "description": "Não há perfis, papéis, permissões ou verificação de proprietário de recurso.",
+      "evidence": [
+        "Busca por role/permission/authorize no caminho HTTP não encontra mecanismo.",
+        "Não existe rota de leitura ou atualização por identificador.",
+        "C3: GET /examples/users/1 não é uma rota; a resposta é genérica."
+      ],
+      "procedure": "Inspecionar rotas e middlewares; tentar acesso por identificador.",
+      "expected": "Se houver recursos por usuário, negar acesso a recurso de outro usuário e a operações administrativas.",
+      "observed": "Não há mecanismo de autorização nem recurso endereçável para testar IDOR.",
+      "impact": "Não demonstrável no conjunto atual; o risco aparece se novas rotas por identificador forem adicionadas sem autorização.",
+      "likelihood": "Não aplicável ao conjunto atual.",
+      "severity": "não aplicável",
+      "severity_criteria": "Categoria sem mecanismo correspondente; não há violação demonstrável.",
+      "limitations": "A ausência de rota impede teste de IDOR; não é possível concluir sobre autorização futura.",
+      "recommendation": "Se houver recursos por usuário, implementar verificação de proprietário/papel no caso de uso e testar com duas identidades sintéticas.",
+      "status": "não aplicável"
+    },
+    {
+      "id": "SEC-INPUT-01",
+      "category": "Validação de entradas",
+      "component": "nucleus/security/json_validator.py; orbits/planets/example/entity/user_entity.py",
+      "description": "O validador confere presença, mas não o tipo dos campos. Tipos numéricos em email ou senha chegam ao UseCase e provocam erro 500.",
+      "evidence": [
+        "D9: senha=123 → HTTP 500, code INTERNAL_ERROR",
+        "D10: email=123 → HTTP 500, code INTERNAL_ERROR",
+        "JsonValidator._present aceita qualquer valor não nulo"
+      ],
+      "procedure": "Enviar JSON com tipos numéricos nos campos de texto.",
+      "expected": "Rejeitar tipos inválidos com 400 e código estável, sem chegar ao hash ou à entidade.",
+      "observed": "Erro 500 genérico; nenhum detalhe interno na resposta.",
+      "impact": "Ruído de erros 500 e potencial abuso de disponibilidade; não houve injeção nem vazamento de dados.",
+      "likelihood": "Alta para qualquer cliente que envie tipo incorreto.",
+      "severity": "baixa",
+      "severity_criteria": "Falha de robustez/validação; impacto em disponibilidade e observabilidade, sem execução de código ou acesso a dados.",
+      "limitations": "Não foi testada uma matriz completa de tipos; o comportamento pode variar por campo.",
+      "recommendation": "Validar tipos e limites no Validator (ou em contrato tipado) antes de construir a entidade.",
+      "status": "risco potencial"
+    },
+    {
+      "id": "SEC-INPUT-02",
+      "category": "Validação de entradas",
+      "component": "Kernel/Flask; JsonValidator",
+      "description": "Não foi observado limite de tamanho de corpo ou de campo: um nome de 64 KiB foi aceito e gravado.",
+      "evidence": [
+        "D12: nome com 65.536 caracteres → 201",
+        "Resposta com 65.644 bytes",
+        "Nenhum MAX_CONTENT_LENGTH configurado no Kernel"
+      ],
+      "procedure": "Enviar um único payload sintético com nome de 64 KiB e verificar o status.",
+      "expected": "Rejeitar corpo/campo acima de um limite definido, com 413/400.",
+      "observed": "Criação aceita (201), sem limite de tamanho de campo.",
+      "impact": "Consumo de memória, armazenamento e banda; possível abuso de disponibilidade se o endpoint for exposto.",
+      "likelihood": "Média; requer acesso ao endpoint, que é público no cenário testado.",
+      "severity": "média",
+      "severity_criteria": "Entrada não limitada em endpoint de escrita; impacto em recursos; sem prova de esgotamento neste teste.",
+      "limitations": "Um único payload de 64 KiB não prova esgotamento; o comportamento em PostgreSQL pode diferir do SQLite.",
+      "recommendation": "Definir MAX_CONTENT_LENGTH, limites por campo e rejeitar excesso antes da persistência.",
+      "status": "risco potencial"
+    },
+    {
+      "id": "SEC-AUTH-02",
+      "category": "Autenticação / política de senha",
+      "component": "orbits/planets/example/atmosphere/validators/create_user_validator.py",
+      "description": "Não há política de comprimento ou complexidade de senha; uma senha de um caractere foi aceita.",
+      "evidence": [
+        "D11: senha='x' → 201",
+        "O validador só verifica presença dos campos"
+      ],
+      "procedure": "Criar usuário sintético com senha de um caractere.",
+      "expected": "Se a senha for usada para autenticação, aplicar política mínima e rejeitar senhas fracas.",
+      "observed": "Senha curta aceita e armazenada como hash.",
+      "impact": "Se houver login futuro, aumenta a facilidade de adivinhação; não há tela de login atualmente.",
+      "likelihood": "Baixa no estado atual; alta se autenticação por senha for adicionada.",
+      "severity": "baixa",
+      "severity_criteria": "Risco condicionado a um mecanismo de login que não existe no caminho atual.",
+      "limitations": "Não há requisito de política de senha nem fluxo de autenticação para medir impacto real.",
+      "recommendation": "Definir política de senha no domínio e testá-la quando houver login.",
+      "status": "risco potencial"
+    },
+    {
+      "id": "SEC-PROT-01",
+      "category": "Mecanismos de proteção",
+      "component": "nucleus/middleware/csrf_protection.py; SecurityPolicy",
+      "description": "A classe CsrfProtection existe e SecurityPolicy.csrf_enabled é True, mas o Kernel não instancia a proteção nem valida X-CSRF-Token.",
+      "evidence": [
+        "Busca por CsrfProtection( não encontra uso em produção.",
+        "B1: POST sem X-CSRF-Token → 201.",
+        "SecurityPolicy.csrf_enabled=True não é lido por nenhum middleware."
+      ],
+      "procedure": "Inspecionar o Kernel e enviar POST sem token CSRF.",
+      "expected": "Se houver autenticação por cookie, exigir token CSRF nas operações que alteram estado.",
+      "observed": "Nenhuma exigência de CSRF; o campo de política é inerte.",
+      "impact": "Hoje não há autenticação por cookie, então não há sessão a proteger; o risco aparece se autenticação por cookie for adicionada.",
+      "likelihood": "Baixa no estado atual; alta após introdução de sessão/cookie.",
+      "severity": "baixa",
+      "severity_criteria": "Controle inativo, mas sem sessão autenticada no caminho atual.",
+      "limitations": "Não há teste de CSRF significativo sem autenticação por cookie.",
+      "recommendation": "Ou remover a flag inerte/documentação que afirma proteção ativa, ou ligar a validação CSRF ao pipeline quando houver sessão.",
+      "status": "configuração suspeita"
+    },
+    {
+      "id": "SEC-PROT-02",
+      "category": "Mecanismos de proteção",
+      "component": "nucleus/middleware/rate_limiter.py; brute_force_guard.py",
+      "description": "Rate limiting e brute force estão definidos, mas não instanciados no caminho HTTP.",
+      "evidence": [
+        "F1–F10: dez tentativas inválidas repetidas → 400, nenhuma 429.",
+        "Busca por RateLimiter(/BruteForceGuard( em produção não encontra uso.",
+        "SecurityPolicy mantém ambos desligados por padrão."
+      ],
+      "procedure": "Enviar dez requisições inválidas sequenciais e observar 429/bloqueio.",
+      "expected": "Se o endpoint for sensível, limitar tentativas e responder 429 após o limite.",
+      "observed": "Nenhum limite ou bloqueio; todas as requisições chegaram ao validador.",
+      "impact": "Abuso de requisições e automação de tentativas; sem fluxo de login, o efeito é limitado a custo/ruído.",
+      "likelihood": "Média se o endpoint for exposto.",
+      "severity": "baixa",
+      "severity_criteria": "Controles opcionais inativos; impacto atual em disponibilidade/abuso, não em confidencialidade.",
+      "limitations": "Dez requisições não testam janela longa nem volume; não há login para brute force de credenciais.",
+      "recommendation": "Definir política de rate limit para rotas públicas e habilitar brute force no fluxo de autenticação quando existir.",
+      "status": "configuração suspeita"
+    },
+    {
+      "id": "SEC-ERROR-01",
+      "category": "Tratamento de erros",
+      "component": "nucleus/kernel.py (handler global); ErrorHandler",
+      "description": "HTTPException de 404/405 é capturada pelo errorhandler(Exception) e respondida como HTTP 500, com o código 404/405 apenas no corpo.",
+      "evidence": [
+        "A2: GET /nao-existe → status 500, code 404",
+        "A4: PUT /solar/health → status 500, code 405",
+        "C3: GET /examples/users/1 → status 500, code 404"
+      ],
+      "procedure": "Solicitar rota inexistente e método não permitido.",
+      "expected": "Preservar 404/405 ou mapear HTTPException para o status correspondente.",
+      "observed": "Status 500 para erros de cliente; corpo genérico sem detalhe interno.",
+      "impact": "Mascaramento de erros de cliente, métricas de erro enganosas e possível confusão em monitoramento; não houve vazamento de dados.",
+      "likelihood": "Alta para qualquer 404/405.",
+      "severity": "baixa",
+      "severity_criteria": "Defeito de tratamento de erro; impacto em observabilidade e semântica HTTP, sem exposição de dados.",
+      "limitations": "Não foi testada toda a família de HTTPException; o comportamento observado cobre 404 e 405.",
+      "recommendation": "Mapear HTTPException para seu status antes do handler genérico, mantendo a mensagem segura.",
+      "status": "configuração suspeita"
+    },
+    {
+      "id": "SEC-CONFIG-01",
+      "category": "Configuração/exposição",
+      "component": "docker/docker-compose.yml; server.py",
+      "description": "O ambiente DEV sobe com debug habilitado e o compose publica a aplicação em 0.0.0.0:5000, com credencial padrão de PostgreSQL para desenvolvimento.",
+      "evidence": [
+        "server.py: debug=config.get('APP_ENV') == 'DEV'",
+        "docker-compose.yml: APP_ENV=DEV, DEV_HOST=0.0.0.0, ports 5000:5000",
+        "docker-compose.yml: credencial de PostgreSQL de desenvolvimento (valor não reproduzido)"
+      ],
+      "procedure": "Inspeção de configuração; não foi executado Docker nesta auditoria.",
+      "expected": "Configuração de desenvolvimento isolada e não exposta; produção sem debug e com segredo gerenciado.",
+      "observed": "Configuração de desenvolvimento viabiliza debug e bind amplo se o compose for usado fora do host local.",
+      "impact": "Exposição de debug e da aplicação na rede, com risco de execução interativa e abuso do endpoint público.",
+      "likelihood": "Depende do uso do compose e da rede; não demonstrado neste teste.",
+      "severity": "média",
+      "severity_criteria": "Configuração de desenvolvimento com exposição potencial; impacto alto se debug for alcançável, mas não explorado.",
+      "limitations": "Não há Docker no ambiente Windows; a análise é estática. O compose é rotulado como desenvolvimento.",
+      "recommendation": "Não usar DEV em ambiente compartilhado; remover bind 0.0.0.0 desnecessário, desligar debug e usar segredo/credencial externos.",
+      "status": "configuração suspeita"
+    },
+    {
+      "id": "SEC-CONFIG-02",
+      "category": "Configuração/exposição",
+      "component": "Kernel/SecurityHeaders; Environment",
+      "description": "CSP e HSTS não são configurados por padrão; CORS é lido do ambiente, mas não aplicado.",
+      "evidence": [
+        "Respostas A1/B1/D1 não têm Content-Security-Policy nem Strict-Transport-Security.",
+        "A3: OPTIONS com Origin não retorna Access-Control-Allow-Origin.",
+        "Environment lê CORS_ORIGINS; não há middleware CORS no Kernel."
+      ],
+      "procedure": "Inspecionar headers de respostas e configuração.",
+      "expected": "Definir CSP/HSTS conforme o transporte e uma política CORS explícita, se necessária.",
+      "observed": "Apenas os três headers obrigatórios; CORS não habilitado (default deny para navegador).",
+      "impact": "Sem CSP/HSTS, menor defesa em profundidade; ausência de CORS não é, por si, insegurança — é uma decisão de exposição.",
+      "likelihood": "Baixa no contexto de API JSON local.",
+      "severity": "baixa",
+      "severity_criteria": "Configuração defensiva ausente; impacto depende de frontend/TLS e não foi demonstrado.",
+      "limitations": "A API é JSON e o teste é HTTP local; HSTS não se aplica sem HTTPS.",
+      "recommendation": "Documentar a política CORS; configurar CSP/HSTS quando houver frontend/TLS; manter os três headers obrigatórios.",
+      "status": "configuração suspeita"
+    },
+    {
+      "id": "SEC-CONFIG-03",
+      "category": "Configuração/exposição",
+      "component": "servidor de teste Werkzeug",
+      "description": "A resposta expõe Server: Werkzeug/3.1.9 Python/3.14.7.",
+      "evidence": ["Headers de A1, A2, B1, D1, D9, D12"],
+      "procedure": "Inspecionar cabeçalhos HTTP.",
+      "expected": "Minimizar versão do servidor em produção.",
+      "observed": "Versão e runtime expostos pelo servidor de desenvolvimento.",
+      "impact": "Facilita fingerprinting; impacto baixo isoladamente.",
+      "likelihood": "Alta; informação disponível em toda resposta.",
+      "severity": "baixa",
+      "severity_criteria": "Divulgação de informação de versão; não permite exploração por si.",
+      "limitations": "O servidor usado é o de desenvolvimento; um servidor de produção pode remover o header.",
+      "recommendation": "Remover ou genericar o header Server no servidor de produção.",
+      "status": "configuração suspeita"
+    },
+    {
+      "id": "SEC-SECRET-01",
+      "category": "Segredos",
+      "component": "nucleus/.env; docker/docker-compose.yml",
+      "description": "O .env local contém SECRET_KEY e credenciais de desenvolvimento; está ignorado pelo Git. O compose versionado contém credencial padrão de PostgreSQL de desenvolvimento.",
+      "evidence": [
+        "git ls-files nucleus/.env → vazio; .gitignore contém .env",
+        "docker/docker-compose.yml contém POSTGRES_PASSWORD de desenvolvimento (valor não reproduzido)",
+        "nenhum valor secreto foi copiado para os artefatos"
+      ],
+      "procedure": "Inspeção de arquivos e do índice Git, com redação de valores.",
+      "expected": "Segredos fora do versionamento e com gestão apropriada; credenciais de desenvolvimento não reutilizadas.",
+      "observed": "Nenhum segredo real versionado; configuração de desenvolvimento contém credencial padrão e segredo local.",
+      "impact": "Risco se o compose for usado em ambiente compartilhado ou se o .env local for exposto; não há vazamento no repositório.",
+      "likelihood": "Baixa no estado atual; depende de cópia/exposição do ambiente.",
+      "severity": "baixa",
+      "severity_criteria": "Configuração de desenvolvimento com credencial padrão; sem exposição demonstrada.",
+      "limitations": "Não foi feita varredura de histórico Git nem de todos os arquivos não rastreados.",
+      "recommendation": "Manter .env fora do Git; usar segredo gerenciado; remover credencial padrão do compose e documentar que é apenas local.",
+      "status": "configuração suspeita"
+    },
+    {
+      "id": "SEC-JWT-01",
+      "category": "Autenticação/token",
+      "component": "nucleus/security/token.py",
+      "description": "O módulo JWT existe, mas PyJWT não está instalado e o módulo não é usado pela aplicação.",
+      "evidence": [
+        "import nucleus.security.token → ModuleNotFoundError: jwt",
+        "requirements.txt não declara PyJWT",
+        "nenhuma rota ou middleware usa Token"
+      ],
+      "procedure": "Tentar importar o módulo e buscar uso no caminho HTTP.",
+      "expected": "Se JWT fosse um controle ativo, a dependência estaria declarada e haveria validação nas rotas.",
+      "observed": "Módulo inutilizável no ambiente e inativo.",
+      "impact": "Não há proteção por token; a ausência de autenticação é o achado principal (SEC-AUTH-01).",
+      "likelihood": "Não aplicável enquanto não houver autenticação.",
+      "severity": "não aplicável",
+      "severity_criteria": "Controle não ativo e dependência ausente; não há caminho de exploração de JWT.",
+      "limitations": "Não foi possível testar assinatura/expiração sem instalar dependência, o que não era necessário.",
+      "recommendation": "Declarar a dependência se o módulo for usado; caso contrário, remover código morto ou documentar como referência.",
+      "status": "bloqueado"
+    },
+    {
+      "id": "SEC-LOG-01",
+      "category": "Observabilidade/auditoria",
+      "component": "observatory/records/error_log.py",
+      "description": "O banco do Observatório não registrou erros 500 sob concorrência; a conexão sqlite3 é criada na thread principal e usada nas threads de requisição.",
+      "evidence": [
+        "Etapa 4: 8 respostas 500 em C_create_c2 e 0 registros em error_log.sqlite",
+        "Teste direto: sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread",
+        "ErrorHandler._notify silencia falha do observador"
+      ],
+      "procedure": "Executar carga concorrente (Etapa 4) e chamar ErrorLog.record em outra thread.",
+      "expected": "Registrar o erro com detalhe interno para investigação, sem afetar a resposta.",
+      "observed": "Falha de gravação silenciada; o erro não fica registrado.",
+      "impact": "Lacuna de trilha de auditoria em incidentes concorrentes; dificulta resposta a incidentes.",
+      "likelihood": "Alta sob concorrência.",
+      "severity": "média",
+      "severity_criteria": "Perda de evidência de segurança/erro; não amplia o acesso, mas reduz detecção e resposta.",
+      "limitations": "Evidência vem da Etapa 4; esta etapa não repetiu a carga concorrente.",
+      "recommendation": "Usar conexão SQLite por thread ou uma fila/processo de logging; testar gravação concorrente.",
+      "status": "risco potencial"
+    },
+    {
+      "id": "SEC-XSS-01",
+      "category": "Saída/entrada",
+      "component": "orbits/planets/example/resources/user_resource.py",
+      "description": "Um nome contendo <script> foi armazenado e devolvido literalmente na resposta JSON.",
+      "evidence": [
+        "E3: nome='<script>alert(1)</script>' → 201",
+        "Resposta Content-Type: application/json"
+      ],
+      "procedure": "Criar usuário sintético com payload HTML e observar a resposta.",
+      "expected": "JSON deve ser consumido como dado; se o frontend inserir em HTML sem escapar, o payload executa.",
+      "observed": "JSON devolve o texto literal, sem escape HTML (escape não é necessário em JSON).",
+      "impact": "Potencial XSS no consumidor que renderizar o campo como HTML; não demonstrado neste teste.",
+      "likelihood": "Depende do cliente/frontend; não mensurável apenas pela API.",
+      "severity": "inconclusiva",
+      "severity_criteria": "Risco condicionado ao consumidor; a API não executa HTML.",
+      "limitations": "Não há frontend no escopo; não foi testada renderização.",
+      "recommendation": "Garantir escape/contextual encoding no frontend e CSP; manter Content-Type application/json.",
+      "status": "inconclusivo"
+    },
+    {
+      "id": "SEC-SQLI-01",
+      "category": "Injeção",
+      "component": "orbits/database/persistence/users/user_persistency.py",
+      "description": "Payload SQL no nome foi armazenado literalmente; a tabela users permaneceu íntegra.",
+      "evidence": [
+        "E2: nome=\"Robert'); DROP TABLE users;--\" → 201",
+        "Consulta posterior encontrou o nome literal e a tabela users com 8 registros"
+      ],
+      "procedure": "Criar usuário com payload SQL e consultar a tabela.",
+      "expected": "Consultas parametrizadas; payload tratado como dado.",
+      "observed": "Payload armazenado como texto; nenhuma execução de DROP.",
+      "impact": "Nenhum impacto observado neste cenário.",
+      "likelihood": "Não aplicável ao cenário testado.",
+      "severity": "não aplicável",
+      "severity_criteria": "Controle validado; sem evidência de injeção.",
+      "limitations": "Teste limitado ao ORM e ao SQLite; não cobre SQL bruto em outros módulos.",
+      "recommendation": "Manter consultas parametrizadas e revisar qualquer SQL textual futuro.",
+      "status": "controle validado no cenário testado"
+    },
+    {
+      "id": "SEC-MASS-01",
+      "category": "Atribuição em massa",
+      "component": "CreateUserInput; UserPersistency",
+      "description": "Campos extras/protegidos enviados no JSON não foram aplicados ao registro.",
+      "evidence": [
+        "E1: id_user=999999, reset_password_user='true', data_created_user='1900-01-01' → 201",
+        "Banco: id gerado 6, reset_password_user='false', created_at atual"
+      ],
+      "procedure": "Enviar campos protegidos junto ao payload válido e consultar o banco.",
+      "expected": "Somente os campos explicitamente lidos pelo contrato devem ser persistidos.",
+      "observed": "Campos extras ignorados; valores internos preservados.",
+      "impact": "Nenhum impacto observado.",
+      "likelihood": "Não aplicável ao cenário testado.",
+      "severity": "não aplicável",
+      "severity_criteria": "Controle validado.",
+      "limitations": "Teste cobre o contrato atual de criação; novos campos exigem novo teste.",
+      "recommendation": "Manter leitura explícita de campos e revisar novos contratos.",
+      "status": "controle validado no cenário testado"
+    }
+  ],
+  "controls_validated": [
+    {
+      "control": "Headers obrigatórios",
+      "evidence": "A1/A2/A4/B1/D1/D9 retornaram X-Content-Type-Options, X-Frame-Options e Referrer-Policy.",
+      "status": "controle validado no cenário testado"
+    },
+    {
+      "control": "Mensagem de erro genérica",
+      "evidence": "D1–D10 retornaram apenas code, message e reference; sem caminho, relação SQL ou stack trace.",
+      "status": "controle validado no cenário testado"
+    },
+    {
+      "control": "Hash de senha",
+      "evidence": "B1: password_user começa com $2 e não é a senha em texto.",
+      "status": "controle validado no cenário testado"
+    },
+    {
+      "control": "Validação de presença",
+      "evidence": "D1/D2/D3 → 400 MISSING_FIELDS; D6/D7/D8 → 400 INVALID_JSON_BODY.",
+      "status": "controle validado no cenário testado"
+    },
+    {
+      "control": "Normalização de e-mail",
+      "evidence": "B1: e-mail sintético foi persistido em minúsculas.",
+      "status": "controle validado no cenário testado"
+    }
+  ],
+  "not_applicable": [
+    "Autorização/IDOR: não há recurso por identificador nem papéis.",
+    "Satellites/comunicação externa: não há módulo de satélites nem chamada externa no caminho atual.",
+    "Upload: módulos existem, mas não há rota.",
+    "Isolamento por processo/permissões: a aplicação é um único processo Python; pastas não são fronteira de segurança."
+  ],
+  "blocked": [
+    "JWT: PyJWT não instalado; módulo inativo.",
+    "PostgreSQL: não há instância isolada disponível.",
+    "Docker: não há CLI Docker no Windows neste ambiente.",
+    "Teste de IDOR: não há rota de leitura por identificador.",
+    "Teste de CSRF significativo: não há autenticação por cookie/sessão."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "scenario": "E_validacao_invalid_c1",
+  "kind": "invalid",
+  "concurrency": 1,
+  "total_requests": 60,
+  "completed": 60,
+  "incomplete": 0,
+  "expected": 60,
+  "unexpected": 0,
+  "transport_errors": 0,
+  "error_rate": 0.0,
+  "status_counts": {
+    "400": 60
+  },
+  "transport_error_types": {},
+  "duration_s": 0.766,
+  "throughput_completed_rps": 78.357,
+  "throughput_expected_rps": 78.357,
+  "latency_expected_ms": {
+    "n": 60,
+    "min": 4.513,
+    "mean": 12.684,
+    "median": 6.696,
+    "p90": 28.473,
+    "p95": 29.096,
+    "p99": 30.995,
+    "max": 30.995
+  },
+  "latency_all_ms": {
+    "n": 60,
+    "min": 4.513,
+    "mean": 12.684,
+    "median": 6.696,
+    "p90": 28.473,
+    "p95": 29.096,
+    "p99": 30.995,
+    "max": 30.995
+  },
+  "cpu_pct_single_core": 53.05,
+  "memory_mb": {
+    "mean": 86.52,
+    "max": 89.52
+  },
+  "started_at": "2026-10-23T14:58:07.582783+00:00",
+  "ended_at": "2026-10-23T14:58:08.349305+00:00"
+}

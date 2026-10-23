@@ -3,7 +3,7 @@ from pathlib import Path
 from nucleus.kernel import PROJECT_ROOT, Kernel
 from nucleus.rules.project_validator import ProjectValidator
 from nucleus.rules.report import ProjectReport
-from observatory.records.error_log import ErrorLog
+from observatory.log.error_log import ErrorLog
 from observatory.solar import audit
 
 
