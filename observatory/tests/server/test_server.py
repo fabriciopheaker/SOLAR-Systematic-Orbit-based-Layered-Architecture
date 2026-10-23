@@ -211,7 +211,16 @@ def _records(root) -> list:
     Registros de auditoria deixados pela verificacao.
     """
 
-    return sorted((root / "observatory" / "solar" / "check").glob("*.md"))
+    return sorted(
+        (
+            root
+            / "observatory"
+            / "audits"
+            / "etapa_1_conformidade"
+            / "evidencias"
+            / "check"
+        ).glob("*.md")
+    )
 
 
 def _server(tmp_path, kernel=None) -> Server:

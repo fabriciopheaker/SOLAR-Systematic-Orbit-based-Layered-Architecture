@@ -2,12 +2,12 @@
 
 O catálogo das regras: **o que cada uma barra** e **o que ela libera**.
 
-| Número | Situação                                                                                   |
-| ------ | ------------------------------------------------------------------------------------------ |
-| **30** | códigos na numeração — `RED` (12), `ROF` (7) e `SEG` (11, incluindo a extensão `SEG-011`)  |
-| **30** | classes de regra implementadas — a `RED-004` não tem classe e a `ROF-004` tem duas         |
-| **29** | regras aplicadas pelo `check`, em **17 verificações**                                      |
-| **1**  | sem verificação estática: a **ROF-003** (contrato nomeado do UseCase), que não tem scanner |
+| Número | Situação                                                                                                           |
+| ------ | ------------------------------------------------------------------------------------------------------------------ |
+| **30** | códigos na numeração — `RED` (12), `ROF` (7) e `SEG` (11, incluindo a extensão `SEG-011`)                          |
+| **30** | classes de regra implementadas — a `RED-004` não tem classe e a `ROF-004` tem duas                                 |
+| **29** | regras aplicadas pelo `check`, em **17 verificações**                                                              |
+| **1**  | sem verificação estática: a **ROF-003** (contrato nomeado do UseCase), que não tem scanner, mas tem teste unitário |
 
 ---
 
@@ -113,7 +113,7 @@ SecretLiteral             violation
 ...
 
 resultado: violation — 8 violação(ões) em 3 regra(s)
-auditoria: observatory/solar/check/check-2026-10-05-143000.md
+auditoria: observatory/audits/etapa_1_conformidade/evidencias/check/check-2026-10-05-143000.md
 ```
 
 Quando há violação, o detalhe de cada regra aparece logo abaixo da lista.
@@ -134,7 +134,7 @@ python observatory/solar check || exit 1     # esteira de integração contínua
 ### Auditoria
 
 **Toda** verificação é registrada em Markdown dentro de
-`observatory/solar/check/` — momento da execução (hora de **São Paulo**), raiz
+`observatory/audits/etapa_1_conformidade/evidencias/check/` — momento da execução (hora de **São Paulo**), raiz
 verificada, status de todas as verificações e o detalhe de cada violação.
 
 O nome carrega o momento e o resultado
@@ -167,19 +167,19 @@ ser interpretado. Ver `nucleus/rules/scanner/source_files.py`.
 
 ### Cobertura
 
-| Situação                 | Regras                                                               |
-| ------------------------ | -------------------------------------------------------------------- |
-| Verificadas pelo comando | as **29** com scanner estático, em 17 verificações                   |
-| Sem verificação          | **ROF-003** — o contrato nomeado do UseCase não tem scanner          |
-| Absorvida                | **RED-004** — virou a SOLAR-RED-001                                  |
-| Removida                 | a regra de CSRF por rota — passou para o pipeline (`SecurityPolicy`) |
+| Situação                 | Regras                                                                              |
+| ------------------------ | ----------------------------------------------------------------------------------- |
+| Verificadas pelo comando | as **29** com scanner estático, em 17 verificações                                  |
+| Sem verificação estática | **ROF-003** — o contrato nomeado do UseCase não tem scanner, mas tem teste unitário |
+| Absorvida                | **RED-004** — virou a SOLAR-RED-001                                                 |
+| Removida                 | a regra de CSRF por rota — passou para o pipeline (`SecurityPolicy`)                |
 
 ### Documentação
 
 - **`docs/manual.md`** — manual completo: conceitos, cada classe e método do Nucleus, casos de
   uso, as **30** regras com violação e correção, e como estender a arquitetura.
 - **`docs/manual.pdf`** — o mesmo manual em PDF.
-- **`observatory/records/`** — o registro de erros do Observatório, em banco SQLite próprio.
+- **`observatory/log/`** — o registro de erros do Observatório, em banco SQLite próprio.
 
 Editou o Markdown? Regenere o PDF:
 
@@ -188,4 +188,5 @@ Editou o Markdown? Regenere o PDF:
 ```
 
 **RED-004** e **ROF-003** não aparecem no relatório: a RED-004 foi absorvida pela RED-001, e a
-ROF-003 (o contrato nomeado do UseCase) ainda não tem scanner.
+ROF-003 (o contrato nomeado do UseCase) ainda não tem scanner — embora sua
+classe seja exercitada por teste unitário.

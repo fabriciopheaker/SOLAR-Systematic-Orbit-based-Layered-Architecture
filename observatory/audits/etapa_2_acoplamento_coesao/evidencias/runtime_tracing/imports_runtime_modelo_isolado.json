@@ -1,0 +1,275 @@
+{
+  "scenario": "modelo-isolado",
+  "command": "py observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py --scenario modelo-isolado",
+  "environment": {
+    "python": "3.14.7",
+    "implementation": "CPython",
+    "system": "Windows",
+    "release": "11",
+    "root": "<ROOT>"
+  },
+  "instrumentation": {
+    "mechanism": [
+      "sys.addaudithook('import')",
+      "monkeypatch importlib.import_module",
+      "sys.modules diff"
+    ],
+    "hook_installed_before_scenario_import": true,
+    "audit_hook_does_not_observe_importlib": true,
+    "events_observed": 23
+  },
+  "result": {
+    "import_ok": false,
+    "exception": "AttributeError"
+  },
+  "counts": {
+    "solar": 13,
+    "external": 0,
+    "stdlib": 4,
+    "builtin": 1,
+    "audit": 0,
+    "test": 0,
+    "other": 0
+  },
+  "solar_modules": [
+    {
+      "module": "nucleus",
+      "category": "solar",
+      "origin": "nucleus/__init__.py",
+      "first_import_seq": 9
+    },
+    {
+      "module": "nucleus.database",
+      "category": "solar",
+      "origin": "nucleus/database/__init__.py",
+      "first_import_seq": 8
+    },
+    {
+      "module": "nucleus.database.database",
+      "category": "solar",
+      "origin": "nucleus/database/database.py",
+      "first_import_seq": 7
+    },
+    {
+      "module": "nucleus.database.drivers",
+      "category": "solar",
+      "origin": "nucleus/database/drivers/__init__.py",
+      "first_import_seq": 15
+    },
+    {
+      "module": "nucleus.database.drivers.interface",
+      "category": "solar",
+      "origin": "nucleus/database/drivers/interface/__init__.py",
+      "first_import_seq": 14
+    },
+    {
+      "module": "nucleus.database.drivers.interface.database_driver",
+      "category": "solar",
+      "origin": "nucleus/database/drivers/interface/database_driver.py",
+      "first_import_seq": 13
+    },
+    {
+      "module": "nucleus.exceptions",
+      "category": "solar",
+      "origin": "nucleus/exceptions/__init__.py",
+      "first_import_seq": 17
+    },
+    {
+      "module": "nucleus.exceptions.contract_exception",
+      "category": "solar",
+      "origin": "nucleus/exceptions/contract_exception.py",
+      "first_import_seq": 16
+    },
+    {
+      "module": "nucleus.exceptions.database_exception",
+      "category": "solar",
+      "origin": "nucleus/exceptions/database_exception.py",
+      "first_import_seq": 19
+    },
+    {
+      "module": "nucleus.exceptions.solar_exception",
+      "category": "solar",
+      "origin": "nucleus/exceptions/solar_exception.py",
+      "first_import_seq": 18
+    },
+    {
+      "module": "orbits",
+      "category": "solar",
+      "origin": "orbits/__init__.py",
+      "first_import_seq": 4
+    },
+    {
+      "module": "orbits.database",
+      "category": "solar",
+      "origin": "orbits/database/__init__.py",
+      "first_import_seq": 3
+    },
+    {
+      "module": "orbits.database.models",
+      "category": "solar",
+      "origin": "orbits/database/models/__init__.py",
+      "first_import_seq": 2
+    }
+  ],
+  "external_packages": [],
+  "solar_import_attempts_not_loaded": [
+    "orbits.database.models.user_model"
+  ],
+  "target_events": {
+    "orbits.database.models.user_model": [
+      {
+        "seq": 1,
+        "module": "orbits.database.models.user_model",
+        "database_loaded_at_event": false,
+        "user_model_loaded_at_event": false,
+        "database_orm_published_at_event": false,
+        "stack": [
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 179,
+            "function": "hook"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 360,
+            "function": "scenario_modelo_isolado"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 387,
+            "function": "run_scenario"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 642,
+            "function": "main"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 649,
+            "function": "<module>"
+          }
+        ]
+      }
+    ],
+    "orbits.database.models": [
+      {
+        "seq": 2,
+        "module": "orbits.database.models",
+        "database_loaded_at_event": false,
+        "user_model_loaded_at_event": false,
+        "database_orm_published_at_event": false,
+        "stack": [
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 179,
+            "function": "hook"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 491,
+            "function": "_call_with_frames_removed"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 1314,
+            "function": "_find_and_load_unlocked"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 1371,
+            "function": "_find_and_load"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 360,
+            "function": "scenario_modelo_isolado"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 387,
+            "function": "run_scenario"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 642,
+            "function": "main"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 649,
+            "function": "<module>"
+          }
+        ]
+      }
+    ],
+    "nucleus.database.database": [
+      {
+        "seq": 7,
+        "module": "nucleus.database.database",
+        "database_loaded_at_event": false,
+        "user_model_loaded_at_event": true,
+        "database_orm_published_at_event": false,
+        "stack": [
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 179,
+            "function": "hook"
+          },
+          {
+            "file": "orbits/database/models/user_model.py",
+            "line": 2,
+            "function": "<module>"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 491,
+            "function": "_call_with_frames_removed"
+          },
+          {
+            "file": "<frozen importlib._bootstrap_external>",
+            "line": 759,
+            "function": "exec_module"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 938,
+            "function": "_load_unlocked"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 1342,
+            "function": "_find_and_load_unlocked"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 1371,
+            "function": "_find_and_load"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 360,
+            "function": "scenario_modelo_isolado"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 387,
+            "function": "run_scenario"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 642,
+            "function": "main"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 649,
+            "function": "<module>"
+          }
+        ]
+      }
+    ]
+  },
+  "dynamic_import_calls": [],
+  "failures": []
+}

@@ -44,7 +44,7 @@ Sem esse passo, médias e volumes misturam conjuntos e as conclusões ficam amb�
 ### Passo 3 — Gerar as métricas
 
 ```powershell
-py observatory/audits/estrutural/solar_metrics.py --root . --out observatory/audits/estrutural
+py observatory/audits/etapa_2_acoplamento_coesao/scripts/solar_metrics.py --root . --out observatory/audits/etapa_2_acoplamento_coesao/dados --out-complexity observatory/audits/etapa_3_complexidade/dados
 ```
 
 **Saídas principais:** `resumo_metricas.json`, `modulos_metricas.csv`, `modulos_acoplamento.csv`, `coesao_classes.csv`, `funcoes_complexidade.csv`, `complexidade_cognitiva.csv`, `radon_halstead_modulos.csv`, `alcancabilidade.json`, `solar_ciclos_internos.json`.
@@ -52,14 +52,14 @@ py observatory/audits/estrutural/solar_metrics.py --root . --out observatory/aud
 **Conferência rápida:**
 
 ```powershell
-py -c "import json; d=json.load(open('observatory/audits/estrutural/resumo_metricas.json',encoding='utf-8')); print(d['production_modules'], d['internal_edges'], d['complexity']['cc_total_production']['sum'])"
+py -c "import json; d=json.load(open('observatory/audits/etapa_2_acoplamento_coesao/dados/resumo_metricas.json',encoding='utf-8')); print(d['production_modules'], d['internal_edges'], d['complexity']['cc_total_production']['sum'])"
 ```
 
 Esperado: `208 306 1278`.
 
 ### Passo 4 — Ler o resumo antes dos detalhes
 
-Abra `observatory/audits/estrutural/resumo_metricas.json` e confira:
+Abra `observatory/audits/etapa_2_acoplamento_coesao/dados/resumo_metricas.json` e confira:
 
 - `production_modules` = 208;
 - `internal_edges` = 306;
@@ -72,7 +72,7 @@ Se algum bloco estiver ausente, o script não terminou; não interprete resultad
 ### Passo 5 — Auditar os alertas originais
 
 ```powershell
-py observatory/audits/estrutural/revisar_relatorio.py
+py observatory/audits/etapa_2_acoplamento_coesao/scripts/revisar_relatorio.py
 ```
 
 **Saída:** `alertas_estruturais_revisados.csv` com veredictos por alerta.
@@ -82,7 +82,7 @@ py observatory/audits/estrutural/revisar_relatorio.py
 ### Passo 6 — Validação independente
 
 ```powershell
-py observatory/audits/estrutural/auditoria_final/verificacoes_independentes.py
+py observatory/audits/etapa_2_acoplamento_coesao/evidencias/verificacoes_independentes.py
 ```
 
 **O que faz:** recalcula CC, LCOM, CBO, cognitiva, Halstead e MI por implementações independentes.
@@ -92,7 +92,7 @@ py observatory/audits/estrutural/auditoria_final/verificacoes_independentes.py
 ### Passo 7 — Tracing de runtime
 
 ```powershell
-py observatory/audits/estrutural/auditoria_final/runtime_tracing/trace_imports.py --all
+py observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py --all
 ```
 
 **Saídas:** `imports_runtime_verificador.json`, `imports_runtime_bootstrap.json`, `imports_runtime_modelo_isolado.json`, `comparacao_alcancabilidade.json`, `verificador_stdout.txt`.
@@ -102,7 +102,7 @@ py observatory/audits/estrutural/auditoria_final/runtime_tracing/trace_imports.p
 - cenário A: 85 módulos SOLAR, saída 0;
 - cenário B: 172 módulos, `mount()` concluído;
 - cenário C: 13 módulos, `AttributeError`;
-- união: 175 módulos; 14 ausentes; 1 refutado (`observatory.records`).
+- união: 175 módulos; 14 ausentes; 1 refutado (`observatory.log`).
 
 ### Passo 8 — Rodar o validador arquitetural
 
@@ -110,7 +110,7 @@ py observatory/audits/estrutural/auditoria_final/runtime_tracing/trace_imports.p
 py observatory/solar check
 ```
 
-**Saída esperada:** `correct` com 17 verificações, 29 regras e 0 violações; auditoria gravada em `observatory/solar/check/`.
+**Saída esperada:** `correct` com 17 verificações, 29 regras e 0 violações; auditoria gravada em `observatory/audits/etapa_1_conformidade/evidencias/check/`.
 
 **Cuidado:** o comando grava um arquivo de auditoria. Para uma análise que não deve alterar o repositório, rode em uma cópia ou aponte o diretório de auditoria para fora do projeto.
 
@@ -156,7 +156,7 @@ Get-ChildItem -Path nucleus,orbits,observatory,server.py -Recurse -Filter *.py |
   Select-String -Pattern "nucleus.security.token"
 Get-ChildItem -Path tests -Recurse -Filter *.py |
   Select-String -Pattern "nucleus.security.token"
-py -c "import json; d=json.load(open('observatory/audits/estrutural/alcancabilidade.json',encoding='utf-8')); print([m['module'] for m in d['nao_alcancaveis_com_codigo'] if 'token' in m['module']])"
+py -c "import json; d=json.load(open('observatory/audits/etapa_2_acoplamento_coesao/dados/alcancabilidade.json',encoding='utf-8')); print([m['module'] for m in d['nao_alcancaveis_com_codigo'] if 'token' in m['module']])"
 ```
 
 ### Evidências
@@ -208,20 +208,22 @@ py observatory/solar check
 
 ### Evidências
 
-| Evidência                         | Resultado                                   |
-| --------------------------------- | ------------------------------------------- |
-| Classe da regra existe            | `ControllerAndUseCaseMustUseNamedContracts` |
-| Código declarado                  | `SOLAR-ROF-003`                             |
-| Aparece em `project_validator.py` | **não**                                     |
-| Regras executadas                 | 29                                          |
-| Resultado do validador            | `correct`, 0 violações                      |
-| Documentação do projeto           | confirma que ROF-003 não tem scanner        |
+| Evidência                         | Resultado                                         |
+| --------------------------------- | ------------------------------------------------- |
+| Classe da regra existe            | `ControllerAndUseCaseMustUseNamedContracts`       |
+| Código declarado                  | `SOLAR-ROF-003`                                   |
+| Aparece em `project_validator.py` | **não**                                           |
+| Teste unitário da regra           | **sim** (`observatory/tests/rules/architecture/`) |
+| Regras executadas                 | 29                                                |
+| Resultado do validador            | `correct`, 0 violações                            |
+| Documentação do projeto           | confirma que ROF-003 não tem scanner              |
 
 ### Leitura
 
-- A regra tem classe, mas não tem scanner e não está entre as 29 executadas.
+- A regra tem classe e teste unitário, mas não tem scanner e não está entre as 29 executadas.
 - O resultado `correct` é verdadeiro **para o conjunto executado**.
-- “0 violações” não cobre ROF-003.
+- “0 violações” não cobre ROF-003 no `check`.
+- A ausência de scanner não é evidência de violação, nem de problema de persistência.
 
 ### Conclusão
 

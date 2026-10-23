@@ -1,0 +1,119 @@
+{
+  "entry_points": [
+    "server",
+    "observatory.solar.__main__"
+  ],
+  "metodo": "BFS nas arestas internas de produção a partir dos pontos de entrada declarados",
+  "modulos_alcancaveis": 134,
+  "modulos_producao": 208,
+  "nao_alcancaveis_com_codigo": [
+    {
+      "module": "nucleus.contracts.responsibility_contract",
+      "layer": "Nucleus",
+      "sloc": 6,
+      "ce": 0,
+      "ca": 1
+    },
+    {
+      "module": "nucleus.middleware.brute_force_guard",
+      "layer": "Nucleus",
+      "sloc": 36,
+      "ce": 2,
+      "ca": 0
+    },
+    {
+      "module": "nucleus.middleware.csrf_protection",
+      "layer": "Nucleus",
+      "sloc": 54,
+      "ce": 1,
+      "ca": 0
+    },
+    {
+      "module": "nucleus.middleware.rate_limiter",
+      "layer": "Nucleus",
+      "sloc": 28,
+      "ce": 2,
+      "ca": 0
+    },
+    {
+      "module": "nucleus.rules.architecture.controller_and_usecase_must_use_named_contracts",
+      "layer": "Nucleus",
+      "sloc": 75,
+      "ce": 3,
+      "ca": 0
+    },
+    {
+      "module": "nucleus.security.attempt_tracker",
+      "layer": "Nucleus",
+      "sloc": 39,
+      "ce": 0,
+      "ca": 2
+    },
+    {
+      "module": "nucleus.security.token",
+      "layer": "Nucleus",
+      "sloc": 41,
+      "ce": 0,
+      "ca": 0
+    },
+    {
+      "module": "nucleus.security.url_guard",
+      "layer": "Nucleus",
+      "sloc": 92,
+      "ce": 1,
+      "ca": 0
+    },
+    {
+      "module": "nucleus.upload.file_sanitizer",
+      "layer": "Nucleus",
+      "sloc": 29,
+      "ce": 2,
+      "ca": 1
+    },
+    {
+      "module": "nucleus.upload.file_signatures",
+      "layer": "Nucleus",
+      "sloc": 74,
+      "ce": 0,
+      "ca": 1
+    },
+    {
+      "module": "nucleus.upload.file_validator",
+      "layer": "Nucleus",
+      "sloc": 66,
+      "ce": 5,
+      "ca": 0
+    },
+    {
+      "module": "nucleus.upload.upload_policy",
+      "layer": "Nucleus",
+      "sloc": 65,
+      "ce": 0,
+      "ca": 1
+    },
+    {
+      "module": "nucleus.upload.uploaded_file",
+      "layer": "Nucleus",
+      "sloc": 14,
+      "ce": 0,
+      "ca": 1
+    },
+    {
+      "module": "observatory.log",
+      "layer": "Observatory",
+      "sloc": 6,
+      "ce": 2,
+      "ca": 0
+    },
+    {
+      "module": "orbits.planets.user.repository.user_repository",
+      "layer": "Orbits/Planets",
+      "sloc": 6,
+      "ce": 1,
+      "ca": 0
+    }
+  ],
+  "sloc_nao_alcancavel": 631,
+  "sloc_producao": 6265,
+  "observacao": "Módulo alcançável apenas por testes não é contado como alcançável; inicializadores de pacote vazios são omitidos desta lista."
+}

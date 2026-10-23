@@ -90,7 +90,7 @@ Exemplo: 39 das 136 classes têm LCOM aplicável.
 
 A proporção é útil para comparar conjuntos de tamanhos diferentes. Mas ela precisa de denominador explícito: “39 classes” sem “de 136” é ambíguo; “39 de 136” é claro.
 
-**Cuidado no SOLAR:** 148 módulos de produção têm código; 59 inicializadores de pacote não têm código e 1 arquivo está vazio. Dizer “10% dos módulos não são alcançáveis” exige dizer se o denominador é 208 (todos), 148 (com código) ou 6.261 SLOC. Nesta documentação, o denominador é sempre declarado.
+**Cuidado no SOLAR:** 148 módulos de produção têm código; 59 inicializadores de pacote não têm código e 1 arquivo está vazio. Dizer “10% dos módulos não são alcançáveis” exige dizer se o denominador é 208 (todos), 148 (com código) ou 6.265 SLOC. Nesta documentação, o denominador é sempre declarado.
 
 ---
 

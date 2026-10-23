@@ -2,7 +2,8 @@
 Auditoria da verificação arquitetural.
 
 Quando `python observatory/solar check` roda, o resultado é
-registrado em Markdown dentro de `observatory/solar/check/` —
+registrado em Markdown dentro de
+`observatory/audits/etapa_1_conformidade/evidencias/check/` —
 `correct` ou `violation`.
 
 Por que registrar SEMPRE: o registro da última execução é a
@@ -27,7 +28,9 @@ from nucleus.rules.report import ProjectReport
 # diretório é montado a partir deles, e mudar de lugar é editar um lugar
 # só.
 OBSERVATORY_DIRECTORY = "observatory"
-COMMAND_DIRECTORY = "solar"
+AUDITS_DIRECTORY = "audits"
+STAGE_DIRECTORY = "etapa_1_conformidade"
+EVIDENCE_DIRECTORY = "evidencias"
 AUDIT_DIRECTORY = "check"
 
 # `check-2026-10-06-115425-correct.md`. O prefixo mantém o arquivo
@@ -60,14 +63,16 @@ def audit_directory(root: Path) -> Path:
     """
     Diretório de auditoria do projeto verificado.
 
-    Fica ao lado do comando que o produziu:
-    `observatory/solar/check/`.
+    Fica na etapa de conformidade da camada de auditoria:
+    `observatory/audits/etapa_1_conformidade/evidencias/check/`.
     """
 
     return (
         Path(root)
         / OBSERVATORY_DIRECTORY
-        / COMMAND_DIRECTORY
+        / AUDITS_DIRECTORY
+        / STAGE_DIRECTORY
+        / EVIDENCE_DIRECTORY
         / AUDIT_DIRECTORY
     )
 
@@ -77,8 +82,8 @@ def display_path(path: Path) -> Path:
     Caminho do registro na forma em que ele deve ser MOSTRADO.
 
     Relativo ao diretório atual quando possível — quem lê a linha é
-    uma pessoa, e `observatory/solar/check/...` é mais legível que o
-    caminho absoluto. Fora do diretório atual (o `check` foi rodado
+    uma pessoa, e `observatory/audits/etapa_1_conformidade/evidencias/check/...`
+    é mais legível que o caminho absoluto. Fora do diretório atual (o `check` foi rodado
     apontando para outro projeto), o absoluto é a única informação
     útil.
     """

@@ -42,7 +42,14 @@ def _report(*violations: Violation) -> ProjectReport:
 
 def _audit_root(root: Path) -> Path:
 
-    return root / "observatory" / "solar" / "check"
+    return (
+        root
+        / "observatory"
+        / "audits"
+        / "etapa_1_conformidade"
+        / "evidencias"
+        / "check"
+    )
 
 
 def _records(root: Path) -> list[Path]:
@@ -78,7 +85,12 @@ def test_violation_writes_a_markdown_file(tmp_path):
 def test_audit_directory_is_beside_the_command(tmp_path):
 
     assert audit.audit_directory(tmp_path) == (
-        tmp_path / "observatory" / "solar" / "check"
+        tmp_path
+        / "observatory"
+        / "audits"
+        / "etapa_1_conformidade"
+        / "evidencias"
+        / "check"
     )
 
 

@@ -101,20 +101,20 @@ Em vez de “bom/ruim”, esta documentação usa sete rótulos:
 
 ### 9.3.6 Ciclos e alcance
 
-| Resultado                      | Rótulo                         | Justificativa                   | O que mudaria o rótulo          |
-| ------------------------------ | ------------------------------ | ------------------------------- | ------------------------------- |
-| 1 ciclo dinâmico               | risco potencial                | dependência de ordem confirmada | falha em inicialização ou teste |
-| 0 ciclos estáticos             | favorável no contexto avaliado | grafo acíclico no modelo        | novos imports                   |
-| 14 módulos ausentes            | risco potencial                | 625 SLOC não exercitados        | confirmação de uso/abandono     |
-| `observatory.records` refutado | favorável no contexto          | pacote-pai carregado            | —                               |
-| 42 pais implícitos             | não aplicável                  | inits vazios                    | —                               |
+| Resultado                  | Rótulo                         | Justificativa                   | O que mudaria o rótulo          |
+| -------------------------- | ------------------------------ | ------------------------------- | ------------------------------- |
+| 1 ciclo dinâmico           | risco potencial                | dependência de ordem confirmada | falha em inicialização ou teste |
+| 0 ciclos estáticos         | favorável no contexto avaliado | grafo acíclico no modelo        | novos imports                   |
+| 14 módulos ausentes        | risco potencial                | 625 SLOC não exercitados        | confirmação de uso/abandono     |
+| `observatory.log` refutado | favorável no contexto          | pacote-pai carregado            | —                               |
+| 42 pais implícitos         | não aplicável                  | inits vazios                    | —                               |
 
 ### 9.3.7 Conformidade
 
-| Resultado               | Rótulo                         | Justificativa        | O que mudaria o rótulo   |
-| ----------------------- | ------------------------------ | -------------------- | ------------------------ |
-| 0 violações / 29 regras | favorável no contexto avaliado | regras ativas passam | violação ou regra nova   |
-| ROF-003 sem scanner     | pendente de validação          | regra não executada  | implementação do scanner |
+| Resultado               | Rótulo                         | Justificativa                                                | O que mudaria o rótulo   |
+| ----------------------- | ------------------------------ | ------------------------------------------------------------ | ------------------------ |
+| 0 violações / 29 regras | favorável no contexto avaliado | regras ativas passam                                         | violação ou regra nova   |
+| ROF-003 sem scanner     | pendente de validação          | regra implementada e testada, mas não executada pelo `check` | implementação do scanner |
 
 ---
 

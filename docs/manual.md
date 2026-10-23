@@ -164,7 +164,7 @@ python observatory/solar check
 python observatory/solar check <caminho>
 
 # Somente o que difere da última vez
-git diff --stat observatory/solar/check/
+git diff --stat observatory/audits/etapa_1_conformidade/evidencias/check/
 ```
 
 ## 2.3 O ciclo
@@ -175,7 +175,7 @@ git diff --stat observatory/solar/check/
           ▼
    python observatory/solar check ────► correct ────► commit
           │
-          └──► violation ───► observatory/solar/check/check-....md
+          └──► violation ───► observatory/audits/etapa_1_conformidade/evidencias/check/check-....md
                                     │
                                     ▼
                               corrigir e repetir
@@ -3490,7 +3490,7 @@ OutboundRequest           correct
 ModuleClasses             correct
 
 resultado: correct
-auditoria: observatory/solar/check/check-2026-10-13-105241-correct.md
+auditoria: observatory/audits/etapa_1_conformidade/evidencias/check/check-2026-10-13-105241-correct.md
 ```
 
 > Esta é a saída **real** do projeto hoje: as **17 verificações** passam.
@@ -3514,10 +3514,11 @@ python observatory/solar check || exit 1
 
 ## 17.4 A auditoria
 
-**Toda** execução registra um arquivo em `observatory/solar/check/`.
+**Toda** execução registra um arquivo em
+`observatory/audits/etapa_1_conformidade/evidencias/check/`.
 
 ```text
-observatory/solar/check/
+observatory/audits/etapa_1_conformidade/evidencias/check/
 ├── check-2026-10-05-155458-violation.md
 └── check-2026-10-05-162011-correct.md
 ```
@@ -3590,12 +3591,12 @@ estranha derrubaria a varredura inteira.
 
 ## 17.6 Cobertura
 
-| Situação                 | Regras                                                            |
-| ------------------------ | ----------------------------------------------------------------- |
-| Verificadas pelo comando | as **29** com scanner estático (30 classes menos a SOLAR-ROF-003) |
-| Sem verificação          | **SOLAR-ROF-003** — o contrato nomeado do UseCase não tem scanner |
-| Absorvida                | **SOLAR-RED-004** — virou a SOLAR-RED-001                         |
-| Removida                 | a regra de CSRF por rota — passou para o pipeline                 |
+| Situação                 | Regras                                                                                    |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| Verificadas pelo comando | as **29** com scanner estático (30 classes menos a SOLAR-ROF-003)                         |
+| Sem verificação estática | **SOLAR-ROF-003** — o contrato nomeado do UseCase não tem scanner, mas tem teste unitário |
+| Absorvida                | **SOLAR-RED-004** — virou a SOLAR-RED-001                                                 |
+| Removida                 | a regra de CSRF por rota — passou para o pipeline                                         |
 
 ## 17.7 O registro de erros
 
@@ -3714,7 +3715,7 @@ SOLAR-SEG-001 · Credenciais e segredos não podem estar hardcoded no código. (
   código-fonte.
 
 resultado: violation — 1 violação(ões) em 1 regra(s)
-auditoria: observatory/solar/check/check-2026-10-06-121630-violation.md
+auditoria: observatory/audits/etapa_1_conformidade/evidencias/check/check-2026-10-06-121630-violation.md
 ```
 
 A subida **não** é interrompida: a verificação informa, e quem decide o que fazer com a
@@ -3839,8 +3840,8 @@ Referência rápida: onde cada classe vive e para que serve.
 | `render`           | `observatory/solar/audit.py`          | montar o Markdown da auditoria |
 | `audit_directory`  | `observatory/solar/audit.py`          | onde a auditoria fica          |
 | `display_path`     | `observatory/solar/audit.py`          | o caminho como ele é mostrado  |
-| `ErrorLog`         | `observatory/records/error_log.py`    | gravar e consultar os erros    |
-| `ErrorRecord`      | `observatory/records/error_record.py` | um erro registrado             |
+| `ErrorLog`         | `observatory/log/error_log.py`        | gravar e consultar os erros    |
+| `ErrorRecord`      | `observatory/log/error_record.py`     | um erro registrado             |
 
 ---
 

@@ -49,7 +49,7 @@ Uma limitação não invalida o resultado; delimita a conclusão. Uma pendência
 | Configuração                                | Efeito                            | Exemplo                              |
 | ------------------------------------------- | --------------------------------- | ------------------------------------ |
 | `tests/` incluído nos relatórios Radon      | médias e volumes misturados       | CC total inclui 680 funções de teste |
-| Exclusão de testes nas métricas de produção | conjunto menor e mais preciso     | 553 funções, 6.261 SLOC              |
+| Exclusão de testes nas métricas de produção | conjunto menor e mais preciso     | 553 funções, 6.265 SLOC              |
 | `count_multi=True` no MI                    | docstrings contam como comentário | `http_input` 393,33% de comentários  |
 | Versões de Radon/flake8                     | resultados podem variar           | 6.0.1 / 7.4.1 registrados            |
 | Caminhos absolutos e timestamps             | saídas não determinísticas        | normalização para hash               |
@@ -142,17 +142,17 @@ A qualidade percebida por quem mantém envolve história, domínio, documentaç�
 
 ## 10.10 Limitações específicas do SOLAR
 
-| Caso                            | Limitação               | Consequência                                   |
-| ------------------------------- | ----------------------- | ---------------------------------------------- |
-| `Kernel` CBO 15                 | composition root        | alto por papel; não é defeito                  |
-| `project_validator` Ce 49       | registro de regras      | alto por papel; não é defeito                  |
-| `ErrorExposureScanner` LCOM1 89 | 14 métodos, 1 atributo  | alto por construção; LCOM4 1                   |
-| `Database`/`Storage` LCOM       | sem estado de instância | N/A; não é baixa coesão                        |
-| `http_input` MI 32,26           | comentários/docstrings  | MI não representa manutenibilidade             |
-| `_destination` cognitiva 18     | outlier                 | risco de leitura/teste, não defeito            |
-| 14 módulos ausentes             | 3 cenários              | funcionalidade não conectada, não código morto |
-| ciclo `Database ↔ user_model`   | ordem de inicialização  | risco de erro, não falha observada             |
-| ROF-003                         | regra sem scanner       | conformidade parcial                           |
+| Caso                            | Limitação                                        | Consequência                                   |
+| ------------------------------- | ------------------------------------------------ | ---------------------------------------------- |
+| `Kernel` CBO 15                 | composition root                                 | alto por papel; não é defeito                  |
+| `project_validator` Ce 49       | registro de regras                               | alto por papel; não é defeito                  |
+| `ErrorExposureScanner` LCOM1 89 | 14 métodos, 1 atributo                           | alto por construção; LCOM4 1                   |
+| `Database`/`Storage` LCOM       | sem estado de instância                          | N/A; não é baixa coesão                        |
+| `http_input` MI 32,26           | comentários/docstrings                           | MI não representa manutenibilidade             |
+| `_destination` cognitiva 18     | outlier                                          | risco de leitura/teste, não defeito            |
+| 14 módulos ausentes             | 3 cenários                                       | funcionalidade não conectada, não código morto |
+| ciclo `Database ↔ user_model`   | ordem de inicialização                           | risco de erro, não falha observada             |
+| ROF-003                         | regra sem scanner no `check`; com teste unitário | conformidade parcial nesse ponto               |
 
 ---
 

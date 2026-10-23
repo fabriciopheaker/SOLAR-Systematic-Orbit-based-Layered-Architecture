@@ -1,0 +1,1425 @@
+{
+  "scenario": "bootstrap",
+  "command": "py observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py --scenario bootstrap",
+  "environment": {
+    "python": "3.14.7",
+    "implementation": "CPython",
+    "system": "Windows",
+    "release": "11",
+    "root": "<ROOT>"
+  },
+  "instrumentation": {
+    "mechanism": [
+      "sys.addaudithook('import')",
+      "monkeypatch importlib.import_module",
+      "sys.modules diff"
+    ],
+    "hook_installed_before_scenario_import": true,
+    "audit_hook_does_not_observe_importlib": true,
+    "events_observed": 731
+  },
+  "result": {
+    "mount_ok": true,
+    "config": {
+      "APP_ENV": "TEST",
+      "DB_CONNECTION": "sqlite",
+      "DB_NAME": "arquivo temporário em runtime_tracing/tmp"
+    },
+    "server_run_called": false,
+    "url_rules": 3,
+    "blueprints": [
+      "orbits",
+      "orbits.auth",
+      "orbits.example",
+      "orbits.solar",
+      "orbits.user"
+    ],
+    "database": {
+      "orm_published": true,
+      "model_published": true
+    }
+  },
+  "counts": {
+    "solar": 172,
+    "external": 381,
+    "stdlib": 136,
+    "builtin": 21,
+    "audit": 0,
+    "test": 0,
+    "other": 0
+  },
+  "solar_modules": [
+    {
+      "module": "nucleus",
+      "category": "solar",
+      "origin": "nucleus/__init__.py",
+      "first_import_seq": 3
+    },
+    {
+      "module": "nucleus.broadcast",
+      "category": "solar",
+      "origin": "nucleus/broadcast/__init__.py",
+      "first_import_seq": 216
+    },
+    {
+      "module": "nucleus.broadcast.broadcast",
+      "category": "solar",
+      "origin": "nucleus/broadcast/broadcast.py",
+      "first_import_seq": 215
+    },
+    {
+      "module": "nucleus.broadcast.drivers",
+      "category": "solar",
+      "origin": "nucleus/broadcast/drivers/__init__.py",
+      "first_import_seq": 219
+    },
+    {
+      "module": "nucleus.broadcast.drivers.in_memory_broadcast",
+      "category": "solar",
+      "origin": "nucleus/broadcast/drivers/in_memory_broadcast.py",
+      "first_import_seq": 225
+    },
+    {
+      "module": "nucleus.broadcast.drivers.interface",
+      "category": "solar",
+      "origin": "nucleus/broadcast/drivers/interface/__init__.py",
+      "first_import_seq": 218
+    },
+    {
+      "module": "nucleus.broadcast.drivers.interface.broadcast_driver",
+      "category": "solar",
+      "origin": "nucleus/broadcast/drivers/interface/broadcast_driver.py",
+      "first_import_seq": 217
+    },
+    {
+      "module": "nucleus.broadcast.event",
+      "category": "solar",
+      "origin": "nucleus/broadcast/event.py",
+      "first_import_seq": 220
+    },
+    {
+      "module": "nucleus.contracts",
+      "category": "solar",
+      "origin": "nucleus/contracts/__init__.py",
+      "first_import_seq": 576
+    },
+    {
+      "module": "nucleus.contracts.http_input",
+      "category": "solar",
+      "origin": "nucleus/contracts/http_input.py",
+      "first_import_seq": 575
+    },
+    {
+      "module": "nucleus.contracts.resource",
+      "category": "solar",
+      "origin": "nucleus/contracts/resource.py",
+      "first_import_seq": 708
+    },
+    {
+      "module": "nucleus.contracts.sanitizer",
+      "category": "solar",
+      "origin": "nucleus/contracts/sanitizer.py",
+      "first_import_seq": 577
+    },
+    {
+      "module": "nucleus.contracts.use_case",
+      "category": "solar",
+      "origin": "nucleus/contracts/use_case.py",
+      "first_import_seq": 711
+    },
+    {
+      "module": "nucleus.contracts.validator",
+      "category": "solar",
+      "origin": "nucleus/contracts/validator.py",
+      "first_import_seq": 578
+    },
+    {
+      "module": "nucleus.database",
+      "category": "solar",
+      "origin": "nucleus/database/__init__.py",
+      "first_import_seq": 227
+    },
+    {
+      "module": "nucleus.database.database",
+      "category": "solar",
+      "origin": "nucleus/database/database.py",
+      "first_import_seq": 226
+    },
+    {
+      "module": "nucleus.database.drivers",
+      "category": "solar",
+      "origin": "nucleus/database/drivers/__init__.py",
+      "first_import_seq": 230
+    },
+    {
+      "module": "nucleus.database.drivers.driver_sqlalchemy",
+      "category": "solar",
+      "origin": "nucleus/database/drivers/driver_sqlalchemy.py",
+      "first_import_seq": 232
+    },
+    {
+      "module": "nucleus.database.drivers.interface",
+      "category": "solar",
+      "origin": "nucleus/database/drivers/interface/__init__.py",
+      "first_import_seq": 229
+    },
+    {
+      "module": "nucleus.database.drivers.interface.database_driver",
+      "category": "solar",
+      "origin": "nucleus/database/drivers/interface/database_driver.py",
+      "first_import_seq": 228
+    },
+    {
+      "module": "nucleus.environment",
+      "category": "solar",
+      "origin": "nucleus/environment.py",
+      "first_import_seq": 560
+    },
+    {
+      "module": "nucleus.exceptions",
+      "category": "solar",
+      "origin": "nucleus/exceptions/__init__.py",
+      "first_import_seq": 222
+    },
+    {
+      "module": "nucleus.exceptions.broadcast_exception",
+      "category": "solar",
+      "origin": "nucleus/exceptions/broadcast_exception.py",
+      "first_import_seq": 221
+    },
+    {
+      "module": "nucleus.exceptions.contract_exception",
+      "category": "solar",
+      "origin": "nucleus/exceptions/contract_exception.py",
+      "first_import_seq": 224
+    },
+    {
+      "module": "nucleus.exceptions.database_exception",
+      "category": "solar",
+      "origin": "nucleus/exceptions/database_exception.py",
+      "first_import_seq": 231
+    },
+    {
+      "module": "nucleus.exceptions.security_exception",
+      "category": "solar",
+      "origin": "nucleus/exceptions/security_exception.py",
+      "first_import_seq": 565
+    },
+    {
+      "module": "nucleus.exceptions.solar_exception",
+      "category": "solar",
+      "origin": "nucleus/exceptions/solar_exception.py",
+      "first_import_seq": 223
+    },
+    {
+      "module": "nucleus.exceptions.storage_exception",
+      "category": "solar",
+      "origin": "nucleus/exceptions/storage_exception.py",
+      "first_import_seq": 586
+    },
+    {
+      "module": "nucleus.exceptions.validation_exception",
+      "category": "solar",
+      "origin": "nucleus/exceptions/validation_exception.py",
+      "first_import_seq": 566
+    },
+    {
+      "module": "nucleus.kernel",
+      "category": "solar",
+      "origin": "nucleus/kernel.py",
+      "first_import_seq": 2
+    },
+    {
+      "module": "nucleus.middleware",
+      "category": "solar",
+      "origin": "nucleus/middleware/__init__.py",
+      "first_import_seq": 568
+    },
+    {
+      "module": "nucleus.middleware.atmosphere",
+      "category": "solar",
+      "origin": "nucleus/middleware/atmosphere.py",
+      "first_import_seq": 690
+    },
+    {
+      "module": "nucleus.middleware.error_handler",
+      "category": "solar",
+      "origin": "nucleus/middleware/error_handler.py",
+      "first_import_seq": 567
+    },
+    {
+      "module": "nucleus.middleware.request_pipeline",
+      "category": "solar",
+      "origin": "nucleus/middleware/request_pipeline.py",
+      "first_import_seq": 569
+    },
+    {
+      "module": "nucleus.middleware.security_headers",
+      "category": "solar",
+      "origin": "nucleus/middleware/security_headers.py",
+      "first_import_seq": 579
+    },
+    {
+      "module": "nucleus.middleware.security_policy",
+      "category": "solar",
+      "origin": "nucleus/middleware/security_policy.py",
+      "first_import_seq": 580
+    },
+    {
+      "module": "nucleus.middleware.solar_blueprint",
+      "category": "solar",
+      "origin": "nucleus/middleware/solar_blueprint.py",
+      "first_import_seq": 689
+    },
+    {
+      "module": "nucleus.notication",
+      "category": "solar",
+      "origin": "nucleus/notication/__init__.py",
+      "first_import_seq": 701
+    },
+    {
+      "module": "nucleus.notication.notification",
+      "category": "solar",
+      "origin": "nucleus/notication/notification.py",
+      "first_import_seq": 700
+    },
+    {
+      "module": "nucleus.rules",
+      "category": "solar",
+      "origin": "nucleus/rules/__init__.py",
+      "first_import_seq": 571
+    },
+    {
+      "module": "nucleus.rules.architecture",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/__init__.py",
+      "first_import_seq": 574
+    },
+    {
+      "module": "nucleus.rules.architecture.authentication_must_not_be_scattered_in_controllers",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/authentication_must_not_be_scattered_in_controllers.py",
+      "first_import_seq": 591
+    },
+    {
+      "module": "nucleus.rules.architecture.controller_must_not_implement_authentication",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/controller_must_not_implement_authentication.py",
+      "first_import_seq": 594
+    },
+    {
+      "module": "nucleus.rules.architecture.controller_must_return_resource",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/controller_must_return_resource.py",
+      "first_import_seq": 596
+    },
+    {
+      "module": "nucleus.rules.architecture.errors_must_not_leak_internals",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/errors_must_not_leak_internals.py",
+      "first_import_seq": 598
+    },
+    {
+      "module": "nucleus.rules.architecture.external_communication_belongs_to_satellites",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/external_communication_belongs_to_satellites.py",
+      "first_import_seq": 600
+    },
+    {
+      "module": "nucleus.rules.architecture.http_input_must_pass_through_sanitization_and_validation",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/http_input_must_pass_through_sanitization_and_validation.py",
+      "first_import_seq": 573
+    },
+    {
+      "module": "nucleus.rules.architecture.models_cannot_depend_on_persistence",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/models_cannot_depend_on_persistence.py",
+      "first_import_seq": 602
+    },
+    {
+      "module": "nucleus.rules.architecture.models_must_access_orm_through_database",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/models_must_access_orm_through_database.py",
+      "first_import_seq": 603
+    },
+    {
+      "module": "nucleus.rules.architecture.models_must_live_in_their_own_file",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/models_must_live_in_their_own_file.py",
+      "first_import_seq": 604
+    },
+    {
+      "module": "nucleus.rules.architecture.orbits_must_use_database_facade",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/orbits_must_use_database_facade.py",
+      "first_import_seq": 606
+    },
+    {
+      "module": "nucleus.rules.architecture.orm_belongs_to_driver",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/orm_belongs_to_driver.py",
+      "first_import_seq": 607
+    },
+    {
+      "module": "nucleus.rules.architecture.outbound_requests_must_not_use_untrusted_url",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/outbound_requests_must_not_use_untrusted_url.py",
+      "first_import_seq": 608
+    },
+    {
+      "module": "nucleus.rules.architecture.persistence_belongs_to_orbits_database",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/persistence_belongs_to_orbits_database.py",
+      "first_import_seq": 610
+    },
+    {
+      "module": "nucleus.rules.architecture.persistence_must_not_build_unsafe_sql",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/persistence_must_not_build_unsafe_sql.py",
+      "first_import_seq": 611
+    },
+    {
+      "module": "nucleus.rules.architecture.planet_cannot_depend_on_driver",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/planet_cannot_depend_on_driver.py",
+      "first_import_seq": 613
+    },
+    {
+      "module": "nucleus.rules.architecture.planet_cannot_depend_on_planet",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/planet_cannot_depend_on_planet.py",
+      "first_import_seq": 614
+    },
+    {
+      "module": "nucleus.rules.architecture.planet_cannot_know_nucleus_infrastructure",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/planet_cannot_know_nucleus_infrastructure.py",
+      "first_import_seq": 615
+    },
+    {
+      "module": "nucleus.rules.architecture.planet_must_have_standard_structure",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/planet_must_have_standard_structure.py",
+      "first_import_seq": 616
+    },
+    {
+      "module": "nucleus.rules.architecture.repository_cannot_depend_on_database",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/repository_cannot_depend_on_database.py",
+      "first_import_seq": 618
+    },
+    {
+      "module": "nucleus.rules.architecture.repository_must_use_persistence",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/repository_must_use_persistence.py",
+      "first_import_seq": 619
+    },
+    {
+      "module": "nucleus.rules.architecture.request_data_must_not_become_entities_directly",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/request_data_must_not_become_entities_directly.py",
+      "first_import_seq": 620
+    },
+    {
+      "module": "nucleus.rules.architecture.resources_must_not_expose_secrets",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/resources_must_not_expose_secrets.py",
+      "first_import_seq": 622
+    },
+    {
+      "module": "nucleus.rules.architecture.routes_must_be_declared_explicitly",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/routes_must_be_declared_explicitly.py",
+      "first_import_seq": 625
+    },
+    {
+      "module": "nucleus.rules.architecture.routes_must_live_in_route_modules",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/routes_must_live_in_route_modules.py",
+      "first_import_seq": 627
+    },
+    {
+      "module": "nucleus.rules.architecture.routes_must_point_to_controller",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/routes_must_point_to_controller.py",
+      "first_import_seq": 628
+    },
+    {
+      "module": "nucleus.rules.architecture.secrets_must_not_appear_in_source",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/secrets_must_not_appear_in_source.py",
+      "first_import_seq": 629
+    },
+    {
+      "module": "nucleus.rules.architecture.secrets_must_not_be_hardcoded",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/secrets_must_not_be_hardcoded.py",
+      "first_import_seq": 631
+    },
+    {
+      "module": "nucleus.rules.architecture.tokens_must_be_secure",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/tokens_must_be_secure.py",
+      "first_import_seq": 633
+    },
+    {
+      "module": "nucleus.rules.architecture.uploads_must_use_storage",
+      "category": "solar",
+      "origin": "nucleus/rules/architecture/uploads_must_use_storage.py",
+      "first_import_seq": 635
+    },
+    {
+      "module": "nucleus.rules.project_validator",
+      "category": "solar",
+      "origin": "nucleus/rules/project_validator.py",
+      "first_import_seq": 590
+    },
+    {
+      "module": "nucleus.rules.report",
+      "category": "solar",
+      "origin": "nucleus/rules/report.py",
+      "first_import_seq": 637
+    },
+    {
+      "module": "nucleus.rules.rule",
+      "category": "solar",
+      "origin": "nucleus/rules/rule.py",
+      "first_import_seq": 572
+    },
+    {
+      "module": "nucleus.rules.rule_engine",
+      "category": "solar",
+      "origin": "nucleus/rules/rule_engine.py",
+      "first_import_seq": 570
+    },
+    {
+      "module": "nucleus.rules.scanner.architecture_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/architecture_scanner.py",
+      "first_import_seq": 638
+    },
+    {
+      "module": "nucleus.rules.scanner.controller_auth_check_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/controller_auth_check_scanner.py",
+      "first_import_seq": 640
+    },
+    {
+      "module": "nucleus.rules.scanner.controller_auth_checks",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/controller_auth_checks.py",
+      "first_import_seq": 592
+    },
+    {
+      "module": "nucleus.rules.scanner.controller_module",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/controller_module.py",
+      "first_import_seq": 641
+    },
+    {
+      "module": "nucleus.rules.scanner.controller_return",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/controller_return.py",
+      "first_import_seq": 597
+    },
+    {
+      "module": "nucleus.rules.scanner.controller_return_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/controller_return_scanner.py",
+      "first_import_seq": 642
+    },
+    {
+      "module": "nucleus.rules.scanner.controller_security_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/controller_security_scanner.py",
+      "first_import_seq": 643
+    },
+    {
+      "module": "nucleus.rules.scanner.controller_security_usage",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/controller_security_usage.py",
+      "first_import_seq": 595
+    },
+    {
+      "module": "nucleus.rules.scanner.dependency",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/dependency.py",
+      "first_import_seq": 601
+    },
+    {
+      "module": "nucleus.rules.scanner.entity_binding",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/entity_binding.py",
+      "first_import_seq": 621
+    },
+    {
+      "module": "nucleus.rules.scanner.error_exposure",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/error_exposure.py",
+      "first_import_seq": 599
+    },
+    {
+      "module": "nucleus.rules.scanner.error_exposure_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/error_exposure_scanner.py",
+      "first_import_seq": 644
+    },
+    {
+      "module": "nucleus.rules.scanner.http_input_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/http_input_scanner.py",
+      "first_import_seq": 645
+    },
+    {
+      "module": "nucleus.rules.scanner.mass_assignment_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/mass_assignment_scanner.py",
+      "first_import_seq": 647
+    },
+    {
+      "module": "nucleus.rules.scanner.module_classes",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/module_classes.py",
+      "first_import_seq": 605
+    },
+    {
+      "module": "nucleus.rules.scanner.module_classes_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/module_classes_scanner.py",
+      "first_import_seq": 648
+    },
+    {
+      "module": "nucleus.rules.scanner.outbound_request",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/outbound_request.py",
+      "first_import_seq": 609
+    },
+    {
+      "module": "nucleus.rules.scanner.outbound_request_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/outbound_request_scanner.py",
+      "first_import_seq": 649
+    },
+    {
+      "module": "nucleus.rules.scanner.planet_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/planet_scanner.py",
+      "first_import_seq": 650
+    },
+    {
+      "module": "nucleus.rules.scanner.planet_structure",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/planet_structure.py",
+      "first_import_seq": 617
+    },
+    {
+      "module": "nucleus.rules.scanner.resource_exposure",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/resource_exposure.py",
+      "first_import_seq": 623
+    },
+    {
+      "module": "nucleus.rules.scanner.resource_exposure_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/resource_exposure_scanner.py",
+      "first_import_seq": 651
+    },
+    {
+      "module": "nucleus.rules.scanner.route_declaration",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/route_declaration.py",
+      "first_import_seq": 626
+    },
+    {
+      "module": "nucleus.rules.scanner.route_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/route_scanner.py",
+      "first_import_seq": 652
+    },
+    {
+      "module": "nucleus.rules.scanner.routing_convention",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/routing_convention.py",
+      "first_import_seq": 646
+    },
+    {
+      "module": "nucleus.rules.scanner.secret_content_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/secret_content_scanner.py",
+      "first_import_seq": 653
+    },
+    {
+      "module": "nucleus.rules.scanner.secret_guards",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/secret_guards.py",
+      "first_import_seq": 654
+    },
+    {
+      "module": "nucleus.rules.scanner.secret_literal",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/secret_literal.py",
+      "first_import_seq": 632
+    },
+    {
+      "module": "nucleus.rules.scanner.secret_names",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/secret_names.py",
+      "first_import_seq": 624
+    },
+    {
+      "module": "nucleus.rules.scanner.secret_occurrence",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/secret_occurrence.py",
+      "first_import_seq": 630
+    },
+    {
+      "module": "nucleus.rules.scanner.secret_patterns",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/secret_patterns.py",
+      "first_import_seq": 655
+    },
+    {
+      "module": "nucleus.rules.scanner.secret_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/secret_scanner.py",
+      "first_import_seq": 656
+    },
+    {
+      "module": "nucleus.rules.scanner.source_files",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/source_files.py",
+      "first_import_seq": 639
+    },
+    {
+      "module": "nucleus.rules.scanner.token_security_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/token_security_scanner.py",
+      "first_import_seq": 657
+    },
+    {
+      "module": "nucleus.rules.scanner.token_usage",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/token_usage.py",
+      "first_import_seq": 634
+    },
+    {
+      "module": "nucleus.rules.scanner.unsafe_sql",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/unsafe_sql.py",
+      "first_import_seq": 612
+    },
+    {
+      "module": "nucleus.rules.scanner.unsafe_sql_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/unsafe_sql_scanner.py",
+      "first_import_seq": 658
+    },
+    {
+      "module": "nucleus.rules.scanner.upload_handling",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/upload_handling.py",
+      "first_import_seq": 636
+    },
+    {
+      "module": "nucleus.rules.scanner.upload_handling_scanner",
+      "category": "solar",
+      "origin": "nucleus/rules/scanner/upload_handling_scanner.py",
+      "first_import_seq": 659
+    },
+    {
+      "module": "nucleus.security",
+      "category": "solar",
+      "origin": "nucleus/security/__init__.py",
+      "first_import_seq": 582
+    },
+    {
+      "module": "nucleus.security.identity",
+      "category": "solar",
+      "origin": "nucleus/security/identity.py",
+      "first_import_seq": 581
+    },
+    {
+      "module": "nucleus.security.json_sanitizer",
+      "category": "solar",
+      "origin": "nucleus/security/json_sanitizer.py",
+      "first_import_seq": 696
+    },
+    {
+      "module": "nucleus.security.json_validator",
+      "category": "solar",
+      "origin": "nucleus/security/json_validator.py",
+      "first_import_seq": 699
+    },
+    {
+      "module": "nucleus.security.password",
+      "category": "solar",
+      "origin": "nucleus/security/password.py",
+      "first_import_seq": 714
+    },
+    {
+      "module": "nucleus.storage",
+      "category": "solar",
+      "origin": "nucleus/storage/__init__.py",
+      "first_import_seq": 585
+    },
+    {
+      "module": "nucleus.storage.drivers",
+      "category": "solar",
+      "origin": "nucleus/storage/drivers/__init__.py",
+      "first_import_seq": 584
+    },
+    {
+      "module": "nucleus.storage.drivers.interface",
+      "category": "solar",
+      "origin": "nucleus/storage/drivers/interface/__init__.py",
+      "first_import_seq": 588
+    },
+    {
+      "module": "nucleus.storage.drivers.interface.storage_driver",
+      "category": "solar",
+      "origin": "nucleus/storage/drivers/interface/storage_driver.py",
+      "first_import_seq": 587
+    },
+    {
+      "module": "nucleus.storage.drivers.local_storage_driver",
+      "category": "solar",
+      "origin": "nucleus/storage/drivers/local_storage_driver.py",
+      "first_import_seq": 583
+    },
+    {
+      "module": "nucleus.storage.storage",
+      "category": "solar",
+      "origin": "nucleus/storage/storage.py",
+      "first_import_seq": 589
+    },
+    {
+      "module": "observatory",
+      "category": "solar",
+      "origin": "observatory/__init__.py",
+      "first_import_seq": 662
+    },
+    {
+      "module": "observatory.log",
+      "category": "solar",
+      "origin": "observatory/log/__init__.py",
+      "first_import_seq": 661
+    },
+    {
+      "module": "observatory.log.error_log",
+      "category": "solar",
+      "origin": "observatory/log/error_log.py",
+      "first_import_seq": 660
+    },
+    {
+      "module": "observatory.log.error_record",
+      "category": "solar",
+      "origin": "observatory/log/error_record.py",
+      "first_import_seq": 668
+    },
+    {
+      "module": "observatory.solar.audit",
+      "category": "solar",
+      "origin": "observatory/solar/audit.py",
+      "first_import_seq": 669
+    },
+    {
+      "module": "orbits",
+      "category": "solar",
+      "origin": "orbits/__init__.py",
+      "first_import_seq": null
+    },
+    {
+      "module": "orbits.database",
+      "category": "solar",
+      "origin": "orbits/database/__init__.py",
+      "first_import_seq": null
+    },
+    {
+      "module": "orbits.database.models",
+      "category": "solar",
+      "origin": "orbits/database/models/__init__.py",
+      "first_import_seq": 683
+    },
+    {
+      "module": "orbits.database.models.user_model",
+      "category": "solar",
+      "origin": "orbits/database/models/user_model.py",
+      "first_import_seq": 684
+    },
+    {
+      "module": "orbits.database.persistence",
+      "category": "solar",
+      "origin": "orbits/database/persistence/__init__.py",
+      "first_import_seq": 722
+    },
+    {
+      "module": "orbits.database.persistence.users",
+      "category": "solar",
+      "origin": "orbits/database/persistence/users/__init__.py",
+      "first_import_seq": 721
+    },
+    {
+      "module": "orbits.database.persistence.users.output",
+      "category": "solar",
+      "origin": "orbits/database/persistence/users/output/__init__.py",
+      "first_import_seq": 724
+    },
+    {
+      "module": "orbits.database.persistence.users.output.create_user_output",
+      "category": "solar",
+      "origin": "orbits/database/persistence/users/output/create_user_output.py",
+      "first_import_seq": 723
+    },
+    {
+      "module": "orbits.database.persistence.users.user_persistency",
+      "category": "solar",
+      "origin": "orbits/database/persistence/users/user_persistency.py",
+      "first_import_seq": 720
+    },
+    {
+      "module": "orbits.planets",
+      "category": "solar",
+      "origin": "orbits/planets/__init__.py",
+      "first_import_seq": 687
+    },
+    {
+      "module": "orbits.planets.auth",
+      "category": "solar",
+      "origin": "orbits/planets/auth/__init__.py",
+      "first_import_seq": 686
+    },
+    {
+      "module": "orbits.planets.auth.routes",
+      "category": "solar",
+      "origin": "orbits/planets/auth/routes.py",
+      "first_import_seq": 688
+    },
+    {
+      "module": "orbits.planets.example",
+      "category": "solar",
+      "origin": "orbits/planets/example/__init__.py",
+      "first_import_seq": 691
+    },
+    {
+      "module": "orbits.planets.example.atmosphere",
+      "category": "solar",
+      "origin": "orbits/planets/example/atmosphere/__init__.py",
+      "first_import_seq": 695
+    },
+    {
+      "module": "orbits.planets.example.atmosphere.sanitizers",
+      "category": "solar",
+      "origin": "orbits/planets/example/atmosphere/sanitizers/__init__.py",
+      "first_import_seq": 694
+    },
+    {
+      "module": "orbits.planets.example.atmosphere.sanitizers.create_user_sanitizer",
+      "category": "solar",
+      "origin": "orbits/planets/example/atmosphere/sanitizers/create_user_sanitizer.py",
+      "first_import_seq": 693
+    },
+    {
+      "module": "orbits.planets.example.atmosphere.validators",
+      "category": "solar",
+      "origin": "orbits/planets/example/atmosphere/validators/__init__.py",
+      "first_import_seq": 698
+    },
+    {
+      "module": "orbits.planets.example.atmosphere.validators.create_user_validator",
+      "category": "solar",
+      "origin": "orbits/planets/example/atmosphere/validators/create_user_validator.py",
+      "first_import_seq": 697
+    },
+    {
+      "module": "orbits.planets.example.controllers",
+      "category": "solar",
+      "origin": "orbits/planets/example/controllers/__init__.py",
+      "first_import_seq": 703
+    },
+    {
+      "module": "orbits.planets.example.controllers.create_user_controller",
+      "category": "solar",
+      "origin": "orbits/planets/example/controllers/create_user_controller.py",
+      "first_import_seq": 702
+    },
+    {
+      "module": "orbits.planets.example.controllers.inputs",
+      "category": "solar",
+      "origin": "orbits/planets/example/controllers/inputs/__init__.py",
+      "first_import_seq": 705
+    },
+    {
+      "module": "orbits.planets.example.controllers.inputs.create_user_input",
+      "category": "solar",
+      "origin": "orbits/planets/example/controllers/inputs/create_user_input.py",
+      "first_import_seq": 704
+    },
+    {
+      "module": "orbits.planets.example.entity",
+      "category": "solar",
+      "origin": "orbits/planets/example/entity/__init__.py",
+      "first_import_seq": 713
+    },
+    {
+      "module": "orbits.planets.example.entity.user_entity",
+      "category": "solar",
+      "origin": "orbits/planets/example/entity/user_entity.py",
+      "first_import_seq": 712
+    },
+    {
+      "module": "orbits.planets.example.repository",
+      "category": "solar",
+      "origin": "orbits/planets/example/repository/__init__.py",
+      "first_import_seq": 719
+    },
+    {
+      "module": "orbits.planets.example.repository.example_repository",
+      "category": "solar",
+      "origin": "orbits/planets/example/repository/example_repository.py",
+      "first_import_seq": 718
+    },
+    {
+      "module": "orbits.planets.example.resources",
+      "category": "solar",
+      "origin": "orbits/planets/example/resources/__init__.py",
+      "first_import_seq": 707
+    },
+    {
+      "module": "orbits.planets.example.resources.user_resource",
+      "category": "solar",
+      "origin": "orbits/planets/example/resources/user_resource.py",
+      "first_import_seq": 706
+    },
+    {
+      "module": "orbits.planets.example.routes",
+      "category": "solar",
+      "origin": "orbits/planets/example/routes.py",
+      "first_import_seq": 692
+    },
+    {
+      "module": "orbits.planets.example.usecases",
+      "category": "solar",
+      "origin": "orbits/planets/example/usecases/__init__.py",
+      "first_import_seq": 710
+    },
+    {
+      "module": "orbits.planets.example.usecases.create_user_usecase",
+      "category": "solar",
+      "origin": "orbits/planets/example/usecases/create_user_usecase.py",
+      "first_import_seq": 709
+    },
+    {
+      "module": "orbits.planets.example.usecases.outputs",
+      "category": "solar",
+      "origin": "orbits/planets/example/usecases/outputs/__init__.py",
+      "first_import_seq": 726
+    },
+    {
+      "module": "orbits.planets.example.usecases.outputs.create_user_output",
+      "category": "solar",
+      "origin": "orbits/planets/example/usecases/outputs/create_user_output.py",
+      "first_import_seq": 725
+    },
+    {
+      "module": "orbits.planets.solar",
+      "category": "solar",
+      "origin": "orbits/planets/solar/__init__.py",
+      "first_import_seq": 727
+    },
+    {
+      "module": "orbits.planets.solar.controllers",
+      "category": "solar",
+      "origin": "orbits/planets/solar/controllers/__init__.py",
+      "first_import_seq": 730
+    },
+    {
+      "module": "orbits.planets.solar.controllers.health_controller",
+      "category": "solar",
+      "origin": "orbits/planets/solar/controllers/health_controller.py",
+      "first_import_seq": 729
+    },
+    {
+      "module": "orbits.planets.solar.resources",
+      "category": "solar",
+      "origin": "orbits/planets/solar/resources/__init__.py",
+      "first_import_seq": 732
+    },
+    {
+      "module": "orbits.planets.solar.resources.health_resource",
+      "category": "solar",
+      "origin": "orbits/planets/solar/resources/health_resource.py",
+      "first_import_seq": 731
+    },
+    {
+      "module": "orbits.planets.solar.routes",
+      "category": "solar",
+      "origin": "orbits/planets/solar/routes.py",
+      "first_import_seq": 728
+    },
+    {
+      "module": "orbits.planets.user",
+      "category": "solar",
+      "origin": "orbits/planets/user/__init__.py",
+      "first_import_seq": 733
+    },
+    {
+      "module": "orbits.planets.user.routes",
+      "category": "solar",
+      "origin": "orbits/planets/user/routes.py",
+      "first_import_seq": 734
+    },
+    {
+      "module": "orbits.routes",
+      "category": "solar",
+      "origin": "orbits/routes.py",
+      "first_import_seq": 685
+    },
+    {
+      "module": "server",
+      "category": "solar",
+      "origin": "server.py",
+      "first_import_seq": 1
+    }
+  ],
+  "external_packages": [
+    "alembic",
+    "bcrypt",
+    "blinker",
+    "click",
+    "colorama",
+    "dotenv",
+    "flask",
+    "itsdangerous",
+    "jinja2",
+    "mako",
+    "markupsafe",
+    "pygments",
+    "sqlalchemy",
+    "typing_extensions",
+    "tzdata",
+    "werkzeug"
+  ],
+  "solar_import_attempts_not_loaded": [],
+  "target_events": {
+    "nucleus.database.database": [
+      {
+        "seq": 226,
+        "module": "nucleus.database.database",
+        "database_loaded_at_event": false,
+        "user_model_loaded_at_event": false,
+        "database_orm_published_at_event": false,
+        "stack": [
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 179,
+            "function": "hook"
+          },
+          {
+            "file": "nucleus/kernel.py",
+            "line": 19,
+            "function": "<module>"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 491,
+            "function": "_call_with_frames_removed"
+          },
+          {
+            "file": "<frozen importlib._bootstrap_external>",
+            "line": 759,
+            "function": "exec_module"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 938,
+            "function": "_load_unlocked"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 1342,
+            "function": "_find_and_load_unlocked"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 1371,
+            "function": "_find_and_load"
+          },
+          {
+            "file": "server.py",
+            "line": 3,
+            "function": "<module>"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 491,
+            "function": "_call_with_frames_removed"
+          },
+          {
+            "file": "<frozen importlib._bootstrap_external>",
+            "line": 759,
+            "function": "exec_module"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 938,
+            "function": "_load_unlocked"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 1342,
+            "function": "_find_and_load_unlocked"
+          },
+          {
+            "file": "<frozen importlib._bootstrap>",
+            "line": 1371,
+            "function": "_find_and_load"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 291,
+            "function": "scenario_bootstrap"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 387,
+            "function": "run_scenario"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 642,
+            "function": "main"
+          },
+          {
+            "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+            "line": 649,
+            "function": "<module>"
+          }
+        ]
+      }
+    ]
+  },
+  "dynamic_import_calls": [
+    {
+      "seq": 671,
+      "module": "tzdata.zoneinfo.America",
+      "caller_stack": [
+        {
+          "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+          "line": 226,
+          "function": "traced"
+        },
+        {
+          "file": "observatory/solar/audit.py",
+          "line": 45,
+          "function": "<module>"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 491,
+          "function": "_call_with_frames_removed"
+        },
+        {
+          "file": "<frozen importlib._bootstrap_external>",
+          "line": 759,
+          "function": "exec_module"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 938,
+          "function": "_load_unlocked"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 1342,
+          "function": "_find_and_load_unlocked"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 1371,
+          "function": "_find_and_load"
+        },
+        {
+          "file": "observatory/log/error_log.py",
+          "line": 9,
+          "function": "<module>"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 491,
+          "function": "_call_with_frames_removed"
+        },
+        {
+          "file": "<frozen importlib._bootstrap_external>",
+          "line": 759,
+          "function": "exec_module"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 938,
+          "function": "_load_unlocked"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 1342,
+          "function": "_find_and_load_unlocked"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 1371,
+          "function": "_find_and_load"
+        },
+        {
+          "file": "observatory/log/__init__.py",
+          "line": 1,
+          "function": "<module>"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 491,
+          "function": "_call_with_frames_removed"
+        },
+        {
+          "file": "<frozen importlib._bootstrap_external>",
+          "line": 759,
+          "function": "exec_module"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 938,
+          "function": "_load_unlocked"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 1342,
+          "function": "_find_and_load_unlocked"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 1371,
+          "function": "_find_and_load"
+        },
+        {
+          "file": "<frozen importlib._bootstrap>",
+          "line": 491,
+          "function": "_call_with_frames_removed"
+        }
+      ],
+      "database_loaded_at_call": true,
+      "database_orm_published_at_call": false,
+      "loaded": true,
+      "loaded_module": "tzdata.zoneinfo.America"
+    },
+    {
+      "seq": 683,
+      "module": "orbits.database.models",
+      "caller_stack": [
+        {
+          "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+          "line": 226,
+          "function": "traced"
+        },
+        {
+          "file": "nucleus/database/database.py",
+          "line": 157,
+          "function": "_import_models"
+        },
+        {
+          "file": "nucleus/database/database.py",
+          "line": 138,
+          "function": "sync"
+        },
+        {
+          "file": "nucleus/database/database.py",
+          "line": 85,
+          "function": "init"
+        },
+        {
+          "file": "nucleus/kernel.py",
+          "line": 162,
+          "function": "mount"
+        },
+        {
+          "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+          "line": 331,
+          "function": "scenario_bootstrap"
+        },
+        {
+          "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+          "line": 387,
+          "function": "run_scenario"
+        },
+        {
+          "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+          "line": 642,
+          "function": "main"
+        },
+        {
+          "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+          "line": 649,
+          "function": "<module>"
+        }
+      ],
+      "database_loaded_at_call": true,
+      "database_orm_published_at_call": true,
+      "loaded": true,
+      "loaded_module": "orbits.database.models"
+    },
+    {
+      "seq": 684,
+      "module": "orbits.database.models.user_model",
+      "caller_stack": [
+        {
+          "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+          "line": 226,
+          "function": "traced"
+        },
+        {
+          "file": "nucleus/database/database.py",
+          "line": 167,
+          "function": "_import_models"
+        },
+        {
+          "file": "nucleus/database/database.py",
+          "line": 138,
+          "function": "sync"
+        },
+        {
+          "file": "nucleus/database/database.py",
+          "line": 85,
+          "function": "init"
+        },
+        {
+          "file": "nucleus/kernel.py",
+          "line": 162,
+          "function": "mount"
+        },
+        {
+          "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+          "line": 331,
+          "function": "scenario_bootstrap"
+        },
+        {
+          "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+          "line": 387,
+          "function": "run_scenario"
+        },
+        {
+          "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+          "line": 642,
+          "function": "main"
+        },
+        {
+          "file": "observatory/audits/etapa_2_acoplamento_coesao/evidencias/runtime_tracing/trace_imports.py",
+          "line": 649,
+          "function": "<module>"
+        }
+      ],
+      "database_loaded_at_call": true,
+      "database_orm_published_at_call": true,
+      "loaded": true,
+      "loaded_module": "orbits.database.models.user_model"
+    }
+  ],
+  "failures": []
+}

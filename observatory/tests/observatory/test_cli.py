@@ -179,7 +179,14 @@ def test_check_writes_the_audit_file(tmp_path):
     main(["check", str(tmp_path)])
 
     records = list(
-        (tmp_path / "observatory" / "solar" / "check").glob("*.md")
+        (
+            tmp_path
+            / "observatory"
+            / "audits"
+            / "etapa_1_conformidade"
+            / "evidencias"
+            / "check"
+        ).glob("*.md")
     )
 
     assert len(records) == 1
@@ -194,7 +201,14 @@ def test_check_writes_a_correct_record_too(tmp_path):
     main(["check", str(tmp_path)])
 
     records = list(
-        (tmp_path / "observatory" / "solar" / "check").glob("*.md")
+        (
+            tmp_path
+            / "observatory"
+            / "audits"
+            / "etapa_1_conformidade"
+            / "evidencias"
+            / "check"
+        ).glob("*.md")
     )
 
     assert len(records) == 1

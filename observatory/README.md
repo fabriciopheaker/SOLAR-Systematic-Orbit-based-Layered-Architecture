@@ -54,12 +54,18 @@ O Nucleus define as regras e não sabe quem as verifica.
 
 ```text
 observatory/
-├── audits/          testes e análises de auditoria (estrutural, Etapa 4, Etapa 5)
+├── audits/          seis etapas de auditoria + benchmark
+│   ├── etapa_1_conformidade/evidencias/check/   auditorias geradas
+│   ├── etapa_2_acoplamento_coesao/
+│   ├── etapa_3_complexidade/
+│   ├── etapa_4_desempenho/
+│   ├── etapa_5_seguranca_isolamento/
+│   ├── etapa_6_manutenibilidade_evolutividade/
+│   └── benchmark/
 └── solar/           o comando de verificação
     ├── cli.py       despacho de comandos
     ├── audit.py     registro em Markdown
-    ├── commands/    os comandos
-    └── check/       as auditorias geradas (Markdown)
+    └── commands/    os comandos
 ```
 
 ### 6. Como verificar
@@ -81,7 +87,7 @@ PlanetStructure           violation
 ...
 
 resultado: violation — 8 violação(ões) em 3 regra(s)
-auditoria: observatory/solar/check/check-2026-10-05-143000.md
+auditoria: observatory/audits/etapa_1_conformidade/evidencias/check/check-2026-10-05-143000.md
 ```
 
 O código de saída acompanha: `0` para `correct`, `1` para `violation`
@@ -90,7 +96,7 @@ e `2` para caminho inválido ou comando desconhecido.
 ### 7. Auditoria
 
 **Toda** verificação é registrada em Markdown dentro de
-`observatory/solar/check/` — ao lado do comando que o produziu —, com o momento
+`observatory/audits/etapa_1_conformidade/evidencias/check/`, com o momento
 da execução, a raiz verificada, o status de todas as verificações e o detalhe de
 cada violação.
 

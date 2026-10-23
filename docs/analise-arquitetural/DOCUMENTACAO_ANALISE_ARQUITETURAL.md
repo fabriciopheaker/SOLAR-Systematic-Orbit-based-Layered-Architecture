@@ -3,7 +3,7 @@
 **Versão:** 1.0 — 22/10/2026
 **Público-alvo:** pessoas sem experiência prévia em arquitetura de software, métricas, análise estática ou estatística aplicada.
 **Estudo de caso:** arquitetura SOLAR (repositório `SOLAR`, Python).
-**Base dos resultados:** `observatory/audits/estrutural/` (relatório consolidado, auditorias das Etapas 2 e 3, checklist final, plano de ação e tracing de runtime).
+**Base dos resultados:** `observatory/audits/` (seis etapas + benchmark), com destaque para `etapa_2_acoplamento_coesao/`, `etapa_3_complexidade/`, `etapa_4_desempenho/` e `etapa_5_seguranca_isolamento/`.
 
 ---
 
@@ -65,24 +65,24 @@ Ao longo do texto, três rótulos são usados de forma consistente:
 
 ## Mapa rápido das métricas
 
-| Métrica ou análise               | Seção | O que pergunta                                       | Status no SOLAR                                            |
-| -------------------------------- | ----- | ---------------------------------------------------- | ---------------------------------------------------------- |
-| Fan-in (Ca)                      | 5.1   | quantos módulos dependem deste?                      | validado                                                   |
-| Fan-out (Ce)                     | 5.2   | de quantos módulos este depende?                     | validado                                                   |
-| Instabilidade (I)                | 5.3   | qual o grau de dependência de saída?                 | validado                                                   |
-| CBO                              | 5.4   | quantas outras classes esta classe referencia?       | validado com ressalvas (AST)                               |
-| Complexidade ciclomática (CC)    | 5.5   | quantos caminhos independentes a função tem?         | validado                                                   |
-| Complexidade cognitiva           | 5.6   | quanto esforço de leitura o fluxo exige?             | validado com ressalvas (ferramenta)                        |
-| Tamanho de funções               | 5.7   | quantas linhas cada rotina ocupa?                    | validado                                                   |
-| Halstead                         | 5.8   | qual o vocabulário/volume de operadores e operandos? | reproduzível; **não aplicável** por função                 |
-| Índice de manutenibilidade (MI)  | 5.9   | qual o índice composto de manutenibilidade?          | reproduzível; **não aplicável** como discriminador         |
-| Coesão — LCOM1/LCOM4/LCOM\*/TCC  | 5.10  | os métodos compartilham estado?                      | validado nas 39 classes aplicáveis                         |
-| Grafos e ciclos (SCC)            | 5.11  | há caminhos circulares de dependência?               | validado com ressalvas (estático + runtime)                |
-| Alcançabilidade                  | 5.12  | quais módulos são alcançáveis a partir das entradas? | validado com ressalvas                                     |
-| NOM, NOC, LOC, ramos             | 5.13  | tamanho e forma de classes/arquivos/métodos          | auditoria do relatório original                            |
-| Reprodutibilidade e determinismo | 5.13  | os números se repetem?                               | validado                                                   |
-| Tracing de runtime               | 5.13  | o que é carregado em execução?                       | validado com ressalvas                                     |
-| Validador arquitetural           | 5.13  | as regras da SOLAR são cumpridas?                    | 0 violações nas 29 regras executadas (ROF-003 sem scanner) |
+| Métrica ou análise               | Seção | O que pergunta                                       | Status no SOLAR                                                                               |
+| -------------------------------- | ----- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Fan-in (Ca)                      | 5.1   | quantos módulos dependem deste?                      | validado                                                                                      |
+| Fan-out (Ce)                     | 5.2   | de quantos módulos este depende?                     | validado                                                                                      |
+| Instabilidade (I)                | 5.3   | qual o grau de dependência de saída?                 | validado                                                                                      |
+| CBO                              | 5.4   | quantas outras classes esta classe referencia?       | validado com ressalvas (AST)                                                                  |
+| Complexidade ciclomática (CC)    | 5.5   | quantos caminhos independentes a função tem?         | validado                                                                                      |
+| Complexidade cognitiva           | 5.6   | quanto esforço de leitura o fluxo exige?             | validado com ressalvas (ferramenta)                                                           |
+| Tamanho de funções               | 5.7   | quantas linhas cada rotina ocupa?                    | validado                                                                                      |
+| Halstead                         | 5.8   | qual o vocabulário/volume de operadores e operandos? | reproduzível; **não aplicável** por função                                                    |
+| Índice de manutenibilidade (MI)  | 5.9   | qual o índice composto de manutenibilidade?          | reproduzível; **não aplicável** como discriminador                                            |
+| Coesão — LCOM1/LCOM4/LCOM\*/TCC  | 5.10  | os métodos compartilham estado?                      | validado nas 39 classes aplicáveis                                                            |
+| Grafos e ciclos (SCC)            | 5.11  | há caminhos circulares de dependência?               | validado com ressalvas (estático + runtime)                                                   |
+| Alcançabilidade                  | 5.12  | quais módulos são alcançáveis a partir das entradas? | validado com ressalvas                                                                        |
+| NOM, NOC, LOC, ramos             | 5.13  | tamanho e forma de classes/arquivos/métodos          | auditoria do relatório original                                                               |
+| Reprodutibilidade e determinismo | 5.13  | os números se repetem?                               | validado                                                                                      |
+| Tracing de runtime               | 5.13  | o que é carregado em execução?                       | validado com ressalvas                                                                        |
+| Validador arquitetural           | 5.13  | as regras da SOLAR são cumpridas?                    | 0 violações nas 29 regras executadas (ROF-003 sem scanner no `check`, mas com teste unitário) |
 
 ---
 
@@ -90,7 +90,7 @@ Ao longo do texto, três rótulos são usados de forma consistente:
 
 | Dimensão                      | Resultado observado                                                                              | Leitura curta                                                   |
 | ----------------------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| Corpus                        | 208 módulos de produção, 6.261 SLOC; 61 arquivos de teste, 5.524 SLOC                            | a produção e os testes foram medidos separadamente              |
+| Corpus                        | 208 módulos de produção, 6.265 SLOC; 61 arquivos de teste, 5.529 SLOC                            | a produção e os testes foram medidos separadamente              |
 | Classes                       | 136 de produção; 29 de teste                                                                     | “módulo” e “classe” não são a mesma contagem                    |
 | CC (produção)                 | 553 funções, soma 1.278, média 2,31, mediana 2, máximo 10                                        | nenhuma função acima do rank B do Radon                         |
 | Cognitiva                     | 300 funções com escore ≥ 1; máximo 18; 1 acima de 15                                             | um único caso muito acima do restante                           |
@@ -117,7 +117,7 @@ Ao longo do texto, três rótulos são usados de forma consistente:
 
 ## Fontes e verificação
 
-As fontes conceituais e as fontes específicas do SOLAR estão no [Capítulo 12](capitulo-12-conclusao-referencias.md). Todas as fórmulas e números foram conferidos contra os artefatos em `observatory/audits/estrutural/`, incluindo os JSONs originais do Radon e a verificação independente. O procedimento passo a passo está no [Capítulo 11](capitulo-11-roteiro-pratico.md).
+As fontes conceituais e as fontes específicas do SOLAR estão no [Capítulo 12](capitulo-12-conclusao-referencias.md). Todas as fórmulas e números foram conferidos contra os artefatos em `observatory/audits/`, incluindo os JSONs do Radon e a verificação independente. O procedimento passo a passo está no [Capítulo 11](capitulo-11-roteiro-pratico.md).
 
 ---
 
@@ -161,7 +161,7 @@ As referências conceituais e de ferramentas estão no [Capítulo 12](capitulo-1
 | Verificação                                                                     | Resultado                                                               |
 | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | Links relativos entre capítulos e documentos                                    | todos resolvem para arquivos existentes                                 |
-| Números de corpus (269/208/61/6.261/5.524)                                      | conferidos em `resumo_metricas.json`                                    |
+| Números de corpus (269/208/61/6.265/5.529)                                      | conferidos em `resumo_metricas.json`                                    |
 | CC (553/1.278/2,31/2/5/10; A 523/B 30)                                          | conferida em `resumo_metricas.json` e CSV                               |
 | Cognitiva (300/794/2,65/2/6/18)                                                 | conferida em CSV e auditoria                                            |
 | Tamanho (13/16,6/35/163; 76/12/2)                                               | conferido em CSV                                                        |
@@ -187,6 +187,6 @@ As referências conceituais e de ferramentas estão no [Capítulo 12](capitulo-1
 6. Cobertura e eficácia dos testes não foram medidas.
 7. O tracing de runtime não cobre rotas HTTP completas.
 8. A eficácia das 29 regras não foi testada com defeitos injetados.
-9. `SOLAR-ROF-003` não tem scanner e não é executada pelo validador.
+9. `SOLAR-ROF-003` não tem scanner no `ProjectValidator`; é implementada e tem teste unitário.
 
 **Nenhuma dessas lacunas foi apresentada como resultado concluído.**

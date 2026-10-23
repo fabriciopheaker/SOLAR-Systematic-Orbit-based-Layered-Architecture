@@ -23,7 +23,7 @@ from nucleus.exceptions.database_exception import DatabaseException
 from nucleus.kernel import Kernel
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 PERSISTENCE_FILE = (
     PROJECT_ROOT

@@ -120,15 +120,15 @@ Fornece LOC, SLOC, LLOC, comentários, multilinhas e brancos. É a base do taman
 
 ## 7.6 `ProjectValidator`
 
-| Campo                          | Conteúdo                                                                                                                     |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
-| **Para que serve**             | Verificar conformidade com as regras arquiteturais do SOLAR.                                                                 |
-| **O que produz**               | Relatório com 17 verificações, 29 regras e 0 violações (`correct`).                                                          |
-| **Onde entra**                 | Análise complementar; cenário A do runtime.                                                                                  |
-| **Pontos fortes**              | Verifica regras específicas do estilo; executa sobre todos os `.py`; integra-se ao fluxo do projeto.                         |
-| **Limitações**                 | Só verifica as regras implementadas; `SOLAR-ROF-003` não tem scanner; não testa comportamento; não mede eficácia das regras. |
-| **Validação**                  | Execução registrada; saída `correct`; auditoria das regras.                                                                  |
-| **O que não se pode concluir** | Que a arquitetura está 100% conforme; que todas as regras do SOLAR estão ativas.                                             |
+| Campo                          | Conteúdo                                                                                                                                                                    |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Para que serve**             | Verificar conformidade com as regras arquiteturais do SOLAR.                                                                                                                |
+| **O que produz**               | Relatório com 17 verificações, 29 regras e 0 violações (`correct`).                                                                                                         |
+| **Onde entra**                 | Análise complementar; cenário A do runtime.                                                                                                                                 |
+| **Pontos fortes**              | Verifica regras específicas do estilo; executa sobre todos os `.py`; integra-se ao fluxo do projeto.                                                                        |
+| **Limitações**                 | Só verifica as regras implementadas; `SOLAR-ROF-003` não tem scanner no `ProjectValidator` (mas tem teste unitário); não testa comportamento; não mede eficácia das regras. |
+| **Validação**                  | Execução registrada; saída `correct`; auditoria das regras.                                                                                                                 |
+| **O que não se pode concluir** | Que a arquitetura está 100% conforme; que todas as regras do SOLAR estão ativas.                                                                                            |
 
 ---
 
@@ -141,7 +141,7 @@ Fornece LOC, SLOC, LLOC, comentários, multilinhas e brancos. É a base do taman
 | `verificacoes_independentes.py` | CSVs/JSONs + código        | relatório V1–V9                     | sim                            |
 | `trace_imports.py`              | código + cenários          | JSONs de runtime                    | sim após normalização          |
 
-**Regra de ouro:** um script de análise não deve alterar o código de produção. Todos os scripts vivem em `observatory/audits/estrutural/` e escrevem apenas nos artefatos de auditoria.
+**Regra de ouro:** um script de análise não deve alterar o código de produção. Todos os scripts vivem em `observatory/audits/` e escrevem apenas nos artefatos da etapa correspondente.
 
 ---
 

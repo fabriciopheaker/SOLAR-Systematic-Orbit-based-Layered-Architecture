@@ -69,14 +69,14 @@ Esses atributos são chamados de **atributos de qualidade** (em inglês, _qualit
 
 Esses termos são frequentemente usados como sinônimos no dia a dia, mas medem coisas diferentes. A documentação usa definições operacionais claras:
 
-| Termo          | Definição operacional                                                                                          | Exemplo no SOLAR                                                   |
-| -------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| **Componente** | parte arquitetural com responsabilidade definida; pode ser uma camada, um subsistema ou um conjunto de módulos | Nucleus, Orbits, Observatory                                       |
-| **Módulo**     | arquivo Python importável (`.py`), identificado por um nome pontuado                                           | `nucleus.kernel`, `orbits.routes`, `observatory.records.error_log` |
-| **Pacote**     | diretório Python com `__init__.py`; agrupa módulos                                                             | `nucleus.rules`, `orbits.planets.example`                          |
-| **Classe**     | definição de um tipo de objeto, com atributos e métodos                                                        | `Database`, `Kernel`, `ErrorLog`                                   |
-| **Função**     | rotina definida no nível do módulo                                                                             | `main()` em `server.py`                                            |
-| **Método**     | função definida dentro de uma classe                                                                           | `Kernel.mount()`, `Database.init()`                                |
+| Termo          | Definição operacional                                                                                          | Exemplo no SOLAR                                               |
+| -------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Componente** | parte arquitetural com responsabilidade definida; pode ser uma camada, um subsistema ou um conjunto de módulos | Nucleus, Orbits, Observatory                                   |
+| **Módulo**     | arquivo Python importável (`.py`), identificado por um nome pontuado                                           | `nucleus.kernel`, `orbits.routes`, `observatory.log.error_log` |
+| **Pacote**     | diretório Python com `__init__.py`; agrupa módulos                                                             | `nucleus.rules`, `orbits.planets.example`                      |
+| **Classe**     | definição de um tipo de objeto, com atributos e métodos                                                        | `Database`, `Kernel`, `ErrorLog`                               |
+| **Função**     | rotina definida no nível do módulo                                                                             | `main()` em `server.py`                                        |
+| **Método**     | função definida dentro de uma classe                                                                           | `Kernel.mount()`, `Database.init()`                            |
 
 **Por que a distinção importa:** o SOLAR tem 208 módulos de produção e 136 classes de produção. Dizer “o projeto tem 208 classes” seria errado; dizer “o projeto tem 208 módulos” também não é o mesmo que dizer “208 componentes”. Cada métrica usa uma unidade, e misturar unidades produz conclusões inválidas.
 
@@ -96,7 +96,7 @@ Dependências também podem ser:
 
 - **dinâmicas** — o nome do módulo é resolvido em tempo de execução, por exemplo com `importlib.import_module(...)`;
 - **tardias** — a importação aparece dentro de uma função e só ocorre quando ela é chamada;
-- **implícitas** — o Python carrega automaticamente o pacote-pai ao importar um submódulo (por exemplo, importar `observatory.records.error_log` carrega o pacote `observatory.records`).
+- **implícitas** — o Python carrega automaticamente o pacote-pai ao importar um submódulo (por exemplo, importar `observatory.log.error_log` carrega o pacote `observatory.log`).
 
 A análise estática precisa de regras explícitas para cada caso. Ignorar dependências dinâmicas ou implícitas produz grafos incompletos — foi exatamente o que o tracing de runtime revelou no SOLAR.
 

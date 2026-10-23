@@ -13,9 +13,9 @@
 | Arquivos `.py`         | 269    | arquivos            | projeto inteiro              | validado | corpus completo                | não inclui arquivos não-Python                         |
 | Módulos de produção    | 208    | módulos             | exclui `tests/`              | validado | 148 com código, 60 sem código  | “módulo” = arquivo importável                          |
 | Módulos de teste       | 61     | módulos             | `tests/`                     | validado | separados da produção          | não entram nas métricas de produção                    |
-| SLOC de produção       | 6.261  | linhas              | 208 módulos (148 com código) | validado | tamanho real do código         | SLOC não conta comentários/branco                      |
-| SLOC de testes         | 5.524  | linhas              | 61 módulos                   | validado | quase o tamanho da produção    | não misturar com produção                              |
-| SLOC total             | 11.785 | linhas              | 269 módulos                  | validado | soma dos dois conjuntos        | —                                                      |
+| SLOC de produção       | 6.265  | linhas              | 208 módulos (148 com código) | validado | tamanho real do código         | SLOC não conta comentários/branco                      |
+| SLOC de testes         | 5.529  | linhas              | 61 módulos                   | validado | quase o tamanho da produção    | não misturar com produção                              |
+| SLOC total             | 11.794 | linhas              | 269 módulos                  | validado | soma dos dois conjuntos        | —                                                      |
 | Classes de produção    | 136    | classes             | exclui testes                | validado | 124 regulares + 12 utilitárias | 9 herdam de ABC/Protocol                               |
 | Classes de teste       | 29     | classes             | `tests/`                     | validado | separadas                      | —                                                      |
 | Funções de produção    | 553    | funções/métodos     | exclui testes                | validado | base das métricas de função    | inclui funções de módulo e métodos; não inclui lambdas |
@@ -173,10 +173,10 @@
 | ------------------------------ | ----- | ------------------- | ---------------------------- | ---------------------- | ------------------------ | ------------------ |
 | Alcançáveis (estático)         | 134   | módulos             | 208                          | validado               | 133 com código + 1 init  | BFS                |
 | Não alcançáveis (estático)     | 74    | módulos             | 208                          | validado               | 59 inits + 15 com código | candidatos         |
-| SLOC não alcançável (estático) | 631   | linhas              | 6.261                        | validado               | 10,1%                    | —                  |
+| SLOC não alcançável (estático) | 631   | linhas              | 6.265                        | validado               | 10,1%                    | —                  |
 | Módulos observados (união)     | 175   | módulos             | 3 cenários                   | validado com ressalvas | 133 com código + 42 pais | cenários limitados |
 | Ausentes em runtime            | 14    | módulos             | 15 candidatos                | validado com ressalvas | 625 SLOC                 | 9,98%              |
-| Refutados em runtime           | 1     | módulo              | `observatory.records`        | validado               | pacote-pai implícito     | —                  |
+| Refutados em runtime           | 1     | módulo              | `observatory.log`            | validado               | pacote-pai implícito     | —                  |
 | Pais implícitos                | 42    | pacotes             | união                        | validado               | inits vazios             | não são uso        |
 | Alcançável não observado       | 1     | módulo              | `observatory.solar.__main__` | validado com ressalvas | não executado            | —                  |
 
@@ -191,7 +191,7 @@
 | Alertas estruturais revisados | 60                         | alertas                     | relatório original | validado    | 7 confirmados, 7 FP, 43 parciais, 1 não reproduzível, 2 fora de escopo | detalhe frequentemente não fecha |
 | Reprodutibilidade             | hashes idênticos           | execuções                   | 2 execuções        | validado    | determinístico                                                         | após normalização                |
 | Validador                     | `correct`                  | 17 verificações / 29 regras | projeto            | informativo | 0 violações                                                            | ROF-003 sem scanner              |
-| Regras não registradas        | 1                          | regra                       | `SOLAR-ROF-003`    | validado    | não executada                                                          | conformidade parcial             |
+| Regras não registradas        | 1                          | regra                       | `SOLAR-ROF-003`    | validado    | implementada e testada; não executada pelo `ProjectValidator`          | conformidade parcial nesse ponto |
 | Versões                       | Radon 6.0.1 / flake8 7.4.1 | —                           | ambiente           | validado    | reprodução possível                                                    | depende do ambiente              |
 
 ---
@@ -213,7 +213,7 @@
 
 ## 8.11 Resumo do capítulo
 
-- O corpus tem 269 arquivos, 208 módulos de produção e 6.261 SLOC de produção.
+- O corpus tem 269 arquivos, 208 módulos de produção e 6.265 SLOC de produção.
 - O acoplamento é baixo e concentrado em hubs com papel arquitetural.
 - A coesão de estado é baixa nas 39 classes válidas, mas LCOM4 mostra conectividade por chamadas.
 - A complexidade de controle é baixa; a cognitiva se concentra em scanners; `_destination` é o único outlier > 15.

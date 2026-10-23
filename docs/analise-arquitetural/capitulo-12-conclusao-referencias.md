@@ -10,7 +10,7 @@ Esta documentação percorreu quatro movimentos:
 
 1. **Conceitos:** arquitetura, qualidade, módulo, classe, função, dependência, acoplamento, coesão, complexidade, manutenibilidade e evolução.
 2. **Método:** análise estática, tracing de runtime, grafo, métricas, inspeção manual, testes e validação independente.
-3. **Resultados:** 269 arquivos, 208 módulos de produção, 6.261 SLOC, 136 classes, 553 funções, 306 arestas.
+3. **Resultados:** 269 arquivos, 208 módulos de produção, 6.265 SLOC, 136 classes, 553 funções, 306 arestas.
 4. **Leitura:** classificação contextual, limitações e roteiro de reprodução.
 
 O objetivo não foi “dar uma nota” à arquitetura, mas tornar as conclusões **verificáveis, delimitadas e discutíveis**.
@@ -21,7 +21,7 @@ O objetivo não foi “dar uma nota” à arquitetura, mas tornar as conclusões
 
 | Afirmação                                               | Evidência                                                           | Grau de confiança                             |
 | ------------------------------------------------------- | ------------------------------------------------------------------- | --------------------------------------------- |
-| O código de produção é pequeno e concentrado no Nucleus | 6.261 SLOC; 63% no `nucleus/rules`                                  | alto                                          |
+| O código de produção é pequeno e concentrado no Nucleus | 6.265 SLOC; 63% no `nucleus/rules`                                  | alto                                          |
 | O acoplamento interno é baixo e esparso                 | Ce mediano 3; densidade 0,71%; 90,2% intra-camada                   | alto                                          |
 | Os hubs de acoplamento têm papel arquitetural           | `solar_exception` Ca 38; `project_validator` Ce 49; `Kernel` CBO 15 | alto                                          |
 | A complexidade de controle é baixa na maior parte       | CC mediana 2; 94,6% rank A                                          | alto                                          |
@@ -39,17 +39,29 @@ O objetivo não foi “dar uma nota” à arquitetura, mas tornar as conclusões
 
 ## 12.3 O que os dados **não** sustentam
 
-| Afirmação tentadora               | Por que não se sustenta                                       |
-| --------------------------------- | ------------------------------------------------------------- |
-| “A arquitetura é boa.”            | Nenhuma métrica mede qualidade global; não há critério único. |
-| “O código é fácil de manter.”     | MI saturado; não há estudo com mantenedores.                  |
-| “Os 14 módulos são código morto.” | Ausência em 3 cenários não prova desuso.                      |
-| “O ciclo causa falhas.”           | Não houve falha observada; há dependência de ordem.           |
-| “A coesão é ruim.”                | 39 classes têm domínio; 97 são N/A; LCOM1 cresce com métodos. |
-| “O projeto está 100% conforme.”   | ROF-003 não é executada.                                      |
-| “A dívida está aumentando.”       | Há uma única fotografia.                                      |
-| “O desempenho é bom.”             | Não há benchmarks.                                            |
-| “Os testes cobrem o sistema.”     | Cobertura e eficácia não foram medidas.                       |
+| Afirmação tentadora                   | Por que não se sustenta                                                                                                         |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| “A arquitetura é boa.”                | Nenhuma métrica mede qualidade global; não há critério único.                                                                   |
+| “O código é fácil de manter.”         | MI saturado; não há estudo com mantenedores.                                                                                    |
+| “Os 14 módulos são código morto.”     | Ausência em 3 cenários não prova desuso.                                                                                        |
+| “O ciclo causa falhas.”               | Não houve falha observada; há dependência de ordem.                                                                             |
+| “A coesão é ruim.”                    | 39 classes têm domínio; 97 são N/A; LCOM1 cresce com métodos.                                                                   |
+| “O projeto está 100% conforme.”       | A ROF-003 é implementada e testada, mas **não é executada pelo `ProjectValidator`**; 29 das 30 regras têm verificação estática. |
+| “A persistência está fora do padrão.” | As regras RED-002/003/005/006/007/008 são executadas e passam; a ROF-003 não é uma regra de persistência.                       |
+| “A dívida está aumentando.”           | Há uma única fotografia.                                                                                                        |
+| “O desempenho é bom.”                 | Não há benchmarks.                                                                                                              |
+| “Os testes cobrem o sistema.”         | Cobertura e eficácia não foram medidas.                                                                                         |
+
+> **Correção de conclusão (2026-10-23).** A frase “ROF-003 não é executada”
+> estava sendo usada de forma ambígua. O correto é: a ROF-003 **não é
+> executada pelo `ProjectValidator`**, porque não há scanner para o contrato
+> nomeado do UseCase; ela **é implementada** em
+> `ControllerAndUseCaseMustUseNamedContracts` e **é exercitada por teste
+> unitário**. Isso não autoriza dizer que a organização de persistência está
+> irregular: Model, Persistence e Repository são verificados pelas regras
+> RED-002, RED-003, RED-005, RED-006, RED-007 e RED-008, todas executadas. A
+> conformidade é parcial por **falta de verificação estática da ROF-003**, não
+> por desorganização da persistência.
 
 ---
 
@@ -79,7 +91,8 @@ Os achados que merecem atenção:
 3. **`_destination`**: maior CC e maior cognitiva; único acima de 15.
 4. **`Kernel.mount`**: 163 linhas; longo e linear, mas concentra a composição.
 5. **MI e Halstead**: não usáveis como ranking; servem como alerta de método.
-6. **ROF-003**: regra sem scanner; conformidade parcial.
+6. **ROF-003**: implementada e testada unitariamente, mas sem scanner no
+   `ProjectValidator`; conformidade parcial nesse ponto específico.
 
 Nenhum desses achados é, por si, um defeito. São **lugares para ler primeiro**.
 
@@ -146,17 +159,19 @@ As referências abaixo fundamentam os conceitos e as fórmulas. Não são fontes
 
 ## 12.9 Referências específicas do SOLAR
 
-| Documento                                                                                                                                                                                        | Conteúdo                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- |
-| [`docs/manual.md`](../manual.md)                                                                                                                                                                 | manual arquitetural do SOLAR; regras, camadas e fluxo |
-| [`docs/rules.md`](../rules.md)                                                                                                                                                                   | catálogo das 30 regras e códigos `RED`, `ROF`, `SEG`  |
-| [`observatory/audits/estrutural/RELATORIO_CONSOLIDADO.md`](../../observatory/audits/estrutural/RELATORIO_CONSOLIDADO.md)                                                                         | relatório consolidado da análise                      |
-| [`observatory/audits/estrutural/resumo_metricas.json`](../../observatory/audits/estrutural/resumo_metricas.json)                                                                                 | resumo quantitativo                                   |
-| [`observatory/audits/estrutural/alertas_estruturais_revisados.csv`](../../observatory/audits/estrutural/alertas_estruturais_revisados.csv)                                                       | auditoria dos 60 alertas                              |
-| [`observatory/audits/estrutural/auditoria_final/AUDITORIA_ETAPA_2.md`](../../observatory/audits/estrutural/auditoria_final/AUDITORIA_ETAPA_2.md)                                                 | auditoria de acoplamento/coesão                       |
-| [`observatory/audits/estrutural/auditoria_final/AUDITORIA_ETAPA_3.md`](../../observatory/audits/estrutural/auditoria_final/AUDITORIA_ETAPA_3.md)                                                 | auditoria de complexidade                             |
-| [`observatory/audits/estrutural/auditoria_final/runtime_tracing/RELATORIO_RUNTIME_TRACING.md`](../../observatory/audits/estrutural/auditoria_final/runtime_tracing/RELATORIO_RUNTIME_TRACING.md) | tracing de importações                                |
-| [`docs/analise-arquitetural/DOCUMENTACAO_ANALISE_ARQUITETURAL.md`](DOCUMENTACAO_ANALISE_ARQUITETURAL.md)                                                                                         | índice desta documentação                             |
+| Documento                                                                                                                                 | Conteúdo                                              |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| [`docs/manual.md`](../manual.md)                                                                                                          | manual arquitetural do SOLAR; regras, camadas e fluxo |
+| [`docs/rules.md`](../rules.md)                                                                                                            | catálogo das 30 regras e códigos `RED`, `ROF`, `SEG`  |
+| [`observatory/audits/README.md`](../../observatory/audits/README.md)                                                                      | índice geral das seis etapas                          |
+| [`observatory/audits/RESUMO_EXECUTIVO.md`](../../observatory/audits/RESUMO_EXECUTIVO.md)                                                  | síntese executiva da auditoria                        |
+| [`observatory/audits/etapa_2_acoplamento_coesao/`](../../observatory/audits/etapa_2_acoplamento_coesao/README.md)                         | acoplamento, coesão e dependências                    |
+| [`observatory/audits/etapa_3_complexidade/`](../../observatory/audits/etapa_3_complexidade/README.md)                                     | complexidade e reproducibilidade Radon                |
+| [`observatory/audits/etapa_4_desempenho/`](../../observatory/audits/etapa_4_desempenho/README.md)                                         | desempenho e escalabilidade                           |
+| [`observatory/audits/etapa_5_seguranca_isolamento/`](../../observatory/audits/etapa_5_seguranca_isolamento/README.md)                     | segurança e isolamento                                |
+| [`observatory/audits/etapa_6_manutenibilidade_evolutividade/`](../../observatory/audits/etapa_6_manutenibilidade_evolutividade/README.md) | manutenibilidade e evolutividade                      |
+| [`observatory/audits/benchmark/`](../../observatory/audits/benchmark/README.md)                                                           | plano e viabilidade do benchmark comparativo          |
+| [`docs/analise-arquitetural/DOCUMENTACAO_ANALISE_ARQUITETURAL.md`](DOCUMENTACAO_ANALISE_ARQUITETURAL.md)                                  | índice desta documentação                             |
 
 ---
 
@@ -179,7 +194,7 @@ A conclusão mais importante é metodológica: **um número sem escopo, método 
 - [x] Todos os capítulos de 1 a 12 criados.
 - [x] Todas as métricas analisadas têm ficha com definição, fórmula, exemplo, resultado, limitações e status.
 - [x] Todas as siglas usadas foram expandidas e estão no glossário.
-- [x] Os números foram conferidos contra os artefatos de `observatory/audits/estrutural/`.
+- [x] Os números foram conferidos contra os artefatos de `observatory/audits/`.
 - [x] As aproximações foram declaradas.
 - [x] As pendências foram declaradas.
 - [x] Nenhum código de produção foi alterado.
